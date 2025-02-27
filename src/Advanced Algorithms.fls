@@ -1,8 +1,8 @@
 PWD /home/aless/Desktop/notes/advanced-algs/src
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT main.tex
-OUTPUT main.log
+INPUT Advanced Algorithms.tex
+OUTPUT Advanced Algorithms.log
 INPUT /usr/share/texmf-dist/tex/latex/base/report.cls
 INPUT /usr/share/texmf-dist/tex/latex/base/report.cls
 INPUT /usr/share/texmf-dist/tex/latex/base/size12.clo
@@ -543,10 +543,10 @@ INPUT ../../packages/Nyx/nyx-title.sty
 INPUT ../../packages/Nyx/nyx-title.sty
 INPUT ../../packages/Nyx/nyx-intro.sty
 INPUT ../../packages/Nyx/nyx-intro.sty
-INPUT ./main.aux
-INPUT ./main.aux
-INPUT main.aux
-OUTPUT main.aux
+INPUT ./Advanced Algorithms.aux
+INPUT ./Advanced Algorithms.aux
+INPUT Advanced Algorithms.aux
+OUTPUT Advanced Algorithms.aux
 INPUT /usr/share/texmf-dist/tex/latex/tipa/t3cmr.fd
 INPUT /usr/share/texmf-dist/tex/latex/tipa/t3cmr.fd
 INPUT /usr/share/texmf-dist/tex/latex/tipa/t3cmr.fd
@@ -559,20 +559,20 @@ INPUT /usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/share/texmf-dist/tex/latex/biblatex/lbx/english.lbx
-OUTPUT main-blx.bib
-INPUT main.bbl
-INPUT ./main.bbl
-INPUT ./main.bbl
-INPUT ./main.bbl
-INPUT main.bbl
-INPUT ./main.out
-INPUT ./main.out
-INPUT main.out
-INPUT main.out
-OUTPUT main.pdf
-INPUT ./main.out
-INPUT ./main.out
-OUTPUT main.out
+OUTPUT Advanced_Algorithms-blx.bib
+INPUT Advanced Algorithms.bbl
+INPUT ./Advanced Algorithms.bbl
+INPUT ./Advanced Algorithms.bbl
+INPUT ./Advanced Algorithms.bbl
+INPUT Advanced Algorithms.bbl
+INPUT ./Advanced Algorithms.out
+INPUT ./Advanced Algorithms.out
+INPUT Advanced Algorithms.out
+INPUT Advanced Algorithms.out
+OUTPUT Advanced Algorithms.pdf
+INPUT ./Advanced Algorithms.out
+INPUT ./Advanced Algorithms.out
+OUTPUT Advanced Algorithms.out
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx2488.tfm
 INPUT ../../packages/Nyx/logo.png
 INPUT ../../packages/Nyx/logo.png
@@ -643,10 +643,10 @@ INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1440.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecti1440.tfm
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
-INPUT ./main.toc
-INPUT ./main.toc
-INPUT main.toc
-OUTPUT main.toc
+INPUT ./Advanced Algorithms.toc
+INPUT ./Advanced Algorithms.toc
+INPUT Advanced Algorithms.toc
+OUTPUT Advanced Algorithms.toc
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
 INPUT /usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /usr/share/texmf-dist/tex/latex/tex-gyre/t1qtm.fd
@@ -668,11 +668,11 @@ INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0800.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/eccc0800.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0600.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/eccc0600.tfm
-INPUT main.aux
-INPUT ./main.out
-INPUT ./main.out
-INPUT main.run.xml
-OUTPUT main.run.xml
+INPUT Advanced Algorithms.aux
+INPUT ./Advanced Algorithms.out
+INPUT ./Advanced Algorithms.out
+INPUT Advanced Algorithms.run.xml
+OUTPUT Advanced Algorithms.run.xml
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
