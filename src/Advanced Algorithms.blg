@@ -19,53 +19,47 @@ Reallocated singl_function (elt_size=8) to 100 items from 50.
 Reallocated singl_function (elt_size=8) to 100 items from 50.
 Database file #1: Advanced_Algorithms-blx.bib
 Database file #2: ./references.bib
-You're missing a field name---line 17 of file ./references.bib
- : 
- : %     title = {Improved approximation algorithms for maximum cut and satisfiability problems using semidefinite programming},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 Biblatex version: 3.19
 Reallocated wiz_functions (elt_size=8) to 9000 items from 6000.
 Reallocated singl_function (elt_size=8) to 100 items from 50.
-You've used 2 entries,
+You've used 3 entries,
             6399 wiz_defined-function locations,
-            1214 strings with 9317 characters,
-and the built_in function-call counts, 14365 in all, are:
-= -- 1215
-> -- 234
-< -- 68
-+ -- 510
-- -- 81
-* -- 853
-:= -- 1882
+            1224 strings with 9521 characters,
+and the built_in function-call counts, 20177 in all, are:
+= -- 1640
+> -- 324
+< -- 105
++ -- 614
+- -- 110
+* -- 1280
+:= -- 2413
 add.period$ -- 0
-call.type$ -- 2
-change.case$ -- 50
+call.type$ -- 3
+change.case$ -- 71
 chr.to.int$ -- 50
-cite$ -- 2
-duplicate$ -- 1495
-empty$ -- 1105
-format.name$ -- 92
-if$ -- 2841
+cite$ -- 4
+duplicate$ -- 2050
+empty$ -- 1683
+format.name$ -- 140
+if$ -- 4087
 int.to.chr$ -- 0
-int.to.str$ -- 3
+int.to.str$ -- 6
 missing$ -- 0
-newline$ -- 78
-num.names$ -- 83
-pop$ -- 450
+newline$ -- 109
+num.names$ -- 138
+pop$ -- 780
 preamble$ -- 1
-purify$ -- 60
+purify$ -- 83
 quote$ -- 0
-skip$ -- 367
+skip$ -- 555
 stack$ -- 0
-substring$ -- 2133
-swap$ -- 256
-text.length$ -- 49
-text.prefix$ -- 1
+substring$ -- 2923
+swap$ -- 408
+text.length$ -- 74
+text.prefix$ -- 2
 top$ -- 1
-type$ -- 56
+type$ -- 90
 warning$ -- 0
-while$ -- 270
+while$ -- 326
 width$ -- 0
-write$ -- 77
-(There was 1 error message)
+write$ -- 107
