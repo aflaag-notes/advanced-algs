@@ -101,10 +101,10 @@
     The first problem that will be discussed is the \href{https://en.wikipedia.org/wiki/Maximum_cut}{Maximum Cut} problem (or \tit{Max Cut}, for short). The \tbf{Max Cut problem} --- in the unweighted case --- is a classic combinatorial optimization problem in the branch of \href{https://en.wikipedia.org/wiki/Graph_theory}{graph theory}, in which we seek to partition the vertices of an undirected graph into two disjoint subsets while maximizing the number of edges that have endpoints in both subsets. More formally, we will define a \tbf{cut} of a graph as follows.
 
     \begin{frameddefn}{Cut}
-        Given an undirected graph $G = (V, E)$, and a subset of its vertices $S \subseteq V$, the \tbf{cut} induced by $S$ on $G$ is defined as follows $$\mathrm{cut}(S) := \{e \in E \mid \abs{S \cap e} = 1\}$$
+        Given an undirected graph $G = (V, E)$, and a subset of its vertices $S \subseteq V$, the \tbf{cut} induced by $S$ on $G$ is defined as follows $$\mathrm{cut}(S) := \{e \in E \quad \abs{S \cap e} = 1\}$$
     \end{frameddefn}
 
-    Note that in the definition above we are defining the cut of a graph through the intersection between a set of vertices $S$ and edges in $E$; this is because, in the undirected case, we will consider the edges of a graph $G = (V, E)$ as sets of 2 elements $$E = \{\{u, v\} \mid u, v \in V\}$$ Therefore, given a set of vertices $S$, the cut induced by $S$ is simply the set of edges that have only one endpoint in $S$ (implying that the other one will be in $V - S$).
+    Note that in the definition above we are defining the cut of a graph through the intersection between a set of vertices $S$ and edges in $E$; this is because, in the undirected case, we will consider the edges of a graph $G = (V, E)$ as sets of 2 elements $$E = \{\{u, v\} \quad u, v \in V\}$$ Therefore, given a set of vertices $S$, the cut induced by $S$ is simply the set of edges that have only one endpoint in $S$ (implying that the other one will be in $V - S$).
 
     \begin{figure}[H]
         \centering
@@ -226,7 +226,7 @@
     Another very important problem in graph theory is the \href{https://en.wikipedia.org/wiki/Vertex_cover}{Vertex Cover}, which concerns the combinatorial structure of the \tbf{vertex cover}, defined as follows.
 
     \begin{frameddefn}{Vertex cover}
-        Given an undirected graph $G = (V, E)$, a \tbf{vertex cover} of $G$ is a set of vertices $S \subseteq V$ such that $$\forall e \in E \quad \exists v \in S \mid v \in e$$
+        Given an undirected graph $G = (V, E)$, a \tbf{vertex cover} of $G$ is a set of vertices $S \subseteq V$ such that $$\forall e \in E \quad \exists v \in S \quad v \in e$$
     \end{frameddefn}
 
     \begin{figure}[H]
