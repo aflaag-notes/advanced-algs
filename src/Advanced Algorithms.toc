@@ -6,3 +6,5 @@
 \contentsline {section}{\numberline {1.1}TODO}{2}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}The Max Cut problem}{2}{subsection.1.1.1}%
 \contentsline {subsection}{\numberline {1.1.2}The Vertex Cover problem}{7}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Mathematical Programming}{12}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}The Vertex Cover problem}{12}{subsection.1.2.1}%

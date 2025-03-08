@@ -654,6 +654,7 @@ INPUT /usr/share/texmf-dist/tex/latex/tex-gyre/t1qtm.fd
 INPUT /usr/share/texmf-dist/tex/latex/tex-gyre/t1qtm.fd
 INPUT /usr/share/texmf-dist/fonts/tfm/public/tex-gyre/ec-qtmr.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/tex-gyre/ec-qtmr.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0600.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm1728.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1728.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm
@@ -666,7 +667,6 @@ INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ectt1200.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecxc1200.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0800.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/eccc0800.tfm
-INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecrm0600.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/eccc0600.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/latex-fonts/lasy5.tfm

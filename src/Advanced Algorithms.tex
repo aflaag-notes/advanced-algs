@@ -94,6 +94,8 @@
 
     \chapter{TODO}
 
+    placeholder \todo{missing introduction}
+
     \section{TODO}
 
     \subsection{The Max Cut problem}
@@ -364,8 +366,8 @@
             \Function{MaximalMatching}{$G$}
                 \State $S := \varnothing$
                 \While{$E \neq \varnothing$}
-                    \State Choose $e = \{u, v\} \in E$
-                    \State $S = S \cup \{u, v\}$
+                    \State Choose $e\in E$
+                    \State $S = S \cup \{e\}$
                     \State Remove from $E$ all the edges incident on $u$ or on $v$
                     \State $E = E - \{e\}$
                 \EndWhile
@@ -380,7 +382,7 @@
         Clearly, line 6 ensures that the output is a \tit{matching}, and the terminating condition of the \texttt{while} loop ensures that it is \tit{maximal}, but since the output depends on the chosen edges, $S$ is not guaranteed to be \tit{maximum}.
     }
 
-    Additionally, another major reason we focus on matchings is the following theorem.
+    Another major reason on why we focus on matchings is the following theorem.
 
     \begin{framedthm}{Matchings bound vertex covers}
         Given an undirected graph $G = (V, E)$, a matching $A \subseteq E$ of $G$, and a vertex cover $S \subseteq V$ of $G$, we have that $\abs S \ge \abs A$.
@@ -397,15 +399,11 @@
     Thanks to this theorem, we can easily show that the algorithm that we just presented in order to find maximal matchings is a 2-approximation of the VC problem. 
 
     \begin{framedthm}{2-approximation of VC problem}
-        The \textsc{MaximalMatching} algorithm is a 2-approximation of the Vertex Cover problem.
+        Given a graph $G$, and $M = \textsc{MaximalMatching}(G)$, let $S := \bigcup_{e \in M}{e}$. Then $S$ is a 2-approximation of the VC problem on $G$.
     \end{framedthm}
 
     \begin{proof}
-        Given an undirected $G = (V, E)$, let $S = \textsc{MaximalMatching}(G)$, and let $e_1, \ldots, e_t$ be the sequence of edges chosen by the algorithm at each iteration of the \texttt{while} loop.
-
-        Note that, by definition of the algorithm, at each iteration exactly 2 vertices are added to $S \subseteq V$, and it always holds that $$S_{i + 1} \cap S_i = e_i = \{u, v\}$$ for any iteration $i \in [t - 1]$, because in line 6 the algorithm removes from $E$ all the edges incident on either $u$ or $v$. This implies that $\abs S = 2t$.
-
-        placeholder \todo{the last part is wrong}
+        Consider an optimal solution $S^*$ to the VC problem on $G$, and let $M = \{e_1, \ldots, e_t\}$. Note that at each iteration of the algorithm exactly 1 edge is added to $M \subseteq V$, hence it always holds that $$S_i \cap S_{i + 1} = e_i = \{u, v\}$$ for any iteration $i \in [t - 1]$. Moreover, since $M$ is a matching, it holds that $\forall e, e' \in M \quad e \cap e' = \varnothing$, therefore $\abs{S} = 2 \abs{M}$. Finally, by the previous theorem we have that $\abs{M} \le \abs{S^*}$, concluding that $$\abs S = 2 \abs M \le 2 \abs{S^*}$$
     \end{proof}
     
     This 2-approximation algorithm is conjectured to be optimal, but it has not been proven yet. In fact, the VC problem is conjectured to be \NPHard to $(2 - \varepsilon)$-approximate, for any $\varepsilon > 0$.
@@ -500,7 +498,86 @@
     \cost{
         It is easy to see that the cost directly depends on the number of recursive calls that the algorithm performs, which is $2^k$ in the worst case, and the cost of constructing $G[V - \{x\}]$, which we can assume to be $O\rbk{n^2}$. Hence, the algorithm has a total cost of $O \rbk{2^k \cdot n^2}$.
     }
+
+    \section{Mathematical Programming}
+
+    placeholder \todo{introduction on math programming}
    
+    \subsection{The Vertex Cover problem}
+
+    IPs can be used to solve a wide range of problems. For instance, given a graph $G =(V, E)$, the \tbf{vertex cover} problem that we discussed in the previous section can be formulated through the following IP:
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{ccc}
+            \qquad\qquad\quad
+            & \min \; \displaystyle \sum_{u \in V}^n {x_v} \\\\
+            & x_u + x_v \ge 1 & \forall \{u, v\} \in E \\
+            & x_v \in \{0,1\}^n & \forall u \in V
+        \end{array}\]
+        \caption{IP for the VC problem.}
+    \end{figure}
+
+    It is fairly straightforward to prove that an optimal solution to this IP yields an optimal solution to the VC problem.
+
+    \begin{framedlem}[label={vc ip}]{}
+        Given a graph $G$, if $\{x^*_u\}_{u \in V}$ is an optimal solution to the previous IP, then $$S^* := \{v \in V \mid x^*_v = 1\}$$ is a minimum vertex cover for $G$.
+    \end{framedlem}
+
+    \begin{proof}
+        Consider an optimal solution $\{x^*_u\}_{u \in V}$ to the VC problem, and define $S^*$ as the set of vertices $v \in V$ such that $x^*_v = 1$. Note that any optimal solution is also a feasible solution, i.e. it satisfies the constraints of the IP.
+
+        Note that the first constraint of the IP forces that for each $\{u, v\} \in E$ the sum between $x^*_u + x^*_v$ is at least one, and the second constraint forces each variable $x_v^*$ to be either 0 or 1. Therefore, together these two constraints imply that for any edge $\{u, v\} \in E$ at least one between $x_u^*$ and $x_v^*$ is 1, and by definition of $S^*$ this means at least one of the endpoints of $\{u, v\}$ is inside $S^*$. We conclude that $S^*$ is indeed a vertex cover for $G$, and by its definition note that $\abs{S^*} = \sum_{u \in V}{x^*_u}$.
+
+        \claim{
+            Given a vertex cover $S$ of a graph $G = (V, E)$, there exists a feasible solution $\{x_u\}_{u \in V}$ to the IP having value $\abs S$.
+        }{
+            Define the solution $\{x_u\}_{u \in V}$ by setting $x_u = 1$ if and only if $u \in S$. Clearly, the value of this solution is indeed $\sum_{u \in V}{x_u} = \abs S$; moreover, by definition of vertex cover, for any edge $\{u, v\} \in E$ at least one between $u$ and $v$ must be in $S$, therefore at least one between $x_u$ and $x_v$ is set to 1, implying that $x_u + x_v \ge 1$ is always satisfied.
+        }
+
+        By way of contradiction, suppose that $S^*$ is not a minimum vertex cover. Hence, there must exist another vertex cover $S'$ such that $\abs{S'} < \abs{S^*}$. By the previous claim, this implies that there exists a feasible solution $\{x'_u\}_{u \in V}$ for the IP that has value $\abs{S'}$, but then $$\sum_{u \in V}{x'_u} = \abs{S'} < \abs{S^*} = \sum_{u \in V}{x^*_u}$$ which contradicts the optimality of the solution of $\{x^*_u\}_{u \in V}$ for the IP.
+    \end{proof}
+
+    In particular, this lemma implies that the VC problem can be reduced to Integer programming, indeed solving IPs is actually \NPHard \cite{karp}, differently from LPs. This result shows that IPs cannot be used \tit{directly} to obtain perfect solutions, but they are still very useful thanks to \tbf{relaxation}.
+
+    To \tit{relax} an IP, we simply replace the constraint $x \in \{0, 1\}^n$ with $0 \le x \le 1$, transforming the IP into an LP.
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{ccc}
+            \qquad\qquad\quad
+            & \min \; \displaystyle \sum_{u \in V}^n {x_v} \\\\
+            & x_u + x_v \ge 1 & \forall \{u, v\} \in E \\
+            & 0 \le x_v \le 1 & \forall u \in V
+        \end{array}\]
+        \caption{LP relaxation for the IP of the VC problem.}
+    \end{figure}
+
+    But solving this LP is not enough to obtain a meaningful solution: in fact, a real-valued solution for this problem does not directly yield a vertex cover for a given graph. To fix this issue, the optimal solution of the LP relaxation is usually transformed through techniques such as \tbf{rounding}. Intuitively, the simplest possible type of \tit{rounding rule} is the following: given a solution $\{\overline x_u\}_{u \in V}$ to the LP relaxation, to obtain a VC consider the following set $$S := \cbk{v \in V \mid \overline x_v \ge \tfrac{1}{2}}$$ and for the VC problem in particular, we can prove that this rounding rule actually yields a 2-approximation of any optimal solution.
+
+    \begin{framedthm}{}
+        Given a graph $G = (V, E)$, if $\{\overline x_u\}_{u \in V}$ is an optimal solution to the LP relaxation of the IP for the VC problem, then $$\overline S := \cbk{v \in V \mid \overline x_v \ge \tfrac{1}{2}}$$ is a 2-approximation for the VC problem.
+    \end{framedthm}
+
+    \begin{proof}
+        Since $\{\overline x_u\}_{u \in V}$ is an optimal solution to the LP relaxation, it must satisfy the first constraint for which $\overline x_u + \overline x_v \ge 1$ for any $\{u, v\} \in E$. Moreover, for the second constraint we have that $\overline x_u \ge 0$ for all $u \in V$, therefore $$\forall \{u, v\} \in E \quad \max(\overline x_u, \overline x_v) \ge \dfrac{\overline x_u + \overline x_v}{2} \ge \dfrac{1}{2}$$ which means that at least one between $\overline x_u$ and $\overline x_v$ is at least $\frac{1}{2}$, implying that the edge $\{u, v\}$ will be covered by at least one of the two endpoints $u$ and $v$, by definition of $\overline S$. This proves that $\overline S$ is a vertex cover of $G$.
+
+        To prove that $\overline S$ is indeed a 2-approximation, we just need to show the following: given a minimum vertex cover $S^*$ of $G$, it holds that $\abs{\overline S} \le 2 \abs{S^*}$. By the claim in \cref{vc ip}, we know that $S^*$ there exists a feasible solution $\{x^*_u\}_{u \in V}$ for the IP, which must be optimal for the IP since $S^*$ is a minimum vertex cover for $G$. Therefore, we have that
+            \begin{equation*}
+                \begin{split}
+                    \abs{\overline S} &= \sum_{v \in \overline S}{1} \\
+                                      &\le \sum_{v \in \overline S}{2 \overline x_v} \quad \quad \rbk{v \in \overline S \implies \overline x_v \ge \tfrac{1}{2}}\\
+                                      &= 2 \sum_{v \in \overline S}{\overline x_v} \\
+                                      &\le 2 \sum_{v \in V}{\overline x_v} \quad \quad \rbk{\overline S \subseteq V \land \overline x_v \ge 0} \\
+                                      &\le 2 \sum_{v \in V}{x^*_v} \\
+                                      &= 2 \abs{S^*}
+                \end{split}
+            \end{equation*}
+            where the last inequality comes from the fact that the constraints of the LP are \tit{weaker} than the ones of the IP.
+    \end{proof}
+
+    However, note that this result should not come a surprise. In fact, consider a graph $G$, an optimal solution to the LP relaxation $\{\overline x_u\}_{u \in V}$ and $\overline S$ defined as previously shown; given an edge $\{u, v\} \in E(G)$, in the worst case we have that $$\overline x_u = \overline x_v = \dfrac{1}{2}$$ which still satisfies both constraints of the LP relaxation, since $\tfrac{1}{2} + \tfrac{1}{2} = 1 \ge 1$. This means that, in the worst case, both $u$ and $v$ end up inside $\overline S$, which gives an intuitive reason to why this LP relaxation indeed yields a 2-approximation solution.
+
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
 \end{document}
