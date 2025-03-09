@@ -503,8 +503,6 @@
 
     placeholder \todo{introduction on math programming}
    
-    \subsection{The Vertex Cover problem}
-
     IPs can be used to solve a wide range of problems. For instance, given a graph $G =(V, E)$, the \tbf{vertex cover} problem that we discussed in the previous section can be formulated through the following IP:
 
     \begin{figure}[H]
@@ -555,7 +553,7 @@
 
     But solving this LP is not enough to obtain a meaningful solution: in fact, a real-valued solution for this problem does not directly yield a vertex cover for a given graph. To fix this issue, the optimal solution of the LP relaxation is usually transformed through techniques such as \tbf{rounding}. Intuitively, the simplest possible type of \tit{rounding rule} is the following: given a solution $\{\overline x_u\}_{u \in V}$ to the LP relaxation, to obtain a VC consider the following set $$S := \cbk{v \in V \mid \overline x_v \ge \tfrac{1}{2}}$$ and for the VC problem in particular, we can prove that this rounding rule actually yields a 2-approximation of any optimal solution.
 
-    \begin{framedthm}{}
+    \begin{framedthm}[label={lp 2-approx vc}]{}
         Given a graph $G = (V, E)$, if $\{\overline x_u\}_{u \in V}$ is an optimal solution to the LP relaxation of the IP for the VC problem, then $$\overline S := \cbk{v \in V \mid \overline x_v \ge \tfrac{1}{2}}$$ is a 2-approximation for the VC problem.
     \end{framedthm}
 
@@ -577,6 +575,58 @@
     \end{proof}
 
     However, note that this result should not come a surprise. In fact, consider a graph $G$, an optimal solution to the LP relaxation $\{\overline x_u\}_{u \in V}$ and $\overline S$ defined as previously shown; given an edge $\{u, v\} \in E(G)$, in the worst case we have that $$\overline x_u = \overline x_v = \dfrac{1}{2}$$ which still satisfies both constraints of the LP relaxation, since $\tfrac{1}{2} + \tfrac{1}{2} = 1 \ge 1$. This means that, in the worst case, both $u$ and $v$ end up inside $\overline S$, which gives an intuitive reason to why this LP relaxation indeed yields a 2-approximation solution.
+
+    \subsection{Integrality Gap}
+
+    Consider a problem P, its equivalent IP, and the relative LP relaxation. Given an instance $I \in \mathrm P$ of the problem, we will denote with $\mathrm{IP^*_P}(I)$ and $\mathrm{LP^*_P}(I)$ the optimal values for the IP and the LP of the problem P on the instance $I$ --- we will omit P and $I$ the context is clear enough.
+
+    For example, the inequalities discussed in the proof of \cref{vc ip} could be rewritten as follows
+    \begin{equation*}
+        \begin{split}
+            \abs{\overline S} &= \ldots \\
+                              &\le 2 \sum_{v \in V}{\overline x_v} = 2 \mathrm{LP^*} \\
+                              &\le 2 \sum_{v \in V}{x^*_v} = 2 \mathrm{IP^*} = 2 \abs{S^*}\\
+        \end{split}
+    \end{equation*}
+    and in particular $\abs{\overline S} \le 2 \mathrm{LP^*} \le 2 \mathrm{IP^*}$. Can we improve this approximation ratio of 2 through LP relaxation? In general, for any $\alpha$ possible approximation ratio, it must hold that $$\alpha \ge \dfrac{\mathrm{IP^*}}{\mathrm{LP^*}}$$ because otherwise $$\alpha < \mathrm{\dfrac{IP^*}{LP^*}} \implies \abs{\overline S} \le \alpha \mathrm{LP^*} < \mathrm{\dfrac{IP^*}{LP^*}} \cdot \mathrm{LP^*} = \mathrm{IP^*}$$ meaning that $\overline S$ would be a solution better than the optimal solution of the IP, which is impossible. We can generalize this concept as follows.
+
+    \begin{frameddefn}{Integrality gap}
+        Given a problem P and an instance $I \in \mathrm P$, the \tbf{integrality gap} between $\mathrm{IP^*_P}(I)$ and $\mathrm{LP^*_P}(I)$ is defined as follows $$\mathrm{IG_P}(I) = \dfrac{\mathrm{IP^*_P}(I)}{\mathrm{LP^*_P}(I)}$$ The integrality gap for the problem P is defined as follows $$\mathrm{IG_P} = \sup_{I \in \mathrm P}{\mathrm{IG_P}(I)} = \sup_{I \in \mathrm P}{\dfrac{\mathrm{IP^*_P}(I)}{\mathrm{LP^*_P}(I)}}$$
+    \end{frameddefn}
+
+    In fact, through the previous argument, we can derive the following property that \tit{must} hold for any approximation ratio.
+
+    \begin{framedprop}{Limits of LP relaxation}
+        Given a problem P for which there is an $\alpha$-approximation algorithm which uses LP relaxation, it holds that
+
+        \begin{itemize}
+            \item if P is a \tbf{minimization problem}, then $\alpha \ge \mathrm{IG_P}$
+            \item if P is a \tbf{maximixation problem}, then $\alpha \le \mathrm{IG_P}$
+        \end{itemize}
+    \end{framedprop}
+
+    % This means that to improve this approximation ratio of 2, we would need to find a value $\varepsilon$ for which $$\abs{\overline S} \le (2 - \varepsilon) \mathrm{LP^*} \le (2 - \varepsilon) \mathrm{IP^*}$$
+
+    Now, let us analyze again the VC problem and try to bound $\mathrm{IG_{VC}}$. Consider the following \tit{clique} graph:
+    
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{$u$};
+            \node[circle, draw] (2) [below left of = 1]{$v$};
+            \node[circle, draw] (3) [below right of = 1]{$w$};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (2) to (3);
+
+            ;
+        \end{tikzpicture}
+        \caption{The graph $K_3$.}
+    \end{figure}
+
+    it is easy to see that $$\mathrm{IP^*}(K_3) = 1 + 1 = 2$$ because 1 single node is not sufficient to cover all 3 edges in $E(K_3)$. However, since the values in the solution of the LP can be \tit{real-valued}, the value of an optimal solution for the LP relaxation is actually achieved by setting $$\overline x_u = \overline x_v = \overline x_w = \dfrac{1}{2} \implies \mathrm{LP}^*(K_3) = 3 \cdot \dfrac{1}{2} = \dfrac{3}{2}$$ Together with the previous proposition, this results implies that any possible $\alpha$-approximation algorithm that employs LP relaxation must satisfy the following inequality $$\alpha \ge \dfrac{\mathrm{IP^*_{VC}}(K_3)}{\mathrm{LP^*_{VC}}(K_3)} = \dfrac{2}{\tfrac{3}{2}} = \dfrac{4}{3} \implies \exists I \in \mathrm P \quad \mathrm{IG_{VC}}(I) = \dfrac{4}{3} \implies \mathrm{IG_{VC}} \ge \dfrac{4}{3}$$ 
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
