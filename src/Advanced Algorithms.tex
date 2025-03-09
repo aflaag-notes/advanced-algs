@@ -225,7 +225,7 @@
 
     \subsection{The Vertex Cover problem}
 
-    Another very important problem in graph theory is the \href{https://en.wikipedia.org/wiki/Vertex_cover}{Vertex Cover}, which concerns the combinatorial structure of the \tbf{vertex cover}, defined as follows.
+    Another very important problem in graph theory is the \href{https://en.wikipedia.org/wiki/Vertex_cover}{Vertex Cover} problem, which concerns the combinatorial structure of the \tbf{vertex cover}, defined as follows.
 
     \begin{frameddefn}{Vertex cover}
         Given an undirected graph $G = (V, E)$, a \tbf{vertex cover} of $G$ is a set of vertices $S \subseteq V$ such that $$\forall e \in E \quad \exists v \in S \quad v \in e$$
@@ -285,7 +285,7 @@
         \caption{This is the \tit{minimum vertex cover} of the previous graph.}
     \end{figure}
 
-    As famously proved by \textcite{karp} in 1972, this problem is \NPComplete, hence we are interested in finding algorithms that allow to find approximations of optimal solutions. For instance, an algorithm that is able to approximate the VC problem concerns the \href{https://en.wikipedia.org/wiki/Matching_(graph_theory)}{matching} problem.
+    As famously proved by \textcite{karp} in 1972, this problem is \NPComplete, hence we are interested in finding algorithms that allow to find approximations of optimal solutions. For instance, an algorithm that is able to approximate VC concerns the \href{https://en.wikipedia.org/wiki/Matching_(graph_theory)}{matching} problem.
 
     \begin{frameddefn}{Matching}
         Given an undirected graph $G = (V, E)$, a \tbf{matching} of $G$ is a set of edges $A \subseteq E$ such that $$\forall e, e' \in A \quad e \cap e' = \varnothing$$
@@ -355,7 +355,7 @@
 
     is still a valid matching for the graph, but has a larger cardinality than the previous set.
 
-    Differently from the VC problem, a \tit{maximum matching} can be found in polynomial time. Moreover, the following algorithm can be used to determine a \tit{maximal matching} of a given graph.
+    Differently from VC, a \tit{maximum matching} can be found in polynomial time. Moreover, the following algorithm can be used to determine a \tit{maximal matching} of a given graph.
 
     \begin{framedalgo}{Maximal matching}
         Given an undirected graph $G = (V, E)$, the algorithm returns a maximal matching of $G$. \\
@@ -396,19 +396,19 @@
         Lastly, since $G^A$ has $\abs A$ edges by definition, any vertex cover defined on $G^A$ has to contain at least $\abs A$. This implies that no vertex cover $S$ of $G$ smaller than $\abs A$ can exist, because $S$ will have to cover at least the edges in $A$.
     \end{proof}
     
-    Thanks to this theorem, we can easily show that the algorithm that we just presented in order to find maximal matchings is a 2-approximation of the VC problem. 
+    Thanks to this theorem, we can easily show that the algorithm that we just presented in order to find maximal matchings is a 2-approximation of VC. 
 
     \begin{framedthm}{2-approximation of VC problem}
-        Given a graph $G$, and $M = \textsc{MaximalMatching}(G)$, let $S := \bigcup_{e \in M}{e}$. Then $S$ is a 2-approximation of the VC problem on $G$.
+        Given a graph $G$, and $M = \textsc{MaximalMatching}(G)$, let $S := \bigcup_{e \in M}{e}$. Then $S$ is a 2-approximation of VC on $G$.
     \end{framedthm}
 
     \begin{proof}
-        Consider an optimal solution $S^*$ to the VC problem on $G$, and let $M = \{e_1, \ldots, e_t\}$. Note that at each iteration of the algorithm exactly 1 edge is added to $M \subseteq V$, hence it always holds that $$S_i \cap S_{i + 1} = e_i = \{u, v\}$$ for any iteration $i \in [t - 1]$. Moreover, since $M$ is a matching, it holds that $\forall e, e' \in M \quad e \cap e' = \varnothing$, therefore $\abs{S} = 2 \abs{M}$. Finally, by the previous theorem we have that $\abs{M} \le \abs{S^*}$, concluding that $$\abs S = 2 \abs M \le 2 \abs{S^*}$$
+        Consider an optimal solution $S^*$ to VC on $G$, and let $M = \{e_1, \ldots, e_t\}$. Note that at each iteration of the algorithm exactly 1 edge is added to $M \subseteq V$, hence it always holds that $$S_i \cap S_{i + 1} = e_i = \{u, v\}$$ for any iteration $i \in [t - 1]$. Moreover, since $M$ is a matching, it holds that $\forall e, e' \in M \quad e \cap e' = \varnothing$, therefore $\abs{S} = 2 \abs{M}$. Finally, by the previous theorem we have that $\abs{M} \le \abs{S^*}$, concluding that $$\abs S = 2 \abs M \le 2 \abs{S^*}$$
     \end{proof}
     
-    This 2-approximation algorithm is conjectured to be optimal, but it has not been proven yet. In fact, the VC problem is conjectured to be \NPHard to $(2 - \varepsilon)$-approximate, for any $\varepsilon > 0$.
+    This 2-approximation algorithm is conjectured to be optimal, but it has not been proven yet. In fact, VC is conjectured to be \NPHard to $(2 - \varepsilon)$-approximate, for any $\varepsilon > 0$.
 
-    Interestingly, the decisional version of the VC problem is \href{https://en.wikipedia.org/wiki/Parameterized_complexity#FPT}{Fixed Parameter Tractable}. This characterization comes from the nature of the problem: for each edge $e = \{u, v\}$ of a given undirected graph $G = (V, E)$, either $u$ or $v$ has to be in the vertex cover, therefore it possible to approach the VC problem by trying all possible choices of set of vertices $S \subseteq V$, and backtrack if necessary. The following algorithm employs this idea.
+    Interestingly, the decisional version of VC is \href{https://en.wikipedia.org/wiki/Parameterized_complexity#FPT}{Fixed Parameter Tractable}. This characterization comes from the nature of the problem: for each edge $e = \{u, v\}$ of a given undirected graph $G = (V, E)$, either $u$ or $v$ has to be in the vertex cover, therefore it possible to approach VC by trying all possible choices of set of vertices $S \subseteq V$, and backtrack if necessary. The following algorithm employs this idea.
 
     \begin{framedalgo}{Decisional VC}
         Given an undirected graph $G = (V, E)$, and an integer $k$, the algorithm returns \texttt{True} if and only if $G$ admits a vertex cover of size $k$. \\
@@ -513,17 +513,17 @@
             & x_u + x_v \ge 1 & \forall \{u, v\} \in E \\
             & x_v \in \{0,1\}^n & \forall u \in V
         \end{array}\]
-        \caption{IP for the VC problem.}
+        \caption{IP for VC.}
     \end{figure}
 
-    It is fairly straightforward to prove that an optimal solution to this IP yields an optimal solution to the VC problem.
+    It is fairly straightforward to prove that an optimal solution to this IP yields an optimal solution to VC.
 
     \begin{framedlem}[label={vc ip}]{}
         Given a graph $G$, if $\{x^*_u\}_{u \in V}$ is an optimal solution to the previous IP, then $$S^* := \{v \in V \mid x^*_v = 1\}$$ is a minimum vertex cover for $G$.
     \end{framedlem}
 
     \begin{proof}
-        Consider an optimal solution $\{x^*_u\}_{u \in V}$ to the VC problem, and define $S^*$ as the set of vertices $v \in V$ such that $x^*_v = 1$. Note that any optimal solution is also a feasible solution, i.e. it satisfies the constraints of the IP.
+        Consider an optimal solution $\{x^*_u\}_{u \in V}$ to VC, and define $S^*$ as the set of vertices $v \in V$ such that $x^*_v = 1$. Note that any optimal solution is also a feasible solution, i.e. it satisfies the constraints of the IP.
 
         Note that the first constraint of the IP forces that for each $\{u, v\} \in E$ the sum between $x^*_u + x^*_v$ is at least one, and the second constraint forces each variable $x_v^*$ to be either 0 or 1. Therefore, together these two constraints imply that for any edge $\{u, v\} \in E$ at least one between $x_u^*$ and $x_v^*$ is 1, and by definition of $S^*$ this means at least one of the endpoints of $\{u, v\}$ is inside $S^*$. We conclude that $S^*$ is indeed a vertex cover for $G$, and by its definition note that $\abs{S^*} = \sum_{u \in V}{x^*_u}$.
 
@@ -536,7 +536,7 @@
         By way of contradiction, suppose that $S^*$ is not a minimum vertex cover. Hence, there must exist another vertex cover $S'$ such that $\abs{S'} < \abs{S^*}$. By the previous claim, this implies that there exists a feasible solution $\{x'_u\}_{u \in V}$ for the IP that has value $\abs{S'}$, but then $$\sum_{u \in V}{x'_u} = \abs{S'} < \abs{S^*} = \sum_{u \in V}{x^*_u}$$ which contradicts the optimality of the solution of $\{x^*_u\}_{u \in V}$ for the IP.
     \end{proof}
 
-    In particular, this lemma implies that the VC problem can be reduced to Integer programming, indeed solving IPs is actually \NPHard \cite{karp}, differently from LPs. This result shows that IPs cannot be used \tit{directly} to obtain perfect solutions, but they are still very useful thanks to \tbf{relaxation}.
+    In particular, this lemma implies that VC can be reduced to Integer programming, indeed solving IPs is actually \NPHard \cite{karp}, differently from LPs. This result shows that IPs cannot be used \tit{directly} to obtain perfect solutions, but they are still very useful thanks to \tbf{relaxation}.
 
     To \tit{relax} an IP, we simply replace the constraint $x \in \{0, 1\}^n$ with $0 \le x \le 1$, transforming the IP into an LP.
 
@@ -548,13 +548,13 @@
             & x_u + x_v \ge 1 & \forall \{u, v\} \in E \\
             & 0 \le x_v \le 1 & \forall u \in V
         \end{array}\]
-        \caption{LP relaxation for the IP of the VC problem.}
+        \caption{LP relaxation for the IP of VC.}
     \end{figure}
 
-    But solving this LP is not enough to obtain a meaningful solution: in fact, a real-valued solution for this problem does not directly yield a vertex cover for a given graph. To fix this issue, the optimal solution of the LP relaxation is usually transformed through techniques such as \tbf{rounding}. Intuitively, the simplest possible type of \tit{rounding rule} is the following: given a solution $\{\overline x_u\}_{u \in V}$ to the LP relaxation, to obtain a VC consider the following set $$S := \cbk{v \in V \mid \overline x_v \ge \tfrac{1}{2}}$$ and for the VC problem in particular, we can prove that this rounding rule actually yields a 2-approximation of any optimal solution.
+    But solving this LP is not enough to obtain a meaningful solution: in fact, a real-valued solution for this problem does not directly yield a vertex cover for a given graph. To fix this issue, the optimal solution of the LP relaxation is usually transformed through techniques such as \tbf{rounding}. Intuitively, the simplest possible type of \tit{rounding rule} is the following: given a solution $\{\overline x_u\}_{u \in V}$ to the LP relaxation, to obtain a VC consider the following set $$S := \cbk{v \in V \mid \overline x_v \ge \tfrac{1}{2}}$$ and for VC in particular, we can prove that this rounding rule actually yields a 2-approximation of any optimal solution.
 
     \begin{framedthm}[label={lp 2-approx vc}]{}
-        Given a graph $G = (V, E)$, if $\{\overline x_u\}_{u \in V}$ is an optimal solution to the LP relaxation of the IP for the VC problem, then $$\overline S := \cbk{v \in V \mid \overline x_v \ge \tfrac{1}{2}}$$ is a 2-approximation for the VC problem.
+        Given a graph $G = (V, E)$, if $\{\overline x_u\}_{u \in V}$ is an optimal solution to the LP relaxation of the IP for VC, then $$\overline S := \cbk{v \in V \mid \overline x_v \ge \tfrac{1}{2}}$$ is a 2-approximation for VC.
     \end{framedthm}
 
     \begin{proof}
@@ -576,7 +576,7 @@
 
     However, note that this result should not come a surprise. In fact, consider a graph $G$, an optimal solution to the LP relaxation $\{\overline x_u\}_{u \in V}$ and $\overline S$ defined as previously shown; given an edge $\{u, v\} \in E(G)$, in the worst case we have that $$\overline x_u = \overline x_v = \dfrac{1}{2}$$ which still satisfies both constraints of the LP relaxation, since $\tfrac{1}{2} + \tfrac{1}{2} = 1 \ge 1$. This means that, in the worst case, both $u$ and $v$ end up inside $\overline S$, which gives an intuitive reason to why this LP relaxation indeed yields a 2-approximation solution.
 
-    \subsection{Integrality Gap}
+    \subsection{Integrality gap}
 
     Consider a problem P, its equivalent IP, and the relative LP relaxation. Given an instance $I \in \mathrm P$ of the problem, we will denote with $\mathrm{IP^*_P}(I)$ and $\mathrm{LP^*_P}(I)$ the optimal values for the IP and the LP of the problem P on the instance $I$ --- we will omit P and $I$ the context is clear enough.
 
@@ -607,7 +607,7 @@
 
     % This means that to improve this approximation ratio of 2, we would need to find a value $\varepsilon$ for which $$\abs{\overline S} \le (2 - \varepsilon) \mathrm{LP^*} \le (2 - \varepsilon) \mathrm{IP^*}$$
 
-    Now, let us analyze again the VC problem and try to bound $\mathrm{IG_{VC}}$. Consider the following \tit{clique} graph:
+    Now, let us analyze again VC and try to bound $\mathrm{IG_{VC}}$. Consider the following \tit{clique} graph:
     
     \begin{figure}[H]
         \centering
@@ -626,7 +626,20 @@
         \caption{The graph $K_3$.}
     \end{figure}
 
-    it is easy to see that $$\mathrm{IP^*}(K_3) = 1 + 1 = 2$$ because 1 single node is not sufficient to cover all 3 edges in $E(K_3)$. However, since the values in the solution of the LP can be \tit{real-valued}, the value of an optimal solution for the LP relaxation is actually achieved by setting $$\overline x_u = \overline x_v = \overline x_w = \dfrac{1}{2} \implies \mathrm{LP}^*(K_3) = 3 \cdot \dfrac{1}{2} = \dfrac{3}{2}$$ Together with the previous proposition, this results implies that any possible $\alpha$-approximation algorithm that employs LP relaxation must satisfy the following inequality $$\alpha \ge \dfrac{\mathrm{IP^*_{VC}}(K_3)}{\mathrm{LP^*_{VC}}(K_3)} = \dfrac{2}{\tfrac{3}{2}} = \dfrac{4}{3} \implies \exists I \in \mathrm P \quad \mathrm{IG_{VC}}(I) = \dfrac{4}{3} \implies \mathrm{IG_{VC}} \ge \dfrac{4}{3}$$ 
+    it is easy to see that $$\mathrm{IP^*}(K_3) = 1 + 1 = 2$$ because 1 single node is not sufficient to cover all 3 edges in $E(K_3)$. However, since the values in the solution of the LP can be \tit{real-valued}, the value of an optimal solution for the LP relaxation is actually achieved by setting $$\overline x_u = \overline x_v = \overline x_w = \dfrac{1}{2} \implies \mathrm{LP}^*(K_3) = 3 \cdot \dfrac{1}{2} = \dfrac{3}{2}$$ therefore, by definition of IG we have that $$\exists I \in \mathrm P \quad \mathrm{IG_{VC}}(I) := \dfrac{\mathrm{IP^*_{VC}}(K_3)}{\mathrm{LP^*_{VC}}(K_3)} = \dfrac{2}{\tfrac{3}{2}} = \dfrac{4}{3} \implies \mathrm{IG_{VC}} := \sup_{I \in \mathrm P}{\dfrac{\mathrm{IP^*_{VC}}(I)}{\mathrm{LP^*_{VC}}(I)}} \ge \dfrac{4}{3}$$ 
+
+    Moreover, \cref{lp 2-approx vc} shows that we already know an algorithm that employs LP relaxation which yields a 2-approximation of VC; therefore, this lower bound on $\mathrm{IG_{VC}}$ --- together with the previous proposition --- implies that any possible approximation ratio $\alpha$ on VC must satisfy $$2 \ge \alpha \ge \mathrm{IG_{VC}} \ge \dfrac{4}{3}$$ The following theorem proves that we can actually bound $\mathrm{IG_{VC}}$ tightly.
+
+    \begin{framedthm}{Integrality gap for VC}
+        $\mathrm{IG_{VC}} = 2$
+    \end{framedthm}
+
+    \begin{proof}
+        TODO \todo{solve this}
+    \end{proof}
+
+    \subsection{The Set Cover problem}
+
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 

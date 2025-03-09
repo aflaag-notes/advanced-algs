@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.3.1)  9 MAR 2025 10:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.3.1)  9 MAR 2025 13:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1595,7 +1595,7 @@ Package hyperref Info: Link coloring ON on input line 75.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<../../packages/Nyx/logo.png, id=35, 803.0pt x 301.125pt>
+<../../packages/Nyx/logo.png, id=39, 803.0pt x 301.125pt>
 File: ../../packages/Nyx/logo.png Graphic file (type png)
 <use ../../packages/Nyx/logo.png>
 Package pdftex.def Info: ../../packages/Nyx/logo.png  used on input line 76.
@@ -1916,7 +1916,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.10}) 
                    \relax 
 l.428                     \EndIf
                                 
-Package cleveref Info: loaded `english' language definitions on input line 437.
+Package cleveref Info: loaded `english' language definitions on input line 442.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1925,11 +1925,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 437.
+Package cleveref Info: loaded `english' language definitions on input line 442.
 [10]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-Package cleveref Info: loaded `english' language definitions on input line 496.
+
+Overfull \hbox (13.97714pt too wide) in paragraph at lines 504--504
+[][][]\T1/cmr/m/n/6 introduction 
+ []
+
+
+Overfull \hbox (13.97714pt too wide) in paragraph at lines 504--504
+[][][]\T1/cmr/m/n/6 introduction 
+ []
+
+Package cleveref Info: loaded `english' language definitions on input line 518.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1937,23 +1947,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 496.
+Package cleveref Info: loaded `english' language definitions on input line 518.
 [11]
-Overfull \hbox (13.97714pt too wide) in paragraph at lines 504--504
-[][][]\T1/cmr/m/n/6 introduction 
- []
-
-
-Overfull \hbox (13.97714pt too wide) in paragraph at lines 504--504
-[][][]\T1/cmr/m/n/6 introduction 
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 534--534
 
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 534.
+Package cleveref Info: loaded `english' language definitions on input line 540.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -1961,9 +1961,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 534.
+Package cleveref Info: loaded `english' language definitions on input line 540.
 [12]
-Package cleveref Info: loaded `english' language definitions on input line 559.
+Package cleveref Info: loaded `english' language definitions on input line 564.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1972,9 +1972,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 559.
+Package cleveref Info: loaded `english' language definitions on input line 564.
 [13]
-Package cleveref Info: loaded `english' language definitions on input line 582.
+Package cleveref Info: loaded `english' language definitions on input line 591.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1983,26 +1983,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 582.
+Package cleveref Info: loaded `english' language definitions on input line 591.
 [14]
-Package cleveref Info: loaded `english' language definitions on input line 607.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-Package cleveref Info: loaded `english' language definitions on input line 607.
-[15]
 Missing character: There is no ; in font nullfont!
-
-Overfull \hbox (16.44789pt too wide) in paragraph at lines 629--629
-\T1/cmr/m/n/12 Together with the pre-vi-ous propo-si-tion, this re-sults im-plies that any pos-si-ble $\OML/cmm/m/it/12 $\T1/cmr/m/n/12 -approximation
- []
-
-Package cleveref Info: loaded `english' language definitions on input line 631.
+Package cleveref Info: loaded `english' language definitions on input line 629.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2010,9 +1994,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 631.
+Package cleveref Info: loaded `english' language definitions on input line 629.
+[15]
+Package cleveref Info: loaded `english' language definitions on input line 644.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+Package cleveref Info: loaded `english' language definitions on input line 644.
 [16]
-Package cleveref Info: loaded `english' language definitions on input line 633.
+Package cleveref Info: loaded `english' language definitions on input line 646.
  [17
 
 ] (./Advanced Algorithms.aux
@@ -2027,24 +2022,24 @@ L3 programming layer <2024-02-20>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `"Advanced Algorithms".out' has not changed.
-(rerunfilecheck)             Checksum: 2465CDE87C45AC28DBFA18B578476A9D;978.
+(rerunfilecheck)             Checksum: BFAE70B31C9928A38F542812A2172940;1153.
 Package logreq Info: Writing requests to '"Advanced Algorithms".run.xml'.
 \openout1 = `"Advanced Algorithms.run.xml"'.
 
  ) 
 Here is how much of TeX's memory you used:
- 74699 strings out of 476024
- 1819009 string characters out of 5792397
- 3007366 words of memory out of 5000000
- 95739 multiletter control sequences out of 15000+600000
+ 74712 strings out of 476024
+ 1819272 string characters out of 5792397
+ 3007511 words of memory out of 5000000
+ 95749 multiletter control sequences out of 15000+600000
  591070 words of font info for 111 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  119i,18n,123p,1910b,2231s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb>
-Output written on "Advanced Algorithms.pdf" (19 pages, 506761 bytes).
+Output written on "Advanced Algorithms.pdf" (19 pages, 508654 bytes).
 PDF statistics:
- 381 PDF objects out of 1000 (max. 8388607)
- 297 compressed objects within 3 object streams
- 79 named destinations out of 1000 (max. 500000)
- 80 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 391 PDF objects out of 1000 (max. 8388607)
+ 306 compressed objects within 4 object streams
+ 82 named destinations out of 1000 (max. 500000)
+ 88 words of extra memory for PDF output out of 10000 (max. 10000000)
 
