@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.3.1)  10 MAR 2025 10:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.3.1)  10 MAR 2025 12:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2125,6 +2125,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 712.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 712.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 712.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 726.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 726.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 726.
+
+Underfull \hbox (badness 10000) in paragraph at lines 726--726
+
+ []
+
 Package cleveref Info: loaded `english' language definitions on input line 726.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2135,14 +2143,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 Package cleveref Info: loaded `english' language definitions on input line 726.
 [18]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 726.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 726.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 726.
-
-Underfull \hbox (badness 10000) in paragraph at lines 726--726
-
- []
-
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 726.
 LaTeX Font Info:    Undo math alphabet allocation in version normal on input line 726.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 726.
@@ -2198,7 +2198,19 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 740.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 740.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 740.
-Package cleveref Info: loaded `english' language definitions on input line 743.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 743.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 745.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 746.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 746.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 746.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 746.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 750.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 750.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 750.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 750.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 750.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 750.
+Package cleveref Info: loaded `english' language definitions on input line 750.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2206,14 +2218,40 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 743.
+Package cleveref Info: loaded `english' language definitions on input line 750.
 [19]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 743.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 743.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 743.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 743.
-Package cleveref Info: loaded `english' language definitions on input line 745.
- [20
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 750.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 755.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 755.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 755.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 755.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 757.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 757.
+
+
+LaTeX Warning: Citation 'ig_sc' on page 20 undefined on input line 757.
+
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 759.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 760.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 760.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 764.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 766.
+Package cleveref Info: loaded `english' language definitions on input line 769.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+Package cleveref Info: loaded `english' language definitions on input line 769.
+[20]
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 769.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 769.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 769.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 769.
+Package cleveref Info: loaded `english' language definitions on input line 771.
+ [21
 
 ] (./Advanced Algorithms.aux
 Package cleveref Info: loaded `english' language definitions on input line 12.
@@ -2226,25 +2264,33 @@ L3 programming layer <2024-02-20>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `"Advanced Algorithms".out' has not changed.
 (rerunfilecheck)             Checksum: BFAE70B31C9928A38F542812A2172940;1153.
+
+Package biblatex Warning: Please (re)run BibTeX on the file(s):
+(biblatex)                "Advanced Algorithms"
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to '"Advanced Algorithms".run.xml'.
 \openout1 = `"Advanced Algorithms.run.xml"'.
 
  ) 
 Here is how much of TeX's memory you used:
- 74736 strings out of 476024
- 1819601 string characters out of 5792397
- 3007511 words of memory out of 5000000
- 95763 multiletter control sequences out of 15000+600000
+ 74770 strings out of 476024
+ 1820302 string characters out of 5792397
+ 3007964 words of memory out of 5000000
+ 95791 multiletter control sequences out of 15000+600000
  592118 words of font info for 114 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  119i,21n,123p,1910b,2231s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb>
-Output written on "Advanced Algorithms.pdf" (22 pages, 538567 bytes).
+Output written on "Advanced Algorithms.pdf" (23 pages, 545493 bytes).
 PDF statistics:
- 415 PDF objects out of 1000 (max. 8388607)
- 325 compressed objects within 4 object streams
- 89 named destinations out of 1000 (max. 500000)
+ 425 PDF objects out of 1000 (max. 8388607)
+ 334 compressed objects within 4 object streams
+ 95 named destinations out of 1000 (max. 500000)
  88 words of extra memory for PDF output out of 10000 (max. 10000000)
 

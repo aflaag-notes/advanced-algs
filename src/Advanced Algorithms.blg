@@ -19,12 +19,13 @@ Reallocated singl_function (elt_size=8) to 100 items from 50.
 Reallocated singl_function (elt_size=8) to 100 items from 50.
 Database file #1: Advanced_Algorithms-blx.bib
 Database file #2: ./references.bib
+Warning--I didn't find a database entry for "ig_sc"
 Biblatex version: 3.19
 Reallocated wiz_functions (elt_size=8) to 9000 items from 6000.
 Reallocated singl_function (elt_size=8) to 100 items from 50.
 You've used 3 entries,
             6399 wiz_defined-function locations,
-            1224 strings with 9521 characters,
+            1225 strings with 9526 characters,
 and the built_in function-call counts, 20177 in all, are:
 = -- 1640
 > -- 324
@@ -63,3 +64,4 @@ warning$ -- 0
 while$ -- 326
 width$ -- 0
 write$ -- 107
+(There was 1 warning)

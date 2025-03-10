@@ -578,7 +578,7 @@
 
     \subsection{Integrality gap}
 
-    Consider a problem P, its equivalent IP, and the relative LP relaxation. Given an instance $I \in \mathrm P$ of the problem, we will denote with $\mathrm{IP^*_P}(I)$ and $\mathrm{LP^*_P}(I)$ the optimal values for the IP and the LP of the problem P on the instance $I$ --- we will omit P and $I$ the context is clear enough.
+    Consider a problem P, its equivalent IP, and the relative LP relaxation. Given an instance $I \in \mathrm P$ of the problem, we will denote with $\mathrm{IP^*_P}(I)$ and $\mathrm{LP^*_P}(I)$ the optimal values for the IP and the LP of the problem P on the instance $I$ --- we will omit P and $I$ the context is clear enough. Note that, in general, it holds that $\mathrm{LP^*} \le \mathrm{IP^*}$ since the constraints of the LP relaxation are \tit{weaker} than the ones of the IP.
 
     For example, the inequalities discussed in the proof of \cref{vc ip} could be rewritten as follows
     \begin{equation*}
@@ -635,7 +635,7 @@
     \end{framedthm}
 
     \begin{proof}
-        TODO \todo{solve this}
+        We already proved that the upper bound is 2, so we just need to prove that the lower bound is 2 as well. TODO \todo{solve this}
     \end{proof}
 
     \subsection{The Set Cover problem}
@@ -691,7 +691,7 @@
     First, we are going to prove that the output $A$ of this algorithm is indeed a set cover, with enough probability.
 
     \begin{framedlem}{}
-        Let $(\mathcal U, C)$ be a SC instance, and let $A = \textsc{RandomizedRoundingSC}(\mathcal U, C)$ be the solution of the above algorithm. Then $$\Pr[A \ \mathrm{is \ a \ set \ cover}] \ge 1 - \dfrac{1}{n}$$
+        Let $(\mathcal U, C)$ be a SC instance, and let $A = \textsc{RandomizedRoundingSC}(\mathcal U, C)$. Then, it holds that $$\Pr[A \ \mathrm{is \ a \ set \ cover}] \ge 1 - \dfrac{1}{n}$$
     \end{framedlem}
 
     \begin{proof}
@@ -738,6 +738,32 @@
                 \end{split}
             \end{equation*}
         }
+    \end{proof}
+
+    Next, we will show that this algorithm yields \tit{on average} a $\ceil{2 \ln n}$-approximation of SC.
+
+    \begin{framedlem}{}
+        Let $(\mathcal U, C)$ be a SC instance, and let $A = \textsc{RandomizedRoundingSC}(\mathcal U, C)$. Then, it holds that $$\mathbb E \sbk{\abs A} \le \ceil{2 \ln n} \mathrm{IP}^*$$
+    \end{framedlem}
+
+    \begin{proof}
+        Fix a \tit{phase} $k$, and let $A_k$ be the collection of sets added to $A$ at \tit{phase} $k$; then it holds that $$\mathbb E \sbk{\abs{A_k}} = \sum_{j = 1}^m {1 \cdot \Pr[S_j \in A_k]} = \sum_{j = 1}^m{\overline x_j} = \mathrm{LP^*}$$ Moreover, since $\displaystyle A = \bigcup_{k \in \ceil{2 \ln n}}{A_k}$, we have that $$\mathbb E \sbk{\abs A} \le \mathbb E \sbk{\sum_{k \in \ceil{2 \ln n}}{\abs{A_k}}} = \sum_{k \in \ceil {2 \ln n}}{\mathbb E \sbk{\abs{A_k}}} = \sum_{k \in \ceil{2 \ln n}}{\mathrm{LP^*}} = \ceil{2 \ln n} \mathrm{LP^*} \le \ceil{2 \ln n} \mathrm{IP^*}$$
+    \end{proof}
+
+    TODO \todo{missing something}
+
+    Additionally, note that the algorithm can be modified to get a better bound, by simply replacing $\ceil{2 \ln n}$ with $\ceil{(1 + \varepsilon) \ln n}$, for any $\varepsilon > 0$. In fact, with this modification we would get that $\mathbb E \sbk{\abs A} \le \ceil{(1 + \varepsilon) \ln n} \mathrm{LP^*}$, therefore \todo{missing something}
+
+    With VC we were able to provide a tight bound on $\mathrm{IG_{VC}}$; even though $\mathrm{IG}_{SC}$ is known \cite{ig_sc}, the proof is very complex and we will only show a lower bound.
+
+    \begin{framedthm}{Integrality gap of SC}
+        For any $n \in \N$, it holds that $$\dfrac{1}{4 \ln 2} \le \mathrm{IG_{SC}} \le \ceil{\ln n}$$
+    \end{framedthm}
+    
+    \begin{proof}
+        We already proved the upper bound, so we just need to prove the lower bound. Furthermore, as shown with VC in the previous section, to provide a lower bound on $\mathrm{IG_{SC}}$ it suffices to show an instance of SC for which the bound holds.
+
+        Let $m \in \N$, and TODO \todo{todo}
     \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
