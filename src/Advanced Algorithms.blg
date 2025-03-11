@@ -19,49 +19,47 @@ Reallocated singl_function (elt_size=8) to 100 items from 50.
 Reallocated singl_function (elt_size=8) to 100 items from 50.
 Database file #1: Advanced_Algorithms-blx.bib
 Database file #2: ./references.bib
-Warning--I didn't find a database entry for "ig_sc"
 Biblatex version: 3.19
 Reallocated wiz_functions (elt_size=8) to 9000 items from 6000.
 Reallocated singl_function (elt_size=8) to 100 items from 50.
-You've used 3 entries,
+You've used 4 entries,
             6399 wiz_defined-function locations,
-            1225 strings with 9526 characters,
-and the built_in function-call counts, 20177 in all, are:
-= -- 1640
-> -- 324
-< -- 105
-+ -- 614
-- -- 110
-* -- 1280
-:= -- 2413
+            1234 strings with 9718 characters,
+and the built_in function-call counts, 24924 in all, are:
+= -- 1942
+> -- 414
+< -- 140
++ -- 716
+- -- 139
+* -- 1596
+:= -- 2821
 add.period$ -- 0
-call.type$ -- 3
-change.case$ -- 71
+call.type$ -- 4
+change.case$ -- 93
 chr.to.int$ -- 50
-cite$ -- 4
-duplicate$ -- 2050
-empty$ -- 1683
-format.name$ -- 140
-if$ -- 4087
+cite$ -- 6
+duplicate$ -- 2610
+empty$ -- 2145
+format.name$ -- 188
+if$ -- 5096
 int.to.chr$ -- 0
-int.to.str$ -- 6
+int.to.str$ -- 9
 missing$ -- 0
-newline$ -- 109
-num.names$ -- 138
-pop$ -- 780
+newline$ -- 142
+num.names$ -- 193
+pop$ -- 1104
 preamble$ -- 1
-purify$ -- 83
+purify$ -- 107
 quote$ -- 0
-skip$ -- 555
+skip$ -- 745
 stack$ -- 0
-substring$ -- 2923
-swap$ -- 408
-text.length$ -- 74
-text.prefix$ -- 2
+substring$ -- 3347
+swap$ -- 570
+text.length$ -- 97
+text.prefix$ -- 3
 top$ -- 1
-type$ -- 90
+type$ -- 124
 warning$ -- 0
-while$ -- 326
+while$ -- 382
 width$ -- 0
-write$ -- 107
-(There was 1 warning)
+write$ -- 139

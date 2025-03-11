@@ -105,5 +105,38 @@
     \endverb
     \field{year}{1972}
   \endentry
+
+  \entry{ig_sc}{article}{}
+    \name{author}{1}{}{%
+      {{hash=LL}{%
+         family={Lovász},
+         familyi={L\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier BV}%
+    }
+    \strng{namehash}{LL1}
+    \strng{fullhash}{LL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \verb{doi}
+    \verb 10.1016/0012-365x(75)90058-8
+    \endverb
+    \field{issn}{0012-365X}
+    \field{number}{4}
+    \field{pages}{383–390}
+    \field{title}{On the ratio of optimal integral and fractional covers}
+    \verb{url}
+    \verb http://dx.doi.org/10.1016/0012-365X(75)90058-8
+    \endverb
+    \field{volume}{13}
+    \field{journaltitle}{Discrete Mathematics}
+    \field{year}{1975}
+  \endentry
 \enddatalist
 \endinput

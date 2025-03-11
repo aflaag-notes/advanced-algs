@@ -501,9 +501,51 @@
 
     \section{Mathematical Programming}
 
-    placeholder \todo{introduction on math programming}
+    Up to this point, we have introduced several \NPComplete problems and discussed approximation algorithms that provide near-optimal solutions within a certain approximation ratio. We will now explore a new technique that can be leveraged to design approximation algorithms for a broader class of problems, namely \tbf{mathematical programming}.
+
+    \href{https://en.wikipedia.org/wiki/Mathematical_optimization}{Mathematical programming} is a powerful framework used to model and solve \tbf{optimization problems} across various fields, including operations research, computer science and engineering. It provides a structured way to \tit{maximize} or \tit{minimize} an \tbf{objective function} while satisfying a set of \tbf{constraints}. In particular, optimization problems are usually expressed as follows
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{ccl}
+            \qquad\qquad\quad
+            & \max \; f(x) \\\\
+            & g_i(x) \le b_i & \forall i \in [n] \\
+            & x \in V
+        \end{array}\]
+    \end{figure}
+
+    In this example, we see that
+
+    \begin{itemize}
+        \item $x$ is a \tit{vector} that lies inside the vector space $V$
+        \item the objective function is $f(x)$, which can be either maximized or minimized
+        \item $g_i(x) \le b_i$ is a constraint --- i.e. an inequality --- that $x$ must satisfy
+    \end{itemize}
+
+    Among the most widely studied forms of mathematical programming are \tbf{Linear Programming} (LP), \tbf{Integer Programming} (IP), and \tbf{Semidefinite Programming} (SDP), each with distinct properties and applications.
+
+    Starting from linear programming, in LPs both the objective function and the constraints are \tit{linear} w.r.t. $V$, and there are no \tit{equality} constraints.
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{ccl}
+            \qquad\qquad\quad
+            & \max \; x_1 + x_2 \\\\
+            & 2x_1 + x_2 \le 10 \\
+            & x_i \ge 0 & \forall i \in [n]\\
+            & x \in \R^n
+        \end{array}\]
+        \caption{Example of an LP.}
+    \end{figure}
    
-    IPs can be used to solve a wide range of problems. For instance, given a graph $G =(V, E)$, the \tbf{vertex cover} problem that we discussed in the previous section can be formulated through the following IP:
+    LPs can be solved in \tbf{polynomial time}: specifically, if an LP has $n$ variables, $m$ constraints, and each coefficient can be expressed as the ratio of two $t$-bit integers (where real numbers are approximated as rationals), then the \href{https://en.wikipedia.org/wiki/Ellipsoid_method}{Ellipsoid method} can solve it in time $O((nmt)^c)$ for some constant $c > 0$. This result extends, to some extent, to SDPs as well.
+
+    Despite its theoretical guarantee of polynomial runtime, in practice the \href{https://en.wikipedia.org/wiki/Simplex_algorithm}{Simplex method} is often preferred, as it operates based on \tit{pivot rules}. In fact, although all known pivot rules for the Simplex method exhibit a theoretical \tit{exponential} lower bound due to specially constructed worst-case instances, its average performance is significantly better than that of the Ellipsoid method in real-world scenarios.
+
+    \subsection{IPs and LP relaxation}
+
+    Differently from LPs, in IPs the vector space of interest is $\{0, 1\}^n$. IPs can be used to solve a wide range of problems. For instance, given a graph $G =(V, E)$, the \tbf{vertex cover} problem that we discussed in the previous section can be formulated through the following IP:
 
     \begin{figure}[H]
         \centering
@@ -764,7 +806,7 @@
 
     Additionally, note that the algorithm can be modified to get a better bound, by simply replacing $\ceil{2 \ln n}$ with $\ceil{(1 + \varepsilon) \ln n}$, for any $\varepsilon > 0$. In fact, with this modification we would get that $\mathbb E \sbk{\abs A} \le \ceil{(1 + \varepsilon) \ln n} \mathrm{LP^*}$, therefore \todo{missing something}
 
-    With VC we were able to provide a tight bound on $\mathrm{IG_{VC}}$; even though $\mathrm{IG_{SC}}$ is known \cite{ig_sc}, the proof is very complex and we will only show a lower bound.
+    With VC we were able to provide a tight bound on $\mathrm{IG_{VC}}$; for SC instead, even though the value of $\mathrm{IG_{SC}}$ is known \cite{ig_sc}, the proof is very complex and we will only show a lower bound.
 
     \begin{framedthm}{Integrality gap of SC}
         For any $n \in \N$, it holds that $$\dfrac{1}{4 \ln 2} \le \mathrm{IG_{SC}} \le \ceil{\ln n}$$
@@ -780,14 +822,18 @@
         \claim{
             $\forall m \ge 2 \ \mathrm{even} \quad \mathrm{LP^*_{SC}}(\mathcal U_m, C_m) \le 2$.
         }{
-            Consider the solution $$x_1 = \ldots = x_m = \dfrac{2}{m}$$ for the LP relaxation; clearly, $m \ge 2$ therefore $\forall j \in [m] \quad 0 \le x_j \le 1$, and $$\forall e_A \in \mathcal U \quad \sum_{\substack{j \in [m]: \\ e_A \in S_j}}{x_j} = \sum_{\substack{j \in [m]: \\ e_A \in S_j}}{\dfrac{2}{m}} = \abs A \cdot \dfrac{2}{m} = \dfrac{m}{2} \cdot \dfrac{2}{m} = 1 \ge 1$$ hence this is a feasible solution to the LP relaxation, and its value is simply given by $$m \cdot \frac{2}{m} = 2$$
+            Consider the solution $$x_1 = \ldots = x_m = \dfrac{2}{m}$$ for the LP relaxation; clearly, $m \ge 2$ therefore $\forall j \in [m] \quad 0 \le x_j \le 1$, and $$\forall e_A \in \mathcal U \quad \sum_{\substack{j \in [m]: \\ e_A \in S_j}}{x_j} = \sum_{\substack{j \in [m]: \\ e_A \in S_j}}{\dfrac{2}{m}} = \abs A \cdot \dfrac{2}{m} = \dfrac{m}{2} \cdot \dfrac{2}{m} = 1 \ge 1$$ hence this is a feasible solution to the LP, and its value is simply given by $m \cdot \frac{2}{m} = 2$.
         }
 
         \claim{
             $\forall m \ge 2 \ \mathrm{even} \quad \mathrm{IP^*}(\mathcal U_m, C_m) \ge \tfrac{1}{2} \log n - O(\log \log n)$.
         }{
-            By way of contradiction, assume that there exists a sub-collection $S = \{S_{i_1}, \ldots, S_{i_k}\} \subseteq C_m$ with $k \le \tfrac{m}{2}$ that covers $\mathcal U_m$. Consider the following set $$T := [m]- \{i_1, \ldots, i_k\}$$ We have that $$\abs T \ge m - \dfrac{m}{2} = \dfrac{m}{2}$$ hence, we can always define a subset $A \subseteq T$ such that $\abs A = \tfrac{m}{2}$. However, since $A \subseteq T$, we have that $e_A \notin S_{i_1} \cup \ldots \cup S_{i_k}$ \todo{da finire}
+            By way of contradiction, assume that there exists a sub-collection $S = \{S_{i_1}, \ldots, S_{i_k}\} \subseteq C_m$ with $k \le \tfrac{m}{2}$ that covers $\mathcal U_m$. Consider the following set $$T := [m]- \{i_1, \ldots, i_k\}$$ thus, we have that $$\abs T \ge m - \dfrac{m}{2} = \dfrac{m}{2}$$ hence, we can always define a subset $A \subseteq T$ such that $\abs A = \tfrac{m}{2}$. However, we observe that $$A \subseteq T \implies i_1, \ldots, i_k \notin A \implies e_A \notin S_{i_1} \cup \ldots \cup S_{i_k}$$ hence $e_A$ is not covered by $S$ $\lightning$.
+
+            This means that for any set cover $S$ of $(\mathcal U_m, C_m)$ it must hold that $$\abs S > \dfrac{m}{2} = \dfrac{1}{2} \log n - \Theta(\log \log n) \implies \mathrm{IP^*}(\mathcal U_m, C_m) \ge \dfrac{m}{2} = \dfrac{1}{2} \log n - O(\log \log n)$$
         }
+
+        Finally, from these two claims, it follows that $$\mathrm{IG_{SC}}(\mathcal U_m, C_m) = \dfrac{\mathrm{IP^*}(\mathcal U_m, C_m)}{\mathrm{LP^*}(\mathcal U_m, C_m)} \ge \dfrac{\tfrac{1}{2} \log n - O(\log \log n)}{2} = \dfrac{1}{4} \log n - O(\log \log n)$$ which means that $$\mathrm{IG_{SC}} = \sup_{I \in \mathrm{SC}}{\mathrm{IG_{SC}}(I)} \ge \mathrm{IG_{SC}}(\mathcal U_m, C_m) \ge \dfrac{1}{4} \log n = \dfrac{1}{4 \ln 2} \ln n$$
     \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
