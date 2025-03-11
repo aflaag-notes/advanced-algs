@@ -635,7 +635,17 @@
     \end{framedthm}
 
     \begin{proof}
-        We already proved that the upper bound is 2, so we just need to prove that the lower bound is 2 as well. TODO \todo{solve this}
+        We already proved that the upper bound is 2, so we just need to prove that the lower bound is 2 as well.
+
+        Consider a clique $K_n$; by the same reasoning presented for the case of $K_3$, a feasible solution for the LP relaxation over this graph would be $$x_1 = \ldots = x_n = \dfrac{1}{2} \implies \mathrm{LP^*}(K_n) \le n \cdot \dfrac{1}{2} = \dfrac{n}{2}$$
+
+        \claim{
+            Any minimum vertex cover of $K_n$ has exactly $n - 1$ vertices.
+        }{
+            Consider a vertex cover $S = \{v_1\}$ for any vertex $v_1 \in V(K_n)$; since $K_n$ is a clique, by definition $\deg(v_1) = n - 1$, therefore $S$ is able to cover only $n - 1$ \tit{uncovered} edges of $K_n$. Now, consider another vertex $v_2 \in V(K_n)$, and add it to $S = \{v_1, v_2\}$; we observe that $\deg(v_2) = n - 1$, but $v_1 \sim v_2$ because $K_n$ is a clique, therefore $v_2$ will be able to cover only $n - 2$ \tit{uncovered} edges of $K_n$. By the same reasoning, each new vertex $v_i \in V(K_n)$ added to $S$ will be able to cover only $n - i$ \tit{uncovered} edges of $K_n$. However, note that $$\abs{E(K_n)} = \binom{n}{2} = \dfrac{n (n - 1)}{2}$$ therefore, to cover all the edges of $K_n$ we need $\abs S$ to satisfy the following inequality $$\sum_{i = 1}^{\abs S}{(n - i)} \ge \dfrac{n (n - 1)}{2} \iff n \abs S - \dfrac{\abs S (\abs S +1)}{2} \ge \dfrac{n (n - 1)}{2}$$ After some calculations, we derive the following inequality $$\abs{S}^2 + \abs S (1 - 2n) + n (n - 1) \le 0$$ which is satisfied for any value $n - 1 \le \abs S \le n$, therefore a vertex cover of cardinality $\abs S = n - 1$ suffices to cover all the edges of $K_n$.
+        }
+
+        This claim shows that for any $n$ it holds that $\mathrm{IP^*}(K_n) = n - 1$, therefore we have that $$\mathrm{IG}(K_n) = \dfrac{\mathrm{IP^*}(K_n)}{\mathrm{LP^*}(K_n)} \ge \dfrac{n - 1}{\tfrac{n}{2}}$$ which means that $$\mathrm{IG_{VC}} = \sup_{I \in \mathrm{VC}}{\mathrm{IG_{VC}}(I)} \ge \lim_{n \to +\infty}{\dfrac{n - 1}{\tfrac{n}{2}}} = 2$$
     \end{proof}
 
     \subsection{The Set Cover problem}
