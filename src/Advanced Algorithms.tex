@@ -694,7 +694,7 @@
 
     The next problem that we will study can be seen as a \tit{generalization} of the VC problem, which is the \href{https://en.wikipedia.org/wiki/Set_cover_problem}{Set Cover} problem, defined as follows.
 
-    \begin{frameddefn}{The Set Cover problem}
+    \begin{frameddefn}{Set Cover problem}
         The \tbf{Set Cover} (SC) problem is defined as follows: given a \tit{universe} (or \tit{ground}) set $\mathcal U = [n]$, and a collection of sets $C = \{S_1, \ldots, S_m\}$ such that $S_i \subseteq \mathcal U$, determine the smallest sub-collection $S \subseteq C$ such that $\bigcup_{S_j \in S}{S_j} = \mathcal U$.
     \end{frameddefn}
 
@@ -834,6 +834,175 @@
         }
 
         Finally, from these two claims, it follows that $$\mathrm{IG_{SC}}(\mathcal U_m, C_m) = \dfrac{\mathrm{IP^*}(\mathcal U_m, C_m)}{\mathrm{LP^*}(\mathcal U_m, C_m)} \ge \dfrac{\tfrac{1}{2} \log n - O(\log \log n)}{2} = \dfrac{1}{4} \log n - O(\log \log n)$$ which means that $$\mathrm{IG_{SC}} = \sup_{I \in \mathrm{SC}}{\mathrm{IG_{SC}}(I)} \ge \mathrm{IG_{SC}}(\mathcal U_m, C_m) \ge \dfrac{1}{4} \log n = \dfrac{1}{4 \ln 2} \ln n$$
+    \end{proof}
+
+    \subsection{The Densest Subgraph problem}
+    
+    Up to this point, we only discussed \NPComplete problems, and various techniquesused to obtain approximate solutions. The next problem that we are going to introduce, instead, can be solved in \tbf{polynomial} time, thanks to linear programming. First, consider the following definition.
+
+    \begin{frameddefn}{Graph density}
+        Given a graph $G = (V, E)$, its \tbf{density} is defined as follows $$\rho(G) := \dfrac{\abs E}{\abs V}$$
+    \end{frameddefn}
+
+    For instance, the density of the graph $G = (V, E)$ below
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.3cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{};
+            \node[circle, draw] (2) [right of = 1]{};
+            \node[circle, draw] (3) [below of = 1]{};
+            \node[circle, draw] (4) [below of = 2]{};
+            \node[circle, draw] (5) [left of = 1]{};
+            \node[circle, draw] (6) [right of = 2]{};
+
+            \draw[-] (1) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (2) to (4);
+            \draw[-] (1) to (5);
+            \draw[-] (3) to (4);
+            \draw[-] (3) to (5);
+            \draw[-] (2) to (6);
+
+            ;
+        \end{tikzpicture}
+        % \caption{An example of a vertex cover.}
+    \end{figure}
+
+    is evaluated through the following ratio $$\rho(G) := \dfrac{\abs E}{\abs V} = \dfrac{7}{6} = 1.1 \overline 6$$ The problem that we are going to introduce is the following.
+
+    \begin{frameddefn}{Densest Subgraph problem}
+        The \tbf{Densest Subgraph} (DS) problem is defined as follows: given an undirected graph $G = (V, E)$, determine the induced subgraph of $G$ that maximizes its density. In other words, we are interested in finding a set of vertices $S^*$ in $$S^* \in \argmax_{S \subseteq V}{\rho(G[S])}$$
+    \end{frameddefn}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw, fill=green] (1) []{1};
+            \node[circle, draw, fill=green] (2) [below left of = 1]{2};
+            \node[circle, draw, fill=green] (3) [below right of = 2]{3};
+            \node[circle, draw, fill=green] (4) [below right of = 1]{4};
+            \node[circle, draw] (5) [right of = 4]{5};
+
+            \draw[-] (1) [green] to (2);
+            \draw[-] (2) [green] to (3);
+            \draw[-] (3) [green] to (4);
+            \draw[-] (1) [green] to (4);
+            \draw[-] (1) [green] to (3);
+            \draw[-] (5) to (4);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, in this graph the set $S$ that maximizes $\rho(G[S])$ is given by $S = \{1, 2, 3, 4\}$, which yields a density of $\tfrac{5}{4} = 1.25$.}
+    \end{figure}
+
+    The densest subgraph is relevant because it actually \tit{maximizes} the average degree of its vertices. In fact, thanks to the handshaking lemma we have that $$\rho(G[S]) := \dfrac{\abs{E(G[S])}}{\abs S} = \dfrac{1}{2} \cdot \dfrac{2 \cdot \abs{E(G[S])}}{\abs s} = \dfrac{1}{2} \cdot \dfrac{\sum_{v \in S}{\deg (v)}}{\abs S} = \dfrac{1}{2} \avg_{v \in S}{\deg(v)}$$
+
+    The LP that we will present which solves this problem is the following. However, to show that this LP actually yields a solution for DS is not trivial, and it will be proven through the following theorems.
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{ccl}
+            \qquad\qquad\quad
+            & \max \; \displaystyle \sum_{e \in E} {x_e} \\\\
+            & x_{ij} \le y_i & \forall i j \in E \\
+            & x_{ij} \le y_j & \forall i j \in E \\
+            & \sum\limits_{i \in V}{y_i} \le 1 \\
+            & x_{ij} \ge 0 & \forall i j \in E \\
+            & y_i \ge 0 & \forall i \in V \\
+        \end{array}\]
+        \caption{LP for DS.}
+    \end{figure}
+
+    \begin{framedlem}{}
+        Given a graph $G = (V, E)$, for any $S \subseteq V$ there exists a feasible solution $\{x_e, y_i\}_{e \in E, i \in V}$ to the LP having value at least $\rho(G[S])$.
+    \end{framedlem}
+
+    \begin{proof}
+        Given a set $S \subseteq V$, construct the following solution:
+
+        \begin{itemize}
+            \item $\forall ij \in E \quad x_{ij} := \soe{ll}{\dfrac{1}{\abs S} & i, j \in S \\ 0 & i \notin S \lor j \notin S}$
+            \item $\forall i \in V \quad y_i := \soe{ll}{\dfrac{1}{\abs S} & i \in S \\ 0 & i \in V - S}$
+        \end{itemize}
+
+        We observe that
+
+        \begin{itemize}
+            \item $ij \in E(G[S]) \implies i, j \in S \implies \soe{l}{x_{ij} = \dfrac{1}{\abs S} \\ y_i = y_j = \dfrac{1}{\abs S}} \implies x_ij \le y_i, y_j$
+            \item $ij \notin E(G[S]) \implies i \notin S \lor j \notin S \implies x_{ij} = 0$, but since $y_i, y_j \ge 0$ for any $i, j \in V$ by definition, it holds that $x_{ij} \le y_i, y_j$
+        \end{itemize}
+
+        Additionally, notice that $$\sum_{i \in V}{y_i} = \sum_{i \in S}{y_i} + \sum_{i \in V - S}{y_i} = \abs S \cdot \dfrac{1}{\abs S} + \abs {V - S} \cdot 0 = 1 \le 1$$
+
+        This proves that this is a feasible solution to the LP. Lastly, the value of this solution is simply given by $$\sum_{e \in E}{x_e} = \sum_{e \in E(G[S])}{e} + \sum_{e \notin E(G[S])}{x_e} = \abs{E(G[S])} \cdot \dfrac{1}{\abs S} + \abs{E - E(G [S])} \cdot 0 = \dfrac{\abs{E(G[S])}}{\abs S} =: \rho(G[S])$$
+    \end{proof}
+
+    In particular, this lemma proves that if $S^*$ is an optimal solution for DS on a graph $G$, then there is a solution to this LP such that $\mathrm{LP^*} \ge \rho(G[S^*])$. The next theorem will prove the converse direction, which implies that our LP does in fact produce an optimal solution to DS.
+
+    \begin{framedthm}{}
+        Given a graph $G = (V, E)$, for any $\{x_e, y_i\}_{e \in E, i \in V}$ feasible solution to the LP that has value $v$, there exists a set $S \subseteq V$ such that $\rho(G[S]) \ge v$.
+    \end{framedthm}
+
+    \begin{proof}
+        Consider a feasible solution $\{x_e', y_i'\}_{e \in E, i \in V}$ of the LP, having value $v$. We will construct another solution to the LP $\{x_e, y_i\}_{e \in E, i \in V}$ starting from the previous solution, as follows:
+
+        \begin{itemize}
+            \item $\forall i \in V \quad y_i := y_i'$
+            \item $\forall ij \in E \quad x_{ij} := \min(y_i, y_j)$
+        \end{itemize}
+
+        It is easy to see that this is a feasible solution to the LP, in fact $$\forall ij \in E \quad x_{ij} := \min(y_i, y_j) \le y_i, y_j$$ and additionally, by feasibility of $\{x_e', y_i'\}_{e \in E, i \in V}$, we have that $$\sum_{i \in V}{y_i} = \sum_{i \in V}{y_i'} \le 1$$ Furthermore, note that $$v = \sum_{e \in E}{x_e'} \le \sum_{e \in E}{\min(y_i', y_j')} = \sum_{e \in E}{\min(y_i, y_j)} = \sum_{e \in E}{x_e}$$ meaning that the value of this solution is at least $v$, but it may be better --- this happens if $x_{ij} < y_i$ or $x_{ij} < y_j$ for some $ij \in E$, and if this is the case we say that there is some \tit{slack}.
+
+        Next, we will construct a series of sets of vertices starting from this new LP solution we just defined. In particular, given a value $r \ge 0$, let $$S(r) := \{i \mid y_i \ge r\}$$ $$E(r) := \{e \mid x_e \ge r\}$$ Notice that $ij \in E(r) \iff i, j \in S(r)$, because $$ij \in E(r) \iff x_{ij} \ge r \iff \min(y_i, y_j) \ge r \iff y_i, y_j \ge r \iff i,j \in S(r)$$ which means that $S(r)$ and $E(r)$ are well-defined --- note that $E(G[S(r)]) = E(r)$.
+
+        \claim{
+            There exists a value $r^* \ge 0$ such that $\rho(G[S(r^*)]) \ge v$.
+        }{
+            Consider the solution $\{x_e, y_i\}_{e \in E, i \in V}$ to the LP that we constructed previously, and let $\pi$ be the permutation of the $y_i$'s such that $$0 \le y_{\pi (1)} \le y_{\pi (2)} \le \ldots \le y_{\pi(n - 1)} \le y_{\pi (n)}$$ which means that $\pi$ defines a sorting of the $y_i$'s. Now, consider the possible values of $r \ge 0$, and what happens inside $S(r)$:
+
+            \begin{itemize}
+                \item for $r = 0$, by feasibility of our solution we have that $$S(r) = S(0) := \{i \mid y_i \ge 0\} \implies \abs{S(r)} = n$$
+                \item notice that for any value $0 \le r \le y_{\pi (1)} \le \ldots \le y_{\pi (n)}$, the value of $\abs{S(r)}$ will not change, by its definition
+                \item however, if $0 \le y_{\pi (1)} < r \le \ldots \le y_{\pi (n)}$, then the vertex $\pi(1)$ will be the only verterx not contained in $S(r)$, therefore $\abs{S(r)} = n - 1$
+            \end{itemize}
+
+            Repeating the same argument for all the possible values of $r$, we obtain the following graph for $\abs{S(r)}$.
+
+            \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}[scale=0.7]
+                    \draw[-stealth] (-0.5,0) -- (2,0) node[below]{$y_{\pi(1)}$} -- (4,0) node[below]{$y_{\pi(2)}$} -- (7,0) node[below]{$\cdots$} -- (10,0) node[below]{$y_{\pi(n - 2)}$} -- (12,0) node[below]{$y_{\pi(n - 1)}$} -- (14,0) node[below]{$y_{\pi(n)}$} -- (15,0) node[right]{$r$};
+                    \draw[-stealth] (0,-0.5) -- (0,0) node[below left]{0} -- (0,1) node[left]{1} -- (0,2) node[left]{2} -- (0,3.5) node[left]{$\cdots$} -- (0,5) node[left]{$n - 1$} -- (0,6) node[left]{$n$} -- (0,7.5) node[above]{$\abs{S(r)}$};
+                    \draw[thick, orange] (0,6) -- (2,6) -- (2,5) -- (4,5) -- (4, 4) -- (5,4);
+                    \draw[dashed, orange] (5,4) -- (6,4);
+                    \draw[dashed, orange] (9,3) -- (8,3);
+                    \draw[thick, orange] (14,0) -- (14,1) -- (12,1) -- (12,2) -- (10,2) -- (10,3) -- (9,3);
+                \end{tikzpicture}
+            \end{figure}
+
+            From this graph, it is easy to see that computing the integral of $\abs{S(r)}$ is trivial, because
+            \begin{equation*}
+                \begin{split}
+                    \int_{0}^{y_{\pi(n)}}{\abs{S(r)} \, d r} &= \int_{0}^{y_{\pi(1)}}{\abs{S(r)} \, dr} + \int_{y_{\pi(1)}}^{y_{\pi(2)}}{\abs{S(r)} \, dr} + \ldots + \int_{y_{\pi(n -1)}}^{y_{\pi(n)}}{\abs{S(r)} \, dr} \\
+                                                             &= \int_{0}^{y_{\pi(1)}}{n \, dr} + \int_{y_{\pi(1)}}^{y_{\pi(2)}}{(n - 1) \, dr} + \ldots + \int_{y_{\pi(n - 1)}}^{y_{\pi(n)}}{1 \, dr} \\
+                                                             &= n \cdot (y_{\pi(1)} - 0) + (n - 1) \cdot(y_{\pi(2)} - y_{\pi(1)}) + \ldots + 1 \cdot (y_{\pi(n)} - y_{\pi(n - 1)}) \\
+                                                             &= y_{\pi(1)} \cdot\sbk{n - (n - 1)} + y_{\pi(2)}\cdot \sbk{(n - 1) - (n - 2)} + \ldots + y_{\pi(n)}\cdot (1 - 0) \\
+                                                             &= y_{\pi(1)} \cdot 1 + y_{\pi(2)} \cdot 1 + \ldots + y_{\pi(n)} \cdot 1 \\
+                                                             &= \sum_{i = 1}^n{y_{\pi(i)}} \\
+                                                             &= \sum_{i \in V}{y_i} \\
+                                                             &\le 1 \quad\quad (\mathrm{by \ feasibility \ of \ the \ solution})
+                \end{split}
+            \end{equation*}
+
+            By the same argument, we can derive that $$\int_0^{y_{\pi(n)}}{\abs{E(r)} \, dr} = \sum_{e \in E}{x_e} \ge v$$ Note that the last inequality was proved before the claim.
+
+            Lastly, we will prove the statement of the claim by way of contradiction. In particular, suppose that for all $r \ge 0$ it holds that $\rho(G[S(r)]) < v$. We can rewrite this inequality as follows $$\rho(G[S(r)]) := \dfrac{\abs{E(r)}}{\abs{S(r)}} < v \iff \abs{E(r)} < v \cdot \abs{S(r)}$$ This inequality can be used to upper bound the integral of $\abs{E(r)}$ \tit{point-by-point}, i.e. $$v \le \int_0^{y_{\pi(n - 1)}}{\abs{E(r)} \, dr} < \int_0^{y_{\pi(n - 1)}}{v \cdot \abs{S(r)} \, dr} = v \cdot \int_0^{y_{\pi(n - 1)}}{\abs{S(r)} \, dr} \le v \cdot 1 = v$$ meaning that $v < v$ $\lightning$.
+        }
+
+        Finally, since we proved that $G[S(r)]$ is well-defined, and this claim proves that there exists an $r^*$ such that $\rho(G[S(r^*)]) \ge v$, the statement holds.
     \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
