@@ -940,7 +940,7 @@
         This proves that this is a feasible solution to the LP. Lastly, the value of this solution is simply given by $$\sum_{e \in E}{x_e} = \sum_{e \in E(G[S])}{e} + \sum_{e \notin E(G[S])}{x_e} = \abs{E(G[S])} \cdot \dfrac{1}{\abs S} + \abs{E - E(G [S])} \cdot 0 = \dfrac{\abs{E(G[S])}}{\abs S} =: \rho(G[S])$$
     \end{proof}
 
-    In particular, this lemma proves that if $S^*$ is an optimal solution for DS on a graph $G$, then there is a solution to this LP such that $\mathrm{LP^*} \ge \rho(G[S^*])$. The next theorem will prove the converse direction, which implies that our LP does in fact produce an optimal solution to DS.
+    In particular, this lemma proves that if $S^*$ is an optimal solution for DS on a graph $G$, then there is a solution to this LP such that $\mathrm{LP^*} \ge \rho(G[S^*])$. The next theorem will prove that $\mathrm{LP^*} \le \rho(G[S^*])$ holds as well, which implies that our LP does in fact produce an optimal solution to DS, and that $\mathrm{IG_{DS}} = 1$.
 
     \begin{framedthm}{}
         Given a graph $G = (V, E)$, for any $\{x_e, y_i\}_{e \in E, i \in V}$ feasible solution to the LP that has value $v$, there exists a set $S \subseteq V$ such that $\rho(G[S]) \ge v$.
