@@ -1019,11 +1019,11 @@
         \begin{algorithmic}[1]
             \Function{Charikar}{$G$}
                 \State $S_0 := V(G)$
-                \For{$i \in [n]$}
+                \For{$i \in [n - 1]$}
                     \State $\displaystyle v_i \in \argmin_{v \in S_{i - 1}}{\deg_{G[S_{i - 1}]}(v)}$
                     \State $S_i := S_{i - 1} - \{v_i\}$
                 \EndFor
-                \State \textbf{return} $\displaystyle S^* \in \argmax_{i \in [0, n]}{\rho(G[S_i])}$
+                \State \textbf{return} $\displaystyle S^* \in \argmax_{i \in [0, n - 1]}{\rho(G[S_i])}$
             \EndFunction
         \end{algorithmic}
     \end{framedalgo}
@@ -1143,7 +1143,7 @@
                                               &= \max_{i \in [n]}{\deg_{\phi_\mathrm{GR}}(v_i)} \\
                                               &\le \max_{i \in [n]}{2 \rho (G[S_{i - 1}])} \quad \quad (\mathrm{for \ the \ previous \ inequality}) \\
                                               &= 2 \max_{i \in [n]}{\rho(G[S_{i - 1}])} \\
-                                              &\le 2 \max_{i \in [0, n]}{\rho(G[S_{i - 1}])} \\
+                                              &\le 2 \max_{i \in [0, n - 1]}{\rho(G[S_i])} \\
                                               &=: 2M
                 \end{split}
             \end{equation*}
