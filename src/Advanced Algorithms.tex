@@ -1131,7 +1131,7 @@
                     \deg_{\phi_\mathrm{GR}}(v_i) &= \deg_{G[S_{i - 1}]}(v_i) \\
                                                  &= \min_{v \in S_{i - 1}}{\deg_{G[S_{i - 1}]}(v)} \\
                                                  &\le \avg_{v \in S_{i - 1}}{\deg_{G[S_{i - 1}]}(v)} \\
-                                                 &= \displaystyle \dfrac{\sum_{v \in S_{i - 1}}{\deg_{G[S_{i - 1}]}(v)}}{\abs{S_{i - 1}}} \\
+                                                 &= \dfrac{\displaystyle \sum_{v \in S_{i - 1}}{\deg_{G[S_{i - 1}]}(v)}}{\abs{S_{i - 1}}} \\
                                                  &= \dfrac{2 \abs{E(G[S_{i - 1}])}}{\abs{V(G[S_{i - 1}])}} \\
                                                  &=: 2\rho(G[S_{i - 1}])
                 \end{split}
@@ -1153,6 +1153,91 @@
     \end{proof}
 
     In this proof, we defined $\phi_\mathrm{GR}$, which helped us determine the approximation ratio of the algorithm. But how did Charikar come up with such an orientation of the graph? To answer this question, we need to introduce the concept of the \tbf{duality} of linear programs.
+
+    Consider the following \tit{maximization} generic linear program:
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{cc}
+            % \qquad\qquad\quad
+            & \max \; c_1x_1 + \ldots + c_n x_n \\\\
+            & a_{11}x_1 + \ldots + a_{1n}x_n \le b_1 \\
+            & \vdots \\
+            & a_{m1}x_1 + \ldots + a_{mn}x_n \le b_m \\
+            & x_1, \ldots, x_n \ge 0
+        \end{array}\]
+        \caption{A \tit{primal} LP.}
+    \end{figure}
+
+    As a convention, we will call the \tbf{primal} LP the one that \tit{maximizes} its objective function. Hence, given a primal LP, its \tbf{dual} linear program is defined as follows:
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{cc}
+            % \qquad\qquad\quad
+            & \min \; b_1y_1 + \ldots + b_m y_m \\\\
+            & a_{11}y_1 + \ldots + a_{m1}y_m \ge c_1 \\
+            & \vdots \\
+            & a_{1n}y_1 + \ldots + a_{mn}y_m \ge c_n \\
+            & y_1, \ldots, y_m \ge 0
+        \end{array}\]
+        \caption{The \tit{dual} of a primal LP.}
+    \end{figure}
+
+    In other words, given a matrix $A \in \R^{m \times n}$, two vectors $c, x \in \R^n$, and two vectors $b, y \in \R^m$, these two programs can be rewritten as follows:
+     \begin{figure}[H]
+        \centering
+
+        \begin{tabular}{ccccc}
+            $\begin{array}{cc}
+                % \qquad\qquad\quad
+                & \mathrm{\underline{Primal \ LP}} \\\\
+                & \max \; c^Tx \\\\
+                & Ax \le b \\
+                & x \ge 0
+            \end{array}
+            $
+
+            &\qquad& $\iff$ &\qquad&
+
+            $
+            \begin{array}{cc}
+                % \qquad\qquad\quad
+                & \mathrm{\underline{Dual \ LP}} \\\\
+                & \min \; b^Ty \\\\
+                & A^Ty \ge c \\
+                & y \ge 0
+            \end{array}
+            $
+        \end{tabular}
+        % \caption{On the left: a \tit{primal} LP. On the right: its \tit{dual} LP.}
+    \end{figure}
+
+    Observe that, by definition, the dual of the dual of a primal LP is the primal LP itself.
+
+    TODO \todo{intro to these two?}
+
+    \begin{framedthm}{Weak duality theorem}
+        Given a feasible solution $x$ for a primal LP, and a feasible solution $y$ for its dual LP, such that both $x$ and $y$ exist and are finite, it holds that $$c^T x \le b^T y$$
+    \end{framedthm}
+
+    \begin{proof}
+        Given any two matrices $N \in \R^{m \times n}$, $M \in \R^{n \times l}$ it holds that $$(NM)^T = M^TN^T$$ therefore, we have that
+        \begin{equation*}
+            \begin{split}
+                c^Tx &= x^Tc \\
+                     &\le x^TA^Ty \quad \quad (\mathrm{by \ feasibility \ of} \ y) \\
+                     &= (Ax)^Ty \quad \quad (\mathrm{by \ the \ previous \ observation}) \\
+                     &\le b^Ty \quad \quad \quad (\mathrm{by \ feasibility \ of} \ x)
+            \end{split}
+        \end{equation*}
+    \end{proof}
+
+    \begin{framedthm}{Strong duality theorem}
+        Given an optimal solution $x$ for a primal LP, and an optimal solution $y$ for its dual LP, such that both $x$ and $y$ exist and are finite, it holds that $$c^Tx = b^Ty$$
+    \end{framedthm}
+
+    TODO \todo{leggi readme}
 
     TODO \todo{da finire}
 
