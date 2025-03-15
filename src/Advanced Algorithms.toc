@@ -11,3 +11,4 @@
 \contentsline {subsection}{\numberline {1.2.2}Integrality gap}{15}{subsection.1.2.2}%
 \contentsline {subsection}{\numberline {1.2.3}The Set Cover problem}{18}{subsection.1.2.3}%
 \contentsline {subsection}{\numberline {1.2.4}The Densest Subgraph problem}{24}{subsection.1.2.4}%
+\contentsline {subsection}{\numberline {1.2.5}Duality in Linear Programming}{28}{subsection.1.2.5}%

@@ -75,6 +75,38 @@
     \field{year}{1998}
   \endentry
 
+  \entry{charikar}{inbook}{}
+    \name{author}{1}{}{%
+      {{hash=CM}{%
+         family={Charikar},
+         familyi={C\bibinitperiod},
+         given={Moses},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer Berlin Heidelberg}%
+    }
+    \strng{namehash}{CM1}
+    \strng{fullhash}{CM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{booktitle}{Approximation Algorithms for Combinatorial Optimization}
+    \verb{doi}
+    \verb 10.1007/3-540-44436-x_10
+    \endverb
+    \field{isbn}{9783540444367}
+    \field{issn}{0302-9743}
+    \field{pages}{84–95}
+    \field{title}{Greedy Approximation Algorithms for Finding Dense Components in a Graph}
+    \verb{url}
+    \verb http://dx.doi.org/10.1007/3-540-44436-X_10
+    \endverb
+    \field{year}{2000}
+  \endentry
+
   \entry{karp}{inbook}{}
     \name{author}{1}{}{%
       {{hash=KRM}{%
