@@ -582,7 +582,7 @@
             Define the solution $\{x_u\}_{u \in V}$ by setting $x_u = 1$ if and only if $u \in S$. Clearly, the value of this solution is indeed $\sum_{u \in V}{x_u} = \abs S$; moreover, by definition of vertex cover, for any edge $\{u, v\} \in E$ at least one between $u$ and $v$ must be in $S$, therefore at least one between $x_u$ and $x_v$ is set to 1, implying that $x_u + x_v \ge 1$ is always satisfied.
         }
 
-        By way of contradiction, suppose that $S^*$ is not a minimum vertex cover. Hence, there must exist another vertex cover $S'$ such that $\abs{S'} < \abs{S^*}$. By the previous claim, this implies that there exists a feasible solution $\{x'_u\}_{u \in V}$ for the IP that has value $\abs{S'}$, but then $$\sum_{u \in V}{x'_u} = \abs{S'} < \abs{S^*} = \sum_{u \in V}{x^*_u}$$ which contradicts the optimality of the solution of $\{x^*_u\}_{u \in V}$ for the IP.
+        By way of contradiction, suppose that $S^*$ is not a minimum vertex cover. Hence, there must be another vertex cover $S'$ such that $\abs{S'} < \abs{S^*}$. By the previous claim, this implies that there exists a feasible solution $\{x'_u\}_{u \in V}$ for the IP that has value $\abs{S'}$, but then $$\sum_{u \in V}{x'_u} = \abs{S'} < \abs{S^*} = \sum_{u \in V}{x^*_u}$$ which contradicts the optimality of the solution of $\{x^*_u\}_{u \in V}$ for the IP.
     \end{proof}
 
     In particular, this lemma implies that VC can be reduced to Integer programming, indeed solving IPs is actually \NPHard \cite{karp}, differently from LPs. This result shows that IPs cannot be used \tit{directly} to obtain perfect solutions, but they are still very useful thanks to \tbf{relaxation}.
