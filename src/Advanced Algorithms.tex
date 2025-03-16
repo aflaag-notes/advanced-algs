@@ -99,8 +99,8 @@
     Lastly, we will adopt the following convention in these notes, when talking about \tbf{approximation algorithm}. Given a problem $P$ for which there is an optimal solution OPT, and an algorithm $A$ that solves $P$ which outputs a solution ALG to $P$
 
     \begin{itemize}
-        \item if $P$ is a \tbf{minimization} problem, we say that $A$ yields an $\alpha$-approximation of $P$ if $$\mathrm{ALG} \ge \alpha \cdot \mathrm{OPT}$$
-        \item if $P$ is a \tbf{maximization} problem, we say that $A$ yields an $\alpha$-approximation of $P$ if $$\mathrm{ALG} \le \alpha \cdot \mathrm{OPT}$$
+        \item if $P$ is a \tbf{minimization} problem, we say that $A$ yields an $\alpha$-approximation of $P$ if $$\mathrm{ALG} \le \alpha \cdot \mathrm{OPT}$$
+        \item if $P$ is a \tbf{maximization} problem, we say that $A$ yields an $\alpha$-approximation of $P$ if $$\mathrm{ALG} \ge \alpha \cdot \mathrm{OPT}$$
     \end{itemize}
 
     \section{TODO}
@@ -1116,7 +1116,7 @@
     Given an orientation $\phi$ of $G$, and a vertex $v \in V(G)$ we will indicate with $\deg_\phi(v)$ the in-degree of $v$ w.r.t. $\phi$, i.e. $$\deg_\phi(v) := \abs{\{e \in E \mid \phi(e) = v\}}$$ For example, in the previous graph we have that $\deg_\phi(c) = 2$, $\deg_\phi(a) = 0$ and $\deg_\phi(b) = \deg_\phi(d) = 1$. By the same argument that proves the handshaking lemma, we observe that $$\sum_{v \in V(G)}{\deg_\phi(v)} = \abs E$$ Lastly, the maximum in-degree w.r.t. $\phi$ will be denoted as $$\Delta_\phi := \max_{v \in V} {\deg_\phi(v)}$$ We are now ready to prove the approximation ratio of Charikar's algorithm.
 
     \begin{framedthm}{\textsc{Charikar}'s approximation ratio}
-        Given a graph $G$, and an optimal solution $\rho(G[S^*])$ for DS on $G$, let $M := \textsc{Charikar}(G)$; then, it holds that $\rho(G[S^*]) \le 2 M$.
+        Given a graph $G$, and an optimal solution $\rho(G[S^*])$ for DS on $G$, let $M := \textsc{Charikar}(G)$; then, it holds that $\tfrac{1}{2} \rho(G[S^*]) \le M$.
     \end{framedthm}
 
     \begin{proof}
@@ -1157,7 +1157,7 @@
             \end{equation*}
         }
 
-        Lastly, putting the two claims together, we get that for any optimal solution $\rho(G[S^*])$ of a given undirected graph $G$, if $M := \textsc{Charikar}(G)$ then $$\rho(G[S^*]) \le \Delta_{\phi_\mathrm{GR}} \le 2M$$
+        Lastly, putting the two claims together, we get that for any optimal solution $\rho(G[S^*])$ of a given undirected graph $G$, if $M := \textsc{Charikar}(G)$ then $$\rho(G[S^*]) \le \Delta_{\phi_\mathrm{GR}} \le 2M \iff \tfrac{1}{2} \rho(G[S^*]) \le M$$
     \end{proof}
 
     In this proof, we defined $\phi_\mathrm{GR}$, which helped us determine the approximation ratio of the algorithm. But how did Charikar come up with such an orientation of the graph? To answer this question, we need to introduce the concept of the \tbf{duality} of linear programs.
