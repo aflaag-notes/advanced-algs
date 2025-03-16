@@ -94,7 +94,14 @@
 
     \chapter{TODO}
 
-    placeholder \todo{missing introduction}
+    TODO \todo{missing introduction}
+
+    Lastly, we will adopt the following convention in these notes, when talking about \tbf{approximation algorithm}. Given a problem $P$ for which there is an optimal solution OPT, and an algorithm $A$ that solves $P$ which outputs a solution ALG to $P$
+
+    \begin{itemize}
+        \item if $P$ is a \tbf{minimization} problem, we say that $A$ yields an $\alpha$-approximation of $P$ if $$\mathrm{ALG} \ge \alpha \cdot \mathrm{OPT}$$
+        \item if $P$ is a \tbf{maximization} problem, we say that $A$ yields an $\alpha$-approximation of $P$ if $$\mathrm{ALG} \le \alpha \cdot \mathrm{OPT}$$
+    \end{itemize}
 
     \section{TODO}
 
@@ -914,6 +921,7 @@
             & y_i \ge 0 & \forall i \in V \\
         \end{array}\]
         \caption{LP for DS.}
+        \label{ds lp}
     \end{figure}
 
     \begin{framedlem}{}
@@ -1009,10 +1017,10 @@
 
     As we discussed at the beginning of this section, the cost of solving an LP generally depends on the number of \tit{variables} and \tit{constraints} it has. In particular, the LP we presented for solving DS has a \tit{large} number of both, which means that while the cost remains \tit{polynomial}, the degree of the polynomial is too high, making this approach \tbf{impractical} for large graphs.
 
-    Now, we are going to present a \tbf{greedy algorithm}, developed by \textcite{charikar} in 2000, and we will prove that this algorithm yields a 2-approximation of DS.
+    Now, we are going to present a \tbf{greedy algorithm}, developed by \textcite{charikar} in 2000, and we will prove that this algorithm yields a $\tfrac{1}{2}$-approximation of DS.
 
     \begin{framedalgo}{Charikar's algorithm}
-        Given an undirected graph $G = (V, E)$, the algorithm returns a 2-approximation solution of DS on $G$. \\
+        Given an undirected graph $G = (V, E)$, the algorithm returns a $\tfrac{1}{2}$-approximation solution of DS on $G$. \\
         \hrule
 
         \quad
@@ -1034,7 +1042,7 @@
 
     TODO \todo{example of non optimality}
 
-    To prove that this algorithm yields a 2-approximation, we are going to introduce some definitions first.
+    To prove that this algorithm yields a $\tfrac{1}{2}$-approximation, we are going to introduce some definitions first.
 
     \begin{frameddefn}{Orientation}
         Given an undirected graph $G = (V, E)$, an \tbf{orientation} of $G$ is a function $\func{\phi}{E}{V}$ that assigns to each edge $\{u, v\} \in E$ either $u$ or $v$.
@@ -1070,7 +1078,7 @@
              \hline
              $e$ & $\phi(e)$ \\
              \hline\hline
-             $ac)$ & $c$ \\ 
+             $ac$ & $c$ \\ 
              \hline
              $bc$ & $c$ \\
              \hline
@@ -1213,9 +1221,7 @@
         % \caption{On the left: a \tit{primal} LP. On the right: its \tit{dual} LP.}
     \end{figure}
 
-    Observe that, by definition, the dual of the dual of a primal LP is the primal LP itself.
-
-    TODO \todo{intro to these two?}
+    Observe that, by definition, the dual of the dual of a primal LP is the primal LP itself. Moreover, we can relate the solutions of primal LPs and their duals through the following two theorems.
 
     \begin{framedthm}{Weak duality theorem}
         Given a feasible solution $x$ for a primal LP, and a feasible solution $y$ for its dual LP, such that both $x$ and $y$ exist and are finite, it holds that $$c^T x \le b^T y$$
@@ -1237,9 +1243,27 @@
         Given an optimal solution $x$ for a primal LP, and an optimal solution $y$ for its dual LP, such that both $x$ and $y$ exist and are finite, it holds that $$c^Tx = b^Ty$$
     \end{framedthm}
 
-    TODO \todo{leggi readme}
+    Going back to our problem, consider again the LP for DS presented in \cref{ds lp}. We observe that its dual LP is the following linear program:
 
-    TODO \todo{da finire}
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{ccl}
+            \qquad\qquad\quad
+            & \min \; \delta \\\\
+            & \gamma_{ij} + \gamma_{ji} \ge 1 & \forall i j \in E \\
+            & \delta - \sum\limits_{\substack{j \in V : \\ ij \in E}}{\gamma_{ij}} \ge 0 & \forall i \in V \\
+            & \delta \ge 0 \\
+            & \gamma_{ij} \ge 0 & \forall i j \in E \\
+            & \gamma_{ji} \ge 0 & \forall i j \in E \\
+        \end{array}\]
+        \caption{The dual of the LP for DS.}
+    \end{figure}
+    
+    Notice that this is the LP that corresponds to the \tbf{Minimum Max-Degree Orientation} problem, which asks to find the edge orientation with the lowest possible maximum degree. In fact, observe that $$\forall i \in V \quad \delta - \sum_{\substack{j \in V : \\ ij \in E}}{\gamma_{ij}} \ge 0 \iff \delta \ge \deg(i)$$
+
+    TODO \todo{missing last part}
+
+    TODO \todo{fixa problema approx}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
