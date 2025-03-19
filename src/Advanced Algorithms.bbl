@@ -65,7 +65,8 @@
     \field{issn}{1557-735X}
     \field{number}{3}
     \field{pages}{501–555}
-    \field{title}{Proof verification and the hardness of approximation problems}
+    \field{title}{Proof verification and the hardness of approximation
+  problems}
     \verb{url}
     \verb http://dx.doi.org/10.1145/278298.278306
     \endverb
@@ -100,7 +101,8 @@
     \field{isbn}{9783540444367}
     \field{issn}{0302-9743}
     \field{pages}{84–95}
-    \field{title}{Greedy Approximation Algorithms for Finding Dense Components in a Graph}
+    \field{title}{Greedy Approximation Algorithms for Finding Dense Components
+  in a Graph}
     \verb{url}
     \verb http://dx.doi.org/10.1007/3-540-44436-X_10
     \endverb

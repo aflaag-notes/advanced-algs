@@ -1040,7 +1040,49 @@
         The algorithm construct a series $S_0, \ldots, S_n$ of sets of vertices, such that $\abs{S_i} = n - i$, and at each iteration the $i$-th vertex that gets removed from $G[S_{i - 1}]$ is the one having minimum degree. At the end, the algorithm returns the set $S^*$ that maximizes the density of $G[S^*]$.
     }
 
-    TODO \todo{example of non optimality}
+    We observe that this algorithm does not return an optimal solution in general; in particular, problems can arise if there are vertices of equal degree. For instance, consider the following disconnected graph
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=2cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{$a$};
+            \node[circle, draw] (2) [right of = 1]{$b$};
+            \node[circle, draw] (3) [right of = 2]{$c$};
+            \node[circle, draw] (4) [right of = 3]{$d$};
+            \node[circle, draw] (5) [right of = 4]{$e$};
+
+            % \path[every node/.style={font=\sffamily\small}]
+
+            \draw[-] (1) to (2);
+            \draw[-] (2) to (3);
+            \draw[-] (4) to (5);
+
+            ;
+        \end{tikzpicture}
+    \end{figure}
+
+    In this graph, the densest subgraph is induced by the set $S^* = \{a, b, c\}$, because $$\rho(G[S^*]) = \dfrac{2}{3}$$ However, since $\deg(a) = \deg(c) = \deg(d) = \deg(e) = 1$, the algorithm may choose $v_1 := a$, meaning that $G[S_1]$ would be 
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=2cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (2) []{$b$};
+            \node[circle, draw] (3) [right of = 2]{$c$};
+            \node[circle, draw] (4) [right of = 3]{$d$};
+            \node[circle, draw] (5) [right of = 4]{$e$};
+
+            % \path[every node/.style={font=\sffamily\small}]
+
+            \draw[-] (2) to (3);
+            \draw[-] (4) to (5);
+
+            ;
+        \end{tikzpicture}
+    \end{figure}
+
+    and it is easy to see that $G[S_0] = G$, and any other subgraph of this graph, have lower density than $G[S^*]$.
 
     To prove that this algorithm yields a $\tfrac{1}{2}$-approximation, we are going to introduce some definitions first.
 
