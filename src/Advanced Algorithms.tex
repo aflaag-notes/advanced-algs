@@ -1157,7 +1157,7 @@
 
     Given an orientation $\phi$ of $G$, and a vertex $v \in V(G)$ we will indicate with $\deg_\phi(v)$ the in-degree of $v$ w.r.t. $\phi$, i.e. $$\deg_\phi(v) := \abs{\{e \in E \mid \phi(e) = v\}}$$ For example, in the previous graph we have that $\deg_\phi(c) = 2$, $\deg_\phi(a) = 0$ and $\deg_\phi(b) = \deg_\phi(d) = 1$. By the same argument that proves the handshaking lemma, we observe that $$\sum_{v \in V(G)}{\deg_\phi(v)} = \abs E$$ Lastly, the maximum in-degree w.r.t. $\phi$ will be denoted as $$\Delta_\phi := \max_{v \in V} {\deg_\phi(v)}$$ We are now ready to prove the approximation ratio of Charikar's algorithm.
 
-    \begin{framedthm}{\textsc{Charikar}'s approximation ratio}
+    \begin{framedthm}[label={charikar approx}]{\textsc{Charikar}'s approximation ratio}
         Given a graph $G$, and an optimal solution $\rho(G[S^*])$ for DS on $G$, let $M := \textsc{Charikar}(G)$; then, it holds that $\tfrac{1}{2} \rho(G[S^*]) \le M$.
     \end{framedthm}
 
@@ -1305,7 +1305,76 @@
 
     TODO \todo{missing last part}
 
-    TODO \todo{fixa problema approx}
+    Even though this approach yields $\tfrac{1}{2}$-approximation algorithm that runs in only $n$ iterations, for very large graphs this is still too slow. Is there a way to improve our algorithm? Observe how \textsc{Charikar} works: at each iteration, the algorithm removes a vertex of minimum degree of the current graph. What if we remove \tit{all} the vertices of minimum degree in the graph all at once? \todo{controlla con chatgpt grammatica di sto par}
+
+    \begin{framedalgo}{Charikar's algorithm (improved version)}
+        Given an undirected graph $G = (V, E)$, the algorithm returns a $\tfrac{1}{2}$-approximation solution of DS on $G$. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{CharikarImproved}{$G$}
+                \State $S_0 := V(G)$
+                \State $i := 0$
+                \While{$S_i \neq \varnothing$}
+                    \State $\displaystyle A_i := \argmin_{u \in S_i}{\deg_{G[S_i]}(u)}$
+                    \State $S_{i + 1} := S_i - A_i$
+                \EndWhile
+                \State \textbf{return} $\displaystyle S^* \in \argmax_{i \in N}{\rho(G[S_i])}$
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
+
+    This algorithm is able to reduce significantly the number of iterations, by removing the vertices of minimum degree from $S_i$ all at once. However, in the worst case the number of iterations is still $n$. For instance, consider the following graph 
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{1};
+            \node[circle, draw] (2) [right of = 1]{2};
+            \node[circle, draw] (3) [right of = 2]{3};
+            \node[circle, draw] (4) [right of = 3]{4};
+            \node[circle, draw] (5) [above right of = 4]{5};
+            \node[circle, draw] (6) [below right of = 4]{6};
+
+            % \path[every node/.style={font=\sffamily\small}]
+
+            \draw[-] (1) to (2);
+            \draw[-] (2) to (3);
+            \draw[-] (3) to (4);
+            \draw[-] (4) to (5);
+            \draw[-] (4) to (6);
+            \draw[-] (5) to (6);
+
+            ;
+        \end{tikzpicture}
+        % \caption{Given the set of red vertices $S$, the green edges represent $\mathrm{cut}(S)$.}
+    \end{figure}
+
+    In this graph, our improved version of Charikar would still need $n$ iterations to remove all the vertices --- in the figure, the node labeled with $i$ is the only node present in $A_i$ at the $i$-th iteration of the algorithm. Can we do better?
+
+    Consider the proof of \cref{charikar approx}; the second claim of the theorem uses the fact that the vertex $v_i$ has minimum degree in $G[S_{i - 1}]$. However, note that the only reason why we need this fact is to bound $$\deg_{G[S_{i - 1}]}(v_i) \le \avg_{v \in S_{i - 1}}{\deg_{G[S_{i - 1}]}(v_i)}$$ Hence, we may try to use the \tit{average degree} instead of the \tit{minimum degree}, in the definition of $A_i$.
+
+    Consider a path $P_n$; observe that $\textsc{CharikarImproved}(P_n)$ would require $\ceil{\tfrac{n}{2}}$ iteration to remove all the vertices from the initial graph, because it would remove at most (for the case when $n$ is odd) 2 vertices per iteration --- i.e. the endpoints. What happens if we replace the definition of $A_i$ as follows? $$A_i := \cbk{v \in S_i \mid \deg_{G[S_i]}(v) \le \avg_{u \in S_i}{\deg_{G[S_i]}(u)}}$$ In the case of $P_n$, \textsc{CharikarImproved} would still fail at processing the graph all at once, because the average degree is \tit{less than} 2. Nonetheless, this problem suggest the following approach.
+
+    \begin{framedalgo}{Charikar's algorithm ($\varepsilon$ version)}
+        Given an undirected graph $G = (V, E)$, the algorithm returns a $\tfrac{1}{2}$-approximation solution of DS on $G$. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{$\textsc{Charikar}_\varepsilon$}{$G$}
+                \State $S_0 := V(G)$
+                \State $i := 0$
+                \While{$S_i \neq \varnothing$}
+                    \State $\displaystyle A_i := \cbk{v \in S_i \mid \deg_{G[S_i]}(v) \le (1 + \varepsilon)\avg_{u \in S_i}{\deg_{G[S_i]}(u)}}$
+                    \State $S_{i + 1} := S_i - A_i$
+                \EndWhile
+                \State \textbf{return} $\displaystyle S^* \in \argmax_{i \in N}{\rho(G[S_i])}$
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 

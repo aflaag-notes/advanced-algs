@@ -1,18 +1,18 @@
 # Fdb version 4
-["bibtex Advanced Algorithms"] 1742394920 "Advanced Algorithms.aux" "Advanced Algorithms.bbl" "Advanced Algorithms" 1742395032 0
-  "./Advanced_Algorithms-blx.bib" 1742395032 344 e588c9a99e172ae2d6714a5a36257b2b ""
+["bibtex Advanced Algorithms"] 1742547032 "Advanced Algorithms.aux" "Advanced Algorithms.bbl" "Advanced Algorithms" 1742547136 0
+  "./Advanced_Algorithms-blx.bib" 1742547135 344 e588c9a99e172ae2d6714a5a36257b2b ""
   "./references.bib" 1742363212 1718 fcfd1598827cf00f2435d982827f416f ""
   "/nix/store/b7digbmvshajdsbww3qa3xql98b3w1hq-texlive-combined-2022-texmfdist/bibtex/bst/biblatex/biblatex.bst" 1 65484 b7949c47a88ed6dca66ebc7a04577312 ""
-  "Advanced Algorithms.aux" 1742395032 8677 5d315efa29a5da2ca19b0d103bbdb48c "pdflatex"
+  "Advanced Algorithms.aux" 1742547135 8875 802d354088b1300e2e4c9544b9efd77e "pdflatex"
   (generated)
   "Advanced Algorithms.bbl"
   "Advanced Algorithms.blg"
   (rewritten before read)
-["pdflatex"] 1742395025 "Advanced Algorithms.tex" "Advanced Algorithms.pdf" "Advanced Algorithms" 1742395032 0
+["pdflatex"] 1742547128 "Advanced Algorithms.tex" "Advanced Algorithms.pdf" "Advanced Algorithms" 1742547136 0
   "../../packages/Nyx/logo.png" 1741805894 91419 8de48debf770a599a084520c83ce5d80 ""
   "../../packages/Nyx/nyx-frames.sty" 1741805894 4374 f7123ec27baf822b3a4c3ded1b17a699 ""
   "../../packages/Nyx/nyx-intro.sty" 1741805894 3476 d82343305e561945eb7e4f3f9e3a4fe2 ""
-  "../../packages/Nyx/nyx-macros.sty" 1742363197 11849 a423536934ab3b42060cd76b6a4adf50 ""
+  "../../packages/Nyx/nyx-macros.sty" 1742506585 12081 2177d7e8b56a494a0fef59d3b6a52f54 ""
   "../../packages/Nyx/nyx-packages.sty" 1741805894 2198 ed6348d4e00db71c2d09a4d1c45eca66 ""
   "../../packages/Nyx/nyx-styles.sty" 1741805894 2711 ab41eef68f7a8b6ee5e3649068efc0de ""
   "../../packages/Nyx/nyx-title.sty" 1741805894 3255 b8b7faa898231df2f4371d144bf17fa9 ""
@@ -421,12 +421,12 @@
   "/nix/store/q47h4yp39ya63xcsc1pjlak599g8kfqj-texlive-combined-2022/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1 323500 598c18d61a3af0ad902dd100858e4d48 ""
   "/nix/store/q47h4yp39ya63xcsc1pjlak599g8kfqj-texlive-combined-2022/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1 6477712 2645013e626a7def25cc906f873e3756 ""
   "/nix/store/q47h4yp39ya63xcsc1pjlak599g8kfqj-texlive-combined-2022/share/texmf-var/web2c/texmf.cnf" 1 41965 87dc2d7f7f5655c1058d23289915d224 ""
-  "Advanced Algorithms.aux" 1742395032 8677 5d315efa29a5da2ca19b0d103bbdb48c "pdflatex"
-  "Advanced Algorithms.bbl" 1742394920 4610 70e574a1017cfe70b0061b1b6ff844d0 "bibtex Advanced Algorithms"
-  "Advanced Algorithms.out" 1742395032 1755 153c46a6d60ab47914f3cce81e1559e2 "pdflatex"
-  "Advanced Algorithms.run.xml" 1742395032 2673 c0cecc8ff02fc68edf492afe5870dbe9 "pdflatex"
-  "Advanced Algorithms.tex" 1742395025 85659 3da5286a12b3cc9c35af7e251d0dfbd0 ""
-  "Advanced Algorithms.toc" 1742395032 1097 8ac56426fa39f8cd4ead0714f72760f5 "pdflatex"
+  "Advanced Algorithms.aux" 1742547135 8875 802d354088b1300e2e4c9544b9efd77e "pdflatex"
+  "Advanced Algorithms.bbl" 1742547032 4610 70e574a1017cfe70b0061b1b6ff844d0 "bibtex Advanced Algorithms"
+  "Advanced Algorithms.out" 1742547135 1755 153c46a6d60ab47914f3cce81e1559e2 "pdflatex"
+  "Advanced Algorithms.run.xml" 1742547135 2673 c0cecc8ff02fc68edf492afe5870dbe9 "pdflatex"
+  "Advanced Algorithms.tex" 1742547126 90196 cd8057674f8335217bc6a741abf6d1fe ""
+  "Advanced Algorithms.toc" 1742547135 1097 8ac56426fa39f8cd4ead0714f72760f5 "pdflatex"
   (generated)
   "Advanced Algorithms.aux"
   "Advanced Algorithms.log"
