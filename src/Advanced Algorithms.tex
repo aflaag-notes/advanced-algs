@@ -92,7 +92,7 @@
 
     %%%%%%%%%%%%%%%%%%%%%
 
-    \chapter{TODO}
+    \chapter{Approximation algorithms}
 
     TODO \todo{missing introduction}
 
@@ -103,17 +103,17 @@
         \item if $P$ is a \tbf{maximization} problem, we say that $A$ yields an $\alpha$-approximation of $P$ if $$\mathrm{ALG} \ge \alpha \cdot \mathrm{OPT}$$
     \end{itemize}
 
-    \section{TODO}
+    \section{Approximation through randomness}
 
-    \subsection{The Max Cut problem}
+    \subsection{The Maximum Cut problem} \label{maxcut}
 
-    The first problem that will be discussed is the \href{https://en.wikipedia.org/wiki/Maximum_cut}{Maximum Cut} problem (or \tit{Max Cut}, for short). The \tbf{Max Cut problem} --- in the unweighted case --- is a classic combinatorial optimization problem in the branch of \href{https://en.wikipedia.org/wiki/Graph_theory}{graph theory}, in which we seek to partition the vertices of an undirected graph into two disjoint subsets while maximizing the number of edges that have endpoints in both subsets. More formally, we will define a \tbf{cut} of a graph as follows.
+    The first problem that will be discussed is the \href{https://en.wikipedia.org/wiki/Maximum_cut}{Maximum Cut} problem. The \tbf{Maximum Cut problem} --- in the unweighted case --- is a classic combinatorial optimization problem in the branch of \href{https://en.wikipedia.org/wiki/Graph_theory}{graph theory}, in which we seek to partition the vertices of an undirected graph into two disjoint subsets while maximizing the number of edges that have endpoints in both subsets. More formally, we will define a \tbf{cut} of a graph as follows.
 
     \begin{frameddefn}{Cut}
-        Given an undirected graph $G = (V, E)$, and a subset of its vertices $S \subseteq V$, the \tbf{cut} induced by $S$ on $G$ is defined as follows $$\mathrm{cut}(S) := \{e \in E \quad \abs{S \cap e} = 1\}$$
+        Given an undirected graph $G = (V, E)$, and a subset of its vertices $S \subseteq V$, the \tbf{cut} induced by $S$ on $G$ is defined as follows $$\mathrm{cut}(S) := \{e \in E : \abs{S \cap e} = 1\}$$
     \end{frameddefn}
 
-    Note that in the definition above we are defining the cut of a graph through the intersection between a set of vertices $S$ and edges in $E$; this is because, in the undirected case, we will consider the edges of a graph $G = (V, E)$ as sets of 2 elements $$E = \{\{u, v\} \quad u, v \in V\}$$ Therefore, given a set of vertices $S$, the cut induced by $S$ is simply the set of edges that have only one endpoint in $S$ (implying that the other one will be in $V - S$).
+    Note that in the definition above we are defining the cut of a graph through the intersection between a set of vertices $S$ and edges in $E$; this is because, in the undirected case, we will consider the edges of a graph $G = (V, E)$ as sets of 2 elements $$E = \{\{u, v\} \mid u, v \in V\}$$ Therefore, given a set of vertices $S$, the cut induced by $S$ is simply the set of edges that have only one endpoint in $S$ (implying that the other one will be in $V - S$).
 
     \begin{figure}[H]
         \centering
@@ -136,10 +136,10 @@
         \caption{Given the set of red vertices $S$, the green edges represent $\mathrm{cut}(S)$.}
     \end{figure}
 
-    With this definition, we can introduce the \tbf{Max Cut} problem, which is defined as follows.
+    With this definition, we can introduce the \tbf{Maximum Cut} problem, which is defined as follows.
 
-    \begin{frameddefn}{Max Cut problem}
-        The \tbf{Max Cut} (MC) problem is defined as follows: iven an undirected graph $G = (V, E)$, determine the set $S \subseteq V$ that maximizes $\abs{\mathrm{cut}(S)}$.
+    \begin{frameddefn}{Maximum Cut problem}
+        The \tbf{Maximum Cut} (MC) problem is defined as follows: given an undirected graph $G = (V, E)$, determine the set $S \subseteq V$ that maximizes $\abs{\mathrm{cut}(S)}$.
     \end{frameddefn}
 
     Although this problem is known to be \textsf{APX-Hard} \cite{maxcut}, approximation algorithms and heuristic methods like greedy algorithms and local search are commonly used to find near-optimal solutions.
@@ -229,6 +229,8 @@
     \end{proof}
 
     Note that this result is \tit{very powerful}: for instance, if $\varepsilon = \delta = 0.1$, we get that $$\Pr[\abs{\mathrm{cut}(S)} > 0.45 \cdot \abs{\mathrm{cut}(S^*)}] \ge 0.9$$ and $t \approx 46$, meaning that we just need to run the \textsc{RandomCut} algorithm approximately 46 times in order to get a solution that is better than a $0.45$-approximation with $90\%$ probability.
+
+    \section{Approximation through reduction}
 
     \subsection{The Vertex Cover problem}
 
@@ -506,7 +508,7 @@
         It is easy to see that the cost directly depends on the number of recursive calls that the algorithm performs, which is $2^k$ in the worst case, and the cost of constructing $G[V - \{x\}]$, which we can assume to be $O\rbk{n^2}$. Hence, the algorithm has a total cost of $O \rbk{2^k \cdot n^2}$.
     }
 
-    \section{Mathematical Programming}
+    \chapter{Mathematical Programming}
 
     Up to this point, we have introduced several \NPComplete problems and discussed approximation algorithms that provide near-optimal solutions within a certain approximation ratio. We will now explore a new technique that can be leveraged to design approximation algorithms for a broader class of problems, namely \tbf{mathematical programming}.
 
@@ -550,7 +552,7 @@
 
     Despite its theoretical guarantee of polynomial runtime, in practice the \href{https://en.wikipedia.org/wiki/Simplex_algorithm}{Simplex method} is often preferred, as it operates based on \tit{pivot rules}. In fact, although all known pivot rules for the Simplex method exhibit a theoretical \tit{exponential} lower bound due to specially constructed worst-case instances, its average performance is significantly better than that of the Ellipsoid method in real-world scenarios.
 
-    \subsection{IPs and LP relaxation}
+    \section{IPs and LP relaxation}
 
     Differently from LPs, in IPs the vector space of interest is $\{0, 1\}^n$. IPs can be used to solve a wide range of problems. For instance, given a graph $G =(V, E)$, the \tbf{vertex cover} problem that we discussed in the previous section can be formulated through the following IP:
 
@@ -625,7 +627,7 @@
 
     However, note that this result should not come a surprise. In fact, consider a graph $G$, an optimal solution to the LP relaxation $\{\overline x_u\}_{u \in V}$ and $\overline S$ defined as previously shown; given an edge $\{u, v\} \in E(G)$, in the worst case we have that $$\overline x_u = \overline x_v = \dfrac{1}{2}$$ which still satisfies both constraints of the LP relaxation, since $\tfrac{1}{2} + \tfrac{1}{2} = 1 \ge 1$. This means that, in the worst case, both $u$ and $v$ end up inside $\overline S$, which gives an intuitive reason to why this LP relaxation indeed yields a 2-approximation solution.
 
-    \subsection{Integrality gap}
+    \section{Integrality gap}
 
     Consider a problem P, its equivalent IP, and the relative LP relaxation. Given an instance $I \in \mathrm P$ of the problem, we will denote with $\mathrm{IP^*_P}(I)$ and $\mathrm{LP^*_P}(I)$ the optimal values for the IP and the LP of the problem P on the instance $I$ --- we will omit P and $I$ the context is clear enough. Note that, in general, it holds that $\mathrm{LP^*} \le \mathrm{IP^*}$ since the constraints of the LP relaxation are \tit{weaker} than the ones of the IP.
 
@@ -697,7 +699,7 @@
         This claim shows that for any $n$ it holds that $\mathrm{IP^*}(K_n) = n - 1$, therefore we have that $$\mathrm{IG}(K_n) = \dfrac{\mathrm{IP^*}(K_n)}{\mathrm{LP^*}(K_n)} \ge \dfrac{n - 1}{\tfrac{n}{2}}$$ which means that $$\mathrm{IG_{VC}} = \sup_{I \in \mathrm{VC}}{\mathrm{IG_{VC}}(I)} \ge \lim_{n \to +\infty}{\dfrac{n - 1}{\tfrac{n}{2}}} = 2$$
     \end{proof}
 
-    \subsection{The Set Cover problem}
+    \section{The Set Cover problem}
 
     The next problem that we will study can be seen as a \tit{generalization} of the VC problem, which is the \href{https://en.wikipedia.org/wiki/Set_cover_problem}{Set Cover} problem, defined as follows.
 
@@ -843,13 +845,15 @@
         Finally, from these two claims, it follows that $$\mathrm{IG_{SC}}(\mathcal U_m, C_m) = \dfrac{\mathrm{IP^*}(\mathcal U_m, C_m)}{\mathrm{LP^*}(\mathcal U_m, C_m)} \ge \dfrac{\tfrac{1}{2} \log n - O(\log \log n)}{2} = \dfrac{1}{4} \log n - O(\log \log n)$$ which means that $$\mathrm{IG_{SC}} = \sup_{I \in \mathrm{SC}}{\mathrm{IG_{SC}}(I)} \ge \mathrm{IG_{SC}}(\mathcal U_m, C_m) \ge \dfrac{1}{4} \log n = \dfrac{1}{4 \ln 2} \ln n$$
     \end{proof}
 
-    \subsection{The Densest Subgraph problem}
+    \section{The Densest Subgraph problem}
     
     Up to this point, we only discussed \NPComplete problems, and various techniquesused to obtain approximate solutions. The next problem that we are going to introduce, instead, can be solved in \tbf{polynomial} time, thanks to linear programming. First, consider the following definition.
 
     \begin{frameddefn}{Graph density}
-        Given a graph $G = (V, E)$, its \tbf{density} is defined as follows $$\rho(G) := \dfrac{\abs E}{\abs V}$$
+        Given a graph $G = (V, E)$ such that $V \neq \varnothing$, its \tbf{density} is defined as follows $$\rho(G) := \dfrac{\abs E}{\abs V}$$
     \end{frameddefn}
+
+    Note that we require $V \neq \varnothing$, but we will omit this detail in the following sections.
 
     For instance, the density of the graph $G = (V, E)$ below
 
@@ -1013,7 +1017,7 @@
         Finally, since we proved that $G[S(r)]$ is well-defined, and this claim proves that there exists an $r^*$ such that $\rho(G[S(r^*)]) \ge v$, the statement holds.
     \end{proof}
 
-    \subsection{Duality in Linear Programming}
+    \subsection{Approximation through duality}
 
     As we discussed at the beginning of this section, the cost of solving an LP generally depends on the number of \tit{variables} and \tit{constraints} it has. In particular, the LP we presented for solving DS has a \tit{large} number of both, which means that while the cost remains \tit{polynomial}, the degree of the polynomial is too high, making this approach \tbf{impractical} for large graphs.
 
@@ -1375,6 +1379,72 @@
             \EndFunction
         \end{algorithmic}
     \end{framedalgo}
+
+    TODO \todo{missing a lot}
+
+    \chapter{Metric geometry}
+
+    TODO \todo{missing introduction}
+
+    First, consider the following definition
+
+    \begin{frameddefn}{Set spartity}
+        Given a graph $G = (V, E)$, and a set $\varnothing \subset S \subseteq V$, the \tbf{sparsity} of $S$ is defined as follows: $$\psi (G) := \dfrac{\abs{\mathrm{cut}(S)}}{\abs{S \times \overline S}} = \dfrac{\abs{\mathrm{cut}(S)}}{\abs S \cdot \abs{\overline S}}$$
+    \end{frameddefn}
+
+    As for the case of \tit{graph density}, we require $S \neq \varnothing$, but we will omit this detail in the following sections. Moreover, note that by definition of \tit{cut}, we have that for any $S \subseteq V(G)$ it holds that $$0 \le \abs{cut} \le \abs {S \times \overline S} = \abs S \cdot \abs{\overline S}$$ since an edge $e$ is in $\mathrm{cut}(S)$ if and only if $\abs {S \cap e} = 1$, hence the cartesian product $S \times \overline S$ represents the edges that have exactly one endpoint in $S$. Therefore, we have that $0 \le \psi(S) \le 1$, and in particular
+
+    \begin{itemize}
+        \item $\psi(S) = 0 \implies \abs{\mathrm{cut}(S)} = 0$ which happens if $S$ is \tit{disconnected} from $\overline S$
+        \item $\psi(S) = 1 \implies \abs{\mathrm{cut}(S)} = \abs{S \times \overline S}$ which happens if $S$ is \curlyquotes{\tit{fully connected}} to $\overline S$, i.e. every edge of $S$ is connected to every edge of $\overline S$.
+    \end{itemize}
+
+    Given this metric, we are interested in finding the subset of vertices of a given graph that \tit{minimizes} its sparsity.
+
+    \begin{frameddefn}{Sparsest Cut problem}
+        The \tbf{Sparsest Cut} (SC) problem is defined as follows: given a graph $G = (V, E)$, determine the subset of vertices that minimizes its sparsity. In other words, the problems asks to finde a set $S^*$ in $$S^* \in \argmin_{S \subseteq V}{\psi(S)}$$
+    \end{frameddefn}
+
+    TODO \todo{intuition}
+
+    In order to reason about SC, we are going to introduce the following type of graph, invented by \textcite{erdos} in 1959.
+
+    \begin{frameddefn}{Erdős-Rényi random graph}
+        Given two values $n \in \N$ and $\mu \in [0, 1]$, the \href{https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model}{Erdős-Rényi random graph} $G(n, \mu)$ is a graph that has a fixed vertex set $V(G) = [n]$, and a \tit{probabilistic} edge set $E(G)$ such that $$\forall e \in [V(G)]^2 \quad \Pr[e \in E(G)] = \mu$$
+    \end{frameddefn}
+
+    By definition, this model represents an \tit{evenly sparse graph}, because for each $S \subseteq V(G)$ it holds that $$ \mathbb E[\psi(S)] = \dfrac{\mathbb E\sbk{\abs{\mathrm{cut}(S)}}}{\abs S \cdot \abs{\overline S}} = \dfrac{\sum_{ij \in S \times \overline S}{\Pr \sbk{ij \in \mathrm{cut}(S)}}}{\abs S \cdot  \abs{\overline S}}= \dfrac{\mu \cdot \abs S \cdot \abs{\overline S}}{\abs S \cdot \abs{\overline S}} = \mu$$
+
+    The Maximum Cut problem --- which we discussed in \cref{maxcut} --- can be reduced to SC, implying that the latter is \NPHard as well. Nevertheless, the problem can be approximated through the \tbf{Leighton-Rao algorithm} \cite{leightonrao}, which relies on LP relaxation and a series of reduction steps. In particular, its integrality gap is bounded using \tit{geometric arguments}, therefore in the following sections we will focus on \tbf{metric geometry} in order to establish this result.
+
+    \section{Cut metrics}
+
+    A \tbf{metric} (or \tit{distance function}) provides a way to quantify how far apart objects are within a given space, formalizing the concept of \tit{distance}. In particular, in geometry we have the following definition.
+
+    \begin{frameddefn}{Metric}
+        Given a set $S$, a \tbf{metric} on $S$ is a function $\func{d}{S \times S}{\R}$ that satisfies
+
+        \begin{enumerate}
+            \item \tit{non-negativity}: $\forall x, y \in S \quad d(x,y) \ge 0$
+            \item \tit{simmetry}: $\forall x, y \in S \quad d(x, y) = d(y, x)$
+            \item \tit{self-distance}: $\forall x \in S \quad d(x, x) = 0$
+            \item \tit{triangle inequality}: $\forall x, y, z \in S \quad d(x,y) \le d(x,z) + d(z, y)$
+        \end{enumerate}
+    \end{frameddefn}
+
+    The typical example of metric is the \href{https://en.wikipedia.org/wiki/Euclidean_distance}{Euclidean distance}, which defines $d$ as follows $$d(x, y) := \norm{x - y}$$ In particular, for our discussion we are interested in \tit{cut metrics}, defined as follows.
+
+    \begin{frameddefn}{Elementary cut metric}
+        Given a graph $G = (V, E)$, and a set $T \subseteq V$, the \tbf{elementary cut metric of $T$} is a function $\func{d_T}{V \times V}{\R}$ such that $$d_T(x, y) := \soe{ll}{1 & \abs{T \cap \{x, y\}} = 1 \\ 0 & \mathrm{otherwise}}$$
+    \end{frameddefn}
+
+    \begin{framedprop}{}
+        Any elementary cut metric is a metric.
+    \end{framedprop}
+
+    \begin{proof}
+        TODO
+    \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 

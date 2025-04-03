@@ -53,10 +53,11 @@
     \list{publisher}{1}{%
       {Association for Computing Machinery (ACM)}%
     }
-    \strng{namehash}{AS+1}
+    \strng{namehash}{ASLCMR+1}
     \strng{fullhash}{ASLCMRSMSM1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{labelalpha}{ALM+98}
     \field{sortinit}{A}
     \field{sortinithash}{A}
     \verb{doi}
@@ -65,8 +66,7 @@
     \field{issn}{1557-735X}
     \field{number}{3}
     \field{pages}{501–555}
-    \field{title}{Proof verification and the hardness of approximation
-  problems}
+    \field{title}{Proof verification and the hardness of approximation problems}
     \verb{url}
     \verb http://dx.doi.org/10.1145/278298.278306
     \endverb
@@ -92,6 +92,7 @@
     \strng{fullhash}{CM1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{labelalpha}{Cha00}
     \field{sortinit}{C}
     \field{sortinithash}{C}
     \field{booktitle}{Approximation Algorithms for Combinatorial Optimization}
@@ -101,12 +102,52 @@
     \field{isbn}{9783540444367}
     \field{issn}{0302-9743}
     \field{pages}{84–95}
-    \field{title}{Greedy Approximation Algorithms for Finding Dense Components
-  in a Graph}
+    \field{title}{Greedy Approximation Algorithms for Finding Dense Components in a Graph}
     \verb{url}
     \verb http://dx.doi.org/10.1007/3-540-44436-X_10
     \endverb
     \field{year}{2000}
+  \endentry
+
+  \entry{erdos}{article}{}
+    \name{author}{2}{}{%
+      {{hash=EP}{%
+         family={Erdős},
+         familyi={E\bibinitperiod},
+         given={P.},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=RA}{%
+         family={Rényi},
+         familyi={R\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {University of Debrecen/ Debreceni Egyetem}%
+    }
+    \strng{namehash}{EPRA1}
+    \strng{fullhash}{EPRA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{ER22}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \verb{doi}
+    \verb 10.5486/pmd.1959.6.3-4.12
+    \endverb
+    \field{issn}{0033-3883}
+    \field{number}{3–4}
+    \field{pages}{290–297}
+    \field{title}{On random graphs. I.}
+    \verb{url}
+    \verb http://dx.doi.org/10.5486/PMD.1959.6.3-4.12
+    \endverb
+    \field{volume}{6}
+    \field{journaltitle}{Publicationes Mathematicae Debrecen}
+    \field{month}{07}
+    \field{year}{2022}
   \endentry
 
   \entry{karp}{inbook}{}
@@ -125,6 +166,7 @@
     \strng{fullhash}{KRM1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{labelalpha}{Kar72}
     \field{sortinit}{K}
     \field{sortinithash}{K}
     \field{booktitle}{Complexity of Computer Computations}
@@ -156,6 +198,7 @@
     \strng{fullhash}{LL1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{labelalpha}{Lov75}
     \field{sortinit}{L}
     \field{sortinithash}{L}
     \verb{doi}
@@ -171,6 +214,37 @@
     \field{volume}{13}
     \field{journaltitle}{Discrete Mathematics}
     \field{year}{1975}
+  \endentry
+
+  \entry{leightonrao}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=LT}{%
+         family={Leighton},
+         familyi={L\bibinitperiod},
+         given={Tom},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=RS}{%
+         family={Rao},
+         familyi={R\bibinitperiod},
+         given={Satish},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE Computer Society}%
+    }
+    \strng{namehash}{LTRS1}
+    \strng{fullhash}{LTRS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{LR88}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{booktitle}{[Proceedings 1988] 29th Annual Symposium on Foundations of Computer Science}
+    \field{pages}{422\bibrangedash 431}
+    \field{title}{An approximate max-flow min-cut theorem for uniform multicommodity flow problems with applications to approximation algorithms}
+    \field{year}{1988}
   \endentry
 \enddatalist
 \endinput
