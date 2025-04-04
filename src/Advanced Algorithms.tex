@@ -1443,7 +1443,82 @@
     \end{framedprop}
 
     \begin{proof}
-        TODO
+        TODO 
+    \end{proof}
+
+    TODO \todo{there is a big hole here}
+
+    \begin{frameddefn}{Max Cover problem}
+        The \tbf{Max Cover} (MC) problem is defined as follows: given a \tit{universe} (or \tit{ground}) set $\mathcal U = [n]$, a collection of sets $C = \{S_1, \ldots, S_m \}$ such that $S_i \subseteq \mathcal U$, and an integer $k \ge 1$, determine the sub-collection $S \subseteq C$ such that $\abs S = k$ that maximizes $\abs{\bigcup_{S_j \in S}{S_j}}$.
+    \end{frameddefn}
+
+    In other words, we are asked to determine the sub-collection of the given $C$ of $k$ sets that covers as many elements of $\mathcal U$ as possible. For instance, given $\mathcal U = [7]$, $S_1 = \{1, 2\}$, $S_2 = \{2, 3\}$, $S_3 = \{3, 4, 5\}$, $S_4 = \{5, 6, 7\}$, an optimal solution would be $S = \{S_1, S_3\}$ because $\abs{S_1 \cup S_3} = \abs{\{1, 2, 3, 4, 5\}} = 5$.
+
+    TODO \todo{bruteforce thing? + interlude}
+
+    \begin{framedalgo}{$\rbk{1 - \frac{1}{e}}$-approximation for MC}
+        Given an instance of MC $(\mathcal U, C, k)$, the algorithm returns a $\rbk{1 - \tfrac{1}{e}}$-approximation for the instance. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{ApproximatedMaxCover}{$\mathcal U$, $C$, $k$}
+                \State $S := \varnothing$
+                \State $T_0 := \varnothing$
+                \For{$i \in [k]$}
+                    \State $\displaystyle S_i \in \argmax_{S_j \in C - S}{\abs{S_j - T_{i - 1}}}$ \Comment{$S_i$ maximizes the number of \curlyquotes{new} elements}
+                    \State $S = S \cup \{S_i\}$
+                    \State $T_i = T_{i - 1} \cup S_i$
+                \EndFor
+                \State \tbf{return} $S$
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
+
+    \begin{framedthm}{}
+        The \textsc{ApproximatedMaxCover} algorithm returns a $\rbk{1 - \tfrac{1}{e}}$-approximation of MC.
+    \end{framedthm}
+
+    \begin{proof}
+        Consider an instance $(\mathcal U, C, k)$ of MC, and an optimal solution $S^*$ to it; moreover, let $\displaystyle X^* := \bigcup_{S_j^* \in S^*}{S_j^*}$ be the set of elements of $\mathcal U$ covered by $S^*$.
+
+        Let $S := \textsc{ApproximatedMaxCover}(\mathcal U, C, k)$; hence, we have that $T_i = \bigcup_{j = 1}^i{S_j}$. Additionally, let $t_i := \abs{T_i}$ and $\mu_i := \abs{X^*} - t_i$. Hence, we have that
+        
+        \begin{itemize}
+            \item $t_0 = \abs{T_0} = \abs{\varnothing} = 0$
+            \item $t_k = \abs{T_k} = \abs{\bigcup_{S_j \in S}{S_j}}$ is the value of $S$
+            \item $\mu_0 = \abs{X^*} - t_0 = \abs{X^*} - 0 = \abs{X^*}$ is the value of the optimal solution $S^*$
+        \end{itemize}
+
+        Therefore, to prove the approximation ratio of the statement it suffices to show that $t_k \ge \rbk{1 - \tfrac{1}{e}} \mu_0$.
+
+        \claim{
+            $\forall i \in [k] \quad \abs{S_i - T_{i - 1}} \ge \dfrac{\mu_{i - 1}}{k}$
+        }{
+            Since $S^*$ is an optimal solution that covers $\abs{X^*}$ elements of $\mathcal U$, there must be at least one set $S_j^* \in S^*$ that covers at least \todo{i'm missing something here} % $\tfrac{\mu_{i - 1}}{k} = \tfrac{}{}$
+        }
+
+        \claim{
+            $\forall i \in [0, k] \quad \mu_i \le \rbk{1 - \dfrac{1}{k}}^i\abs{X^*}$
+        }{
+            We will prove the claim by strong induction on $i$. In particular, if $i = 0$, we have that $\mu_0 = \abs{X^*} \rbk{1 - \dfrac{1}{k}}^0 \abs{X^*} = 1 \cdot \abs{X^*}$, hence the base case trivially holds. Then, assuming the strong inductive hypothesis, we can prove the inductive step as follows \todo{non capisco (TODO dentro allo split)}
+            \begin{equation*}
+                \begin{split}
+                    \mu_{i + 1} &= \abs{X^*} - t_{i + 1} \\
+                                &= \abs{X^*} - \abs{T_{i + 1}} \\
+                                % &= \abs{X^*} - \abs{\bigcup_{j = 1}^{i + 1}{S_j}} \\
+                                &= \abs{X^*} - TODO \\
+                                &= \abs{X^*} - \abs{T_i} - \abs{S_{i + 1} - T_i} \\
+                                &\le \mu_i - \dfrac{\mu_i}{k} \quad \quad (\mathrm{for \ the \ previous \ claim}) \\
+                                &= \rbk{1 - \dfrac{1}{k}}\mu_i \\
+                                &\le \rbk{1 - \dfrac{1}{k}} \rbk{1 - \dfrac{1}{k}}^i \abs{X^*} \quad \quad (\mathrm{by \ strong \ inductive \ hypothesis \ on} \ \mu_i) \\
+                                &= \rbk{1 - \dfrac{1}{k}}^{i + 1}\abs{X^*}
+                \end{split}
+            \end{equation*}
+        }
+
+        Thanks to this claim, recalling that for any $k \ge 1$ it holds that $\rbk{1 - \tfrac{1}{k}}^k \le e^{-1}$, we get $$\mu_k \le \rbk{1 - \dfrac{1}{k}}^k \abs{X^*} \le \dfrac{1}{e} \abs{X^*}$$ Lastly, since $\mu_k = \abs{X^*} - \abs{T_k}$, we get that $$\abs{X^*} - \abs{T_k} = \mu_k \le \dfrac{1}{e} \abs{X^*} \iff \abs{T_k} \ge \rbk{1 - \dfrac{1}{e}} \abs{X^*} \iff t_k \ge \rbk{1 - \dfrac{1}{e}} \mu_0$$
+
     \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
