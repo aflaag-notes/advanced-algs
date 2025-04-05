@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex Advanced Algorithms"] 1743795122.69538 "Advanced Algorithms.aux" "Advanced Algorithms.bbl" "Advanced Algorithms" 1743795268.41784 0
-  "./Advanced_Algorithms-blx.bib" 1743795267.87291 344 a0a945be630c62bba8bb787fb108a695 ""
+["bibtex Advanced Algorithms"] 1743845461.74401 "Advanced Algorithms.aux" "Advanced Algorithms.bbl" "Advanced Algorithms" 1743845470.37661 0
+  "./Advanced_Algorithms-blx.bib" 1743845469.82487 344 a0a945be630c62bba8bb787fb108a695 ""
   "./references.bib" 1743670950.68306 2539 b8300749698888aee6114edee195c130 ""
   "/usr/share/texmf-dist/bibtex/bst/biblatex/biblatex.bst" 1736268207 65484 b7949c47a88ed6dca66ebc7a04577312 ""
-  "Advanced Algorithms.aux" 1743795267.83991 11617 60c064e5a1ffb8aad06350ea831b87f3 "pdflatex"
+  "Advanced Algorithms.aux" 1743845469.79387 12994 accbde668a6080b2c5f1f8aeeabc5950 "pdflatex"
   (generated)
   "Advanced Algorithms.bbl"
   "Advanced Algorithms.blg"
   (rewritten before read)
-["pdflatex"] 1743795260.33765 "Advanced Algorithms.tex" "Advanced Algorithms.pdf" "Advanced Algorithms" 1743795268.41815 0
+["pdflatex"] 1743845461.83296 "Advanced Algorithms.tex" "Advanced Algorithms.pdf" "Advanced Algorithms" 1743845470.37685 0
   "../../packages/Nyx/logo.png" 1710239380.27782 91419 8de48debf770a599a084520c83ce5d80 ""
   "../../packages/Nyx/nyx-frames.sty" 1736630628.60293 4374 f7123ec27baf822b3a4c3ded1b17a699 ""
   "../../packages/Nyx/nyx-intro.sty" 1710239380.27782 3476 d82343305e561945eb7e4f3f9e3a4fe2 ""
@@ -16,6 +16,7 @@
   "../../packages/Nyx/nyx-packages.sty" 1743671815.79002 2182 3464f7366912b49d0c5649e5d742c1e3 ""
   "../../packages/Nyx/nyx-styles.sty" 1743671815.79002 2803 34c24d79e21bda443d59b64c442bbc8d ""
   "../../packages/Nyx/nyx-title.sty" 1710239380.27782 3255 b8b7faa898231df2f4371d144bf17fa9 ""
+  "/home/aless/.texlive/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk" 1695724000.53629 8424 de7e98f7b37fec9a823aec1c4d2c5450 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1736268207 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1736268207 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc" 1736268207 2457 aaabbccba4df2a7f7371410ee4e075a3 ""
@@ -57,6 +58,9 @@
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1736268207 908 2921f8a10601f252058503cc6570e581 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1736268207 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1736268207 940 228d6584342e91276bf566bcf9716b83 ""
+  "/usr/share/texmf-dist/fonts/tfm/public/bbm/bbm12.tfm" 1736268207 556 710091e9bfd7488f1b5667243215698b ""
+  "/usr/share/texmf-dist/fonts/tfm/public/bbm/bbm6.tfm" 1736268207 560 4c5ff0e6c23877f3f630ae9d8ef92c6e ""
+  "/usr/share/texmf-dist/fonts/tfm/public/bbm/bbm8.tfm" 1736268207 560 2e80f8a1cb59527f57d99bb5fccd0f3c ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm" 1736268207 1116 4e6ba9d7914baa6482fd69f67d126380 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1736268207 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm" 1736268207 1332 f817c21a1ba54560425663374f1b651a ""
@@ -296,6 +300,7 @@
   "/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd" 1736268207 2443 790016d75def8d3127df5c216a45abcc ""
   "/usr/share/texmf-dist/tex/latex/base/ulasy.fd" 1736268207 2233 223b021f06a068bcbf05919274832728 ""
   "/usr/share/texmf-dist/tex/latex/bbm-macros/bbm.sty" 1736268207 1644 1e0d54b051369c3f457872824cac219f ""
+  "/usr/share/texmf-dist/tex/latex/bbm-macros/ubbm.fd" 1736268207 2132 62f898e14cad3357133b5cbf57b61c0a ""
   "/usr/share/texmf-dist/tex/latex/biblatex/bbx/alphabetic.bbx" 1736268207 1731 ebd75bda3dd71a7cbd30fde6e3bb6391 ""
   "/usr/share/texmf-dist/tex/latex/biblatex/bbx/standard.bbx" 1736268207 25680 409c3f3d570418bc545e8065bebd0688 ""
   "/usr/share/texmf-dist/tex/latex/biblatex/biblatex.cfg" 1736268207 69 249fa6df04d948e51b6d5c67bea30c42 ""
@@ -422,12 +427,12 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1736268207 41588 b43d3e860a4f94167ee1e725ff526a72 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1740816342.45287 5318467 8236939515598d005dfbcc2e1a40f206 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1740816305 7164983 71fdeec485ab42d987ff940875defec7 ""
-  "Advanced Algorithms.aux" 1743795267.83991 11617 60c064e5a1ffb8aad06350ea831b87f3 "pdflatex"
-  "Advanced Algorithms.bbl" 1743795122.76491 6750 250763ea90bd3dbe34986d6824676f6a "bibtex Advanced Algorithms"
-  "Advanced Algorithms.out" 1743795267.86691 2433 37875273f53ad1ddab5b891b6aa3291e "pdflatex"
-  "Advanced Algorithms.run.xml" 1743795267.87421 2679 136f87874092c3438466a578899a5cd3 "pdflatex"
-  "Advanced Algorithms.tex" 1743795259.48791 100297 82f430ef25ff83cf2457333c91b85ec8 ""
-  "Advanced Algorithms.toc" 1743795267.87421 1340 added28ff09705fa84d6db47a348e85d "pdflatex"
+  "Advanced Algorithms.aux" 1743845469.79387 12994 accbde668a6080b2c5f1f8aeeabc5950 "pdflatex"
+  "Advanced Algorithms.bbl" 1743845461.81787 6750 250763ea90bd3dbe34986d6824676f6a "bibtex Advanced Algorithms"
+  "Advanced Algorithms.out" 1743845469.82087 2836 1608b03877e8835660a23a920c649cd9 "pdflatex"
+  "Advanced Algorithms.run.xml" 1743845469.82749 2679 136f87874092c3438466a578899a5cd3 "pdflatex"
+  "Advanced Algorithms.tex" 1743845451.73987 107504 0483b87d3ac38f11e8e0bea09469daf7 ""
+  "Advanced Algorithms.toc" 1743845469.82749 1517 cb776665c1fe3f2a845678fef743364c "pdflatex"
   (generated)
   "Advanced Algorithms.aux"
   "Advanced Algorithms.log"

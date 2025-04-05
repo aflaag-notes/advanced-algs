@@ -1438,15 +1438,108 @@
         Given a graph $G = (V, E)$, and a set $T \subseteq V$, the \tbf{elementary cut metric of $T$} is a function $\func{d_T}{V \times V}{\R}$ such that $$d_T(x, y) := \soe{ll}{1 & \abs{T \cap \{x, y\}} = 1 \\ 0 & \mathrm{otherwise}}$$
     \end{frameddefn}
 
+    In other words, for a given set of vertices $T$, the elementary cut metric $d_T(x, y)$ is equal to 1 if and only if the edge $xy$ is in $\mathrm{cut}(T)$.
+
     \begin{framedprop}{}
         Any elementary cut metric is a metric.
     \end{framedprop}
 
     \begin{proof}
-        TODO 
+        Given a graph $G$, and a susbset $T \subseteq V(G)$, consider the elementary cut metric $d_T$; we observe that, by definition
+
+        \begin{itemize}
+            \item \tit{non-negativity} is satisfied, because $$\forall x, y \in V(G) \quad d_T(x, y) = 0 \lor d_T(x, y) = 1 \implies d_T(x, y) \ge 0$$
+            \item \tit{simmetry} is satisfied, because $$\forall x, y \in V(G) \quad \abs{T \cap \{x, y\}} = \abs{T \cap \{y, x\}} \implies d_T(x, y) = d_T(y, x)$$
+            \item \tit{self-distance} is satisfied, because $$\forall x \in V(G) \quad \nexists \{x, x\} \in E(G) \implies d_T(x, x) =0$$
+        \end{itemize}
+        
+        hence, we just need to prove that the \tit{triangle inequality} is also satisfied by $d_T$. Therefore, fix three vertices $x, y, z \in V(G)$; we have three cases:
+
+        \begin{itemize}
+            \item if $x, y, z \in T$ then $$0 = d_T(x, y) \le d_T(x, z) + d_T(z, y) = 0 + 0 = 0$$
+            \item if TODO \todo{missing this}
+            \item if $\exists A \in \{T, \overline T\}$ such that \tit{exactly one} of $x, y, z$ lies in $A$, we have three sub-cases:
+                \begin{itemize}
+                    \item if $x \in A$ then $$1 = d_T(x, y) \le d_T(x, z) + d_T(z, y) = 1 + 0 = 1$$
+                    \item if $y \in A$ then $$1 = d_T(x, y) \le d_T(x, z) + d_T(z, y) = 0 + 1 = 1$$
+                    \item if $z \in A$ then $$0 = d_T(x, y) \le d_T(x, z) + d_T(z, y) = 1 + 1 = 2$$
+                \end{itemize}
+        \end{itemize}
     \end{proof}
 
-    TODO \todo{there is a big hole here}
+    We observe that, by definition, for any $T$ it holds that $d_T(x, y) = d_{\overline T}(x, y)$. In fact, if $\{x, y\} \in \mathrm{cut}(T)$ then $\abs{T \cap \{x, y\}} = 1$, meaning that exactly one endpoint of $\{x, y\}$ lies in $T$, which must imply that the other endpont lies in $\overline T$. Vice versa, if $\{x, y\} \notin \mathrm{cut}(x, y)$, then either $x, y \in T$ --- and therefore $x, y \notin \overline T \implies \abs{\overline T \cap \{x, y\}} \neq 1$ --- or $x, y \notin T$ --- and therefore $x, y \in \overline T \implies \abs{\overline T \cap \{x, y\}} \neq 1$ as well.
+
+    But why are we discussing cut metrics in the first place? We are going to show that the concept of elementary cut metric is \tit{deeply} related to the concept of \tit{sparsity} previously introduced. First, consider the following definition.
+
+    \begin{frameddefn}{Cut-ratio}
+        Given a graph $G$, and a subset $T \subseteq V(G)$, the \tbf{cut-ratio} induced by the elementary cut metric $d_T$ is defined as $$\phi(d_T) := \dfrac{\sum_{xy \in E(G)}{d_T(x, y)}}{\sum_{xy \in [V(G)]^2}{d_T(x, y)}}$$
+    \end{frameddefn}
+
+    Through some algebraic manipulation, we see that the cut-ratio of $d_T$ is in fact the sparsity of $T$, as shown in the following proposition.
+
+    \begin{framedprop}[label={sparse prop}]{}
+        Given a graph $G$, and a subset $T \subseteq V(G)$, it holds that $\phi(d_T) = \psi(T)$.
+    \end{framedprop}
+    
+    \begin{proof}
+        We observe that $$\phi(d_T) := \dfrac{\sum_{ij \in E(G)}{d_T(x, y)}}{\sum_{ij \in [V(G)]^2}{d_T(x, y)}} = \dfrac{\sum_{xy \in E(G)}{\1[x \in T \oplus y \in T]}}{\sum_{xy \in [V(G)]^2}{\1[x \in T \oplus y \in T]}} = \dfrac{\mathrm{cut}(S)}{\abs S \cdot \abs{\overline S}} = \psi(T)$$
+    \end{proof}
+
+    We can generalize the concept of elementary cut metric through \tbf{cut metrics}, i.e. linear combinations over a given set of elementary cut metrics, as defined below.
+
+    \begin{frameddefn}{Cut metric}
+        Given a graph $G$, a sequence $d_{T_1}, \ldots, d_{T_k}$ of elementary cut metrics on $G$, and $\lambda_1, \ldots, \lambda_k > 0$ positive real values, a \tbf{cut metric} is a function defined as follows $$\funcmap{d}{V(G) \times V(G)}{\R}{(x, y)}{\sum_{i \in [k]}{\lambda_i d_{T_i}(x, y)}}$$
+    \end{frameddefn}
+
+    As for elementary cut metrics, it can be easily proven that cut metrics are indeed metrics --- we will omit the proof. Moreover, the following proposition shows that the cut-ratio of a cut metric $d$ is lower bounded by the smallest cut-ratio among the elementary cut metrics that define $d$ itself.
+
+    \begin{framedprop}[label={cut metric prop}]{}
+        Given a graph $G$, and a cut metric $d$ defined through $d_{T_1}, \ldots, d_{T_k}$, it holds that $$\phi(d) \ge \min_{j \in [k]}{\phi(d_{T_j})}$$
+    \end{framedprop}
+
+    \begin{proof}
+        First, consider the following property of sums.
+
+        \claim{
+            For any $a_1, \ldots, a_k, b_1, \ldots, b_k > 0$, it holds that $$\dfrac{\sum_{i \in [k]}{a_i}}{\sum_{i \in [k]}{b_i}} \ge \min_{j \in [k]}{\dfrac{a_j}{b_j}}$$
+        }{
+            We observe that $$\dfrac{\sum_{i \in [k]}{a_i}}{\sum_{i \in [k]}{b_i}} = \dfrac{\sum_{i \in [k]}{\tfrac{b_i}{b_i} \cdot a_i}}{\sum_{i \in [k]}{b_i}} \ge \dfrac{\sum_{i \in [k]}{b_i \cdot \min_{j \in [k]}{\tfrac{a_j}{b_j}}}}{\sum_{i \in [k]}{b_i}} = \min_{j \in [k]}{\dfrac{a_j}{b_j}}$$
+        }
+
+        Let $\lambda_1, \ldots, \lambda_k > 0$ be the coefficients that define $d$; then, thanks to the claim, we get
+        \begin{equation*}
+            \begin{split}
+                \phi(d) &= \dfrac{\sum_{xy \in E(G)}{d(x, y)}}{\sum_{xy \in [V(G)]^2}{d(x, y)}} \\
+                        &= \dfrac{\sum_{xy \in E(G)}{\sum_{i \in [k]}{\lambda_i d_{T_i}(x, y)}}}{\sum_{xy \in [V(G)]^2}{\sum_{i \in [k]}{\lambda_i d_{T_i}(x, y)}}} \\
+                        &= \dfrac{\sum_{i \in [k]}{\sum_{xy \in E(G)}{\lambda_i d_{T_i}(x, y)}}}{\sum_{i \in [k]}{\sum_{xy \in [V(G)]^2}{\lambda_i d_{T_i}(x, y)}}} \\
+                        &\ge \min_{j \in [k]}{\dfrac{\sum_{xy \in E(G)}{\lambda_j d_{T_j}(x,y)}}{\sum_{xy \in [V(G)]^2}{\lambda_j d_{T_j}(x, y)}}} \\
+                        &= \min_{j \in [k]}{\dfrac{\sum_{xy \in E(G)}{d_{T_j}(x, y)}}{\sum_{xy \in [V(G)]^2}{d_{T_j}(x,y)}}} \\
+                        &= \min_{j \in [k]}{\phi(d_{T_j})}
+            \end{split}
+        \end{equation*}
+    \end{proof}
+
+    An important consequence of \cref{sparse prop} and \cref{cut metric prop} is the following corollary, which implies that optimizing over \tbf{the sparsest cut} is equivalent to both optimizing over all \tbf{elementary cut metrics} and \tbf{cut metrics} in general.
+
+    \begin{framedcor}{}
+        Given a graph $G$, it holds that $$\min_{T \subseteq V(G)}{\psi(T)} = \min_{T \subseteq V(G)}{\phi(d_T)} = \min_{d \ \mathrm{cut \ metric}}{\phi(d)}$$
+    \end{framedcor}
+
+    TODO \todo{prev cor, sure about last equality?}
+
+    \section{Metrics and isometrical embeddings}
+
+    Up until this point, we have explored cut metrics in great detail. In the following section, we are going to shift our focus towards other types of metrics, in patricular the $\ell_\mu$ type of metrics, which are defined as shown below.
+
+    \begin{frameddefn}{$\ell_\mu$ metrics}
+        Given $\mu \in \R_{\ge 1}$, and a set $S \subseteq \R^d$ for some $d$, the \tbf{$\ell_\mu$ metric} is a function defined as follows $$\ell_\mu(x, y) = \sqrt[\mu]{\sum_{i = 1}^d{\abs{x_i - y_i}^\mu}}$$
+    \end{frameddefn}
+
+    TODO \todo{da finire}
+
+    \section{The Max Cover problem}
+
+    TODO \todo{interlude}
 
     \begin{frameddefn}{Max Cover problem}
         The \tbf{Max Cover} (MC) problem is defined as follows: given a \tit{universe} (or \tit{ground}) set $\mathcal U = [n]$, a collection of sets $C = \{S_1, \ldots, S_m \}$ such that $S_i \subseteq \mathcal U$, and an integer $k \ge 1$, determine the sub-collection $S \subseteq C$ such that $\abs S = k$ that maximizes $\abs{\bigcup_{S_j \in S}{S_j}}$.
