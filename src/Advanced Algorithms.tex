@@ -1392,7 +1392,7 @@
         Given a graph $G = (V, E)$, and a set $\varnothing \subset S \subseteq V$, the \tbf{sparsity} of $S$ is defined as follows: $$\psi (G) := \dfrac{\abs{\mathrm{cut}(S)}}{\abs{S \times \overline S}} = \dfrac{\abs{\mathrm{cut}(S)}}{\abs S \cdot \abs{\overline S}}$$
     \end{frameddefn}
 
-    As for the case of \tit{graph density}, we require $S \neq \varnothing$, but we will omit this detail in the following sections. Moreover, note that by definition of \tit{cut}, we have that for any $S \subseteq V(G)$ it holds that $$0 \le \abs{cut} \le \abs {S \times \overline S} = \abs S \cdot \abs{\overline S}$$ since an edge $e$ is in $\mathrm{cut}(S)$ if and only if $\abs {S \cap e} = 1$, hence the cartesian product $S \times \overline S$ represents the edges that have exactly one endpoint in $S$. Therefore, we have that $0 \le \psi(S) \le 1$, and in particular
+    As for the case of \tit{graph density}, we require $S \neq \varnothing$, but we will omit this detail in the following sections. Moreover, note that by definition of \tit{cut}, we have that for any $S \subseteq V(G)$ it holds that $$0 \le \abs{\mathrm{cut}(S)} \le \abs {S \times \overline S} = \abs S \cdot \abs{\overline S}$$ since an edge $e$ is in $\mathrm{cut}(S)$ if and only if $\abs {S \cap e} = 1$, hence the cartesian product $S \times \overline S$ represents the edges that have exactly one endpoint in $S$. Therefore, we have that $0 \le \psi(S) \le 1$, and in particular
 
     \begin{itemize}
         \item $\psi(S) = 0 \implies \abs{\mathrm{cut}(S)} = 0$ which happens if $S$ is \tit{disconnected} from $\overline S$
@@ -1405,8 +1405,6 @@
         The \tbf{Sparsest Cut} (SC) problem is defined as follows: given a graph $G = (V, E)$, determine the subset of vertices that minimizes its sparsity. In other words, the problems asks to finde a set $S^*$ in $$S^* \in \argmin_{S \subseteq V}{\psi(S)}$$
     \end{frameddefn}
 
-    TODO \todo{intuition}
-
     In order to reason about SC, we are going to introduce the following type of graph, invented by \textcite{erdos} in 1959.
 
     \begin{frameddefn}{Erdős-Rényi random graph}
@@ -1417,7 +1415,9 @@
 
     The Maximum Cut problem --- which we discussed in \cref{maxcut} --- can be reduced to SC, implying that the latter is \NPHard as well. Nevertheless, the problem can be approximated through the \tbf{Leighton-Rao algorithm} \cite{leightonrao}, which relies on LP relaxation and a series of reduction steps. In particular, its integrality gap is bounded using \tit{geometric arguments}, therefore in the following sections we will focus on \tbf{metric geometry} in order to establish this result.
 
-    \section{Cut metrics}
+    \section{Metrics}
+
+    \subsection{Cut metrics}
 
     A \tbf{metric} (or \tit{distance function}) provides a way to quantify how far apart objects are within a given space, formalizing the concept of \tit{distance}. In particular, in geometry we have the following definition.
 
@@ -1488,7 +1488,7 @@
     We can generalize the concept of elementary cut metric through \tbf{cut metrics}, i.e. linear combinations over a given set of elementary cut metrics, as defined below.
 
     \begin{frameddefn}{Cut metric}
-        Given a graph $G$, a sequence $d_{T_1}, \ldots, d_{T_k}$ of elementary cut metrics on $G$, and $\lambda_1, \ldots, \lambda_k > 0$ positive real values, a \tbf{cut metric} is a function defined as follows $$\funcmap{d}{V(G) \times V(G)}{\R}{(x, y)}{\sum_{i \in [k]}{\lambda_i d_{T_i}(x, y)}}$$
+        Given a graph $G$, a sequence $d_{T_1}, \ldots, d_{T_k}$ of elementary cut metrics on $G$, and $k$ positive real values $\lambda_1, \ldots, \lambda_k > 0$, a \tbf{cut metric} is a function defined as follows $$\funcmap{d}{V(G) \times V(G)}{\R}{(x, y)}{\sum_{i \in [k]}{\lambda_i d_{T_i}(x, y)}}$$
     \end{frameddefn}
 
     As for elementary cut metrics, it can be easily proven that cut metrics are indeed metrics --- we will omit the proof. Moreover, the following proposition shows that the cut-ratio of a cut metric $d$ is lower bounded by the smallest cut-ratio among the elementary cut metrics that define $d$ itself.
@@ -1527,7 +1527,7 @@
 
     TODO \todo{prev cor, sure about last equality?}
 
-    \section{Metrics and isometrical embeddings}
+    \subsection{Metrics and isometrical embeddings}
 
     Up until this point, we have explored cut metrics in great detail. In the following section, we are going to shift our focus towards other types of metrics, in patricular the $\ell_\mu$ type of metrics, which are defined as shown below.
 

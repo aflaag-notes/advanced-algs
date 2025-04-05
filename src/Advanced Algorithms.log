@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.3.1)  5 APR 2025 11:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.3.1)  5 APR 2025 11:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1594,7 +1594,7 @@ Package hyperref Info: Link coloring ON on input line 75.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<../../packages/Nyx/logo.png, id=71, 803.0pt x 301.125pt>
+<../../packages/Nyx/logo.png, id=75, 803.0pt x 301.125pt>
 File: ../../packages/Nyx/logo.png Graphic file (type png)
 <use ../../packages/Nyx/logo.png>
 Package pdftex.def Info: ../../packages/Nyx/logo.png  used on input line 76.
@@ -3281,24 +3281,15 @@ Package cleveref Info: loaded `english' language definitions on input line 1407.
 [38
 
 ]
-Overfull \hbox (2.00786pt too wide) in paragraph at lines 1408--1408
-[][][]\T1/cmr/m/n/6 intuition[]  
- []
-
-
-Overfull \hbox (2.00786pt too wide) in paragraph at lines 1408--1408
-[][][]\T1/cmr/m/n/6 intuition[]  
- []
-
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1412.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1413.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1413.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1413.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1413.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1413.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1413.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1416.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1416.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1410.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1411.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1411.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1411.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1411.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1411.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1411.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1414.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1414.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1424.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1425.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1425.
@@ -3308,6 +3299,7 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1430.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1431.
 Package cleveref Info: loaded `english' language definitions on input line 1434.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -3432,11 +3424,7 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1491.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1491.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1491.
-
-Overfull \hbox (8.16583pt too wide) in paragraph at lines 1491--1491
-\T1/cmr/m/n/12 Given a graph $\OML/cmm/m/it/12 G$\T1/cmr/m/n/12 , a se-quence $\OML/cmm/m/it/12 d[]; [] ; d[]$ \T1/cmr/m/n/12 of el-e-men-tary cut met-rics on $\OML/cmm/m/it/12 G$\T1/cmr/m/n/12 , and $\OML/cmm/m/it/12 ^^U[]; [] ; ^^U[] >
- []
-
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1491.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1491.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1494.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1494.
@@ -3775,25 +3763,25 @@ L3 programming layer <2024-02-20>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `"Advanced Algorithms".out' has not changed.
-(rerunfilecheck)             Checksum: 1608B03877E8835660A23A920C649CD9;2836.
+(rerunfilecheck)             Checksum: 74B6BEA3B76428B7AE5E951EF8419C3E;2940.
 Package logreq Info: Writing requests to '"Advanced Algorithms".run.xml'.
 \openout1 = `"Advanced Algorithms.run.xml"'.
 
  ) 
 Here is how much of TeX's memory you used:
- 75077 strings out of 476024
- 1826256 string characters out of 5792397
- 3025871 words of memory out of 5000000
- 96009 multiletter control sequences out of 15000+600000
+ 75070 strings out of 476024
+ 1826096 string characters out of 5792397
+ 3024726 words of memory out of 5000000
+ 96002 multiletter control sequences out of 15000+600000
  592513 words of font info for 117 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  119i,21n,123p,1910b,2231s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/aless/.texlive/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
 </usr/share/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb></usr/share/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb>
-Output written on "Advanced Algorithms.pdf" (48 pages, 705497 bytes).
+Output written on "Advanced Algorithms.pdf" (48 pages, 706246 bytes).
 PDF statistics:
- 693 PDF objects out of 1000 (max. 8388607)
- 568 compressed objects within 6 object streams
+ 698 PDF objects out of 1000 (max. 8388607)
+ 573 compressed objects within 6 object streams
  178 named destinations out of 1000 (max. 500000)
- 152 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 160 words of extra memory for PDF output out of 10000 (max. 10000000)
 
