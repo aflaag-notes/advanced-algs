@@ -12,7 +12,7 @@
 
 \def\coursePrerequisites{\begin{itemize} \item Progettazione degli Algoritmi \end{itemize}}
 
-\def\book{TODO}
+% \def\book{TODO}
 
 % \def\authorName{Simone Bianco}
 % \def\email{bianco.simone@outlook.it}
@@ -1309,7 +1309,7 @@
 
     TODO \todo{missing last part}
 
-    Even though this approach yields $\tfrac{1}{2}$-approximation algorithm that runs in only $n$ iterations, for very large graphs this is still too slow. Is there a way to improve our algorithm? Observe how \textsc{Charikar} works: at each iteration, the algorithm removes a vertex of minimum degree of the current graph. What if we remove \tit{all} the vertices of minimum degree in the graph all at once? \todo{controlla con chatgpt grammatica di sto par}
+    Even though this approach yields a $\tfrac{1}{2}$-approximation algorithm that runs in only $n$ iterations, it may still be too slow for very large graphs. Can we improve the algorithm further? Consider how \textsc{Charikar} algorithm works: at each iteration, it removes the vertex with the minimum degree from the current graph. What if, instead of removing just one such vertex per iteration, we remove all vertices of minimum degree \tit{at once}?
 
     \begin{framedalgo}{Charikar's algorithm (improved version)}
         Given an undirected graph $G = (V, E)$, the algorithm returns a $\tfrac{1}{2}$-approximation solution of DS on $G$. \\
@@ -1324,7 +1324,7 @@
                     \State $\displaystyle A_i := \argmin_{u \in S_i}{\deg_{G[S_i]}(u)}$
                     \State $S_{i + 1} := S_i - A_i$
                 \EndWhile
-                \State \textbf{return} $\displaystyle S^* \in \argmax_{i \in N}{\rho(G[S_i])}$
+                \State \textbf{return} $\displaystyle S^* \in \argmax_{i \in \N}{\rho(G[S_i])}$
             \EndFunction
         \end{algorithmic}
     \end{framedalgo}
@@ -1363,7 +1363,7 @@
     Consider a path $P_n$; observe that $\textsc{CharikarImproved}(P_n)$ would require $\ceil{\tfrac{n}{2}}$ iteration to remove all the vertices from the initial graph, because it would remove at most (for the case when $n$ is odd) 2 vertices per iteration --- i.e. the endpoints. What happens if we replace the definition of $A_i$ as follows? $$A_i := \cbk{v \in S_i \mid \deg_{G[S_i]}(v) \le \avg_{u \in S_i}{\deg_{G[S_i]}(u)}}$$ In the case of $P_n$, \textsc{CharikarImproved} would still fail at processing the graph all at once, because the average degree is \tit{less than} 2. Nonetheless, this problem suggest the following approach.
 
     \begin{framedalgo}{Charikar's algorithm ($\varepsilon$ version)}
-        Given an undirected graph $G = (V, E)$, the algorithm returns a $\tfrac{1}{2}$-approximation solution of DS on $G$. \\
+        Given an undirected graph $G = (V, E)$, the algorithm returns a $\tfrac{1}{2(1 + \varepsilon)}$-approximation solution of DS on $G$. \\
         \hrule
 
         \quad
@@ -1375,12 +1375,26 @@
                     \State $\displaystyle A_i := \cbk{v \in S_i \mid \deg_{G[S_i]}(v) \le (1 + \varepsilon)\avg_{u \in S_i}{\deg_{G[S_i]}(u)}}$
                     \State $S_{i + 1} := S_i - A_i$
                 \EndWhile
-                \State \textbf{return} $\displaystyle S^* \in \argmax_{i \in N}{\rho(G[S_i])}$
+                \State \textbf{return} $\displaystyle S^* \in \argmax_{i \in \N}{\rho(G[S_i])}$
             \EndFunction
         \end{algorithmic}
     \end{framedalgo}
 
-    TODO \todo{missing a lot}
+    \begin{framedthm}{$\textsc{Charikar}_\varepsilon$'s approximation ratio}
+        Given a graph $G$, and $S := \textsc{Charikar}_\varepsilon$(G), let $S^*$ be an optimal solution to DS on $G$. Then, for all $\varepsilon > 0$ it holds that $\abs S \ge \tfrac{1}{2(1 + \varepsilon)} \abs{S^*}$. Moreover, the algorithm runs in at most $O(\log_{1 + \varepsilon}(n))$ iterations.
+    \end{framedthm}
+
+    \begin{proof}
+        Consider the optimal solution $S^*$; note that $S^* \neq \varnothing$ because $\rho(G[\varnothing])$ is not defined, and if $\abs{S^*} = 1$, then $\abs{E(G[S^*])} = 0 \implies \rho(G[S^*]) = 0$ meaning that \todo{non ho capito}. Hence, we may assume that $\abs{S^*} \ge 2$.
+        
+        \claim{
+            $\forall v \in S^* \quad \deg_{G[S^*]}(v) \ge \rho(G[S^*])$
+        }{
+            Fix a vertex $v \in S^*$. By optimality of $S$, we know that $\rho(G[S^*]) \ge \rho(G[S^* - \{v\}])$. Moreover, note that $$\rho(G[S^* - \{v\}]) = \dfrac{\abs{E(G[S^* - \{v\}])}}{\abs{S^* - \{v\}}} = \dfrac{\abs{E(G[S^*])} - \deg_{G[S^*]}(v)}{\abs{S^*} - 1}$$ Therefore, we have that $$\rho(G[S^*]) \ge \rho(G[S^* - \{v\}]) \iff \dfrac{\abs{E(G[S^*])}}{\abs{S^*}} \ge \dfrac{\abs{E(G[S^*])} - \deg_{G[S^*]}(v)}{\abs{S^*} - 1}$$ and the claim follows by solving the inequality.
+            
+            TODO \todo{da finire}
+        }
+    \end{proof}
 
     \chapter{Metric geometry}
 
@@ -1525,17 +1539,61 @@
         Given a graph $G$, it holds that $$\min_{T \subseteq V(G)}{\psi(T)} = \min_{T \subseteq V(G)}{\phi(d_T)} = \min_{d \ \mathrm{cut \ metric}}{\phi(d)}$$
     \end{framedcor}
 
-    TODO \todo{prev cor, sure about last equality?}
+    We observe that the last equality derives from the fact that elementary cut metrics are \tit{trivial} cut metrics.
 
-    \subsection{Metrics and isometrical embeddings}
+    \subsection{The $\ell_1$ metric}
 
     Up until this point, we have explored cut metrics in great detail. In the following section, we are going to shift our focus towards other types of metrics, in patricular the $\ell_\mu$ type of metrics, which are defined as shown below.
 
     \begin{frameddefn}{$\ell_\mu$ metrics}
-        Given $\mu \in \R_{\ge 1}$, and a set $S \subseteq \R^d$ for some $d$, the \tbf{$\ell_\mu$ metric} is a function defined as follows $$\ell_\mu(x, y) = \sqrt[\mu]{\sum_{i = 1}^d{\abs{x_i - y_i}^\mu}}$$
+        Given $\mu \in \R_{\ge 1}$, and a set $S \subseteq \R^d$ for some $d$, the \tbf{$\ell_\mu$ metric} is a function defined as follows $$\ell_\mu(x, y) = \sqrt[\mu]{\sum_{i = 1}^d{\abs{x_i - y_i}^\mu}}$$ We will denote $\ell_\mu(x, y)$ also as $\abs{x - y}_{\ell_\mu}$
     \end{frameddefn}
 
-    TODO \todo{da finire}
+    In particular, we are interested in the $\ell_1$ metric. In fact, consider the following definition.
+
+    \begin{frameddefn}{Isometrical embedding}
+        Consider two metrics $\func{d_1}{A}{B}$ and $\func{d_2}{X}{Y}$; we say that $d_1$ is \tbf{isometricaly embedded} into $d_2$ if there is a function $\func{f}{S}{X}$ such that $$d_1(x, y) = d_2(f(x), f(y))$$
+    \end{frameddefn}
+
+    TODO \todo{prev def non ha senso}
+
+    \begin{framedlem}{}
+        Any cut metric defined over $k$ cuts is isometrically embedded into $\ell_1$ over $\R^k$.
+    \end{framedlem}
+
+    \begin{proof}
+        Let $d$ be a cut metric defined over $T_1, \ldots, T_k$, i.e. $d(x, y) = \sum_{i \in [k]}{\lambda_i d_{T_i}(x, y)}$ for some $\lambda_1, \ldots, \lambda_k > 0$. For each $u \in V(G)$, let $\overline{x_u} \in \R^k$ be a vector defined as follows: $$\overline{x_u}(i) := \soe{ll}{\lambda_i & u \in T_i \\ 0 & u \notin T_i}$$ where $\overline{x_u}(i)$ is the $i$-th component of $\overline{x_u}$.
+
+        Now, consider the function $$\funcmap{f}{V(G)}{\R^k}{u}{\overline{x_u}}$$ Now, fix $i \in [k]$, and two vertices $u, v \in V(G)$; we observe that
+        
+        \begin{itemize}
+            \item $\abs{\{u,v\} \cap T_i} = 1 \implies (u \in T_i \land v \notin T_i) \lor (u \notin T_i \land v \in T_i)$; hence, we have that $$u \in T_i \land v \notin T_i \implies \overline{x_u}(i) = \lambda_i \land \overline{x_v}(i)= 0 \implies \abs{\overline{x_u}(i) - \overline{x_v}(i)} = 1$$ and also that $$u \notin T_i \land v \in T_i \implies \overline{x_u}(i) = 0 \land \overline{x_v} (i) = \lambda_i \implies \abs{\overline{x_u}(i) - \overline{x_v}(i)} = 1$$
+            \item $\abs{\{u, v\} \cap T_i} = 0 \implies u, v \in T_i \lor u, v \notin T_i$; hence, we have that $$u, v \in T_i \implies \overline{x_u}(i) = \overline{x_v}(i) = \lambda_i \implies \abs{\overline{x_u}(i) - \overline{x_v}}(i) = 0$$ and also that $$u, v \notin T_i \implies \overline{x_u}(i) = \overline{x_v}(i) = 0 \implies \abs{\overline{x_u}(i) - \overline{x_v}(i)} = 0$$
+        \end{itemize}
+
+        This means that for any $i \in [k]$ and $u, v \in V(G)$, it holds that $$\1 \sbk{\abs{\{u, v\} \cap T_i}} = \abs{\overline{x_u}(i)- \overline{x_v}(i)}$$ Therefore, we obtain the following
+        \begin{equation*}
+            \begin{split}
+                d(u, v) &= \sum_{i \in [k]}{\lambda_i d_{T_i}(u, v)} \\
+                        &= \sum_{i \in [k]}{\lambda_i \cdot \1 \sbk{\abs{\{u, v\} \cap T_i} = 1}} \\
+                        &= \sum_{i \in [k]}{\abs{\overline{x_u}(i) - \overline{x_v}(i)}} \\
+                        &= \abs{\overline{x_u} - \overline{x_v}}_{\ell_1} \\
+            \end{split}
+        \end{equation*}
+        meaning that $d$ is indeed isometrically embedded into $\ell_1$ over $\R^k$.
+    \end{proof}
+
+    \begin{framedlem}{}
+        For any $d$, and any set $X \underset{fin}{\subseteq} \R^d$, the $\ell_1$ metric over $X$ is isometrically embedded into a cut metric defined over $k = d \cdot(\abs x - 1)$ cuts.
+    \end{framedlem}
+
+    \begin{proof}
+        TODO
+    \end{proof}
+
+    \chapter{TODO}
+
+    TODO \todo{introduction}
 
     \section{The Max Cover problem}
 
@@ -1555,7 +1613,7 @@
 
         \quad
         \begin{algorithmic}[1]
-            \Function{ApproximatedMaxCover}{$\mathcal U$, $C$, $k$}
+            \Function{ApproxMaxCover}{$\mathcal U$, $C$, $k$}
                 \State $S := \varnothing$
                 \State $T_0 := \varnothing$
                 \For{$i \in [k]$}
@@ -1568,14 +1626,14 @@
         \end{algorithmic}
     \end{framedalgo}
 
-    \begin{framedthm}{}
-        The \textsc{ApproximatedMaxCover} algorithm returns a $\rbk{1 - \tfrac{1}{e}}$-approximation of MC.
+    \begin{framedthm}{\textsc{ApproxMaxCover}'s approximation ratio}
+        Given an instance $(U, C, k)$ of MC, and an optimal solution $S^*$ to MC on $(\mathcal U, C, k)$, let $S := \textsc{ApproxMaxCover}(\mathcal U, C, k)$. Then, it holds that $$\abs{\bigcup_{S_j \in S}} \ge \rbk{1 - \dfrac{1}{e}}\abs{\bigcup_{S_j \in S^*}{S_j}}$$
     \end{framedthm}
 
     \begin{proof}
         Consider an instance $(\mathcal U, C, k)$ of MC, and an optimal solution $S^*$ to it; moreover, let $\displaystyle X^* := \bigcup_{S_j^* \in S^*}{S_j^*}$ be the set of elements of $\mathcal U$ covered by $S^*$.
 
-        Let $S := \textsc{ApproximatedMaxCover}(\mathcal U, C, k)$; hence, we have that $T_i = \bigcup_{j = 1}^i{S_j}$. Additionally, let $t_i := \abs{T_i}$ and $\mu_i := \abs{X^*} - t_i$. Hence, we have that
+        Let $S := \textsc{ApproxMaxCover}(\mathcal U, C, k)$; hence, we have that $T_i = \bigcup_{j = 1}^i{S_j}$. Additionally, let $t_i := \abs{T_i}$ and $\mu_i := \abs{X^*} - t_i$. Hence, we have that
         
         \begin{itemize}
             \item $t_0 = \abs{T_0} = \abs{\varnothing} = 0$
@@ -1594,7 +1652,7 @@
         \claim{
             $\forall i \in [0, k] \quad \mu_i \le \rbk{1 - \dfrac{1}{k}}^i\abs{X^*}$
         }{
-            We will prove the claim by strong induction on $i$. In particular, if $i = 0$, we have that $\mu_0 = \abs{X^*} \rbk{1 - \dfrac{1}{k}}^0 \abs{X^*} = 1 \cdot \abs{X^*}$, hence the base case trivially holds. Then, assuming the strong inductive hypothesis, we can prove the inductive step as follows \todo{non capisco (TODO dentro allo split)}
+            We will prove the claim by induction on $i$. In particular, if $i = 0$, we have that $$\mu_0 = \abs{X^*} \rbk{1 - \dfrac{1}{k}}^0 \abs{X^*} = 1 \cdot \abs{X^*}$$ hence the base case trivially holds. Then, assuming the inductive hypothesis, we can prove the inductive step as follows \todo{non capisco (TODO dentro allo split)}
             \begin{equation*}
                 \begin{split}
                     \mu_{i + 1} &= \abs{X^*} - t_{i + 1} \\
@@ -1604,7 +1662,7 @@
                                 &= \abs{X^*} - \abs{T_i} - \abs{S_{i + 1} - T_i} \\
                                 &\le \mu_i - \dfrac{\mu_i}{k} \quad \quad (\mathrm{for \ the \ previous \ claim}) \\
                                 &= \rbk{1 - \dfrac{1}{k}}\mu_i \\
-                                &\le \rbk{1 - \dfrac{1}{k}} \rbk{1 - \dfrac{1}{k}}^i \abs{X^*} \quad \quad (\mathrm{by \ strong \ inductive \ hypothesis \ on} \ \mu_i) \\
+                                &\le \rbk{1 - \dfrac{1}{k}} \rbk{1 - \dfrac{1}{k}}^i \abs{X^*} \quad \quad (\mathrm{by \ inductive \ hypothesis \ on} \ \mu_i) \\
                                 &= \rbk{1 - \dfrac{1}{k}}^{i + 1}\abs{X^*}
                 \end{split}
             \end{equation*}
