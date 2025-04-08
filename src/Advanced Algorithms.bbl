@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.2 $
+% $ biblatex bbl format version 3.3 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -16,8 +16,8 @@
   {}
 \endgroup
 
-\datalist[entry]{anyt/global//global/global}
-  \entry{maxcut}{article}{}
+\datalist[entry]{anyt/global//global/global/global}
+  \entry{maxcut}{article}{}{}
     \name{author}{5}{}{%
       {{hash=AS}{%
          family={Arora},
@@ -76,7 +76,7 @@
     \field{year}{1998}
   \endentry
 
-  \entry{charikar}{inbook}{}
+  \entry{charikar}{inbook}{}{}
     \name{author}{1}{}{%
       {{hash=CM}{%
          family={Charikar},
@@ -109,7 +109,7 @@
     \field{year}{2000}
   \endentry
 
-  \entry{erdos}{article}{}
+  \entry{erdos}{article}{}{}
     \name{author}{2}{}{%
       {{hash=EP}{%
          family={Erdős},
@@ -150,7 +150,7 @@
     \field{year}{2022}
   \endentry
 
-  \entry{karp}{inbook}{}
+  \entry{karp}{inbook}{}{}
     \name{author}{1}{}{%
       {{hash=KRM}{%
          family={Karp},
@@ -182,7 +182,7 @@
     \field{year}{1972}
   \endentry
 
-  \entry{ig_sc}{article}{}
+  \entry{ig_sc}{article}{}{}
     \name{author}{1}{}{%
       {{hash=LL}{%
          family={Lovász},
@@ -216,7 +216,7 @@
     \field{year}{1975}
   \endentry
 
-  \entry{leightonrao}{inproceedings}{}
+  \entry{leightonrao}{inproceedings}{}{}
     \name{author}{2}{}{%
       {{hash=LT}{%
          family={Leighton},

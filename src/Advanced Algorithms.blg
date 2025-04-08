@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2024/Arch Linux)
+This is BibTeX, Version 0.99d (TeX Live 2026/dev/Arch Linux)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Advanced Algorithms.aux
 The style file: biblatex.bst
@@ -19,35 +19,35 @@ Reallocated singl_function (elt_size=8) to 100 items from 50.
 Reallocated singl_function (elt_size=8) to 100 items from 50.
 Database file #1: Advanced_Algorithms-blx.bib
 Database file #2: ./references.bib
-Biblatex version: 3.19
+Biblatex version: 3.20
 Reallocated wiz_functions (elt_size=8) to 9000 items from 6000.
 Reallocated singl_function (elt_size=8) to 100 items from 50.
 You've used 7 entries,
-            6399 wiz_defined-function locations,
-            1264 strings with 10488 characters,
-and the built_in function-call counts, 47039 in all, are:
+            6402 wiz_defined-function locations,
+            1264 strings with 10495 characters,
+and the built_in function-call counts, 47069 in all, are:
 = -- 3524
 > -- 891
 < -- 365
 + -- 1287
 - -- 303
-* -- 3105
+* -- 3111
 := -- 4883
 add.period$ -- 0
 call.type$ -- 7
 change.case$ -- 232
 chr.to.int$ -- 56
 cite$ -- 12
-duplicate$ -- 5053
-empty$ -- 4045
+duplicate$ -- 5059
+empty$ -- 4051
 format.name$ -- 415
-if$ -- 9819
+if$ -- 9825
 int.to.chr$ -- 0
 int.to.str$ -- 18
 missing$ -- 0
 newline$ -- 250
 num.names$ -- 436
-pop$ -- 2139
+pop$ -- 2145
 preamble$ -- 1
 purify$ -- 260
 quote$ -- 0

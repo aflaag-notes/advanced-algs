@@ -1,47 +1,47 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.3.1)  7 APR 2025 12:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.4.8)  8 APR 2025 19:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
 **"Advanced Algorithms.tex"
 (./Advanced Algorithms.tex
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-02-20>
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
 (/usr/share/texmf-dist/tex/latex/base/report.cls
-Document Class: report 2023/05/17 v1.4n Standard LaTeX document class
+Document Class: report 2024/06/29 v1.4n Standard LaTeX document class
 (/usr/share/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+File: size12.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count188
-\c@chapter=\count189
-\c@section=\count190
-\c@subsection=\count191
-\c@subsubsection=\count192
-\c@paragraph=\count193
-\c@subparagraph=\count194
-\c@figure=\count195
-\c@table=\count196
-\abovecaptionskip=\skip48
-\belowcaptionskip=\skip49
-\bibindent=\dimen140
+\c@part=\count196
+\c@chapter=\count197
+\c@section=\count198
+\c@subsection=\count199
+\c@subsubsection=\count266
+\c@paragraph=\count267
+\c@subparagraph=\count268
+\c@figure=\count269
+\c@table=\count270
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen141
 ) (/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
  (/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 274.
  (/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
 ) (/usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx)
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
-Package xcolor Info: Model `RGB' extended on input line 1366.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 ) (/usr/share/texmf-dist/tex/latex/graphics/dvipsnam.def
 File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 ) (../../packages/Nyx/nyx-packages.sty
@@ -51,129 +51,135 @@ LaTeX Warning: You have requested package `../../packages/Nyx/nyx-packages',
 
 Package: nyx-packages Nyx Required Packages
 (/usr/share/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2021/02/14 v1.3d Input encoding file
+Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks17
 \inpenc@posthook=\toks18
 ) (/usr/share/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 ) (/usr/share/texmf-dist/tex/latex/eurosym/eurosym.sty
 Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
-\@eurobox=\box51
+\@eurobox=\box52
 ) (/usr/share/texmf-dist/tex/latex/titlesec/titlesec.sty
-Package: titlesec 2023/10/27 v2.16 Sectioning titles
-\ttl@box=\box52
-\beforetitleunit=\skip50
-\aftertitleunit=\skip51
-\ttl@plus=\dimen141
-\ttl@minus=\dimen142
+Package: titlesec 2025/01/04 v2.17 Sectioning titles
+\ttl@box=\box53
+\beforetitleunit=\skip51
+\aftertitleunit=\skip52
+\ttl@plus=\dimen142
+\ttl@minus=\dimen143
 \ttl@toksa=\toks19
-\titlewidth=\dimen143
-\titlewidthlast=\dimen144
-\titlewidthfirst=\dimen145
+\titlewidth=\dimen144
+\titlewidthlast=\dimen145
+\titlewidthfirst=\dimen146
 ) (/usr/share/texmf-dist/tex/latex/blindtext/blindtext.sty
 Package: blindtext 2012/01/06 V2.0 blindtext-Package
  (/usr/share/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
-\c@blindtext=\count197
-\c@Blindtext=\count198
-\c@blind@countparstart=\count199
-\blind@countxx=\count266
-\blindtext@numBlindtext=\count267
-\blind@countyy=\count268
-\c@blindlist=\count269
-\c@blindlistlevel=\count270
-\c@blindlist@level=\count271
-\blind@listitem=\count272
-\c@blind@listcount=\count273
-\c@blind@levelcount=\count274
-\blind@mathformula=\count275
-\blind@Mathformula=\count276
-\c@blind@randomcount=\count277
-\c@blind@randommax=\count278
-\c@blind@pangramcount=\count279
-\c@blind@pangrammax=\count280
+\c@blindtext=\count271
+\c@Blindtext=\count272
+\c@blind@countparstart=\count273
+\blind@countxx=\count274
+\blindtext@numBlindtext=\count275
+\blind@countyy=\count276
+\c@blindlist=\count277
+\c@blindlistlevel=\count278
+\c@blindlist@level=\count279
+\blind@listitem=\count280
+\c@blind@listcount=\count281
+\c@blind@levelcount=\count282
+\blind@mathformula=\count283
+\blind@Mathformula=\count284
+\c@blind@randomcount=\count285
+\c@blind@randommax=\count286
+\c@blind@pangramcount=\count287
+\c@blind@pangrammax=\count288
 ) (/usr/share/texmf-dist/tex/latex/listings/listings.sty (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks20
 )
-\lst@mode=\count281
-\lst@gtempboxa=\box53
+\lst@mode=\count289
+\lst@gtempboxa=\box54
 \lst@token=\toks21
-\lst@length=\count282
-\lst@currlwidth=\dimen146
-\lst@column=\count283
-\lst@pos=\count284
-\lst@lostspace=\dimen147
-\lst@width=\dimen148
-\lst@newlines=\count285
-\lst@lineno=\count286
-\lst@maxwidth=\dimen149
+\lst@length=\count290
+\lst@currlwidth=\dimen147
+\lst@column=\count291
+\lst@pos=\count292
+\lst@lostspace=\dimen148
+\lst@width=\dimen149
+\lst@newlines=\count293
+\lst@lineno=\count294
+\lst@maxwidth=\dimen150
  (/usr/share/texmf-dist/tex/latex/listings/lstpatch.sty
-File: lstpatch.sty 2024/02/21 1.10 (Carsten Heinz)
+File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
 ) (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2024/02/21 1.10 (Carsten Heinz)
-\c@lstnumber=\count287
-\lst@skipnumbers=\count288
-\lst@framebox=\box54
+File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
+\c@lstnumber=\count295
+\lst@skipnumbers=\count296
+\lst@framebox=\box55
 ) (/usr/share/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2024/02/21 1.10 listings configuration
+File: listings.cfg 2024/09/23 1.10c listings configuration
 ))
-Package: listings 2024/02/21 1.10 (Carsten Heinz)
+Package: listings 2024/09/23 1.10c (Carsten Heinz)
  (/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
  (/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
  (/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
+Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
-\Gm@cnth=\count289
-\Gm@cntv=\count290
-\c@Gm@tempcnt=\count291
-\Gm@bindingoffset=\dimen150
-\Gm@wd@mp=\dimen151
-\Gm@odd@mp=\dimen152
-\Gm@even@mp=\dimen153
-\Gm@layoutwidth=\dimen154
-\Gm@layoutheight=\dimen155
-\Gm@layouthoffset=\dimen156
-\Gm@layoutvoffset=\dimen157
+\Gm@cnth=\count297
+\Gm@cntv=\count298
+\c@Gm@tempcnt=\count299
+\Gm@bindingoffset=\dimen151
+\Gm@wd@mp=\dimen152
+\Gm@odd@mp=\dimen153
+\Gm@even@mp=\dimen154
+\Gm@layoutwidth=\dimen155
+\Gm@layoutheight=\dimen156
+\Gm@layouthoffset=\dimen157
+\Gm@layoutvoffset=\dimen158
 \Gm@dimlist=\toks22
 ) (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
  (/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
  (/usr/share/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 ) (/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 107.
+Package graphics Info: Driver file: pdftex.def on input line 106.
 )
-\Gin@req@height=\dimen158
-\Gin@req@width=\dimen159
+\Gin@req@height=\dimen159
+\Gin@req@width=\dimen160
 ) (/usr/share/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
-\f@nch@headwidth=\skip52
-\f@nch@O@elh=\skip53
-\f@nch@O@erh=\skip54
-\f@nch@O@olh=\skip55
-\f@nch@O@orh=\skip56
-\f@nch@O@elf=\skip57
-\f@nch@O@erf=\skip58
-\f@nch@O@olf=\skip59
-\f@nch@O@orf=\skip60
+Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+\f@nch@headwidth=\skip53
+\f@nch@offset@elh=\skip54
+\f@nch@offset@erh=\skip55
+\f@nch@offset@olh=\skip56
+\f@nch@offset@orh=\skip57
+\f@nch@offset@elf=\skip58
+\f@nch@offset@erf=\skip59
+\f@nch@offset@olf=\skip60
+\f@nch@offset@orf=\skip61
+\f@nch@height=\skip62
+\f@nch@footalignment=\skip63
+\f@nch@widthL=\skip64
+\f@nch@widthC=\skip65
+\f@nch@widthR=\skip66
+\@temptokenb=\toks23
 ) (/usr/share/texmf-dist/tex/latex/footmisc/footmisc.sty
-Package: footmisc 2023/07/05 v6.0f a miscellany of footnote facilities
-\FN@temptoken=\toks23
-\footnotemargin=\dimen160
-\@outputbox@depth=\dimen161
-Package footmisc Info: Declaring symbol style bringhurst on input line 696.
-Package footmisc Info: Declaring symbol style chicago on input line 704.
-Package footmisc Info: Declaring symbol style wiley on input line 713.
-Package footmisc Info: Declaring symbol style lamport-robust on input line 724.
-Package footmisc Info: Declaring symbol style lamport* on input line 744.
-Package footmisc Info: Declaring symbol style lamport*-robust on input line 765.
+Package: footmisc 2024/12/24 v6.0g a miscellany of footnote facilities
+\FN@temptoken=\toks24
+\footnotemargin=\dimen161
+\@outputbox@depth=\dimen162
+Package footmisc Info: Declaring symbol style bringhurst on input line 699.
+Package footmisc Info: Declaring symbol style chicago on input line 707.
+Package footmisc Info: Declaring symbol style wiley on input line 716.
+Package footmisc Info: Declaring symbol style lamport-robust on input line 727.
+Package footmisc Info: Declaring symbol style lamport* on input line 747.
+Package footmisc Info: Declaring symbol style lamport*-robust on input line 768.
 ) (/usr/share/texmf-dist/tex/latex/mdframed/mdframed.sty
 Package: mdframed 2013/07/01 1.9b: mdframed
  (/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
@@ -183,16 +189,16 @@ Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 ) (/usr/share/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 )) (/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-02-20 L3 programming layer (loader) 
+Package: expl3 2025-01-18 L3 programming layer (loader) 
  (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count292
-\l__pdf_internal_box=\box55
+File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count300
+\l__pdf_internal_box=\box56
 ))
-Package: xparse 2024-02-18 L3 Experimental document command parser
+Package: xparse 2024-08-16 L3 Experimental document command parser
 ) (/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count293
+Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count301
 ) (/usr/share/texmf-dist/tex/latex/zref/zref-abspage.sty
 Package: zref-abspage 2023-09-14 v2.35 Module abspage for zref (HO)
  (/usr/share/texmf-dist/tex/latex/zref/zref-base.sty
@@ -215,59 +221,59 @@ Package zref Info: New property list: main on input line 767.
 Package zref Info: New property: default on input line 768.
 Package zref Info: New property: page on input line 769.
 )
-\c@abspage=\count294
+\c@abspage=\count302
 Package zref Info: New property: abspage on input line 67.
 )
 (/usr/share/texmf-dist/tex/latex/needspace/needspace.sty
 Package: needspace 2010/09/12 v1.3d reserve vertical space
 )
-\mdf@templength=\skip61
-\c@mdf@globalstyle@cnt=\count295
-\mdf@skipabove@length=\skip62
-\mdf@skipbelow@length=\skip63
-\mdf@leftmargin@length=\skip64
-\mdf@rightmargin@length=\skip65
-\mdf@innerleftmargin@length=\skip66
-\mdf@innerrightmargin@length=\skip67
-\mdf@innertopmargin@length=\skip68
-\mdf@innerbottommargin@length=\skip69
-\mdf@splittopskip@length=\skip70
-\mdf@splitbottomskip@length=\skip71
-\mdf@outermargin@length=\skip72
-\mdf@innermargin@length=\skip73
-\mdf@linewidth@length=\skip74
-\mdf@innerlinewidth@length=\skip75
-\mdf@middlelinewidth@length=\skip76
-\mdf@outerlinewidth@length=\skip77
-\mdf@roundcorner@length=\skip78
-\mdf@footenotedistance@length=\skip79
-\mdf@userdefinedwidth@length=\skip80
-\mdf@needspace@length=\skip81
-\mdf@frametitleaboveskip@length=\skip82
-\mdf@frametitlebelowskip@length=\skip83
-\mdf@frametitlerulewidth@length=\skip84
-\mdf@frametitleleftmargin@length=\skip85
-\mdf@frametitlerightmargin@length=\skip86
-\mdf@shadowsize@length=\skip87
-\mdf@extratopheight@length=\skip88
-\mdf@subtitleabovelinewidth@length=\skip89
-\mdf@subtitlebelowlinewidth@length=\skip90
-\mdf@subtitleaboveskip@length=\skip91
-\mdf@subtitlebelowskip@length=\skip92
-\mdf@subtitleinneraboveskip@length=\skip93
-\mdf@subtitleinnerbelowskip@length=\skip94
-\mdf@subsubtitleabovelinewidth@length=\skip95
-\mdf@subsubtitlebelowlinewidth@length=\skip96
-\mdf@subsubtitleaboveskip@length=\skip97
-\mdf@subsubtitlebelowskip@length=\skip98
-\mdf@subsubtitleinneraboveskip@length=\skip99
-\mdf@subsubtitleinnerbelowskip@length=\skip100
+\mdf@templength=\skip67
+\c@mdf@globalstyle@cnt=\count303
+\mdf@skipabove@length=\skip68
+\mdf@skipbelow@length=\skip69
+\mdf@leftmargin@length=\skip70
+\mdf@rightmargin@length=\skip71
+\mdf@innerleftmargin@length=\skip72
+\mdf@innerrightmargin@length=\skip73
+\mdf@innertopmargin@length=\skip74
+\mdf@innerbottommargin@length=\skip75
+\mdf@splittopskip@length=\skip76
+\mdf@splitbottomskip@length=\skip77
+\mdf@outermargin@length=\skip78
+\mdf@innermargin@length=\skip79
+\mdf@linewidth@length=\skip80
+\mdf@innerlinewidth@length=\skip81
+\mdf@middlelinewidth@length=\skip82
+\mdf@outerlinewidth@length=\skip83
+\mdf@roundcorner@length=\skip84
+\mdf@footenotedistance@length=\skip85
+\mdf@userdefinedwidth@length=\skip86
+\mdf@needspace@length=\skip87
+\mdf@frametitleaboveskip@length=\skip88
+\mdf@frametitlebelowskip@length=\skip89
+\mdf@frametitlerulewidth@length=\skip90
+\mdf@frametitleleftmargin@length=\skip91
+\mdf@frametitlerightmargin@length=\skip92
+\mdf@shadowsize@length=\skip93
+\mdf@extratopheight@length=\skip94
+\mdf@subtitleabovelinewidth@length=\skip95
+\mdf@subtitlebelowlinewidth@length=\skip96
+\mdf@subtitleaboveskip@length=\skip97
+\mdf@subtitlebelowskip@length=\skip98
+\mdf@subtitleinneraboveskip@length=\skip99
+\mdf@subtitleinnerbelowskip@length=\skip100
+\mdf@subsubtitleabovelinewidth@length=\skip101
+\mdf@subsubtitlebelowlinewidth@length=\skip102
+\mdf@subsubtitleaboveskip@length=\skip103
+\mdf@subsubtitlebelowskip@length=\skip104
+\mdf@subsubtitleinneraboveskip@length=\skip105
+\mdf@subsubtitleinnerbelowskip@length=\skip106
  (/usr/share/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks24
-\pgfutil@tempdima=\dimen162
-\pgfutil@tempdimb=\dimen163
+\pgfutil@everybye=\toks25
+\pgfutil@tempdima=\dimen163
+\pgfutil@tempdimb=\dimen164
 ) (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box56
+\pgfutil@abb=\box57
 ) (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/share/texmf-dist/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 ))
@@ -275,31 +281,31 @@ Package: pgf 2023-01-15 v3.1.10 (3.1.10)
  (/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/share/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
  (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks25
-\pgfkeys@temptoks=\toks26
+\pgfkeys@pathtoks=\toks26
+\pgfkeys@temptoks=\toks27
  (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks27
+\pgfkeys@tmptoks=\toks28
 ))
-\pgf@x=\dimen164
-\pgf@y=\dimen165
-\pgf@xa=\dimen166
-\pgf@ya=\dimen167
-\pgf@xb=\dimen168
-\pgf@yb=\dimen169
-\pgf@xc=\dimen170
-\pgf@yc=\dimen171
-\pgf@xd=\dimen172
-\pgf@yd=\dimen173
+\pgf@x=\dimen165
+\pgf@y=\dimen166
+\pgf@xa=\dimen167
+\pgf@ya=\dimen168
+\pgf@xb=\dimen169
+\pgf@yb=\dimen170
+\pgf@xc=\dimen171
+\pgf@yc=\dimen172
+\pgf@xd=\dimen173
+\pgf@yd=\dimen174
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count296
-\c@pgf@countb=\count297
-\c@pgf@countc=\count298
-\c@pgf@countd=\count299
-\t@pgf@toka=\toks28
-\t@pgf@tokb=\toks29
-\t@pgf@tokc=\toks30
-\pgf@sys@id@count=\count300
+\c@pgf@counta=\count304
+\c@pgf@countb=\count305
+\c@pgf@countc=\count306
+\c@pgf@countd=\count307
+\t@pgf@toka=\toks29
+\t@pgf@tokb=\toks30
+\t@pgf@tokc=\toks31
+\pgf@sys@id@count=\count308
  (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
@@ -310,60 +316,60 @@ File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 ))) (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count301
-\pgfsyssoftpath@bigbuffer@items=\count302
+\pgfsyssoftpath@smallbuffer@items=\count309
+\pgfsyssoftpath@bigbuffer@items=\count310
 ) (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
  (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen174
-\pgfmath@count=\count303
-\pgfmath@box=\box57
-\pgfmath@toks=\toks31
-\pgfmath@stack@operand=\toks32
-\pgfmath@stack@operation=\toks33
+\pgfmath@dimen=\dimen175
+\pgfmath@count=\count311
+\pgfmath@box=\box58
+\pgfmath@toks=\toks32
+\pgfmath@stack@operand=\toks33
+\pgfmath@stack@operation=\toks34
 ) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count304
+\c@pgfmathroundto@lastzeros=\count312
 )) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen175
-\pgf@picmaxx=\dimen176
-\pgf@picminy=\dimen177
-\pgf@picmaxy=\dimen178
-\pgf@pathminx=\dimen179
-\pgf@pathmaxx=\dimen180
-\pgf@pathminy=\dimen181
-\pgf@pathmaxy=\dimen182
-\pgf@xx=\dimen183
-\pgf@xy=\dimen184
-\pgf@yx=\dimen185
-\pgf@yy=\dimen186
-\pgf@zx=\dimen187
-\pgf@zy=\dimen188
+\pgf@picminx=\dimen176
+\pgf@picmaxx=\dimen177
+\pgf@picminy=\dimen178
+\pgf@picmaxy=\dimen179
+\pgf@pathminx=\dimen180
+\pgf@pathmaxx=\dimen181
+\pgf@pathminy=\dimen182
+\pgf@pathmaxy=\dimen183
+\pgf@xx=\dimen184
+\pgf@xy=\dimen185
+\pgf@yx=\dimen186
+\pgf@yy=\dimen187
+\pgf@zx=\dimen188
+\pgf@zy=\dimen189
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen189
-\pgf@path@lasty=\dimen190
+\pgf@path@lastx=\dimen190
+\pgf@path@lasty=\dimen191
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen191
-\pgf@shorten@start@additional=\dimen192
+\pgf@shorten@end@additional=\dimen192
+\pgf@shorten@start@additional=\dimen193
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfpic=\box58
-\pgf@hbox=\box59
-\pgf@layerbox@main=\box60
-\pgf@picture@serial@count=\count305
+\pgfpic=\box59
+\pgf@hbox=\box60
+\pgf@layerbox@main=\box61
+\pgf@picture@serial@count=\count313
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen193
+\pgflinewidth=\dimen194
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen194
-\pgf@pt@y=\dimen195
-\pgf@pt@temp=\dimen196
+\pgf@pt@x=\dimen195
+\pgf@pt@y=\dimen196
+\pgf@pt@temp=\dimen197
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
@@ -372,17 +378,17 @@ File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen197
+\pgfarrowsep=\dimen198
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen198
-\pgf@sys@shading@range@num=\count306
-\pgf@shadingcount=\count307
+\pgf@max=\dimen199
+\pgf@sys@shading@range@num=\count314
+\pgf@shadingcount=\count315
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfexternal@startupbox=\box61
+\pgfexternal@startupbox=\box62
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
@@ -393,121 +399,121 @@ File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodeparttextbox=\box62
+\pgfnodeparttextbox=\box63
 ) (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen199
-\pgf@nodesepend=\dimen256
+\pgf@nodesepstart=\dimen256
+\pgf@nodesepend=\dimen257
 ) (/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 ))
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/share/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen257
-\pgffor@skip=\dimen258
-\pgffor@stack=\toks34
-\pgffor@toks=\toks35
+\pgffor@iter=\dimen258
+\pgffor@skip=\dimen259
+\pgffor@stack=\toks35
+\pgffor@toks=\toks36
 )) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
  (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count308
-\pgfplotmarksize=\dimen259
+\pgf@plot@mark@count=\count316
+\pgfplotmarksize=\dimen260
 )
-\tikz@lastx=\dimen260
-\tikz@lasty=\dimen261
-\tikz@lastxsaved=\dimen262
-\tikz@lastysaved=\dimen263
-\tikz@lastmovetox=\dimen264
-\tikz@lastmovetoy=\dimen265
-\tikzleveldistance=\dimen266
-\tikzsiblingdistance=\dimen267
-\tikz@figbox=\box63
-\tikz@figbox@bg=\box64
-\tikz@tempbox=\box65
-\tikz@tempbox@bg=\box66
-\tikztreelevel=\count309
-\tikznumberofchildren=\count310
-\tikznumberofcurrentchild=\count311
-\tikz@fig@count=\count312
+\tikz@lastx=\dimen261
+\tikz@lasty=\dimen262
+\tikz@lastxsaved=\dimen263
+\tikz@lastysaved=\dimen264
+\tikz@lastmovetox=\dimen265
+\tikz@lastmovetoy=\dimen266
+\tikzleveldistance=\dimen267
+\tikzsiblingdistance=\dimen268
+\tikz@figbox=\box64
+\tikz@figbox@bg=\box65
+\tikz@tempbox=\box66
+\tikz@tempbox@bg=\box67
+\tikztreelevel=\count317
+\tikznumberofchildren=\count318
+\tikznumberofcurrentchild=\count319
+\tikz@fig@count=\count320
  (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count313
-\pgfmatrixcurrentcolumn=\count314
-\pgf@matrix@numberofcolumns=\count315
+\pgfmatrixcurrentrow=\count321
+\pgfmatrixcurrentcolumn=\count322
+\pgf@matrix@numberofcolumns=\count323
 )
-\tikz@expandcount=\count316
+\tikz@expandcount=\count324
  (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/usr/share/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
 File: md-frame-1.mdf 2013/07/01\ 1.9b: md-frame-1
 )
-\mdf@frametitlebox=\box67
-\mdf@footnotebox=\box68
-\mdf@splitbox@one=\box69
-\mdf@splitbox@two=\box70
-\mdf@splitbox@save=\box71
-\mdfsplitboxwidth=\skip101
-\mdfsplitboxtotalwidth=\skip102
-\mdfsplitboxheight=\skip103
-\mdfsplitboxdepth=\skip104
-\mdfsplitboxtotalheight=\skip105
-\mdfframetitleboxwidth=\skip106
-\mdfframetitleboxtotalwidth=\skip107
-\mdfframetitleboxheight=\skip108
-\mdfframetitleboxdepth=\skip109
-\mdfframetitleboxtotalheight=\skip110
-\mdffootnoteboxwidth=\skip111
-\mdffootnoteboxtotalwidth=\skip112
-\mdffootnoteboxheight=\skip113
-\mdffootnoteboxdepth=\skip114
-\mdffootnoteboxtotalheight=\skip115
-\mdftotallinewidth=\skip116
-\mdfboundingboxwidth=\skip117
-\mdfboundingboxtotalwidth=\skip118
-\mdfboundingboxheight=\skip119
-\mdfboundingboxdepth=\skip120
-\mdfboundingboxtotalheight=\skip121
-\mdf@freevspace@length=\skip122
-\mdf@horizontalwidthofbox@length=\skip123
-\mdf@verticalmarginwhole@length=\skip124
-\mdf@horizontalspaceofbox=\skip125
-\mdfsubtitleheight=\skip126
-\mdfsubsubtitleheight=\skip127
-\c@mdfcountframes=\count317
+\mdf@frametitlebox=\box68
+\mdf@footnotebox=\box69
+\mdf@splitbox@one=\box70
+\mdf@splitbox@two=\box71
+\mdf@splitbox@save=\box72
+\mdfsplitboxwidth=\skip107
+\mdfsplitboxtotalwidth=\skip108
+\mdfsplitboxheight=\skip109
+\mdfsplitboxdepth=\skip110
+\mdfsplitboxtotalheight=\skip111
+\mdfframetitleboxwidth=\skip112
+\mdfframetitleboxtotalwidth=\skip113
+\mdfframetitleboxheight=\skip114
+\mdfframetitleboxdepth=\skip115
+\mdfframetitleboxtotalheight=\skip116
+\mdffootnoteboxwidth=\skip117
+\mdffootnoteboxtotalwidth=\skip118
+\mdffootnoteboxheight=\skip119
+\mdffootnoteboxdepth=\skip120
+\mdffootnoteboxtotalheight=\skip121
+\mdftotallinewidth=\skip122
+\mdfboundingboxwidth=\skip123
+\mdfboundingboxtotalwidth=\skip124
+\mdfboundingboxheight=\skip125
+\mdfboundingboxdepth=\skip126
+\mdfboundingboxtotalheight=\skip127
+\mdf@freevspace@length=\skip128
+\mdf@horizontalwidthofbox@length=\skip129
+\mdf@verticalmarginwhole@length=\skip130
+\mdf@horizontalspaceofbox=\skip131
+\mdfsubtitleheight=\skip132
+\mdfsubsubtitleheight=\skip133
+\c@mdfcountframes=\count325
 
 ****** mdframed patching \endmdf@trivlist
 
 ****** -- success******
 
-\mdf@envdepth=\count318
-\c@mdf@env@i=\count319
-\c@mdf@env@ii=\count320
-\c@mdf@zref@counter=\count321
+\mdf@envdepth=\count326
+\c@mdf@env@i=\count327
+\c@mdf@env@ii=\count328
+\c@mdf@zref@counter=\count329
 Package zref Info: New property: mdf@pagevalue on input line 895.
 ) (/usr/share/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
 ) (/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2019/06/20 v3.9 Customized lists
-\labelindent=\skip128
-\enit@outerparindent=\dimen268
-\enit@toks=\toks36
-\enit@inbox=\box72
-\enit@count@id=\count322
-\enitdp@description=\count323
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip134
+\enit@outerparindent=\dimen269
+\enit@toks=\toks37
+\enit@inbox=\box73
+\enit@count@id=\count330
+\enitdp@description=\count331
 ) (/usr/share/texmf-dist/tex/latex/csquotes/csquotes.sty
-Package: csquotes 2022-09-14 v5.2n context-sensitive quotations (JAW)
-\csq@reset=\count324
-\csq@gtype=\count325
-\csq@glevel=\count326
-\csq@qlevel=\count327
-\csq@maxlvl=\count328
-\csq@tshold=\count329
-\csq@ltx@everypar=\toks37
+Package: csquotes 2024-04-04 v5.2o context-sensitive quotations (JAW)
+\csq@reset=\count332
+\csq@gtype=\count333
+\csq@glevel=\count334
+\csq@qlevel=\count335
+\csq@maxlvl=\count336
+\csq@tshold=\count337
+\csq@ltx@everypar=\toks38
  (/usr/share/texmf-dist/tex/latex/csquotes/csquotes.def
-File: csquotes.def 2022-09-14 v5.2n csquotes generic definitions (JAW)
+File: csquotes.def 2024-04-04 v5.2o csquotes generic definitions (JAW)
 )
 Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
 Package csquotes Info: ... configuration file loaded successfully.
@@ -515,11 +521,11 @@ Package csquotes Info: ... configuration file loaded successfully.
 File: csquotes.cfg 
 )) (/usr/share/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count330
-\float@exts=\toks38
-\float@box=\box73
-\@float@everytoks=\toks39
-\@floatcapt=\box74
+\c@float@type=\count338
+\float@exts=\toks39
+\float@box=\box74
+\@float@everytoks=\toks40
+\@floatcapt=\box75
 ) (/usr/share/texmf-dist/tex/latex/bbm-macros/bbm.sty
 Package: bbm 1999/03/15 V 1.2 provides fonts for set symbols - TH
 LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
@@ -527,38 +533,38 @@ LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
 (Font)                  U/bbmss/m/n --> U/bbmss/bx/n on input line 35.
 ) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2024/01/10 version 6.2.0 text color boxes
+Package: tcolorbox 2024/10/22 version 6.4.1 text color boxes
  (/usr/share/texmf-dist/tex/latex/tools/verbatim.sty
-Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks40
-\verbatim@line=\toks41
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks41
+\verbatim@line=\toks42
 \verbatim@in@stream=\read3
 ) (/usr/share/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
  (/usr/share/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 )
-\@envbody=\toks42
+\@envbody=\toks43
 )
-\tcb@titlebox=\box75
-\tcb@upperbox=\box76
-\tcb@lowerbox=\box77
-\tcb@phantombox=\box78
-\c@tcbbreakpart=\count331
-\c@tcblayer=\count332
-\c@tcolorbox@number=\count333
-\l__tcobox_tmpa_box=\box79
-\l__tcobox_tmpa_dim=\dimen269
-\tcb@temp=\box80
+\tcb@titlebox=\box76
+\tcb@upperbox=\box77
+\tcb@lowerbox=\box78
+\tcb@phantombox=\box79
+\c@tcbbreakpart=\count339
+\c@tcblayer=\count340
+\c@tcolorbox@number=\count341
+\l__tcobox_tmpa_box=\box80
+\l__tcobox_tmpa_dim=\dimen270
 \tcb@temp=\box81
 \tcb@temp=\box82
 \tcb@temp=\box83
+\tcb@temp=\box84
 ) (/usr/share/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box84
-\sift@deathcycles=\count334
-\@vwid@loff=\dimen270
-\@vwid@roff=\dimen271
+\@vwid@box=\box85
+\sift@deathcycles=\count342
+\@vwid@loff=\dimen271
+\@vwid@roff=\dimen272
 ) (/usr/share/texmf-dist/tex/latex/base/latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup4
@@ -572,180 +578,177 @@ Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 File: t3enc.def 2001/12/31 T3 encoding
 Now handling font encoding T3 ...
 ... no UTF-8 mapping file for font encoding T3
-LaTeX Font Info:    Trying to load font information for T1+cmss on input line 357.
- (/usr/share/texmf-dist/tex/latex/base/t1cmss.fd
-File: t1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)))) (/usr/share/texmf-dist/tex/latex/biblatex/biblatex.sty
-Package: biblatex 2023/03/05 v3.19 programmable bibliographies (PK/MW)
+))) (/usr/share/texmf-dist/tex/latex/biblatex/biblatex.sty
+Package: biblatex 2024/03/21 v3.20 programmable bibliographies (PK/MW)
  (/usr/share/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count335
+\lrq@indent=\count343
  (/usr/share/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 )) (/usr/share/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 ) (/usr/share/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip16
+\Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-\c@tabx@nest=\count336
-\c@listtotal=\count337
-\c@listcount=\count338
-\c@liststart=\count339
-\c@liststop=\count340
-\c@citecount=\count341
-\c@citetotal=\count342
-\c@multicitecount=\count343
-\c@multicitetotal=\count344
-\c@instcount=\count345
-\c@maxnames=\count346
-\c@minnames=\count347
-\c@maxitems=\count348
-\c@minitems=\count349
-\c@citecounter=\count350
-\c@maxcitecounter=\count351
-\c@savedcitecounter=\count352
-\c@uniquelist=\count353
-\c@uniquename=\count354
-\c@refsection=\count355
-\c@refsegment=\count356
-\c@maxextratitle=\count357
-\c@maxextratitleyear=\count358
-\c@maxextraname=\count359
-\c@maxextradate=\count360
-\c@maxextraalpha=\count361
-\c@abbrvpenalty=\count362
-\c@highnamepenalty=\count363
-\c@lownamepenalty=\count364
-\c@maxparens=\count365
-\c@parenlevel=\count366
-\blx@tempcnta=\count367
-\blx@tempcntb=\count368
-\blx@tempcntc=\count369
-\c@blx@maxsection=\count370
-\blx@maxsegment@0=\count371
-\blx@notetype=\count372
-\blx@parenlevel@text=\count373
-\blx@parenlevel@foot=\count374
-\blx@sectionciteorder@0=\count375
-\blx@sectionciteorderinternal@0=\count376
-\blx@entrysetcounter=\count377
-\blx@biblioinstance=\count378
-\labelnumberwidth=\skip129
-\labelalphawidth=\skip130
-\biblabelsep=\skip131
-\bibitemsep=\skip132
-\bibnamesep=\skip133
-\bibinitsep=\skip134
-\bibparsep=\skip135
-\bibhang=\skip136
+\c@tabx@nest=\count344
+\c@listtotal=\count345
+\c@listcount=\count346
+\c@liststart=\count347
+\c@liststop=\count348
+\c@citecount=\count349
+\c@citetotal=\count350
+\c@multicitecount=\count351
+\c@multicitetotal=\count352
+\c@instcount=\count353
+\c@maxnames=\count354
+\c@minnames=\count355
+\c@maxitems=\count356
+\c@minitems=\count357
+\c@citecounter=\count358
+\c@maxcitecounter=\count359
+\c@savedcitecounter=\count360
+\c@uniquelist=\count361
+\c@uniquename=\count362
+\c@refsection=\count363
+\c@refsegment=\count364
+\c@maxextratitle=\count365
+\c@maxextratitleyear=\count366
+\c@maxextraname=\count367
+\c@maxextradate=\count368
+\c@maxextraalpha=\count369
+\c@abbrvpenalty=\count370
+\c@highnamepenalty=\count371
+\c@lownamepenalty=\count372
+\c@maxparens=\count373
+\c@parenlevel=\count374
+\blx@tempcnta=\count375
+\blx@tempcntb=\count376
+\blx@tempcntc=\count377
+\c@blx@maxsection=\count378
+\blx@maxsegment@0=\count379
+\blx@notetype=\count380
+\blx@parenlevel@text=\count381
+\blx@parenlevel@foot=\count382
+\blx@sectionciteorder@0=\count383
+\blx@sectionciteorderinternal@0=\count384
+\blx@entrysetcounter=\count385
+\blx@biblioinstance=\count386
+\labelnumberwidth=\skip135
+\labelalphawidth=\skip136
+\biblabelsep=\skip137
+\bibitemsep=\skip138
+\bibnamesep=\skip139
+\bibinitsep=\skip140
+\bibparsep=\skip141
+\bibhang=\skip142
 \blx@bcfin=\read4
 \blx@bcfout=\write4
-\blx@langwohyphens=\language8
-\c@mincomprange=\count379
-\c@maxcomprange=\count380
-\c@mincompwidth=\count381
+\blx@langwohyphens=\language6
+\c@mincomprange=\count387
+\c@maxcomprange=\count388
+\c@mincompwidth=\count389
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
  (/usr/share/texmf-dist/tex/latex/biblatex/blx-dm.def
-File: blx-dm.def 2023/03/05 v3.19 biblatex localization (PK/MW)
+File: blx-dm.def 2024/03/21 v3.20 biblatex datamodel (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'alphabetic.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count382
-\c@savedafterword=\count383
-\c@annotator=\count384
-\c@savedannotator=\count385
-\c@author=\count386
-\c@savedauthor=\count387
-\c@bookauthor=\count388
-\c@savedbookauthor=\count389
-\c@commentator=\count390
-\c@savedcommentator=\count391
-\c@editor=\count392
-\c@savededitor=\count393
-\c@editora=\count394
-\c@savededitora=\count395
-\c@editorb=\count396
-\c@savededitorb=\count397
-\c@editorc=\count398
-\c@savededitorc=\count399
-\c@foreword=\count400
-\c@savedforeword=\count401
-\c@holder=\count402
-\c@savedholder=\count403
-\c@introduction=\count404
-\c@savedintroduction=\count405
-\c@namea=\count406
-\c@savednamea=\count407
-\c@nameb=\count408
-\c@savednameb=\count409
-\c@namec=\count410
-\c@savednamec=\count411
-\c@translator=\count412
-\c@savedtranslator=\count413
-\c@shortauthor=\count414
-\c@savedshortauthor=\count415
-\c@shorteditor=\count416
-\c@savedshorteditor=\count417
-\c@labelname=\count418
-\c@savedlabelname=\count419
-\c@institution=\count420
-\c@savedinstitution=\count421
-\c@lista=\count422
-\c@savedlista=\count423
-\c@listb=\count424
-\c@savedlistb=\count425
-\c@listc=\count426
-\c@savedlistc=\count427
-\c@listd=\count428
-\c@savedlistd=\count429
-\c@liste=\count430
-\c@savedliste=\count431
-\c@listf=\count432
-\c@savedlistf=\count433
-\c@location=\count434
-\c@savedlocation=\count435
-\c@organization=\count436
-\c@savedorganization=\count437
-\c@origlocation=\count438
-\c@savedoriglocation=\count439
-\c@origpublisher=\count440
-\c@savedorigpublisher=\count441
-\c@publisher=\count442
-\c@savedpublisher=\count443
-\c@language=\count444
-\c@savedlanguage=\count445
-\c@origlanguage=\count446
-\c@savedoriglanguage=\count447
-\c@pageref=\count448
-\c@savedpageref=\count449
-\shorthandwidth=\skip137
-\shortjournalwidth=\skip138
-\shortserieswidth=\skip139
-\shorttitlewidth=\skip140
-\shortauthorwidth=\skip141
-\shorteditorwidth=\skip142
-\locallabelnumberwidth=\skip143
-\locallabelalphawidth=\skip144
-\localshorthandwidth=\skip145
-\localshortjournalwidth=\skip146
-\localshortserieswidth=\skip147
-\localshorttitlewidth=\skip148
-\localshortauthorwidth=\skip149
-\localshorteditorwidth=\skip150
+\c@afterword=\count390
+\c@savedafterword=\count391
+\c@annotator=\count392
+\c@savedannotator=\count393
+\c@author=\count394
+\c@savedauthor=\count395
+\c@bookauthor=\count396
+\c@savedbookauthor=\count397
+\c@commentator=\count398
+\c@savedcommentator=\count399
+\c@editor=\count400
+\c@savededitor=\count401
+\c@editora=\count402
+\c@savededitora=\count403
+\c@editorb=\count404
+\c@savededitorb=\count405
+\c@editorc=\count406
+\c@savededitorc=\count407
+\c@foreword=\count408
+\c@savedforeword=\count409
+\c@holder=\count410
+\c@savedholder=\count411
+\c@introduction=\count412
+\c@savedintroduction=\count413
+\c@namea=\count414
+\c@savednamea=\count415
+\c@nameb=\count416
+\c@savednameb=\count417
+\c@namec=\count418
+\c@savednamec=\count419
+\c@translator=\count420
+\c@savedtranslator=\count421
+\c@shortauthor=\count422
+\c@savedshortauthor=\count423
+\c@shorteditor=\count424
+\c@savedshorteditor=\count425
+\c@labelname=\count426
+\c@savedlabelname=\count427
+\c@institution=\count428
+\c@savedinstitution=\count429
+\c@lista=\count430
+\c@savedlista=\count431
+\c@listb=\count432
+\c@savedlistb=\count433
+\c@listc=\count434
+\c@savedlistc=\count435
+\c@listd=\count436
+\c@savedlistd=\count437
+\c@liste=\count438
+\c@savedliste=\count439
+\c@listf=\count440
+\c@savedlistf=\count441
+\c@location=\count442
+\c@savedlocation=\count443
+\c@organization=\count444
+\c@savedorganization=\count445
+\c@origlocation=\count446
+\c@savedoriglocation=\count447
+\c@origpublisher=\count448
+\c@savedorigpublisher=\count449
+\c@publisher=\count450
+\c@savedpublisher=\count451
+\c@language=\count452
+\c@savedlanguage=\count453
+\c@origlanguage=\count454
+\c@savedoriglanguage=\count455
+\c@pageref=\count456
+\c@savedpageref=\count457
+\shorthandwidth=\skip143
+\shortjournalwidth=\skip144
+\shortserieswidth=\skip145
+\shorttitlewidth=\skip146
+\shortauthorwidth=\skip147
+\shorteditorwidth=\skip148
+\locallabelnumberwidth=\skip149
+\locallabelalphawidth=\skip150
+\localshorthandwidth=\skip151
+\localshortjournalwidth=\skip152
+\localshortserieswidth=\skip153
+\localshorttitlewidth=\skip154
+\localshortauthorwidth=\skip155
+\localshorteditorwidth=\skip156
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
-
-(/usr/share/texmf-dist/tex/latex/biblatex/blx-compat.def
-File: blx-compat.def 2023/03/05 v3.19 biblatex compatibility (PK/MW)
+ (/usr/share/texmf-dist/tex/latex/biblatex/blx-compat.def
+File: blx-compat.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
 )
 Package biblatex Info: Trying to load BibTeX backend compatibility...
 Package biblatex Info: ... file 'blx-bibtex.def' found.
- (/usr/share/texmf-dist/tex/latex/biblatex/blx-bibtex.def
-File: blx-bibtex.def 2023/03/05 v3.19 biblatex compatibility (PK/MW)
+
+(/usr/share/texmf-dist/tex/latex/biblatex/blx-bibtex.def
+File: blx-bibtex.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
 
 
 Package biblatex Warning: Using fall-back bibtex backend:
@@ -755,36 +758,36 @@ Package biblatex Warning: Using fall-back bibtex backend:
 Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
  (/usr/share/texmf-dist/tex/latex/biblatex/biblatex.def
-File: biblatex.def 2023/03/05 v3.19 biblatex compatibility (PK/MW)
-\c@textcitecount=\count450
-\c@textcitetotal=\count451
-\c@textcitemaxnames=\count452
-\c@biburlbigbreakpenalty=\count453
-\c@biburlbreakpenalty=\count454
-\c@biburlnumpenalty=\count455
-\c@biburlucpenalty=\count456
-\c@biburllcpenalty=\count457
-\biburlbigskip=\muskip17
-\biburlnumskip=\muskip18
-\biburlucskip=\muskip19
-\biburllcskip=\muskip20
-\c@smartand=\count458
+File: biblatex.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
+\c@textcitecount=\count458
+\c@textcitetotal=\count459
+\c@textcitemaxnames=\count460
+\c@biburlbigbreakpenalty=\count461
+\c@biburlbreakpenalty=\count462
+\c@biburlnumpenalty=\count463
+\c@biburlucpenalty=\count464
+\c@biburllcpenalty=\count465
+\biburlbigskip=\muskip18
+\biburlnumskip=\muskip19
+\biburlucskip=\muskip20
+\biburllcskip=\muskip21
+\c@smartand=\count466
 )
 Package biblatex Info: Trying to load bibliography style 'alphabetic'...
 Package biblatex Info: ... file 'alphabetic.bbx' found.
  (/usr/share/texmf-dist/tex/latex/biblatex/bbx/alphabetic.bbx
-File: alphabetic.bbx 2023/03/05 v3.19 biblatex bibliography style (PK/MW)
+File: alphabetic.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
 Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
  (/usr/share/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
-File: standard.bbx 2023/03/05 v3.19 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count459
-\c@bbx:relatedtotal=\count460
+File: standard.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count467
+\c@bbx:relatedtotal=\count468
 ))
 Package biblatex Info: Trying to load citation style 'alphabetic'...
 Package biblatex Info: ... file 'alphabetic.cbx' found.
  (/usr/share/texmf-dist/tex/latex/biblatex/cbx/alphabetic.cbx
-File: alphabetic.cbx 2023/03/05 v3.19 biblatex citation style (PK/MW)
+File: alphabetic.cbx 2024/03/21 v3.20 biblatex citation style (PK/MW)
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
 Package biblatex Info: Redefining '\footcite'.
@@ -804,86 +807,86 @@ File: biblatex.cfg
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Document encoding is UTF8 ....
 Package biblatex Info: ... and expl3
-(biblatex)             2024-02-20 L3 programming layer (loader) 
+(biblatex)             2025-01-18 L3 programming layer (loader) 
 (biblatex)             is new enough (at least 2020/04/06),
 (biblatex)             setting 'casechanger=expl3'.
  (/usr/share/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty
-Package: blx-case-expl3 2023/03/05 v3.19 expl3 case changing code for biblatex
+Package: blx-case-expl3 2024/03/21 v3.20 expl3 case changing code for biblatex
 )) (/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2023/05/13 v2.17o AMS math features
-\@mathmargin=\skip151
+Package: amsmath 2024/11/05 v2.17t AMS math features
+\@mathmargin=\skip157
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
  (/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks43
-\ex@=\dimen272
+\@emptytoks=\toks44
+\ex@=\dimen273
 )) (/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen273
+\pmbraise@=\dimen274
 ) (/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count461
-LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count462
-\leftroot@=\count463
-LaTeX Info: Redefining \overline on input line 399.
-LaTeX Info: Redefining \colon on input line 410.
-\classnum@=\count464
-\DOTSCASE@=\count465
-LaTeX Info: Redefining \ldots on input line 496.
-LaTeX Info: Redefining \dots on input line 499.
-LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box85
-\strutbox@=\box86
-LaTeX Info: Redefining \big on input line 722.
-LaTeX Info: Redefining \Big on input line 723.
-LaTeX Info: Redefining \bigg on input line 724.
-LaTeX Info: Redefining \Bigg on input line 725.
-\big@size=\dimen274
-LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count466
-LaTeX Info: Redefining \bmod on input line 905.
-LaTeX Info: Redefining \pmod on input line 910.
-LaTeX Info: Redefining \smash on input line 940.
-LaTeX Info: Redefining \relbar on input line 970.
-LaTeX Info: Redefining \Relbar on input line 971.
-\c@MaxMatrixCols=\count467
-\dotsspace@=\muskip21
-\c@parentequation=\count468
-\dspbrk@lvl=\count469
-\tag@help=\toks44
-\row@=\count470
-\column@=\count471
-\maxfields@=\count472
-\andhelp@=\toks45
-\eqnshift@=\dimen275
-\alignsep@=\dimen276
-\tagshift@=\dimen277
-\tagwidth@=\dimen278
-\totwidth@=\dimen279
-\lineht@=\dimen280
-\@envbody=\toks46
-\multlinegap=\skip152
-\multlinetaggap=\skip153
-\mathdisplay@stack=\toks47
+\inf@bad=\count469
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count470
+\leftroot@=\count471
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count472
+\DOTSCASE@=\count473
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box86
+\strutbox@=\box87
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen275
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count474
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count475
+\dotsspace@=\muskip22
+\c@parentequation=\count476
+\dspbrk@lvl=\count477
+\tag@help=\toks45
+\row@=\count478
+\column@=\count479
+\maxfields@=\count480
+\andhelp@=\toks46
+\eqnshift@=\dimen276
+\alignsep@=\dimen277
+\tagshift@=\dimen278
+\tagwidth@=\dimen279
+\totwidth@=\dimen280
+\lineht@=\dimen281
+\@envbody=\toks47
+\multlinegap=\skip158
+\multlinetaggap=\skip159
+\mathdisplay@stack=\toks48
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 ) (/usr/share/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
-\thm@style=\toks48
-\thm@bodyfont=\toks49
-\thm@headfont=\toks50
-\thm@notefont=\toks51
-\thm@headpunct=\toks52
-\thm@preskip=\skip154
-\thm@postskip=\skip155
-\thm@headsep=\skip156
-\dth@everypar=\toks53
+\thm@style=\toks49
+\thm@bodyfont=\toks50
+\thm@headfont=\toks51
+\thm@notefont=\toks52
+\thm@headpunct=\toks53
+\thm@preskip=\skip160
+\thm@postskip=\skip161
+\thm@headsep=\skip162
+\dth@everypar=\toks54
 ) (/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
  (/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
@@ -894,7 +897,7 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )) (/usr/share/texmf-dist/tex/latex/tools/bm.sty
-Package: bm 2023/07/08 v1.2f Bold Symbol Support (DPC/FMi)
+Package: bm 2023/12/19 v1.2f Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup7
 \symboldletters=\mathgroup8
 \symboldsymbols=\mathgroup9
@@ -907,117 +910,126 @@ LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
 Package: esint 
 \symlargesymbolsA=\mathgroup11
 ) (/usr/share/texmf-dist/tex/latex/nicematrix/nicematrix.sty (/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
-Package: l3keys2e 2024-02-18 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
 )
-Package: nicematrix 2024/02/19 v6.27a Enhanced arrays with the help of PGF/TikZ
+Package: nicematrix 2025/03/04 v7.1a Enhanced arrays with the help of PGF/TikZ
  (/usr/share/texmf-dist/tex/latex/tools/array.sty
-Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
-\col@sep=\dimen281
-\ar@mcellbox=\box87
-\extrarowheight=\dimen282
-\NC@list=\toks54
-\extratabsurround=\skip157
-\backup@length=\skip158
-\ar@cellbox=\box88
+Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
+\col@sep=\dimen282
+\ar@mcellbox=\box88
+\extrarowheight=\dimen283
+\NC@list=\toks55
+\extratabsurround=\skip163
+\backup@length=\skip164
+\ar@cellbox=\box89
 )
-\g__nicematrix_env_int=\count473
-\g__nicematrix_NiceMatrixBlock_int=\count474
-\g__nicematrix_notes_caption_int=\count475
-\l__nicematrix_columns_width_dim=\dimen283
-\l__nicematrix_col_width_dim=\dimen284
-\g__nicematrix_row_total_int=\count476
-\g__nicematrix_col_total_int=\count477
-\g__nicematrix_last_row_node_int=\count478
-\l__nicematrix_key_nb_rows_int=\count479
-\g__nicematrix_blocks_wd_dim=\dimen285
-\g__nicematrix_blocks_ht_dim=\dimen286
-\g__nicematrix_blocks_dp_dim=\dimen287
-\l__nicematrix_width_dim=\dimen288
-\l__nicematrix_tabular_width_dim=\dimen289
-\l__nicematrix_rule_width_dim=\dimen290
-\l__nicematrix_old_iRow_int=\count480
-\l__nicematrix_old_jCol_int=\count481
-\g__nicematrix_total_X_weight_int=\count482
-\l__nicematrix_X_columns_dim=\dimen291
-\l__nicematrix_x_initial_dim=\dimen292
-\l__nicematrix_y_initial_dim=\dimen293
-\l__nicematrix_x_final_dim=\dimen294
-\l__nicematrix_y_final_dim=\dimen295
-\l__nicematrix_tmpc_dim=\dimen296
-\l__nicematrix_tmpd_dim=\dimen297
-\g__nicematrix_width_last_col_dim=\dimen298
-\g__nicematrix_width_first_col_dim=\dimen299
-\l__nicematrix_row_min_int=\count483
-\l__nicematrix_row_max_int=\count484
-\l__nicematrix_col_min_int=\count485
-\l__nicematrix_col_max_int=\count486
-\l__nicematrix_start_int=\count487
-\l__nicematrix_end_int=\count488
-\l__nicematrix_local_start_int=\count489
-\l__nicematrix_local_end_int=\count490
-\g__nicematrix_static_num_of_col_int=\count491
-\l__nicematrix_rounded_corners_dim=\dimen300
-\l__nicematrix_tab_rounded_corners_dim=\dimen301
-\l__nicematrix_offset_dim=\dimen302
-\l__nicematrix_line_width_dim=\dimen303
-\g__nicematrix_block_box_int=\count492
-\l__nicematrix_submatrix_extra_height_dim=\dimen304
-\l__nicematrix_submatrix_left_xshift_dim=\dimen305
-\l__nicematrix_submatrix_right_xshift_dim=\dimen306
-\l__nicematrix_first_row_int=\count493
-\l__nicematrix_first_col_int=\count494
-\l__nicematrix_last_row_int=\count495
-\l__nicematrix_last_col_int=\count496
-\c@tabularnote=\count497
-\c@nicematrix_draft=\count498
-\l__nicematrix_cell_space_top_limit_dim=\dimen307
-\l__nicematrix_cell_space_bottom_limit_dim=\dimen308
-\l__nicematrix_xdots_inter_dim=\dimen309
-\l__nicematrix_xdots_shorten_start_dim=\dimen310
-\l__nicematrix_xdots_shorten_end_dim=\dimen311
-\l__nicematrix_xdots_radius_dim=\dimen312
-\l__nicematrix_notes_above_space_dim=\dimen313
-\l__nicematrix_left_margin_dim=\dimen314
-\l__nicematrix_right_margin_dim=\dimen315
-\l__nicematrix_extra_left_margin_dim=\dimen316
-\l__nicematrix_extra_right_margin_dim=\dimen317
-\c__nicematrix_max_l_dim=\dimen318
-\l__nicematrix_position_int=\count499
-\l__nicematrix_multiplicity_int=\count500
-\l__nicematrix_brace_yshift_dim=\dimen319
+\g__nicematrix_env_int=\count481
+\g__nicematrix_NiceMatrixBlock_int=\count482
+\g__nicematrix_notes_caption_int=\count483
+\l__nicematrix_columns_width_dim=\dimen284
+\l__nicematrix_col_width_dim=\dimen285
+\g__nicematrix_row_total_int=\count484
+\g__nicematrix_col_total_int=\count485
+\g__nicematrix_last_row_node_int=\count486
+\l__nicematrix_key_nb_rows_int=\count487
+\g__nicematrix_blocks_wd_dim=\dimen286
+\g__nicematrix_blocks_ht_dim=\dimen287
+\g__nicematrix_blocks_dp_dim=\dimen288
+\l__nicematrix_width_dim=\dimen289
+\l__nicematrix_tabular_width_dim=\dimen290
+\l__nicematrix_rule_width_dim=\dimen291
+\l__nicematrix_old_iRow_int=\count488
+\l__nicematrix_old_jCol_int=\count489
+\g__nicematrix_total_X_weight_int=\count490
+\l__nicematrix_X_columns_dim=\dimen292
+\l__nicematrix_x_initial_dim=\dimen293
+\l__nicematrix_y_initial_dim=\dimen294
+\l__nicematrix_x_final_dim=\dimen295
+\l__nicematrix_y_final_dim=\dimen296
+\l__nicematrix_tmpc_dim=\dimen297
+\l__nicematrix_tmpd_dim=\dimen298
+\l__nicematrix_tmpe_dim=\dimen299
+\l__nicematrix_tmpf_dim=\dimen300
+\g__nicematrix_dp_row_zero_dim=\dimen301
+\g__nicematrix_ht_row_zero_dim=\dimen302
+\g__nicematrix_ht_row_one_dim=\dimen303
+\g__nicematrix_dp_ante_last_row_dim=\dimen304
+\g__nicematrix_ht_last_row_dim=\dimen305
+\g__nicematrix_dp_last_row_dim=\dimen306
+\g__nicematrix_width_last_col_dim=\dimen307
+\g__nicematrix_width_first_col_dim=\dimen308
+\l__nicematrix_row_min_int=\count491
+\l__nicematrix_row_max_int=\count492
+\l__nicematrix_col_min_int=\count493
+\l__nicematrix_col_max_int=\count494
+\l__nicematrix_start_int=\count495
+\l__nicematrix_end_int=\count496
+\l__nicematrix_local_start_int=\count497
+\l__nicematrix_local_end_int=\count498
+\g__nicematrix_static_num_of_col_int=\count499
+\l__nicematrix_rounded_corners_dim=\dimen309
+\l__nicematrix_tab_rounded_corners_dim=\dimen310
+\l__nicematrix_offset_dim=\dimen311
+\l__nicematrix_line_width_dim=\dimen312
+\g__nicematrix_block_box_int=\count500
+\l__nicematrix_submatrix_extra_height_dim=\dimen313
+\l__nicematrix_submatrix_left_xshift_dim=\dimen314
+\l__nicematrix_submatrix_right_xshift_dim=\dimen315
+\l__nicematrix_first_row_int=\count501
+\l__nicematrix_first_col_int=\count502
+\l__nicematrix_last_row_int=\count503
+\l__nicematrix_last_col_int=\count504
+\c@tabularnote=\count505
+\g__nicematrix_tabularnote_int=\count506
+\c@nicematrix_draft=\count507
+\l__nicematrix_cell_space_top_limit_dim=\dimen316
+\l__nicematrix_cell_space_bottom_limit_dim=\dimen317
+\l__nicematrix_xdots_inter_dim=\dimen318
+\l__nicematrix_xdots_shorten_start_dim=\dimen319
+\l__nicematrix_xdots_shorten_end_dim=\dimen320
+\l__nicematrix_xdots_radius_dim=\dimen321
+\l__nicematrix_notes_above_space_dim=\dimen322
+\l__nicematrix_left_margin_dim=\dimen323
+\l__nicematrix_right_margin_dim=\dimen324
+\l__nicematrix_extra_left_margin_dim=\dimen325
+\l__nicematrix_extra_right_margin_dim=\dimen326
+\c__nicematrix_max_l_dim=\dimen327
+\l__nicematrix_position_int=\count508
+\l__nicematrix_multiplicity_int=\count509
+\l__nicematrix_brace_yshift_dim=\dimen328
 ) (/usr/share/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
 Package: stmaryrd 1994/03/03 St Mary's Road symbol package
 \symstmry=\mathgroup12
 LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
 (Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
 ) (/usr/share/texmf-dist/tex/latex/mathtools/mathtools.sty
-Package: mathtools 2024/03/11 v1.30 mathematical typesetting tools
+Package: mathtools 2024/10/04 v1.31 mathematical typesetting tools
  (/usr/share/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count501
-\calc@Bcount=\count502
-\calc@Adimen=\dimen320
-\calc@Bdimen=\dimen321
-\calc@Askip=\skip159
-\calc@Bskip=\skip160
+\calc@Acount=\count510
+\calc@Bcount=\count511
+\calc@Adimen=\dimen329
+\calc@Bdimen=\dimen330
+\calc@Askip=\skip165
+\calc@Bskip=\skip166
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count503
-\calc@Cskip=\skip161
+\calc@Ccount=\count512
+\calc@Cskip=\skip167
 ) (/usr/share/texmf-dist/tex/latex/mathtools/mhsetup.sty
 Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 )
-\g_MT_multlinerow_int=\count504
-\l_MT_multwidth_dim=\dimen322
-\origjot=\skip162
-\l_MT_shortvdotswithinadjustabove_dim=\dimen323
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen324
-\l_MT_above_intertext_sep=\dimen325
-\l_MT_below_intertext_sep=\dimen326
-\l_MT_above_shortintertext_sep=\dimen327
-\l_MT_below_shortintertext_sep=\dimen328
-\xmathstrut@box=\box89
-\xmathstrut@dim=\dimen329
+\g_MT_multlinerow_int=\count513
+\l_MT_multwidth_dim=\dimen331
+\origjot=\skip168
+\l_MT_shortvdotswithinadjustabove_dim=\dimen332
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen333
+\l_MT_above_intertext_sep=\dimen334
+\l_MT_below_intertext_sep=\dimen335
+\l_MT_above_shortintertext_sep=\dimen336
+\l_MT_below_shortintertext_sep=\dimen337
+\xmathstrut@box=\box90
+\xmathstrut@dim=\dimen338
 ) (/usr/share/texmf-dist/tex/latex/extarrows/extarrows.sty
 Package: extarrows 2020/03/12 v1.2.0 Some extensible arrows
 ) (/usr/share/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
@@ -1026,92 +1038,92 @@ Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 ) (/usr/share/texmf-dist/tex/latex/pgfplots/pgfplots.sty (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
 Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
  (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
-\t@pgfplots@toka=\toks55
-\t@pgfplots@tokb=\toks56
-\t@pgfplots@tokc=\toks57
-\pgfplots@tmpa=\dimen330
-\c@pgfplots@coordindex=\count505
-\c@pgfplots@scanlineindex=\count506
+\t@pgfplots@toka=\toks56
+\t@pgfplots@tokb=\toks57
+\t@pgfplots@tokc=\toks58
+\pgfplots@tmpa=\dimen339
+\c@pgfplots@coordindex=\count514
+\c@pgfplots@scanlineindex=\count515
  (/usr/share/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex)) (/usr/share/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (/usr/share/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
 Package pgfplots: loading complementary utilities for your pgf version...
-\t@pgf@toka=\toks58
-\t@pgf@tokb=\toks59
-\t@pgf@tokc=\toks60
+\t@pgf@toka=\toks59
+\t@pgf@tokb=\toks60
+\t@pgf@tokc=\toks61
 (/usr/share/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex (/usr/share/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex) (/usr/share/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.code.tex) (/usr/share/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
-\c@pgfplotsarray@tmp=\count507
+\c@pgfplotsarray@tmp=\count516
 ) (/usr/share/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex) (/usr/share/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
-\c@pgfplotstable@counta=\count508
-\t@pgfplotstable@a=\toks61
+\c@pgfplotstable@counta=\count517
+\t@pgfplotstable@a=\toks62
 ) (/usr/share/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex) (/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex (/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex) (/usr/share/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count509
+\c@pgfplotslibrarysurf@no=\count518
  (/usr/share/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex))) (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex) (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex) (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex) (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex) (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex) (/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen331
-\pgfdecoratedremainingdistance=\dimen332
-\pgfdecoratedinputsegmentcompleteddistance=\dimen333
-\pgfdecoratedinputsegmentremainingdistance=\dimen334
-\pgf@decorate@distancetomove=\dimen335
-\pgf@decorate@repeatstate=\count510
-\pgfdecorationsegmentamplitude=\dimen336
-\pgfdecorationsegmentlength=\dimen337
+\pgfdecoratedcompleteddistance=\dimen340
+\pgfdecoratedremainingdistance=\dimen341
+\pgfdecoratedinputsegmentcompleteddistance=\dimen342
+\pgfdecoratedinputsegmentremainingdistance=\dimen343
+\pgf@decorate@distancetomove=\dimen344
+\pgf@decorate@repeatstate=\count519
+\pgfdecorationsegmentamplitude=\dimen345
+\pgfdecorationsegmentlength=\dimen346
 )
-\tikz@lib@dec@box=\box90
+\tikz@lib@dec@box=\box91
 ) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (/usr/share/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex)) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (/usr/share/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (/usr/share/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex)
-\pgfplots@numplots=\count511
-\pgfplots@xmin@reg=\dimen338
-\pgfplots@xmax@reg=\dimen339
-\pgfplots@ymin@reg=\dimen340
-\pgfplots@ymax@reg=\dimen341
-\pgfplots@zmin@reg=\dimen342
-\pgfplots@zmax@reg=\dimen343
+\pgfplots@numplots=\count520
+\pgfplots@xmin@reg=\dimen347
+\pgfplots@xmax@reg=\dimen348
+\pgfplots@ymin@reg=\dimen349
+\pgfplots@ymax@reg=\dimen350
+\pgfplots@zmin@reg=\dimen351
+\pgfplots@zmax@reg=\dimen352
 ) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex
 File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
 File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/usr/share/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
-\multirow@colwidth=\skip163
-\multirow@cntb=\count512
-\multirow@dima=\skip164
-\bigstrutjot=\dimen344
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip169
+\multirow@cntb=\count521
+\multirow@dima=\skip170
+\bigstrutjot=\dimen353
 ) (/usr/share/texmf-dist/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
-\@float@every@algorithm=\toks62
-\c@algorithm=\count513
+\@float@every@algorithm=\toks63
+\c@algorithm=\count522
 ) (/usr/share/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 Package: algpseudocode 
  (/usr/share/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count514
-\c@ALG@rem=\count515
-\c@ALG@nested=\count516
-\ALG@tlm=\skip165
-\ALG@thistlm=\skip166
-\c@ALG@Lnr=\count517
-\c@ALG@blocknr=\count518
-\c@ALG@storecount=\count519
-\c@ALG@tmpcounter=\count520
-\ALG@tmplength=\skip167
+\c@ALG@line=\count523
+\c@ALG@rem=\count524
+\c@ALG@nested=\count525
+\ALG@tlm=\skip171
+\ALG@thistlm=\skip172
+\c@ALG@Lnr=\count526
+\c@ALG@blocknr=\count527
+\c@ALG@storecount=\count528
+\c@ALG@tmpcounter=\count529
+\ALG@tmplength=\skip173
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 ) (/usr/share/texmf-dist/tex/latex/fp/fp.sty
 Package: fp 1995/04/02
  `Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich (/usr/share/texmf-dist/tex/latex/fp/defpattern.sty
 Package: defpattern 1994/10/12
-\actioncount=\count521
+\actioncount=\count530
 ) (/usr/share/texmf-dist/tex/latex/fp/fp-basic.sty
 Package: fp-basic 1996/05/13
-\FP@xs=\count522
-\FP@xia=\count523
-\FP@xib=\count524
-\FP@xfa=\count525
-\FP@xfb=\count526
-\FP@rega=\count527
-\FP@regb=\count528
-\FP@regs=\count529
-\FP@times=\count530
+\FP@xs=\count531
+\FP@xia=\count532
+\FP@xib=\count533
+\FP@xfa=\count534
+\FP@xfb=\count535
+\FP@rega=\count536
+\FP@regb=\count537
+\FP@regs=\count538
+\FP@times=\count539
 ) (/usr/share/texmf-dist/tex/latex/fp/fp-addons.sty
 Package: fp-addons 1995/03/15
 ) (/usr/share/texmf-dist/tex/latex/fp/fp-snap.sty
@@ -1124,7 +1136,7 @@ Package: fp-trigo 1995/04/14
 Package: fp-pas 1994/08/29
 ) (/usr/share/texmf-dist/tex/latex/fp/fp-random.sty
 Package: fp-random 1995/02/23
-\FPseed=\count531
+\FPseed=\count540
 ) (/usr/share/texmf-dist/tex/latex/fp/fp-eqn.sty
 Package: fp-eqn 1995/04/03
 ) (/usr/share/texmf-dist/tex/latex/fp/fp-upn.sty
@@ -1134,8 +1146,8 @@ Package: fp-eval 1995/04/03
 )) (/usr/share/texmf-dist/tex/latex/karnaugh-map/karnaugh-map.sty
 Package: karnaugh-map 2022/01/15 v2.0 Draw Karnaugh Maps
  (/usr/share/texmf-dist/tex/generic/xstring/xstring.sty (/usr/share/texmf-dist/tex/generic/xstring/xstring.tex
-\xs_counta=\count532
-\xs_countb=\count533
+\xs_counta=\count541
+\xs_countb=\count542
 )
 Package: xstring 2023/08/22 v1.86 String manipulations (CT)
 ) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
@@ -1143,82 +1155,82 @@ File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarymatrix.code.tex
 File: tikzlibrarymatrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-\@karnaughmap@var@colorindex@=\count534
-\@karnaughmap@var@colorindexnext@=\count535
+\@karnaughmap@var@colorindex@=\count543
+\@karnaughmap@var@colorindexnext@=\count544
 ) (/usr/share/texmf-dist/tex/latex/circuitikz/circuitikz.sty
-Package: circuitikz 2024/02/09{} The CircuiTikz circuit drawing package version 1.6.7
+Package: circuitikz 2025/01/10{} The CircuiTikz circuit drawing package version 1.7.1
  (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
 File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowinset=\dimen345
-\pgfarrowlength=\dimen346
-\pgfarrowwidth=\dimen347
-\pgfarrowlinewidth=\dimen348
+\pgfarrowinset=\dimen354
+\pgfarrowlength=\dimen355
+\pgfarrowwidth=\dimen356
+\pgfarrowlinewidth=\dimen357
 ) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybending.code.tex
 File: tikzlibrarybending.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulebending.code.tex
 File: pgfmodulebending.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulenonlineartransformations.code.tex
 File: pgfmodulenonlineartransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgftransformnonlinearflatness=\dimen349
+\pgftransformnonlinearflatness=\dimen358
 ) (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibrarycurvilinear.code.tex
 File: pgflibrarycurvilinear.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@curvilinear@time@a=\dimen350
-\pgf@curvilinear@length@a=\dimen351
-\pgf@curvilinear@length@b=\dimen352
-\pgf@curvilinear@length@c=\dimen353
-\pgf@curvilinear@length@d=\dimen354
+\pgf@curvilinear@time@a=\dimen359
+\pgf@curvilinear@length@a=\dimen360
+\pgf@curvilinear@length@b=\dimen361
+\pgf@curvilinear@length@c=\dimen362
+\pgf@curvilinear@length@d=\dimen363
 )
-\pgf@arrows@the@rigidity=\dimen355
+\pgf@arrows@the@rigidity=\dimen364
 )) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfpu.code.tex) (/usr/share/texmf-dist/tex/generic/circuitikz/pgfcirc.defines.tex
-\pgf@circ@count@a=\count536
-\pgf@circ@count@b=\count537
-\pgf@circ@count@c=\count538
-\pgf@circ@res@up=\dimen356
-\pgf@circ@res@down=\dimen357
-\pgf@circ@res@zero=\dimen358
-\pgf@circ@res@left=\dimen359
-\pgf@circ@res@right=\dimen360
-\pgf@circ@res@other=\dimen361
-\pgf@circ@res@step=\dimen362
-\pgf@circ@res@temp=\dimen363
-\pgf@circ@Rlen=\dimen364
-\pgf@circ@scaled@Rlen=\dimen365
-\pgfstartlinewidth=\dimen366
+\pgf@circ@count@a=\count545
+\pgf@circ@count@b=\count546
+\pgf@circ@count@c=\count547
+\pgf@circ@res@up=\dimen365
+\pgf@circ@res@down=\dimen366
+\pgf@circ@res@zero=\dimen367
+\pgf@circ@res@left=\dimen368
+\pgf@circ@res@right=\dimen369
+\pgf@circ@res@other=\dimen370
+\pgf@circ@res@step=\dimen371
+\pgf@circ@res@temp=\dimen372
+\pgf@circ@Rlen=\dimen373
+\pgf@circ@scaled@Rlen=\dimen374
+\pgfstartlinewidth=\dimen375
 ) (/usr/share/texmf-dist/tex/generic/circuitikz/pgfcircutils.tex
-\ctikz@scratchbox=\box91
+\ctikz@scratchbox=\box92
 ) (/usr/share/texmf-dist/tex/generic/circuitikz/pgfcircpath.tex) (/usr/share/texmf-dist/tex/generic/circuitikz/pgfcircshapes.tex) (/usr/share/texmf-dist/tex/generic/circuitikz/pgfcircmonopoles.tex) (/usr/share/texmf-dist/tex/generic/circuitikz/pgfcircbipoles.tex)
 (/usr/share/texmf-dist/tex/generic/circuitikz/pgfcirctripoles.tex
-\pgf@circ@res@count=\count539
+\pgf@circ@res@count=\count548
 ) (/usr/share/texmf-dist/tex/generic/circuitikz/pgfcircquadpoles.tex) (/usr/share/texmf-dist/tex/generic/circuitikz/pgfcircmultipoles.tex) (/usr/share/texmf-dist/tex/generic/circuitikz/pgfcirclabel.tex) (/usr/share/texmf-dist/tex/generic/circuitikz/pgfcircvoltage.tex
-\pgfcirc@labelshift=\dimen367
+\pgfcirc@labelshift=\dimen376
 ) (/usr/share/texmf-dist/tex/generic/circuitikz/pgfcirccurrent.tex) (/usr/share/texmf-dist/tex/generic/circuitikz/pgfcircflow.tex)) (/usr/share/texmf-dist/tex/generic/ulem/ulem.sty
-\UL@box=\box92
-\UL@hyphenbox=\box93
-\UL@skip=\skip168
-\UL@hook=\toks63
-\UL@height=\dimen368
-\UL@pe=\count540
-\UL@pixel=\dimen369
-\ULC@box=\box94
+\UL@box=\box93
+\UL@hyphenbox=\box94
+\UL@skip=\skip174
+\UL@hook=\toks64
+\UL@height=\dimen377
+\UL@pe=\count549
+\UL@pixel=\dimen378
+\ULC@box=\box95
 Package: ulem 2019/11/18
-\ULdepth=\dimen370
+\ULdepth=\dimen379
 ) (/usr/share/texmf-dist/tex/latex/todonotes/todonotes.sty
 Package: todonotes 2024/01/05 v1.1.7 Todonotes source and documentation.
 Package: todonotes 2024/01/05
  (/usr/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
  (/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks64
-\XKV@tempa@toks=\toks65
+\XKV@toks=\toks65
+\XKV@tempa@toks=\toks66
 )
-\XKV@depth=\count541
+\XKV@depth=\count550
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-\c@@todonotes@numberoftodonotes=\count542
+\c@@todonotes@numberoftodonotes=\count551
 ) (/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
+Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
  (/usr/share/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 ) (/usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty
@@ -1230,69 +1242,71 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count543
+\c@section@level=\count552
+) (/usr/share/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\@linkdim=\dimen371
-\Hy@linkcounter=\count544
-\Hy@pagecounter=\count545
+\@linkdim=\dimen380
+\Hy@linkcounter=\count553
+\Hy@pagecounter=\count554
  (/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 ) (/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count546
+\Hy@SavedSpaceFactor=\count555
  (/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Option `pdfusetitle' set `true' on input line 4062.
-Package hyperref Info: Option `colorlinks' set `true' on input line 4062.
-Package hyperref Info: Hyper figures OFF on input line 4179.
-Package hyperref Info: Link nesting OFF on input line 4184.
-Package hyperref Info: Hyper index ON on input line 4187.
-Package hyperref Info: Plain pages OFF on input line 4194.
-Package hyperref Info: Backreferencing OFF on input line 4199.
+Package hyperref Info: Option `pdfusetitle' set `true' on input line 4040.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4040.
+Package hyperref Info: Hyper figures OFF on input line 4157.
+Package hyperref Info: Link nesting OFF on input line 4162.
+Package hyperref Info: Hyper index ON on input line 4165.
+Package hyperref Info: Plain pages OFF on input line 4172.
+Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4446.
-\c@Hy@tempcnt=\count547
-LaTeX Info: Redefining \url on input line 4784.
-\XeTeXLinkMargin=\dimen372
+Package hyperref Info: Bookmarks ON on input line 4424.
+\c@Hy@tempcnt=\count556
+LaTeX Info: Redefining \url on input line 4763.
+\XeTeXLinkMargin=\dimen381
  (/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (/usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count548
-\Field@Width=\dimen373
-\Fld@charsize=\dimen374
-Package hyperref Info: Hyper figures OFF on input line 6063.
-Package hyperref Info: Link nesting OFF on input line 6068.
-Package hyperref Info: Hyper index ON on input line 6071.
-Package hyperref Info: backreferencing OFF on input line 6078.
-Package hyperref Info: Link coloring ON on input line 6081.
-Package hyperref Info: Link coloring with OCG OFF on input line 6088.
-Package hyperref Info: PDF/A mode OFF on input line 6093.
+\Fld@menulength=\count557
+\Field@Width=\dimen382
+\Fld@charsize=\dimen383
+Package hyperref Info: Hyper figures OFF on input line 6042.
+Package hyperref Info: Link nesting OFF on input line 6047.
+Package hyperref Info: Hyper index ON on input line 6050.
+Package hyperref Info: backreferencing OFF on input line 6057.
+Package hyperref Info: Link coloring ON on input line 6060.
+Package hyperref Info: Link coloring with OCG OFF on input line 6067.
+Package hyperref Info: PDF/A mode OFF on input line 6072.
  (/usr/share/texmf-dist/tex/latex/base/atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count549
-\c@Item=\count550
-\c@Hfootnote=\count551
+\Hy@abspage=\count558
+\c@Item=\count559
+\c@Hfootnote=\count560
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
  (/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2024-01-20 v7.01h Hyperref driver for pdfTeX
+File: hpdftex.def 2024-11-05 v7.01l Hyperref driver for pdfTeX
  (/usr/share/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
 )
-\HyAnn@Count=\count552
-\Fld@listcount=\count553
-\c@bookmark@seq@number=\count554
+\HyAnn@Count=\count561
+\Fld@listcount=\count562
+\c@bookmark@seq@number=\count563
  (/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
  (/usr/share/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
@@ -1300,52 +1314,52 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
-\Hy@SectionHShift=\skip169
+\Hy@SectionHShift=\skip175
 ) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/graphs/tikzlibrarygraphs.code.tex
 File: tikzlibrarygraphs.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\tikz@lib@auto@number=\count555
-\tikz@qnode@count=\count556
-) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytrees.code.tex
-File: tikzlibrarytrees.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\tikz@lib@auto@number=\count564
+\tikz@qnode@count=\count565
 )
-(/usr/share/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
-Library (tcolorbox): 'tcbskins.code.tex' version '6.2.0'
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytrees.code.tex
+File: tikzlibrarytrees.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '6.4.1'
 (/usr/share/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
 Package: tikzfill.image 2023/08/08 v1.0.1 Image filling library for TikZ
  (/usr/share/texmf-dist/tex/latex/tikzfill/tikzfill-common.sty
 Package: tikzfill-common 2023/08/08 v1.0.1 Auxiliary code for tikzfill
 ) (/usr/share/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.tex
 File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
-\l__tikzfill_img_box=\box95
+\l__tikzfill_img_box=\box96
 )) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
-Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.2.0'
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.4.1'
 )) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbxparse.code.tex
-Library (tcolorbox): 'tcbxparse.code.tex' version '6.2.0'
+Library (tcolorbox): 'tcbxparse.code.tex' version '6.4.1'
 ) (/usr/share/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
-Library (tcolorbox): 'tcbbreakable.code.tex' version '6.2.0'
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.4.1'
 (/usr/share/texmf-dist/tex/latex/pdfcol/pdfcol.sty
 Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
 )
 Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
-\tcb@testbox=\box96
-\tcb@totalupperbox=\box97
-\tcb@totallowerbox=\box98
+\tcb@testbox=\box97
+\tcb@totalupperbox=\box98
+\tcb@totallowerbox=\box99
 ) (/usr/share/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2024/02/07 v24.2 The Babel package
-\babel@savecnt=\count557
-\U@D=\dimen375
-\l@unhyphenated=\language9
+Package: babel 2025/02/14 v25.4 The multilingual framework for pdfLaTeX, LuaLaTeX and XeLaTeX
+\babel@savecnt=\count566
+\U@D=\dimen384
+\l@unhyphenated=\language7
  (/usr/share/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read5
-\bbl@dirlevel=\count558
+\bbl@dirlevel=\count567
  (/usr/share/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: Hyphen rules for 'canadian' set to \l@english
 (babel)             (\language0). Reported on input line 102.
 Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
-(babel)             (\language5). Reported on input line 105.
+(babel)             (\language3). Reported on input line 105.
 Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
-(babel)             (\language5). Reported on input line 108.
+(babel)             (\language3). Reported on input line 108.
 )) (/usr/share/texmf-dist/tex/generic/babel/locale/en/babel-english.tex
 Package babel Info: Importing font and identification data for english
 (babel)             from babel-en.ini. Reported on input line 11.
@@ -1382,49 +1396,49 @@ File: tikzlibraryautomata.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: tikzlibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/share/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.code.tex
 File: pgflibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodepartlowerbox=\box99
-\pgfnodeparttwobox=\box100
-\pgfnodepartthreebox=\box101
-\pgfnodepartfourbox=\box102
-\pgfnodeparttwentybox=\box103
-\pgfnodepartnineteenbox=\box104
-\pgfnodeparteighteenbox=\box105
-\pgfnodepartseventeenbox=\box106
-\pgfnodepartsixteenbox=\box107
-\pgfnodepartfifteenbox=\box108
-\pgfnodepartfourteenbox=\box109
-\pgfnodepartthirteenbox=\box110
-\pgfnodeparttwelvebox=\box111
-\pgfnodepartelevenbox=\box112
-\pgfnodeparttenbox=\box113
-\pgfnodepartninebox=\box114
-\pgfnodeparteightbox=\box115
-\pgfnodepartsevenbox=\box116
-\pgfnodepartsixbox=\box117
-\pgfnodepartfivebox=\box118
+\pgfnodepartlowerbox=\box100
+\pgfnodeparttwobox=\box101
+\pgfnodepartthreebox=\box102
+\pgfnodepartfourbox=\box103
+\pgfnodeparttwentybox=\box104
+\pgfnodepartnineteenbox=\box105
+\pgfnodeparteighteenbox=\box106
+\pgfnodepartseventeenbox=\box107
+\pgfnodepartsixteenbox=\box108
+\pgfnodepartfifteenbox=\box109
+\pgfnodepartfourteenbox=\box110
+\pgfnodepartthirteenbox=\box111
+\pgfnodeparttwelvebox=\box112
+\pgfnodepartelevenbox=\box113
+\pgfnodeparttenbox=\box114
+\pgfnodepartninebox=\box115
+\pgfnodeparteightbox=\box116
+\pgfnodepartsevenbox=\box117
+\pgfnodepartsixbox=\box118
+\pgfnodepartfivebox=\box119
 ))) (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
 File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\arrowsize=\dimen376
+\arrowsize=\dimen385
 ))) (../../packages/Nyx/nyx-frames.sty
 
 LaTeX Warning: You have requested package `../../packages/Nyx/nyx-frames',
                but the package provides `nyx-frames'.
 
 Package: nyx-frames Nyx Frames
-\c@tcb@cnt@frameddefn=\count559
-\c@tcb@cnt@framedprinc=\count560
-\c@tcb@cnt@framedthm=\count561
-\c@tcb@cnt@framedprop=\count562
-\c@tcb@cnt@framedlem=\count563
-\c@tcb@cnt@framedcor=\count564
-\c@tcb@cnt@framedobs=\count565
-\c@tcb@cnt@framedprob=\count566
-\c@tcb@cnt@framedmeth=\count567
-\c@tcb@cnt@framedalgo=\count568
-\c@example=\count569
-\c@nonexample=\count570
+\c@tcb@cnt@frameddefn=\count568
+\c@tcb@cnt@framedprinc=\count569
+\c@tcb@cnt@framedthm=\count570
+\c@tcb@cnt@framedprop=\count571
+\c@tcb@cnt@framedlem=\count572
+\c@tcb@cnt@framedcor=\count573
+\c@tcb@cnt@framedobs=\count574
+\c@tcb@cnt@framedprob=\count575
+\c@tcb@cnt@framedmeth=\count576
+\c@tcb@cnt@framedalgo=\count577
+\c@example=\count578
+\c@nonexample=\count579
 ) (../../packages/Nyx/nyx-macros.sty
 
 LaTeX Warning: You have requested package `../../packages/Nyx/nyx-macros',
@@ -1471,24 +1485,24 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 75.
 LaTeX Font Info:    ... okay on input line 75.
  (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count571
-\scratchdimen=\dimen377
-\scratchbox=\box119
-\nofMPsegments=\count572
-\nofMParguments=\count573
-\everyMPshowfont=\toks66
-\MPscratchCnt=\count574
-\MPscratchDim=\dimen378
-\MPnumerator=\count575
-\makeMPintoPDFobject=\count576
-\everyMPtoPDFconversion=\toks67
+\scratchcounter=\count580
+\scratchdimen=\dimen386
+\scratchbox=\box120
+\nofMPsegments=\count581
+\nofMParguments=\count582
+\everyMPshowfont=\toks67
+\MPscratchCnt=\count583
+\MPscratchDim=\dimen387
+\MPnumerator=\count584
+\makeMPintoPDFobject=\count585
+\everyMPtoPDFconversion=\toks68
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@lstlisting=\count577
+\c@lstlisting=\count586
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1527,7 +1541,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 (/usr/share/texmf-dist/tex/latex/biblatex/lbx/english.lbx
-File: english.lbx 2023/03/05 v3.19 biblatex localization (PK/MW)
+File: english.lbx 2024/03/21 v3.20 biblatex localization (PK/MW)
 )
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
@@ -1542,13 +1556,13 @@ Package biblatex Info: ... file '"Advanced Algorithms".bbl' found.
  (./Advanced Algorithms.bbl)
 Package biblatex Info: Reference section=0 on input line 75.
 Package biblatex Info: Reference segment=0 on input line 75.
-\c__nicematrix_shift_Ldots_last_row_dim=\dimen379
-\c__nicematrix_shift_exterior_Vdots_dim=\dimen380
-\c__nicematrix_innersep_middle_dim=\dimen381
-\c@tabularnotesi=\count578
-\enitdp@tabularnotes=\count579
-\c@tabularnotes*i=\count580
-\enitdp@tabularnotes*=\count581
+\c__nicematrix_shift_Ldots_last_row_dim=\dimen388
+\c__nicematrix_shift_exterior_Vdots_dim=\dimen389
+\c__nicematrix_innersep_middle_dim=\dimen390
+\c@tabularnotesi=\count587
+\enitdp@tabularnotes=\count588
+\c@tabularnotes*i=\count589
+\enitdp@tabularnotes*=\count590
 
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
@@ -1644,6 +1658,8 @@ Overfull \hbox (30.0pt too wide) in paragraph at lines 76--76
 [][] 
  []
 
+
+
 [1
 
 
@@ -1653,10 +1669,13 @@ Package cleveref Info: loaded `english' language definitions on input line 1.
 \tf@toc=\write6
 \openout6 = `"Advanced Algorithms.toc"'.
 
- [1
+
+
+[1
 
 
 ]
+
 Package cleveref Info: loaded `english' language definitions on input line 95.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
@@ -1676,6 +1695,8 @@ LaTeX Font Warning: Font shape `T1/qtm/n/n' undefined
 (Font)              using `T1/qtm/m/n' instead on input line 95.
 
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 97.
+
+
 Package cleveref Info: loaded `english' language definitions on input line 116.
 [2
 
@@ -1686,17 +1707,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 150--151
 
  []
 
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 168.
-(/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
-Package cleveref Info: loaded `english' language definitions on input line 169.
 
+
+Package cleveref Info: loaded `english' language definitions on input line 169.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 169.
@@ -1736,47 +1754,49 @@ pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.6}) h
                    \relax 
 l.191             \EndFunction
                               
-Package cleveref Info: loaded `english' language definitions on input line 194.
 
+Package cleveref Info: loaded `english' language definitions on input line 194.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 194.
 [4]
-Package cleveref Info: loaded `english' language definitions on input line 219.
 
+Package cleveref Info: loaded `english' language definitions on input line 219.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 219.
 [5]
-Package cleveref Info: loaded `english' language definitions on input line 241.
 
+Package cleveref Info: loaded `english' language definitions on input line 241.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 241.
 [6]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+
+
 Package cleveref Info: loaded `english' language definitions on input line 302.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 302.
@@ -1839,24 +1859,24 @@ pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.10}) 
                    \relax 
 l.384             \EndFunction
                               
-Package cleveref Info: loaded `english' language definitions on input line 386.
 
+Package cleveref Info: loaded `english' language definitions on input line 386.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 386.
 [8]
-Package cleveref Info: loaded `english' language definitions on input line 413.
 
+Package cleveref Info: loaded `english' language definitions on input line 413.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 413.
@@ -1916,25 +1936,27 @@ pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.10}) 
                    \relax 
 l.437                     \EndIf
                                 
-Package cleveref Info: loaded `english' language definitions on input line 448.
 
+Package cleveref Info: loaded `english' language definitions on input line 448.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 448.
 [10]
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+
+
 Package cleveref Info: loaded `english' language definitions on input line 511.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 511.
@@ -1945,17 +1967,19 @@ Overfull \hbox (9.49223pt too wide) in paragraph at lines 535--536
 \T1/cmr/bx/n/12 gram-ming \T1/cmr/m/n/12 (LP), \T1/cmr/bx/n/12 In-te-ger Pro-gram-ming \T1/cmr/m/n/12 (IP), and \T1/cmr/bx/n/12 Semidef-i-nite Pro-gram-ming \T1/cmr/m/n/12 (SDP),
  []
 
+
+
 Package cleveref Info: loaded `english' language definitions on input line 550.
 [12
 
 ]
-Package cleveref Info: loaded `english' language definitions on input line 575.
 
+Package cleveref Info: loaded `english' language definitions on input line 575.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 575.
@@ -1964,45 +1988,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 585--585
 
  []
 
+
+
 Package cleveref Info: loaded `english' language definitions on input line 604.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 604.
 [14]
-Package cleveref Info: loaded `english' language definitions on input line 624.
 
+Package cleveref Info: loaded `english' language definitions on input line 624.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 624.
 [15]
-Package cleveref Info: loaded `english' language definitions on input line 642.
 
+Package cleveref Info: loaded `english' language definitions on input line 642.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 642.
 [16]
 Missing character: There is no ; in font nullfont!
+
+
 Package cleveref Info: loaded `english' language definitions on input line 680.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 680.
@@ -2011,23 +2039,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 697--697
 
  []
 
+
+
 Package cleveref Info: loaded `english' language definitions on input line 697.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 697.
 [18]
-Package cleveref Info: loaded `english' language definitions on input line 726.
 
+Package cleveref Info: loaded `english' language definitions on input line 726.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 726.
@@ -2097,13 +2127,13 @@ pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.12}) 
                    \relax 
 l.748             \EndFunction
                               
-Package cleveref Info: loaded `english' language definitions on input line 757.
 
+Package cleveref Info: loaded `english' language definitions on input line 757.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 757.
@@ -2211,12 +2241,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 801.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 801.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 801.
+
+
 Package cleveref Info: loaded `english' language definitions on input line 801.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 801.
@@ -2245,13 +2277,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 820.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 821.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 821.
-Package cleveref Info: loaded `english' language definitions on input line 823.
 
+
+Package cleveref Info: loaded `english' language definitions on input line 823.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 823.
@@ -2294,12 +2327,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 843--843
  []
 
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 843.
+
+
 Package cleveref Info: loaded `english' language definitions on input line 843.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 843.
@@ -2341,12 +2376,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 858.
 
 Missing character: There is no ; in font nullfont!
+
+
 Package cleveref Info: loaded `english' language definitions on input line 883.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 883.
@@ -2386,12 +2423,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 925.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 926.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 926.
+
+
 Package cleveref Info: loaded `english' language definitions on input line 930.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 930.
@@ -2479,12 +2518,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 955.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 955.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 955.
+
+
 Package cleveref Info: loaded `english' language definitions on input line 956.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 956.
@@ -2531,12 +2572,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1015.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1015.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1015.
+
+
 Package cleveref Info: loaded `english' language definitions on input line 1015.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1015.
@@ -2598,13 +2641,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1015.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1015.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1015.
-Package cleveref Info: loaded `english' language definitions on input line 1015.
 
+
+Package cleveref Info: loaded `english' language definitions on input line 1015.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1015.
@@ -2685,13 +2729,13 @@ pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.8}) h
                    \relax 
 l.1039             \EndFunction
                                
-Package cleveref Info: loaded `english' language definitions on input line 1042.
 
+Package cleveref Info: loaded `english' language definitions on input line 1042.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1042.
@@ -2731,12 +2775,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1094.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1097.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1097.
+
+
 Package cleveref Info: loaded `english' language definitions on input line 1098.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1098.
@@ -2809,12 +2855,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 1175--1175
 
  []
 
+
+
 Package cleveref Info: loaded `english' language definitions on input line 1175.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1175.
@@ -2897,12 +2945,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1204.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1204.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1204.
+
+
 Package cleveref Info: loaded `english' language definitions on input line 1204.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1204.
@@ -2939,13 +2989,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1236.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1237.
-Package cleveref Info: loaded `english' language definitions on input line 1240.
 
+
+Package cleveref Info: loaded `english' language definitions on input line 1240.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1240.
@@ -3011,13 +3062,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1289.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1289.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1289.
-Package cleveref Info: loaded `english' language definitions on input line 1291.
 
+
+Package cleveref Info: loaded `english' language definitions on input line 1291.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1291.
@@ -3116,13 +3168,13 @@ pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.9}) h
                    \relax 
 l.1328             \EndFunction
                                
-Package cleveref Info: loaded `english' language definitions on input line 1331.
 
+Package cleveref Info: loaded `english' language definitions on input line 1331.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1331.
@@ -3147,12 +3199,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1363.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1363.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1363.
+
+
 Package cleveref Info: loaded `english' language definitions on input line 1364.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1364.
@@ -3258,12 +3312,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 1396--1396
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1396.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1396.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1396.
+
+
 Package cleveref Info: loaded `english' language definitions on input line 1399.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1399.
@@ -3295,6 +3351,8 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1419.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1419.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1419.
+
+
 Package cleveref Info: loaded `english' language definitions on input line 1421.
 [38
 
@@ -3316,13 +3374,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1443.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1444.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1445.
-Package cleveref Info: loaded `english' language definitions on input line 1448.
 
+
+Package cleveref Info: loaded `english' language definitions on input line 1448.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1448.
@@ -3353,13 +3412,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1470.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1470.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1473.
-Package cleveref Info: loaded `english' language definitions on input line 1473.
 
+
+Package cleveref Info: loaded `english' language definitions on input line 1473.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1473.
@@ -3426,13 +3486,14 @@ LaTeX Font Info:    Trying to load font information for U+bbm on input line 1499
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
 LaTeX Font Info:    Undo math alphabet allocation in version normal on input line 1499.
-Package cleveref Info: loaded `english' language definitions on input line 1500.
 
+
+Package cleveref Info: loaded `english' language definitions on input line 1500.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1500.
@@ -3488,12 +3549,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1532.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1532.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1533.
+
+
 Package cleveref Info: loaded `english' language definitions on input line 1533.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1533.
@@ -3542,12 +3605,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1549.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1549.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1552.
+
+
 Package cleveref Info: loaded `english' language definitions on input line 1553.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1553.
@@ -3663,13 +3728,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1581.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1581.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1582.
-Package cleveref Info: loaded `english' language definitions on input line 1582.
 
+
+Package cleveref Info: loaded `english' language definitions on input line 1582.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1582.
@@ -3686,13 +3752,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1587.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1587.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1587.
-Package cleveref Info: loaded `english' language definitions on input line 1594.
 
+
+Package cleveref Info: loaded `english' language definitions on input line 1594.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1594.
@@ -3826,8 +3893,9 @@ pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.10}) 
                    \relax 
 l.1625             \EndFunction
                                
+
 Package cleveref Info: loaded `english' language definitions on input line 1628.
- [46
+[46
 
 ]
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1629.
@@ -3872,12 +3940,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 1669--1669
 
  []
 
+
+
 Package cleveref Info: loaded `english' language definitions on input line 1669.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1669.
@@ -3924,13 +3994,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1671.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1671.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1671.
-Package cleveref Info: loaded `english' language definitions on input line 1675.
 
+
+Package cleveref Info: loaded `english' language definitions on input line 1675.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
 (fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 Package cleveref Info: loaded `english' language definitions on input line 1675.
@@ -3950,6 +4021,8 @@ Overfull \hbox (36.47537pt too wide) in paragraph at lines 1676--1676
 
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1675.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1675.
+
+
 Package cleveref Info: loaded `english' language definitions on input line 1677.
 [49
 
@@ -3957,8 +4030,8 @@ Package cleveref Info: loaded `english' language definitions on input line 1677.
 Package cleveref Info: loaded `english' language definitions on input line 12.
 )
  ***********
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-02-20>
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
  ***********
 
 
@@ -3971,16 +4044,16 @@ Package logreq Info: Writing requests to '"Advanced Algorithms".run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 75136 strings out of 476024
- 1826979 string characters out of 5792397
- 3021674 words of memory out of 5000000
- 96049 multiletter control sequences out of 15000+600000
- 602649 words of font info for 155 fonts, out of 8000000 for 9000
+ 76730 strings out of 475119
+ 1868752 string characters out of 5765717
+ 3080444 words of memory out of 5000000
+ 98535 multiletter control sequences out of 15000+600000
+ 603417 words of font info for 155 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 119i,21n,123p,1910b,2231s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 119i,21n,123p,1910b,2239s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/aless/.texlive/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb>
 </usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb></usr/share/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb>
-Output written on "Advanced Algorithms.pdf" (51 pages, 725185 bytes).
+Output written on "Advanced Algorithms.pdf" (51 pages, 714834 bytes).
 PDF statistics:
  728 PDF objects out of 1000 (max. 8388607)
  598 compressed objects within 6 object streams
