@@ -1471,7 +1471,7 @@
 
         \begin{itemize}
             \item if $x, y, z \in T$ then $$0 = d_T(x, y) \le d_T(x, z) + d_T(z, y) = 0 + 0 = 0$$
-            \item if TODO \todo{missing this}
+            \item if $x, y, z \notin T$ then $$0 = d_T(x, y) \le d_T(x, z) + d_T(z, y) = 0 + 0 = 0$$
             \item if $\exists A \in \{T, \overline T\}$ such that \tit{exactly one} of $x, y, z$ lies in $A$, we have three sub-cases:
                 \begin{itemize}
                     \item if $x \in A$ then $$1 = d_T(x, y) \le d_T(x, z) + d_T(z, y) = 1 + 0 = 1$$
@@ -1612,7 +1612,7 @@
 
     \section{Metric relaxations and distortions}
 
-    \section{Metric relaxations}
+    \subsection{Metric relaxations}
 
     Consider the following program:
 
@@ -1767,16 +1767,22 @@
     \end{framedprop}
 
     \begin{proof}
-        Fix $d \in \N_{\ge 1}$. By way of contradiction, suppose that there is an embedding $\func{f}{V(C_4)}{\R^d}$. Without loss of generality \todo{da finire}
+        Fix $d \in \N_{\ge 1}$, and consider an embedding $\func{f}{V(C_4)}{\R^d}$. Without loss of generality, we may assume that $f(i) = x_i$ for each $i \in [4]$. Let $M$ be the maximum $\ell_2$ edge length over all the points embedded into $\R^d$, in other words $$M_{\ell_2} := \max(\ell_2(x_1, x_2), \ell_2(x_2, x_3), \ell_2(x_3, x_4), \ell_2(x_4, x_1))$$ and let $m$ be the minimum $\ell_2$ diagonal length over all the points embedded into $\R^d$, in other words $$m_{\ell_2} := \min(\ell_2(x_1, x_3), \ell_2(x_2, x_4))$$ Thanks to the Shortest Diagonal lemma, we have that
+        \begin{equation*}
+            \begin{split}
+                2m_{\ell_2}^2 &\le \ell_2^2(y_1, y_3) + \ell_2^2(y_2, y_4) \\
+                     &\le \ell_2^2(y_1, y_2) + \ell_2^2(y_2, y_3) + \ell_2^2(y_3, y_4) + \ell_2^2(y_4, y_1) \\
+                     &\le 4M_{\ell_2}^2
+            \end{split}
+        \end{equation*}
+        implying that $2m_{\ell_2}^2 \le 4M_{\ell_2}^2 \iff m_{\ell_2} \le \sqrt 2 M_{\ell_2}$. Now, note that the maximum edge length $M_{C_4}$ w.r.t. $d_{C_4}$ is 1, and the minimum diagonal length $m_{C_4}$ w.r.t. $d_{C_4}$ is 2, which means that $m_{C_4} = 2 M_{C_4}$. Therefore, the embedding must have applied a distortion factor of at least $\sqrt 2$.
     \end{proof}
 
-    \chapter{TODO}
+    \chapter{Submodular optimization}
 
-    TODO \todo{introduction}
+    \tbf{Submodular optimization} plays a central role in \href{https://en.wikipedia.org/wiki/Discrete_optimization}{discrete optimization}, particularly in algorithmic settings where efficiency and approximation guarantees are critical. Submodular functions model a \tit{diminishing returns} property that arises naturally in many computational problems, such as influence maximization, data summarization, and sensor placement. We will introduce submodular optimization through the Max Cover problem.
 
     \section{The Max Cover problem}
-
-    TODO \todo{interlude}
 
     \begin{frameddefn}{Max Cover problem}
         The \tbf{Max Cover} (MC) problem is defined as follows: given a \tit{universe} (or \tit{ground}) set $\mathcal U = [n]$, a collection of sets $C = \{S_1, \ldots, S_m \}$ such that $S_i \subseteq \mathcal U$, and an integer $k \ge 1$, determine the sub-collection $S \subseteq C$ such that $\abs S = k$ that maximizes $\abs{\bigcup_{S_j \in S}{S_j}}$.
