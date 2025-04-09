@@ -76,6 +76,42 @@
     \field{year}{1998}
   \endentry
 
+  \entry{bourgain}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=BJ}{%
+         family={Bourgain},
+         familyi={B\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{2}{%
+      {Springer Science}%
+      {Business Media LLC}%
+    }
+    \strng{namehash}{BJ1}
+    \strng{fullhash}{BJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Bou85}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \verb{doi}
+    \verb 10.1007/bf02776078
+    \endverb
+    \field{issn}{1565-8511}
+    \field{number}{1–2}
+    \field{pages}{46–52}
+    \field{title}{On lipschitz embedding of finite metric spaces in Hilbert space}
+    \verb{url}
+    \verb http://dx.doi.org/10.1007/BF02776078
+    \endverb
+    \field{volume}{52}
+    \field{journaltitle}{Israel Journal of Mathematics}
+    \field{month}{03}
+    \field{year}{1985}
+  \endentry
+
   \entry{charikar}{inbook}{}{}
     \name{author}{1}{}{%
       {{hash=CM}{%

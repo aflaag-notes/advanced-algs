@@ -1555,8 +1555,6 @@
         Consider two metrics $\func{d_1}{A \times A}{B}$ and $\func{d_2}{X \times X}{Y}$; we say that $d_1$ is \tbf{isometricaly embedded} into $d_2$ if there is a function $\func{f}{A}{X}$ such that $$d_1(x, y) = d_2(f(x), f(y))$$
     \end{frameddefn}
 
-    TODO \todo{prev def non ha senso}
-
     \begin{framedlem}{}
         Any cut metric defined over $k$ cuts is isometrically embedded into $\ell_1$ over $\R^k$.
     \end{framedlem}
@@ -1568,10 +1566,10 @@
         
         \begin{itemize}
             \item $\abs{\{u,v\} \cap T_i} = 1 \implies (u \in T_i \land v \notin T_i) \lor (u \notin T_i \land v \in T_i)$; hence, we have that $$u \in T_i \land v \notin T_i \implies \overline{x_u}(i) = \lambda_i \land \overline{x_v}(i)= 0 \implies \abs{\overline{x_u}(i) - \overline{x_v}(i)} = 1$$ and also that $$u \notin T_i \land v \in T_i \implies \overline{x_u}(i) = 0 \land \overline{x_v} (i) = \lambda_i \implies \abs{\overline{x_u}(i) - \overline{x_v}(i)} = 1$$
-            \item $\abs{\{u, v\} \cap T_i} = 0 \implies u, v \in T_i \lor u, v \notin T_i$; hence, we have that $$u, v \in T_i \implies \overline{x_u}(i) = \overline{x_v}(i) = \lambda_i \implies \abs{\overline{x_u}(i) - \overline{x_v}}(i) = 0$$ and also that $$u, v \notin T_i \implies \overline{x_u}(i) = \overline{x_v}(i) = 0 \implies \abs{\overline{x_u}(i) - \overline{x_v}(i)} = 0$$
+            \item $\abs{\{u, v\} \cap T_i} = 0 \implies u, v \in T_i \lor u, v \notin T_i$; hence, we have that $$u, v \in T_i \implies \overline{x_u}(i) = \overline{x_v}(i) = \lambda_i \implies \abs{\overline{x_u}(i) - \overline{x_v}(i)} = 0$$ and also that $$u, v \notin T_i \implies \overline{x_u}(i) = \overline{x_v}(i) = 0 \implies \abs{\overline{x_u}(i) - \overline{x_v}(i)} = 0$$
         \end{itemize}
 
-        This means that for any $i \in [k]$ and $u, v \in V(G)$, it holds that $$\1 \sbk{\abs{\{u, v\} \cap T_i}} = \abs{\overline{x_u}(i)- \overline{x_v}(i)}$$ Therefore, we obtain the following
+        This means that for any $i \in [k]$ and $u, v \in V(G)$, it holds that $$\1 \sbk{\abs{\{u, v\} \cap T_i} = 1} = \abs{\overline{x_u}(i)- \overline{x_v}(i)}$$ Therefore, we obtain the following
         \begin{equation*}
             \begin{split}
                 d(u, v) &= \sum_{i \in [k]}{\lambda_i d_{T_i}(u, v)} \\
@@ -1583,14 +1581,117 @@
         meaning that $d$ is indeed isometrically embedded into $\ell_1$ over $\R^k$.
     \end{proof}
 
-    \begin{framedlem}{}
-        For any $d$, and any set $X \underset{fin}{\subseteq} \R^d$, the $\ell_1$ metric over $X$ is isometrically embedded into a cut metric defined over $k = d \cdot(\abs x - 1)$ cuts.
+    \begin{framedlem}[label={metric lemma}]{}
+        For any $d$, and any set $X \underset{fin}{\subseteq} \R^d$, the $\ell_1$ metric over $X$ is isometrically embedded into a cut metric defined over $d \cdot(\abs x - 1)$ cuts.
     \end{framedlem}
 
     \begin{proof}
-        TODO
+        We prove the statement for $d =1$, and then extend the proof to all other values of $d$.
+
+        Let $X \underset{fin}{\subseteq} \R^d$, i.e. $X = \{x_1, \ldots, x_n\}$ for some $n \in \N$; moreover, let $\func{\pi}{[n]}{[n]}$ be a permutation of the indices ordering the $n$ elements of $X$ such that they are ordered in \tit{ascending order} $$x_{\pi(1)} \le \ldots \le x_{\pi(n)}$$ For each $j \in [n - 1]$, let $S_j := \{\pi(1), \ldots, \pi(j)\}$; by construction, we have that $$\forall j \in [n - 1] \quad S_1 \subseteq \ldots \subseteq S_j$$ Moreover, for each $j \in [n - 1]$ set $\lambda_j := x_{\pi(j + 1)} - x_{\pi(j)}$; since the indices order the elements of $X$ in ascending order, we know that $\lambda_j \ge 0$ for all $j \in [n - 1]$.
+
+        Define $d$ to be the cut metric over the cuts $S_1, \ldots, S_{n - 1}$ with coefficients $\lambda_1, \ldots, \lambda_{n - 1}$; hence, for each $i$ and $j$ such that $i < j$ we get that
+        \begin{equation*}
+            \begin{split}
+                d(x_{\pi(i)}, x_{\pi(j)}) &= \sum_{t \in [j]}{\lambda_t d_{S_t}(x_{\pi(i)}, x_{\pi(j)})} \\
+                                          &= \sum_{t \in [j]}{\lambda_t \cdot \1 \sbk{\abs{\{x_{\pi(i)}, x_{\pi(j)}\} \cap S_t} = 1}} \\
+                                          &= \sum_{i \le t < j}{\lambda_t} \\
+                                          &= (x_{\pi(j)} - x_{\pi(j - 1)}) + (x_{\pi(j - 1)} - x_{\pi(j - 2)}) + \ldots + (x_{\pi(i + 1)} - x_{\pi(i)}) \\
+                                          &= x_{\pi(j)} - x_{\pi(i)} \\
+                                          &= \abs{x_{\pi(j)} - x_{\pi(i)}}_{\ell_1}
+            \end{split}
+        \end{equation*}
+        Lastly, since metrics are symmetric, we conclude that $$\forall i,j \quad d(x_{\pi(i)}, x_{\pi(j)}) = \ell_1(x_{\pi(1)}, x_{\pi(j)})$$ which means that for $d=1$ finite $\ell_1$ metrics can be embedded into a cut metric with $\abs X - 1$ cuts. Now, for any dimension $d > 0$, finite $\ell_1$ metrics can be embedded into a cut metric that is the sum of each 1-dimensional embedding, meaning that $\ell_1$ can be embedded into a cut metric with $d \cdot(\abs X - 1)$ cuts.
     \end{proof}
 
+    These two lemmas further improve our optimization equalities: optimizing over a cut metric is equal to optimizing over an \tbf{$\ell_1$ metric}.
+
+    \begin{framedcor}[label={metric cor}]{}
+        Given a graph $G$, it holds that $$\min_{T \subseteq V(G)}{\psi(T)} = \min_{T \subseteq V(G)}{\phi(d_T)} = \min_{d \ \mathrm{cut \ metric}}{\phi(d)} = \min_{d \ \ell_1 \ \mathrm{metric}}{\phi(d)}$$
+    \end{framedcor}
+
+    \section{Metric relaxation and distortion}
+
+    Consider the following program:
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{ccl}
+            \qquad\qquad\quad
+            & \max \; \dfrac{\sum_{ij \in E(G)}{d_{ij}}}{\sum_{ij \in [V(G)]^2}{d_{ij}}} \\\\
+            & \sum\limits_{S \subseteq V(G)}{\lambda_Sd_S(i, j)}  = d_ij & \forall ij \in [V(G)]^2 \\
+            & \lambda \in \R^{2^n} \\
+            & d \in \R^{\abs{\binom{n}{2}}} \\
+        \end{array}\]
+        \caption{Non-linear program for SC.}
+    \end{figure}
+
+    In this \tit{non}-linear program, the variables $d_{ij}$ and $\lambda_S$ --- as their names suggest --- represent the cut values for the optimal cut metric $d^*$ described by the optimal solution, which corresponds to $\phi(d^*)$. Note that the values $d_S(i,j)$ are elementary cut metrics, hence they act as nothing more than a constant coefficient, while we optimize over the values $\lambda_S$ defining the \tit{actual} coefficients of the cut.
+
+    Additionally, the main constraint of the program optimizes over cut metrics, which we proved to be \curlyquotes{isometrically equivalent} to $\ell_1$ metrics in the previous lemmas. Therefore, this program can be viewed as optimizing both over cut metrics and $\ell_1$ metrics. However, the objective function is clearly \tit{non}-linear, hence the program is \tit{non}-linear as well. To fix this, we can normalize the denominator of the objective function since it is shared among all feasible solutions, obtaining the following LP.
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{ccl}
+            \qquad\qquad\quad
+            & \max \; \displaystyle \sum_{ij \in E(G)}{d_{ij}} \\\\
+            & \sum\limits_{S \subseteq V(G)}{\lambda_Sd_S(i, j)}  = d_ij & \forall ij \in [V(G)]^2 \\
+            & \sum\limits_{ij \in [V(G)]^2}{d_ij} = 1 \\
+            & \lambda \in \R^{2^n} \\
+            & d \in \R^{\abs{\binom{n}{2}}} \\
+        \end{array}\]
+        \caption{LP for SC.}
+    \end{figure}
+
+    By construction, the solution to this LP corresponds to the optimal cut metric $d^*$, and the optimal solution to SC is given by the minimal elementary cut describing $d^*$; therefore, this LP could be used to get an exact solution to SC. However, we cannot employ this LP because it requires an \tit{exponential} number of variables. To solve this issue, consdier the following definition.
+
+    \begin{frameddefn}{Metric distortion}
+        Given two metrics $d_1$ and $d_2$ over the same vector space $V$, we say that $d_2$ has a \tbf{distortion} from $d_1$ of at most $\alpha \beta$ if $$\forall x, y \in V \quad \dfrac{d_1(x, y)}{\alpha} \le d_2(x, y) \le \beta d_1(x, y)$$
+    \end{frameddefn}
+
+    Metric distortion describes the concept of \tit{similarity} between measures. In 1985 \textcite{bourgain} proved that any finite metric can be isometrically embedded into an $\ell_1$ metric, up to some distortion factor.
+
+    \begin{framedthm}[label={bourgain}]{Bourgain's theorem (computational version)}
+        Any metric $d$ on $n$ points can be isometrically embedded in time $n^O(1)$ into an $\ell_1$ metric on $\R^d$, where $d = O(\log^3 n)$ and distortion factor $O(\log n)$.
+    \end{framedthm}
+
+    Thanks to this result, \textcite{leightonrao} were able to provide an algorithm that yields an $O(\log n)$-approximation to SC by using the following \tbf{metric LP relaxation}: instead of optimizing over $\ell_1$ metrics, they constructed a relaxation that optimizes over \tit{all} metrics --- introducing the approximation factor of $O(\log n)$, which is precisely the distortion factor.
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{ccl}
+            \qquad\qquad\quad
+            & \max \; \displaystyle \sum_{ij \in E(G)}{d_{ij}} \\\\
+            & x_{ij} + x{jk} \ge x_{ik} & \forall i, j ,k \in V(G) \\
+            & \sum\limits_{ij \in [V(G)]^2}{d_ij} = 1 \\
+            & \lambda \in \R^{2^n} \\
+            & d \in \R^{\abs{\binom{n}{2}}} \\
+        \end{array}\]
+        \caption{Metric LP relaxation for SC.}
+    \end{figure}
+
+    \begin{framedalgo}{Leighton-Rao algorithm}
+        Given a graph $G$, the algorithm returns a cut of $G$. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{LeightonRao}{$G$}
+                \State $d := \mathrm{LP}_\mathrm{metric}(G)$
+                \State $d' := \textsc{to-}\ell_1\textsc{-metric}(d)$ \Comment{apply \cref{bourgain}}
+                \State $d'' := \textsc{to-cut-metric}(d')$ \Comment{apply \cref{metric lemma}}
+                \State Let $T_1, \ldots, T_k$ be the $k$ cuts of $d''$
+                \State \tbf{return} $S \in \argmin_{i \in [k]}{\phi(T_i)}$
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
+    
+    Thanks to \cref{metric cor} and \cref{bourgain}, we obtain the following result.
+
+    \begin{framedthm}{\textsc{LeightonRao}'s approximation ratio}
+        Given a graph $G$, and an optimal solution $S^*$ to SC on $G$, let $S := \textsc{LeightonRao}(G)$. Then, it holds that $$\psi(S) \le O(\log n) \cdot \psi(S^*)$$
+    \end{framedthm}
+    
     \chapter{TODO}
 
     TODO \todo{introduction}
