@@ -17,6 +17,8 @@
 \contentsline {section}{\numberline {3.1}Metrics}{39}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Cut metrics}{39}{subsection.3.1.1}%
 \contentsline {subsection}{\numberline {3.1.2}The $\ell _1$ metric}{43}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Metric relaxation and distortion}{46}{section.3.2}%
-\contentsline {chapter}{\numberline {4}TODO}{49}{chapter.4}%
-\contentsline {section}{\numberline {4.1}The Max Cover problem}{49}{section.4.1}%
+\contentsline {section}{\numberline {3.2}Metric relaxations and distortions}{46}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Metric relaxations}{46}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Shortest path metric}{50}{subsection.3.3.1}%
+\contentsline {chapter}{\numberline {4}TODO}{52}{chapter.4}%
+\contentsline {section}{\numberline {4.1}The Max Cover problem}{52}{section.4.1}%

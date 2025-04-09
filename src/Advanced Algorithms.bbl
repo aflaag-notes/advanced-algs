@@ -76,6 +76,53 @@
     \field{year}{1998}
   \endentry
 
+  \entry{arora}{article}{}{}
+    \name{author}{3}{}{%
+      {{hash=AS}{%
+         family={Arora},
+         familyi={A\bibinitperiod},
+         given={Sanjeev},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=RS}{%
+         family={Rao},
+         familyi={R\bibinitperiod},
+         given={Satish},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=VU}{%
+         family={Vazirani},
+         familyi={V\bibinitperiod},
+         given={Umesh},
+         giveni={U\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Association for Computing Machinery (ACM)}%
+    }
+    \strng{namehash}{ASRSVU1}
+    \strng{fullhash}{ASRSVU1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{ARV09}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \verb{doi}
+    \verb 10.1145/1502793.1502794
+    \endverb
+    \field{issn}{1557-735X}
+    \field{number}{2}
+    \field{pages}{1–37}
+    \field{title}{Expander flows, geometric embeddings and graph partitioning}
+    \verb{url}
+    \verb http://dx.doi.org/10.1145/1502793.1502794
+    \endverb
+    \field{volume}{56}
+    \field{journaltitle}{Journal of the ACM}
+    \field{month}{04}
+    \field{year}{2009}
+  \endentry
+
   \entry{bourgain}{article}{}{}
     \name{author}{1}{}{%
       {{hash=BJ}{%
