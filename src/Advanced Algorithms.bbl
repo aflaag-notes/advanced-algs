@@ -362,6 +362,44 @@
     \field{year}{1988}
   \endentry
 
+  \entry{nwf}{article}{}{}
+    \name{author}{3}{}{%
+      {{hash=NGL}{%
+         family={Nemhauser},
+         familyi={N\bibinitperiod},
+         given={George\bibnamedelima L},
+         giveni={G\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=WLA}{%
+         family={Wolsey},
+         familyi={W\bibinitperiod},
+         given={Laurence\bibnamedelima A},
+         giveni={L\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=FML}{%
+         family={Fisher},
+         familyi={F\bibinitperiod},
+         given={Marshall\bibnamedelima L},
+         giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{NGLWLAFML1}
+    \strng{fullhash}{NGLWLAFML1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{NWF78}
+    \field{sortinit}{N}
+    \field{sortinithash}{N}
+    \field{pages}{265\bibrangedash 294}
+    \field{title}{An analysis of approximations for maximizing submodular set functions—I}
+    \field{volume}{14}
+    \field{journaltitle}{Mathematical programming}
+    \field{year}{1978}
+  \endentry
+
   \entry{raghavendra}{inproceedings}{}{}
     \name{author}{1}{}{%
       {{hash=RP}{%

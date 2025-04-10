@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.4.8)  10 APR 2025 12:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.4.8)  10 APR 2025 16:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1609,7 +1609,7 @@ Package hyperref Info: Link coloring ON on input line 75.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<../../packages/Nyx/logo.png, id=95, 803.0pt x 301.125pt>
+<../../packages/Nyx/logo.png, id=99, 803.0pt x 301.125pt>
 File: ../../packages/Nyx/logo.png Graphic file (type png)
 <use ../../packages/Nyx/logo.png>
 Package pdftex.def Info: ../../packages/Nyx/logo.png  used on input line 76.
@@ -3341,7 +3341,7 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1409.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1409.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1409.
-<../assets/ucl.png, id=456, 208.78pt x 179.67125pt>
+<../assets/ucl.png, id=462, 208.78pt x 179.67125pt>
 File: ../assets/ucl.png Graphic file (type png)
 <use ../assets/ucl.png>
 Package pdftex.def Info: ../assets/ucl.png  used on input line 1411.
@@ -4273,40 +4273,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 Package cleveref Info: loaded `english' language definitions on input line 1837.
 [54]
 Chapter 4.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1843.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1844.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1844.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1844.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1844.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1844.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1844.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1844.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1841.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1842.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1842.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1842.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1842.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1842.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1842.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1842.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1845.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1845.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1845.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1845.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1845.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1845.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1845.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1845.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1845.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1845.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1847.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1847.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1847.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1847.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1847.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1847.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1847.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1847.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1847.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1847.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1849.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1849.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1850.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1850.
 
-Overfull \hbox (6.84001pt too wide) in paragraph at lines 1849--1849
-[][][]\T1/cmr/m/n/6 bruteforce 
- []
-
-
-Overfull \hbox (6.84001pt too wide) in paragraph at lines 1849--1849
-[][][]\T1/cmr/m/n/6 bruteforce 
- []
-
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1851.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1851.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1852.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1852.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1852--1853
+Underfull \hbox (badness 10000) in paragraph at lines 1850--1851
 
  []
 
@@ -4314,123 +4305,122 @@ Underfull \hbox (badness 10000) in paragraph at lines 1852--1853
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1857             \Function
+l.1855             \Function
                             {ApproxMaxCover}{$\mathcal U$, $C$, $k$}
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1857.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1857.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1857.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1855.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1855.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1855.
 
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1858                 \State
+l.1856                 \State
                               $S := \varnothing$
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1858.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1856.
 
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1859                 \State
+l.1857                 \State
                               $T_0 := \varnothing$
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1859.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1857.
 
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1860                 \For
+l.1858                 \For
                            {$i \in [k]$}
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1860.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1858.
 
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.5}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1861                     \State
+l.1859                     \State
                                   $\displaystyle S_i \in \argmax_{S_j \in C ...
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1861.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1861.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1861.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1859.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1859.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1859.
 
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1862                     \State
+l.1860                     \State
                                   $S = S \cup \{S_i\}$
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1862.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1860.
 
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.7}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1863                     \State
+l.1861                     \State
                                   $T_i = T_{i - 1} \cup S_i$
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1863.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1861.
 
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.8}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1864                 \EndFor
+l.1862                 \EndFor
                               
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.9}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1865                 \State
+l.1863                 \State
                               \tbf{return} $S$
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1865.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1863.
 
 pdfTeX warning (ext4): destination with the same identifier (name{ALG@line.10}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1866             \EndFunction
+l.1864             \EndFunction
                                
 
-Package cleveref Info: loaded `english' language definitions on input line 1869.
+Package cleveref Info: loaded `english' language definitions on input line 1867.
 [55
 
 ]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1870.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1871.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1871.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1871.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1871.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1871.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1871.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1868.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1869.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1869.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1869.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1869.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1869.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1869.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1873.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1873.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1873.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1873.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1873.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1875.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1875.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1875.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1875.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1875.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1877.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1877.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1877.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1877.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1877.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1878.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1879.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1879.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1880.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1881.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1881.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1882.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1882.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1885.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1891.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1891.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1891.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1891.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1891.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1891.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1880.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1883.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1889.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1889.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1889.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1889.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1889.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1889.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1891--1891
+Underfull \hbox (badness 10000) in paragraph at lines 1889--1889
 
  []
 
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1910--1910
+Underfull \hbox (badness 10000) in paragraph at lines 1908--1908
 
  []
 
 
 
-Package cleveref Info: loaded `english' language definitions on input line 1910.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -4438,53 +4428,61 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 1910.
+Package cleveref Info: loaded `english' language definitions on input line 1908.
 [56]
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1908.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1910.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1912.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1912.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1912.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1912.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1912.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1917.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1918.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1918.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1918.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1918.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1921.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1922.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1923.
 
 
-Package cleveref Info: loaded `english' language definitions on input line 1916.
+Package cleveref Info: loaded `english' language definitions on input line 1926.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -4492,40 +4490,234 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 1916.
+Package cleveref Info: loaded `english' language definitions on input line 1926.
 [57]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1927.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1927.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1927.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1929.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1929.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1929.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1929.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1929.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1929.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1929.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1929.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1931.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1932.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1932.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1932.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1932.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1932.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1936.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1936.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1936.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1936.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1936.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1945.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1946.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1946.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1947.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1947.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1947.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1949.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1949.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1949.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1949.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1956.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1957.
 
-Overfull \hbox (36.47537pt too wide) in paragraph at lines 1917--1917
+
+Package cleveref Info: loaded `english' language definitions on input line 1957.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+Package cleveref Info: loaded `english' language definitions on input line 1957.
+[58]
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1957.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1958.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1963.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1964.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1964.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1964.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1964.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1964.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1964.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1964.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1964.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1964.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1964.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1967.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1968.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1968.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1972.
+
+
+Package cleveref Info: loaded `english' language definitions on input line 1980.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+Package cleveref Info: loaded `english' language definitions on input line 1980.
+[59]
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1981.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1982.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1982.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1982.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1982.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1982.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1982.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1985.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1985.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1985.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1985.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1985.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1985.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1985.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1985.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1985.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1987.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1992.
+LaTeX Font Info:    Undo math alphabet allocation in version normal on input line 1992.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1992.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1992.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1992.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1992.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1992.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1992.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1992.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1998.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1998.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1998.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1998--1998
+
+ []
+
+
+LaTeX Warning: Marginpar on page 60 moved.
+
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2003.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2003.
+
+
+Package cleveref Info: loaded `english' language definitions on input line 2005.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+Package cleveref Info: loaded `english' language definitions on input line 2005.
+[60]
+
+Package cleveref Info: loaded `english' language definitions on input line 2007.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+Package cleveref Info: loaded `english' language definitions on input line 2007.
+[61]
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+
+Overfull \hbox (36.47537pt too wide) in paragraph at lines 2008--2008
 \T1/cmr/m/it/12 plex-ity of Com-puter Com-pu-ta-tions\T1/cmr/m/n/12 . Springer US, 1972, 85^^U103. \T1/cmr/m/sc/12 isbn\T1/cmr/m/n/12 : 9781468420012.
  []
 
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
 
 
-Package cleveref Info: loaded `english' language definitions on input line 1916.
-[58
+Package cleveref Info: loaded `english' language definitions on input line 2007.
+[62
 
 ]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1916.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 2007.
 
 
-Package cleveref Info: loaded `english' language definitions on input line 1918.
+Package cleveref Info: loaded `english' language definitions on input line 2009.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -4533,8 +4725,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-Package cleveref Info: loaded `english' language definitions on input line 1918.
-[59] (./Advanced Algorithms.aux
+Package cleveref Info: loaded `english' language definitions on input line 2009.
+[63] (./Advanced Algorithms.aux
 Package cleveref Info: loaded `english' language definitions on input line 12.
 )
  ***********
@@ -4546,25 +4738,25 @@ L3 programming layer <2025-01-18>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `"Advanced Algorithms".out' has not changed.
-(rerunfilecheck)             Checksum: 306484B68790AF6E2501B377CD232C7F;3745.
+(rerunfilecheck)             Checksum: 9AEBB04429F7F4A56C13883C88207BD6;3816.
 Package logreq Info: Writing requests to '"Advanced Algorithms".run.xml'.
 \openout1 = `"Advanced Algorithms.run.xml"'.
 
  ) 
 Here is how much of TeX's memory you used:
- 76853 strings out of 475119
- 1871346 string characters out of 5765717
- 3079607 words of memory out of 5000000
- 98622 multiletter control sequences out of 15000+600000
+ 76909 strings out of 475119
+ 1872508 string characters out of 5765717
+ 3079073 words of memory out of 5000000
+ 98663 multiletter control sequences out of 15000+600000
  604935 words of font info for 157 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  119i,21n,123p,1910b,2247s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/aless/.texlive/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc2074.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb>
 </usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfxc1200.pfb></usr/share/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb>
-Output written on "Advanced Algorithms.pdf" (61 pages, 787773 bytes).
+Output written on "Advanced Algorithms.pdf" (65 pages, 802773 bytes).
 PDF statistics:
- 852 PDF objects out of 1000 (max. 8388607)
- 708 compressed objects within 8 object streams
- 221 named destinations out of 1000 (max. 500000)
- 205 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 889 PDF objects out of 1000 (max. 8388607)
+ 741 compressed objects within 8 object streams
+ 236 named destinations out of 1000 (max. 500000)
+ 213 words of extra memory for PDF output out of 10000 (max. 10000000)
 

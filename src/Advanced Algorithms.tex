@@ -1836,9 +1836,7 @@
 
     \chapter{Submodular optimization}
 
-    \tbf{Submodular optimization} plays a central role in \href{https://en.wikipedia.org/wiki/Discrete_optimization}{discrete optimization}, particularly in algorithmic settings where efficiency and approximation guarantees are critical. Submodular functions model a \tit{diminishing returns} property that arises naturally in many computational problems, such as influence maximization, data summarization, and sensor placement. We will introduce submodular optimization through the Max Cover problem.
-
-    \section{The Max Cover problem}
+    \tbf{Submodular optimization} plays a central role in \href{https://en.wikipedia.org/wiki/Discrete_optimization}{discrete optimization}, particularly in algorithmic settings where efficiency and approximation guarantees are critical. Submodular functions model a \tit{diminishing returns} property that arises naturally in many computational problems, such as influence maximization, data summarization, and sensor placement. But before introducing submodular optimization in detail, we will discuss the following problem.
 
     \begin{frameddefn}{Max Cover problem}
         The \tbf{Max Cover} (MC) problem is defined as follows: given a \tit{universe} (or \tit{ground}) set $\mathcal U = [n]$, a collection of sets $C = \{S_1, \ldots, S_m \}$ such that $S_i \subseteq \mathcal U$, and an integer $k \ge 1$, determine the sub-collection $S \subseteq C$ such that $\abs S = k$ that maximizes $\abs{\bigcup_{S_j \in S}{S_j}}$.
@@ -1846,7 +1844,7 @@
 
     In other words, we are asked to determine the sub-collection of the given $C$ of $k$ sets that covers as many elements of $\mathcal U$ as possible. For instance, given $\mathcal U = [7]$, $S_1 = \{1, 2\}$, $S_2 = \{2, 3\}$, $S_3 = \{3, 4, 5\}$, $S_4 = \{5, 6, 7\}$, an optimal solution would be $S = \{S_1, S_3\}$ because $\abs{S_1 \cup S_3} = \abs{\{1, 2, 3, 4, 5\}} = 5$.
 
-    TODO \todo{bruteforce thing? + interlude}
+    The approximation of MC is \tit{solved}, meaning that the best known approximation ratio of $1 - \tfrac{1}{e}$ has been proven to be tight under \NPclass-hardness. Such approximation ratio can be achieved through the following greedy algorithm.
 
     \begin{framedalgo}{$\rbk{1 - \frac{1}{e}}$-approximation for MC}
         Given an instance of MC $(\mathcal U, C, k)$, the algorithm returns a $\rbk{1 - \tfrac{1}{e}}$-approximation for the instance. \\
@@ -1910,8 +1908,101 @@
         }
 
         Thanks to this claim, recalling that for any $k \ge 1$ it holds that $\rbk{1 - \tfrac{1}{k}}^k \le e^{-1}$, we get $$\mu_k \le \rbk{1 - \dfrac{1}{k}}^k \abs{X^*} \le \dfrac{1}{e} \abs{X^*}$$ Lastly, since $\mu_k = \abs{X^*} - \abs{T_k}$, we get that $$\abs{X^*} - \abs{T_k} = \mu_k \le \dfrac{1}{e} \abs{X^*} \iff \abs{T_k} \ge \rbk{1 - \dfrac{1}{e}} \abs{X^*} \iff t_k \ge \rbk{1 - \dfrac{1}{e}} \mu_0$$
-
     \end{proof}
+
+    \section{Submodular functions}
+
+    We are now ready to introduce \tbf{submodular functions}, which play a central role in \tit{submodular optimization} that we introduced at the beginnig of the chapter.
+
+    \begin{frameddefn}{Modular functions}
+        Given $n \in \N$, let $\func{f}{\powerset([n])}{\R}$ be a function; given two sets $S, T \subseteq [n]$, we say that $f$ is
+
+        \begin{itemize}
+            \item a \tbf{submodular function} if $f(S) + f(T) \ge f(S \cup T) + f(S \cap T)$
+            \item a \tbf{modular function} if $f(S) + f(T) = f(S \cup T) + f(S \cap T)$
+            \item a \tbf{supermodular function} if $f(S) + f(T) \le f(S \cup T) + f(S \cap T)$
+        \end{itemize}
+    \end{frameddefn}
+
+    For instance, for any $n \in \N$ the \tit{cardinality} function, i.e. $f(S) = \abs S$ is modular, because $\forall S, T \subseteq [n] \quad f(S \cup T) = f(S) + f(T) - f(S \cap T)$ by the \href{https://en.wikipedia.org/wiki/Inclusion%E2%80%93exclusion_principle}{inclusion-exclusion principle}. We observe that submodular and supermodular functions are modular, therefore any property that holds for modular functions is true for the other two types as well.
+    
+    The main property of modular functions is the property to \curlyquotes{know the full description of the function} through at most $n + 1$ values. For example, if $f$ is modular, then the value of $f(\{1, 2, 3\})$ can be computed through $f(\varnothing)$, $f(\{1\})$, $f(\{2\})$ and $f(\{3\})$ as follows $$f(\{1, 2, 3\}) = f(\{1, 2\}) + f(\{3\})- f(\varnothing) = (f(\{1\}) + f(\{2\}) - f(\varnothing)) + f(\{3\}) - f(\varnothing)$$
+
+    \begin{framedprop}{}
+        For any $n \in \N$, the function $\func{f}{\powerset([n])}{\R}$ is modular if and only if there exist $x, w_1, \ldots, w_n$ such that for all $S \subseteq [n]$ it holds that $f(S) = z + \sum_{i \in S}{w_i}$.
+    \end{framedprop}
+
+    \begin{proof}
+        Let $f$ be a modular function defined on $n \in \N$, and fix a set $S \subseteq [n]$; in particular, let $S = \{1, \ldots, k\}$. By modularity of $f$, we have that
+        \begin{equation*}
+            \begin{split}
+                f(S) &= f(\{1, \ldots, k\}) \\
+                     &= f(\{2, \ldots, k\}) + f(\{1\}) - f(\varnothing) \\
+                     &= (f(\{3, \ldots, k\}) + f(\{2\}) - f(\varnothing)) + f(\{1\}) - f(\varnothing) \\
+                     &= f(\{k\}) + \sum_{i \in S - \{k\}}{(f(\{i\}) - f(\varnothing))} \\
+                     &= f(\varnothing) + \sum_{i \in S}{f(\{i\}) - f(\varnothing)} \\
+                     &= z + \sum_{i \in S}{w_i}
+            \end{split}
+        \end{equation*}
+        where $z .= f(\varnothing)$ and $w_i := f(\{i\}) - f(\varnothing)$ for all $i \in S$.
+
+        Vice versa, suppose that there are values $z', w_1', \ldots, w_n'$ such that for all $S \subseteq [n]$ it holds that $f(S) = z' + \sum_{i \in S}{w_i'}$. Fix two sets $S, T \subseteq [n]$; then, we have that
+        \begin{equation*}
+            \begin{split}
+                f(S) + f(T) &= \rbk{z' + \sum_{i \in S}{w_i'}} + \rbk{z' + \sum_{i \in T}{w_i'}} \\
+                            &= \rbk{z' + \sum_{i \in S \cap T}{w_i'} + \sum_{i \in S - T}{w_i'}} + \rbk{z' + \sum_{i \in S \cap T}{w_i'} + \sum_{i \in T - S}{w_i'}} \\
+                            &= \rbk{z' + \sum_{i \in S \cap T}{w_i'}} + \rbk{z' + \sum_{i \in S - T}{w_i'} + \sum_{i \in S \cap T}{w_i'} + \sum_{i \in T - S}{w_i'}} \\
+                            &= f(S \cap T) + f(S \cup T)
+            \end{split}
+        \end{equation*}
+        hence $f$ is modular.
+    \end{proof}
+
+    The importance of submodularity in optimization stems from its inherent \tbf{diminishing returns} property. In economics, diminishing returns describe the phenomenon where the incremental output of a production process decreases as the quantity of a single input increases, while all other inputs are held constant.
+
+    \begin{frameddefn}{Diminishing returns}
+        Given $n \in \N$, let $\func{f}{\powerset([n])}{\R}$; given $S \subseteq [n]$ and $x \in [n] - S$, the \tbf{return} of $x$ on $S$ for $f$ is defined as $$\Delta_f(x \mid S) = f(S \cup \{x\}) - f(S)$$ We say that $f$ has \tbf{diminishing returns} when it holds that $$\forall A \subseteq B \subseteq [n], x \in [n] - B \quad \Delta_f(x \mid A) \ge \Delta_f(x \mid B)$$
+    \end{frameddefn}
+
+    \begin{framedthm}{}
+        For any $n \in \N$, the function $\func{f}{\powerset([n])}{\R}$ is submodular if and only if it has diminishing returns.
+    \end{framedthm}
+
+    \begin{proof}
+        Let $\func{f}{\powerset([n])}{\R}$ be a submodular function for some $n \in \N$, and fix $A \subseteq B \subseteq [n]$ and $x \in [n] - B$; by submodularity of $f$, we have that $$f(A \cup \{x\}) + f(B) \ge f(A \cup \{x\} \cup B) + f((A \cup \{x\}) \cap B)$$ Now, since $A \subseteq B$, and $x \notin B$, we have that $$f(A \cup \{x\}) + f(B) \ge f(B \cup \{x\}) + f(A)$$ Lastly, rearranging the terms, we get that $$\Delta_f(x \mid A) := f(A \cup \{x\}) - f(A) \ge f(B \cup \{x\}) - f(B) =: \Delta_f(x \mid B)$$
+
+        TODO \todo{do the other direction}
+    \end{proof}
+
+    \subsection{TODO}
+
+    Why did we present the Max Cover problem at the beginning of the chapter? MC is a \tbf{submodular optimization} problem, i.e. the problem can be described in terms of a submodular function.
+
+    \begin{frameddefn}{Covering function}
+        Given $t \in \N$, let $\mathcal U = [t]$ be the universe set, and let $C = \{A_1, \ldots, A_n\}$ be a collection of subsets $A_i \subseteq \mathcal U$; the \tbf{covering function} $\func{f}{\powerset([n])}{\R}$ is defined as follows: $$\forall S \subseteq [n] \quad f(S) := \abs{\bigcup_{j \in S}{A_j}}$$
+    \end{frameddefn}
+
+    For example, given $t = 4$ and $A_1 = \{1, 2, 4\}$, $A_2 = \{2, 3\}$, $A_3 = \{1, 4\}$ --- hence $n = 3$ and $C = \{A_1, A_2, A_3\}$ --- we have that $$f(\{1, 3\}) = \abs{\bigcup_{j \in \{1, 3\}}{A_j}} = \abs{A_1 \cup A_3} = \abs{\{1, 2, 4\}} = 3$$ and so on. In other words, the set $S$ is used to \tit{index} the sets $A_j \in C$.
+
+    \begin{framedprop}{}
+        The covering function is non-negative, monotone increasing and submodular.
+    \end{framedprop}
+
+    \begin{proof}
+        Given a set $X \subseteq [n]$, note that $$f(X) = \sum_{i \in [t]}{\1\sbk{\exists j \in X \quad i \in A_j}} = \sum_{i \in [t]}{f_i(X)}$$ where for each $i \in [t]$ the subfunction $\func{f_i}{\powerset([n])}{\R}$ is defined precisely as $$f_i(X) := \soe{ll}{1 & \exists j \in X \quad i \in A_j \\ 0 & \mathrm{otherwise}}$$
+
+        \claim{
+            For all $i \in [t]$, the subfunction $f_i$ is non-negative, monotone increasing and submodular.
+        }{
+            TODO \todo{da finire}
+        }
+
+        TODO \todo{da finire}
+    \end{proof}
+
+    Since MC is \NPclass-Hard, this proposition implies that the problem of maximizing non-negative, monotone increasing, and submodular functions over $k$ elements is \NPclass-Hard as well. In fact, the $\rbk{1 - \tfrac{1}{e}}$-approximation for MC that we previously discussed is a specific instance of a more general algorithm, first presented by \textcite{nwf}, that aims at maximizing a Non-Negative and Monotone Increasing (NN-MI) submodular function.
+
+    TODO \todo{da finire}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
