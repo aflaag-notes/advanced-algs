@@ -294,7 +294,7 @@
         \caption{This is the \tit{minimum vertex cover} of the previous graph.}
     \end{figure}
 
-    As famously proved by \textcite{karp} in 1972, this problem is \NPComplete, hence we are interested in finding algorithms that allow to find approximations of optimal solutions. For instance, an algorithm that is able to approximate VC concerns the \href{https://en.wikipedia.org/wiki/Matching_(graph_theory)}{matching} problem.
+    As famously proved by \textcite{karp} in 1972, this problem is \NPclass-Complete, hence we are interested in finding algorithms that allow to find approximations of optimal solutions. For instance, an algorithm that is able to approximate VC concerns the \href{https://en.wikipedia.org/wiki/Matching_(graph_theory)}{matching} problem.
 
     \begin{frameddefn}{Matching}
         Given an undirected graph $G = (V, E)$, a \tbf{matching} of $G$ is a set of edges $A \subseteq E$ such that $$\forall e, e' \in A \quad e \cap e' = \varnothing$$
@@ -415,7 +415,7 @@
         Consider an optimal solution $S^*$ to VC on $G$, and let $M = \{e_1, \ldots, e_t\}$. Note that at each iteration of the algorithm exactly 1 edge is added to $M \subseteq V$, hence it always holds that $$S_i \cap S_{i + 1} = e_i = \{u, v\}$$ for any iteration $i \in [t - 1]$. Moreover, since $M$ is a matching, it holds that $\forall e, e' \in M \quad e \cap e' = \varnothing$, therefore $\abs{S} = 2 \abs{M}$. Finally, by the previous theorem we have that $\abs{M} \le \abs{S^*}$, concluding that $$\abs S = 2 \abs M \le 2 \abs{S^*}$$
     \end{proof}
     
-    This 2-approximation algorithm is conjectured to be optimal, but it has not been proven yet. In fact, VC is conjectured to be \NPHard to $(2 - \varepsilon)$-approximate, for any $\varepsilon > 0$.
+    This 2-approximation algorithm is conjectured to be optimal, but it has not been proven yet. In fact, VC is conjectured to be \NPclass-Hard to $(2 - \varepsilon)$-approximate, for any $\varepsilon > 0$.
 
     Interestingly, the decisional version of VC is \href{https://en.wikipedia.org/wiki/Parameterized_complexity#FPT}{Fixed Parameter Tractable}. This characterization comes from the nature of the problem: for each edge $e = \{u, v\}$ of a given undirected graph $G = (V, E)$, either $u$ or $v$ has to be in the vertex cover, therefore it possible to approach VC by trying all possible choices of set of vertices $S \subseteq V$, and backtrack if necessary. The following algorithm employs this idea.
 
@@ -510,7 +510,7 @@
 
     \chapter{Mathematical Programming}
 
-    Up to this point, we have introduced several \NPComplete problems and discussed approximation algorithms that provide near-optimal solutions within a certain approximation ratio. We will now explore a new technique that can be leveraged to design approximation algorithms for a broader class of problems, namely \tbf{mathematical programming}.
+    Up to this point, we have introduced several \NPclass-Complete problems and discussed approximation algorithms that provide near-optimal solutions within a certain approximation ratio. We will now explore a new technique that can be leveraged to design approximation algorithms for a broader class of problems, namely \tbf{mathematical programming}.
 
     \href{https://en.wikipedia.org/wiki/Mathematical_optimization}{Mathematical programming} is a powerful framework used to model and solve \tbf{optimization problems} across various fields, including operations research, computer science and engineering. It provides a structured way to \tit{maximize} or \tit{minimize} an \tbf{objective function} while satisfying a set of \tbf{constraints}. In particular, optimization problems are usually expressed as follows
 
@@ -587,7 +587,7 @@
         By way of contradiction, suppose that $S^*$ is not a minimum vertex cover. Hence, there must be another vertex cover $S'$ such that $\abs{S'} < \abs{S^*}$. By the previous claim, this implies that there exists a feasible solution $\{x'_u\}_{u \in V}$ for the IP that has value $\abs{S'}$, but then $$\sum_{u \in V}{x'_u} = \abs{S'} < \abs{S^*} = \sum_{u \in V}{x^*_u}$$ which contradicts the optimality of the solution of $\{x^*_u\}_{u \in V}$ for the IP.
     \end{proof}
 
-    In particular, this lemma implies that VC can be reduced to Integer programming, indeed solving IPs is actually \NPHard \cite{karp}, differently from LPs. This result shows that IPs cannot be used \tit{directly} to obtain perfect solutions, but they are still very useful thanks to \tbf{relaxation}.
+    In particular, this lemma implies that VC can be reduced to Integer programming, indeed solving IPs is actually \NPclass-Hard \cite{karp}, differently from LPs. This result shows that IPs cannot be used \tit{directly} to obtain perfect solutions, but they are still very useful thanks to \tbf{relaxation}.
 
     To \tit{relax} an IP, we simply replace the constraint $x \in \{0, 1\}^n$ with $0 \le x \le 1$, transforming the IP into an LP.
 
@@ -709,7 +709,7 @@
 
     In other words, we are asked to determine the smallest sub-collection of the given $C$ such that we can still cover the whole universe set $\mathcal U$. For instance, given $\mathcal U = [3]$ and $S_1 = \{1, 2\}$, $S_2 = \{2, 3\}$, $S_3 = \{1, 3\}$, we can cover $\mathcal U$ with just $S = \{S_1, S_2\}$.
 
-    As for VC, in 1972 \cite{karp} proved that SC is \NPComplete as well. Moreover, similarly to what we did for VC, we can convert SC into an IP, as follows.
+    As for VC, in 1972 \cite{karp} proved that SC is \NPclass-Complete as well. Moreover, similarly to what we did for VC, we can convert SC into an IP, as follows.
 
     \begin{figure}[H]
         \centering
@@ -847,7 +847,7 @@
 
     \section{The Densest Subgraph problem}
     
-    Up to this point, we only discussed \NPComplete problems, and various techniquesused to obtain approximate solutions. The next problem that we are going to introduce, instead, can be solved in \tbf{polynomial} time, thanks to linear programming. First, consider the following definition.
+    Up to this point, we only discussed \NPclass-Complete problems, and various techniquesused to obtain approximate solutions. The next problem that we are going to introduce, instead, can be solved in \tbf{polynomial} time, thanks to linear programming. First, consider the following definition.
 
     \begin{frameddefn}{Graph density}
         Given a graph $G = (V, E)$ such that $V \neq \varnothing$, its \tbf{density} is defined as follows $$\rho(G) := \dfrac{\abs E}{\abs V}$$
@@ -1396,6 +1396,62 @@
         }
     \end{proof}
 
+    TODO \todo{buco}
+
+    \section{The Unique Games Conjecture}
+
+    Before discussing the conjecture itself, consider the following definition.
+
+    \begin{frameddefn}{Unique label cover}
+        Let $G$ be a bipartite graph, bipartitioned through $(A, B)$; given a value $k \in \N$, for each edge $e \in E(G)$ let $\func{\pi_e}{[k]}{[k]}$ be a permutation. A \tbf{unique label cover} (ULC) of $G$ is an assignment $\func{\phi}{A \cup B}{[k]}$ defining the set $S_\phi$ of satisfied edges: $$S_\phi := \{ab \in E(G) \mid a \in A, b \in B, \pi_{ab}(\phi(a)) = \phi(b)\}$$
+    \end{frameddefn}
+
+    In other words, an edge $ab \in E(G)$ of $G$ is sait to be \tit{satisfied} by $\phi$ if the color $\phi(a)$ gets permuted into the color $\phi(b)$ by the permutation $\pi_{ab}$.
+
+    \centeredimage[In this figure, (a) and (b) are two instances of the UCL problem with 2 colors; (b) is a solution to (a) that satisfies all the edges, while (d) is a solution to (c) with an unsatisfied edge.]{0.9}{../assets/ucl.png}
+
+    Note that UCL instances are \tit{strongly constrainted}, i.e. the color of a vertex uniquely defines the colors of its neighbors, and therefore its entire connected component. Thus, if the input instance admits a valid assignment, such assignment can be found \tit{efficiently} by iterating over all the possible colors of a single node. In particular, this implies that the problem of deciding if a given instance admits a satisfying assignment can be solved in polynomial time.
+
+    The \tbf{value} of a UCL instance is the ratio of the edges that are satisfiable by any assignment. Hence, for satisfiable instances the ratio is 1, and we can find a satisfiying assignment as described. In contrast, determining the value of an unsatisfiable game --- even approximately --- appears to be very hard. This difficulty was formalized by \textcite{khot} in terms of \NPclass-hardness, as follows.
+
+    \begin{framedconj}{Unique Games Conjecture (UGC)}
+        It is conjectured that for each $\varepsilon > 0$ there is a value $k_\varepsilon$ for which it is $\NPclass-Hard$ to determine if for a UCL instance with $k_\varepsilon$ labels one of the following holds:
+
+        \begin{itemize}
+            \item at most an $\varepsilon$-fraction of the edges are satisfied
+            \item at least a $(1 - \varepsilon)$-fraction of the edges are satisfied
+        \end{itemize}
+    \end{framedconj}
+
+    Furthermore, Khot's conjecture has been shown to be linked with \href{https://en.wikipedia.org/wiki/Constraint_satisfaction_problem}{Constraint Satisfaction Problems}, a particular type of optimization problems defined as follows.
+
+    \begin{frameddefn}{Constraint Satisfaction Problem}
+        Let $\mathcal P$ be a set of $k$-ary predicates defined on $[q]$, for $q, k \in \N$. An instance of a \tbf{Constraint Satisfaction Problem} (CSP) is a set of variables $X = \{x_1, \ldots, x_n\}$ and a set of constraints $C_1, \ldots, C_m$ such that $C_j = \abk{I_j, P_j}$ where $I_j \subseteq [n]$ and $P_j \in \mathcal P$.
+
+        A constraint $C_j = \abk{I_j, P_j}$ is said to be \tit{satisfied} by an assignment $\func{\alpha}{I_j}{\{0, 1\}}$ if $P_j \smat{x_{i_1} & \ldots & x_{i_k} \\ \alpha(x_{i_1}) & \ldots & \alpha(x_{i_k})}$ evaluates to true.
+    \end{frameddefn}
+
+    TODO \todo{buco}
+    
+    Given a problem that can be described through a CSP $\mathcal C$, let $\alpha(\mathcal C)$ be the best possible approximation ratio for $\mathcal C$, i.e. the minimum ratio such that the problem does not become \NPclass-Hard to approximate. The following theorem, proved by \textcite{raghavendra}, shows that the relationship between approximation algorithms, SDPs, and the UGC is as strong as it can be.
+
+    \begin{framedthm}{Raghavendra's theorem}
+        For every CSP $\mathcal C$ with values in $[q]$ and arity $k$, the following holds.
+
+        \begin{itemize}
+            \item There is an STP with IG of $\alpha(\mathcal C)$ and a rounding algorithm that is an $\alpha(\mathcal C)$-approximation of $\mathcal C$.
+            \item If the UGC is true, it is \NPclass-Hard to approximate $\mathcal C$ with a ratio $\alpha(\mathcal C) - \varepsilon$ for any $\varepsilon > 0$.
+        \end{itemize}
+    \end{framedthm}
+
+    In particular, if the UGC holds true, Raghavendra's theorem implies that the SDP integrality gap for any problem that can be described through a CSP is the best possible approximation ratio that can be achieved. Although many researchers believe in the validity of the conjecture, it remains unproven.
+
+    As a direct corollary of Raghavendra's theorem, we get that the approximation ratios that we previously found for MC and VC are the best possible ones, if the UGC is true.
+
+    \begin{framedcor}{}
+        If the UGC is true, then $\mathrm{IG}_{\mathrm{MC}}^{\mathrm{SDP}} = \alpha(\mathrm{MC})$ and $\mathrm{IG}_\mathrm{VC} = \alpha(\mathrm{VC})$.
+    \end{framedcor}
+
     \chapter{Metric geometry}
 
     TODO \todo{missing introduction}
@@ -1427,7 +1483,7 @@
 
     By definition, this model represents an \tit{evenly sparse graph}, because for each $S \subseteq V(G)$ it holds that $$ \mathbb E[\psi(S)] = \dfrac{\mathbb E\sbk{\abs{\mathrm{cut}(S)}}}{\abs S \cdot \abs{\overline S}} = \dfrac{\sum_{ij \in S \times \overline S}{\Pr \sbk{ij \in \mathrm{cut}(S)}}}{\abs S \cdot  \abs{\overline S}}= \dfrac{\mu \cdot \abs S \cdot \abs{\overline S}}{\abs S \cdot \abs{\overline S}} = \mu$$
 
-    The Maximum Cut problem --- which we discussed in \cref{maxcut} --- can be reduced to SC, implying that the latter is \NPHard as well. Nevertheless, the problem can be approximated through the \tbf{Leighton-Rao algorithm} \cite{leightonrao}, which relies on LP relaxation and a series of reduction steps. In particular, its integrality gap is bounded using \tit{geometric arguments}, therefore in the following sections we will focus on \tbf{metric geometry} in order to establish this result.
+    The Maximum Cut problem --- which we discussed in \cref{maxcut} --- can be reduced to SC, implying that the latter is \NPclass-Hard as well. Nevertheless, the problem can be approximated through the \tbf{Leighton-Rao algorithm} \cite{leightonrao}, which relies on LP relaxation and a series of reduction steps. In particular, its integrality gap is bounded using \tit{geometric arguments}, therefore in the following sections we will focus on \tbf{metric geometry} in order to establish this result.
 
     \section{Metrics}
 
@@ -1728,7 +1784,7 @@
         Omitted.
     \end{proof}
 
-    This $O(\sqrt{\log n})$ is the current best known approximation for SC. Moreover, SC cannot be expressed in temrs of CSP --- recall that the above SDP is a \tit{relaxation} for the minimal $\ell_2^2$ problem. Furthermore, even if this approximation ratio is believed to be the best possible one, the Unique Games Conjecture only implies that there are no constant factor approximations for SC, meaning that the non-constant ratio could be proved to be lower.
+    This $O(\sqrt{\log n})$ is the current best known approximation for SC. Moreover, SC cannot be expressed in temrs of CSP --- recall that the above SDP is a \tit{relaxation} for the minimal $\ell_2^2$ problem. Furthermore, even if this approximation ratio is believed to be the best possible one, the UGC only implies that there are no constant factor approximations for SC, meaning that the non-constant ratio could be proved to be lower.
 
     \subsection{Shortest path metric}
 

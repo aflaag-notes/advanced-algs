@@ -681,6 +681,13 @@ INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx0800.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecxc0800.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecbx0600.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecxc0600.tfm
+INPUT ../assets/ucl.png
+INPUT ../assets/ucl.png
+INPUT ../assets/ucl.png
+INPUT ../assets/ucl.png
+INPUT ../assets/ucl.png
+INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecss0800.tfm
+INPUT /usr/share/texmf-dist/fonts/tfm/jknappen/ec/ecss0800.tfm
 INPUT /usr/share/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 INPUT /usr/share/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 INPUT /usr/share/texmf-dist/tex/latex/bbm-macros/ubbm.fd

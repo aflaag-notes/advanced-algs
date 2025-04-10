@@ -265,6 +265,38 @@
     \field{year}{1972}
   \endentry
 
+  \entry{khot}{inproceedings}{}{}
+    \name{author}{1}{}{%
+      {{hash=KS}{%
+         family={Khot},
+         familyi={K\bibinitperiod},
+         given={Subhash},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {ACM}%
+    }
+    \strng{namehash}{KS1}
+    \strng{fullhash}{KS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Kho02}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{booktitle}{Proceedings of the thiry-fourth annual ACM symposium on Theory of computing}
+    \verb{doi}
+    \verb 10.1145/509907.510017
+    \endverb
+    \field{series}{STOC02}
+    \field{title}{On the power of unique 2-prover 1-round games}
+    \verb{url}
+    \verb http://dx.doi.org/10.1145/509907.510017
+    \endverb
+    \field{month}{05}
+    \field{year}{2002}
+  \endentry
+
   \entry{ig_sc}{article}{}{}
     \name{author}{1}{}{%
       {{hash=LL}{%
@@ -328,6 +360,39 @@
     \field{pages}{422\bibrangedash 431}
     \field{title}{An approximate max-flow min-cut theorem for uniform multicommodity flow problems with applications to approximation algorithms}
     \field{year}{1988}
+  \endentry
+
+  \entry{raghavendra}{inproceedings}{}{}
+    \name{author}{1}{}{%
+      {{hash=RP}{%
+         family={Raghavendra},
+         familyi={R\bibinitperiod},
+         given={Prasad},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {ACM}%
+    }
+    \strng{namehash}{RP1}
+    \strng{fullhash}{RP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Rag08}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{booktitle}{Proceedings of the fortieth annual ACM symposium on Theory of computing}
+    \verb{doi}
+    \verb 10.1145/1374376.1374414
+    \endverb
+    \field{pages}{245–254}
+    \field{series}{STOC ’08}
+    \field{title}{Optimal algorithms and inapproximability results for every CSP?}
+    \verb{url}
+    \verb http://dx.doi.org/10.1145/1374376.1374414
+    \endverb
+    \field{month}{05}
+    \field{year}{2008}
   \endentry
 \enddatalist
 \endinput

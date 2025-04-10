@@ -13,12 +13,13 @@
 \contentsline {section}{\numberline {2.3}The Set Cover problem}{19}{section.2.3}%
 \contentsline {section}{\numberline {2.4}The Densest Subgraph problem}{24}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Approximation through duality}{29}{subsection.2.4.1}%
-\contentsline {chapter}{\numberline {3}Metric geometry}{38}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Metrics}{39}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Cut metrics}{39}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}The $\ell _1$ metric}{43}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Metric relaxations and distortions}{46}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Metric relaxations}{46}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Shortest path metric}{50}{subsection.3.2.2}%
-\contentsline {chapter}{\numberline {4}Submodular optimization}{52}{chapter.4}%
-\contentsline {section}{\numberline {4.1}The Max Cover problem}{52}{section.4.1}%
+\contentsline {section}{\numberline {2.5}The Unique Games Conjecture}{38}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Metric geometry}{41}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Metrics}{42}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Cut metrics}{42}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}The $\ell _1$ metric}{46}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Metric relaxations and distortions}{49}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Metric relaxations}{49}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Shortest path metric}{53}{subsection.3.2.2}%
+\contentsline {chapter}{\numberline {4}Submodular optimization}{55}{chapter.4}%
+\contentsline {section}{\numberline {4.1}The Max Cover problem}{55}{section.4.1}%
