@@ -1865,7 +1865,7 @@
         \end{algorithmic}
     \end{framedalgo}
 
-    \begin{framedthm}{\textsc{ApproxMaxCover}'s approximation ratio}
+    \begin{framedthm}[label={mc approx ratio}]{\textsc{ApproxMaxCover}'s approximation ratio}
         Given an instance $(U, C, k)$ of MC, and an optimal solution $S^*$ to MC on $(\mathcal U, C, k)$, let $S := \textsc{ApproxMaxCover}(\mathcal U, C, k)$. Then, it holds that $$\abs{\bigcup_{S_j \in S}} \ge \rbk{1 - \dfrac{1}{e}}\abs{\bigcup_{S_j \in S^*}{S_j}}$$
     \end{framedthm}
 
@@ -1994,15 +1994,56 @@
         \claim{
             For all $i \in [t]$, the subfunction $f_i$ is non-negative, monotone increasing and submodular.
         }{
-            TODO \todo{da finire}
+            Fix $i \in [t]$, and $S, T \subseteq [n]$; by definition, we trivially have that $f_i$ is non-negaitve, therefore $f_i(S) + f_i(T) \ge 0$. Moreover, by definition $f_i$ is also monotone increasing, i.e. $S \subseteq T \implies f_i(S) \le f_i(T)$ --- if $f_i(S) = 0$ then the inequality is always satisfied, and $f_i(S) = 1 \iff \exists j \in S \quad i \in A_j$ but $S \subseteq T \implies j \in T$ hence $f_i(T) = 1$.
+
+            To prove submodularity, we observe that since $S \cap T \subseteq S \cup T$ and $f_i \in \{0, 1\}$, we only have two cases:
+
+            \begin{enumerate}
+                \item $f_i(S \cup T) = f_i(S \cap T) = 1$. By definition, we have that \centeredeq{0.9}{$f_i(S \cap T) = 1 \iff \exists j \in S \cap T \quad i \in A_j \implies \exists j \in S \land j \in T \quad i \in A_j \iff f_i(S) = f_i(T) = 1$} Hence, we have that $$f_i(S) + f_i(T) = 1 + 1 = f_i(S \cup T) + f_i(S \cap T)$$
+                \item $f_i(S \cup T) = 1$ but $f_i(S \cap T) = 0$. By definition \centeredeq{0.9}{$f_i(S \cup T) \implies \exists j \in S \cup T \quad i \in A_j \implies \exists j \in S \lor j \in T \quad i \in A_j \iff f_i(S) + f_i(T) \ge 1$} hence, we have that $$f_i(S) + f_i(T) \ge 1 = f_i(S \cup T) + f_i(S \cap T)$$
+            \end{enumerate}
         }
 
-        TODO \todo{da finire}
+        Lastly, fix $S, T \subseteq [n]$; because of the claim, we know that $f$ is trivially non-negative and monotone increasing. To prove submodularity, thanks to the claim we have that
+        \begin{equation*}
+            \begin{split}
+                f(S) + f(T) &= \sum_{i \in [t]}{f_i(S)} + \sum_{i \in [t]}{f_i(T)} \\
+                            &= \sum_{i \in [t]}{f_i(S) + f_i(T)} \\
+                            &\ge \sum_{i \in [t]}{f_i(S \cup T) + f_i(S \cap T)} \\
+                            &= \sum_{i \in [t]}{f_i(S \cup T)} + \sum_{i \in [t]}{f_i(S \cap T)} \\
+                            &= f(S \cup T) + f(S \cap T)
+            \end{split}
+        \end{equation*}
     \end{proof}
 
     Since MC is \NPclass-Hard, this proposition implies that the problem of maximizing non-negative, monotone increasing, and submodular functions over $k$ elements is \NPclass-Hard as well. In fact, the $\rbk{1 - \tfrac{1}{e}}$-approximation for MC that we previously discussed is a specific instance of a more general algorithm, first presented by \textcite{nwf}, that aims at maximizing a Non-Negative and Monotone Increasing (NN-MI) submodular function.
 
-    TODO \todo{da finire}
+    \begin{framedalgo}{NWF approximation}
+        Given an NN-MI submodular function $\func{f}{\powerset(X)}{\R}$, and a value $k \in \N$, the algorithm returns a subset $S \subseteq X$. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{NWFapprox}{$f$, $k$}
+                \State $S_0 := \varnothing$
+                \For{$i \in [k]$}
+                    \State $\displaystyle x_i \in \argmax_{x \in X - S_i}{f(S_i \cup \{x\})}$ \Comment{or, equivalently, maximize $\Delta_f(x_{i + 1} \mid S_i)$}
+                    \State $S_i := S_{i - 1} \cup \{x_i\}$
+                \EndFor
+                \State \tbf{return} $S_k$
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
+
+    \begin{framedthm}{\textsc{NWFapprox}'s approximation ratio}
+        Given an NN-MI submodular function $\func{f}{\powerset(X)}{\R}$, a value $k \in \N$, and an optimal set $\displaystyle S^* \in \argmax_{S \in [X]^k}{f(S)}$, let $S := \textsc{NWFapprox}(f, k)$. Then, it holds that $$f(S) \ge \rbk{1 - \dfrac{1}{e}}f(S^*)$$
+    \end{framedthm}
+
+    \begin{proof}
+        The following proof is a generalization of the proof of \cref{mc approx ratio}, in which we proved MC's approximation ratio. Let $S^* := \{x_1^*, \ldots, x_k^*\}$.
+
+        TODO \todo{da fare}
+    \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
