@@ -1408,7 +1408,7 @@
 
     In other words, an edge $ab \in E(G)$ of $G$ is sait to be \tit{satisfied} by $\phi$ if the color $\phi(a)$ gets permuted into the color $\phi(b)$ by the permutation $\pi_{ab}$.
 
-    \centeredimage[In this figure, (a) and (b) are two instances of the UCL problem with 2 colors; (b) is a solution to (a) that satisfies all the edges, while (d) is a solution to (c) with an unsatisfied edge.]{0.9}{../assets/ucl.png}
+    \centeredimage[In this figure, (a) and (b) are two instances of the UCL problem with 2 colors; (b) is a solution to (a) that satisfies all the edges, while (d) is a solution to (c) with an unsatisfied edge.]{0.99}{../assets/ucl.png}
 
     Note that UCL instances are \tit{strongly constrainted}, i.e. the color of a vertex uniquely defines the colors of its neighbors, and therefore its entire connected component. Thus, if the input instance admits a valid assignment, such assignment can be found \tit{efficiently} by iterating over all the possible colors of a single node. In particular, this implies that the problem of deciding if a given instance admits a satisfying assignment can be solved in polynomial time.
 
@@ -1439,7 +1439,7 @@
         For every CSP $\mathcal C$ with values in $[q]$ and arity $k$, the following hold.
 
         \begin{itemize}
-            \item There is an STP with IG of $\alpha(\mathcal C)$ and a rounding algorithm that is an $\alpha(\mathcal C)$-approximation of $\mathcal C$.
+            \item There is an SDP with IG of $\alpha(\mathcal C)$ and a rounding algorithm that is an $\alpha(\mathcal C)$-approximation of $\mathcal C$.
             \item If the UGC is true, it is \NPclass-Hard to approximate $\mathcal C$ with a ratio $\alpha(\mathcal C) - \varepsilon$ for any $\varepsilon > 0$.
         \end{itemize}
     \end{framedthm}
