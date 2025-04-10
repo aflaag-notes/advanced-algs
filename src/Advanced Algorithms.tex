@@ -2042,7 +2042,20 @@
     \begin{proof}
         The following proof is a generalization of the proof of \cref{mc approx ratio}, in which we proved MC's approximation ratio. Let $S^* := \{x_1^*, \ldots, x_k^*\}$.
 
-        TODO \todo{da fare}
+        \claim{
+            For any $i \in [k - 1]$ it holds that $f(S^*) \le f(S_i) + k(f(S_{i + 1}) - f(S_i)$.
+        }{
+            Since $f$ is monotone increasing, we know that $f(S^*) \le f(S_i \cup S^*)$. Now, note that \todo{da finire}
+            % \begin{equation*}
+            %     \begin{split}
+            %         f(S^*) &\le f(S_i \cup S^*) \\
+            %                &= f \rbk{S_i \cup \bigcup_{i \in [k]}{x_i^*}} \\
+            %                &= TODO
+            %     \end{split}
+            % \end{equation*}
+        }
+
+        TODO \todo{da finire}
     \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
