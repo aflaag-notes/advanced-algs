@@ -113,7 +113,7 @@
         Given an undirected graph $G = (V, E)$, and two subsets $S, T \subseteq V$, the \tbf{cut} induced by $S$ and $T$ on $G$ is defined as follows $$\mathrm{cut}(S, T) = \{e \in E : \abs{S \cap e} = \abs{T \cap e} = 1\}$$ In the case in which $T = \overline S = V - S$ we will simply write $\mathrm{cut}(S) = \mathrm{cut}(S, \overline S)$.
     \end{frameddefn}
 
-    Note that in the definition above we are defining the cut of a graph through the intersection between a set of vertices and edges in $E$; this is because, in the undirected case, we will consider the edges of a graph $G = (V, E)$ as sets of 2 elements $$E = \{\{u, v\} \mid u, v \in V\}$$ Therefore, given a set of vertices $S$, the cut induced by $S$ is simply the set of edges that have only one endpoint in $S$ (implying that the other one will be in $V - S$).
+    Note that in the definition above we are defining the cut of a graph through the intersection between a set of vertices and edges in $E$; this is because, in the undirected case, we will consider the edges of a graph $G = (V, E)$ as sets of 2 elements $$E = \{\{u, v\} \mid u, v \in V\}$$ Therefore, given two sets of vertice $S$ and $T$, the cut induced by $S$ and $T$ is simply the set of edges that have only one endpoint in $S$ and the other one in $T$.
 
     \begin{figure}[H]
         \centering
