@@ -233,6 +233,53 @@
     \field{year}{2022}
   \endentry
 
+  \entry{fmv}{article}{}{}
+    \name{author}{3}{}{%
+      {{hash=FU}{%
+         family={Feige},
+         familyi={F\bibinitperiod},
+         given={Uriel},
+         giveni={U\bibinitperiod},
+      }}%
+      {{hash=MVS}{%
+         family={Mirrokni},
+         familyi={M\bibinitperiod},
+         given={Vahab\bibnamedelima S.},
+         giveni={V\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=VJ}{%
+         family={Vondrák},
+         familyi={V\bibinitperiod},
+         given={Jan},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Society for Industrial & Applied Mathematics (SIAM)}%
+    }
+    \strng{namehash}{FUMVSVJ1}
+    \strng{fullhash}{FUMVSVJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{FMV11}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \verb{doi}
+    \verb 10.1137/090779346
+    \endverb
+    \field{issn}{1095-7111}
+    \field{number}{4}
+    \field{pages}{1133–1153}
+    \field{title}{Maximizing Non-monotone Submodular Functions}
+    \verb{url}
+    \verb http://dx.doi.org/10.1137/090779346
+    \endverb
+    \field{volume}{40}
+    \field{journaltitle}{SIAM Journal on Computing}
+    \field{month}{01}
+    \field{year}{2011}
+  \endentry
+
   \entry{karp}{inbook}{}{}
     \name{author}{1}{}{%
       {{hash=KRM}{%

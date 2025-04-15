@@ -110,10 +110,10 @@
     The first problem that will be discussed is the \href{https://en.wikipedia.org/wiki/Maximum_cut}{Maximum Cut} problem. The \tbf{Maximum Cut problem} --- in the unweighted case --- is a classic combinatorial optimization problem in the branch of \href{https://en.wikipedia.org/wiki/Graph_theory}{graph theory}, in which we seek to partition the vertices of an undirected graph into two disjoint subsets while maximizing the number of edges that have endpoints in both subsets. More formally, we will define a \tbf{cut} of a graph as follows.
 
     \begin{frameddefn}{Cut}
-        Given an undirected graph $G = (V, E)$, and a subset of its vertices $S \subseteq V$, the \tbf{cut} induced by $S$ on $G$ is defined as follows $$\mathrm{cut}(S) := \{e \in E : \abs{S \cap e} = 1\}$$
+        Given an undirected graph $G = (V, E)$, and two subsets $S, T \subseteq V$, the \tbf{cut} induced by $S$ and $T$ on $G$ is defined as follows $$\mathrm{cut}(S, T) = \{e \in E : \abs{S \cap e} = \abs{T \cap e} = 1\}$$ In the case in which $T = \overline S = V - S$ we will simply write $\mathrm{cut}(S) = \mathrm{cut}(S, \overline S)$.
     \end{frameddefn}
 
-    Note that in the definition above we are defining the cut of a graph through the intersection between a set of vertices $S$ and edges in $E$; this is because, in the undirected case, we will consider the edges of a graph $G = (V, E)$ as sets of 2 elements $$E = \{\{u, v\} \mid u, v \in V\}$$ Therefore, given a set of vertices $S$, the cut induced by $S$ is simply the set of edges that have only one endpoint in $S$ (implying that the other one will be in $V - S$).
+    Note that in the definition above we are defining the cut of a graph through the intersection between a set of vertices and edges in $E$; this is because, in the undirected case, we will consider the edges of a graph $G = (V, E)$ as sets of 2 elements $$E = \{\{u, v\} \mid u, v \in V\}$$ Therefore, given a set of vertices $S$, the cut induced by $S$ is simply the set of edges that have only one endpoint in $S$ (implying that the other one will be in $V - S$).
 
     \begin{figure}[H]
         \centering
@@ -146,7 +146,7 @@
 
     For now, we present the following \tbf{randomized algorithm}, which provides a straightforward $\frac{1}{2}$-approximation for MC. This algorithm runs in polynomial time and achieves the approximation guarantee with high probability.
 
-    \begin{framedalgo}{Random Cut}
+    \begin{framedalgo}[label={max cut alg}]{Random Cut}
         Given an undirected graph $G = (V, E)$, the algorithm returns a cut of $G$. \\
         \hrule
 
@@ -168,7 +168,7 @@
     Note that this algorithm is powerful, because \tit{it does not care about the structure of the graph in input}, since the output is completely determined by the coin flips performed in the \texttt{for} loop. Now we will prove that this algorithm provides a correct \tbf{expected $\frac{1}{2}$-approximation} of MC.
     
     \begin{framedthm}[label={expected random cut}]{Expected approximation ratio of \textsc{RandomCut}}
-        Let $G= (V, E)$ be a graph, and let $S^*$ be an optimal solution to MC on $G$. Then, given $S = \textsc{RandomCut}(G)$, it holds that $$\mathbb E [\abs{\mathrm{cut}(S)}] \ge \dfrac{\abs{\mathrm{cut}(S^*)}}{2}$$
+        Let $G= (V, E)$ be a graph, and let $S^*$ be an optimal solution to MC on $G$. Then, given $S = \textsc{RandomCut}(G)$, it holds that $$\mathbb E [\abs{\mathrm{cut}(S)}] \ge \dfrac{1}{2} \abs{\mathrm{cut}(S^*)}$$
     \end{framedthm}
 
     \begin{proof}
@@ -2058,7 +2058,33 @@
         TODO \todo{da finire}
     \end{proof}
 
-    TODO \todo{buco}
+    \section{Property variations}
+
+    What happens when we \tit{drop} some of the properties of NN-MI submodular functions? For instance, consider the following function.
+
+    \begin{frameddefn}{Cut function}
+        Given a graph $G$, the \tbf{cut function} $c$ is a function defined as follows $$\funcmap{c}{\mathcal([n])}{\R}{S}{\abs{\mathrm{cut}(S)}}$$
+    \end{frameddefn}
+
+    We observe that this function is trivially non-negative and symmetric, but not monotone increasing: given two nodes $x, y \in V(K_3)$, clearly $\{x\} \subseteq \{x, y\}$ but $c(\{x\}) \ge c(\{x, y\})$. Nonetheless, we can still prove that is is submodular, as described below.
+
+    \begin{framedprop}{}
+        The cut function is non-negative, symmetric and submodular.
+    \end{framedprop}
+
+    \begin{proof}
+        The non-negativity and symmetry of the function trivially hold by definition, hence we are going to prove that it is submodular. Fix two sets $S, T \subseteq [n]$, and define the following 4 sets as follows $$A_S := S - T \quad A_T := T - S \quad A_{S, T} := S \cap T \quad A := [n] - (S \cup T)$$ Now, that $$\mathrm{cut}(S) = \mathrm{cut}(A_S, A_T) \cup \mathrm{cut}(A_S, A) \cup \mathrm{cut}(A_{S, T}, A_T) \cup \mathrm{cut}(A_{S, T}, A)$$ meaning that $$c(S) = \abs{\mathrm{cut}(A_S, A_T)} + \abs{\mathrm{cut}(A_S, A)} + \abs{\mathrm{cut}(A_{S, T}, A_T)} + \abs{\mathrm{cut}(A_{S, T}, A)}$$ Similarly, we get that
+        \begin{equation*}
+            \begin{split}
+                c(T) &= \abs{\mathrm{cut}(A_T, A_S)} + \abs{\mathrm{cut}(A_T, A)} + \abs{\mathrm{cut}(A_{S, T}, A_S)} + \abs{\mathrm{cut}(A_{S, T}, A)} \\
+                c(S \cup T) &= \abs{\mathrm{cut}(A_S, A)} + \abs{\mathrm{cut}(A_T, A)} + \abs{\mathrm{cut}(A_{S, T}, A)} \\
+                c(S \cap T) &= \abs{\mathrm{cut}(A_{S, T}, A_S)} + \abs{\mathrm{cut}(A_{S, T}, A_T)} + \abs{\mathrm{cut}(A_{S, T}, A)}
+            \end{split}
+        \end{equation*}
+        meaning that $$c(S) + c(T) = c(S \cup T) + c(S \cap T) + 2 \abs{\mathrm{cut}(A_S, A_T)} \ge c(S \cup T) + c(S \cap T)$$ implying that $c$ is indeed submodular.
+    \end{proof}
+
+    \textcite{fmv} proved that the $\tfrac{1}{2}$-approximation that we discussed in \cref{max cut alg} can be generalized to \tit{any} function that satisfies the same properties of the cut function.
 
     \begin{framedlem}{}
         Given $n \in \N$, if $\func{g}{\powerset([n])}{\R}$ is submodular, it holds that $$\forall S \subseteq [n] \quad \avg_{T \subseteq S}{g(T)} \ge \dfrac{g(\varnothing) + g(S)}{2}$$
@@ -2129,9 +2155,7 @@
         \end{equation*}
     \end{proof}
 
-    TODO \todo{interlude}
-
-    \begin{framedthm}{TODO}
+    \begin{framedthm}{}
         Given $n \in \N$, let $\func{f}{\powerset([n])}{\R}$ be a submodular, non-negative and symmetric function. Given $\displaystyle S^* \in \argmax_{S \subseteq [n]}{f(S)}$, if $R$ is chosen from $[n]$ uniformly at random (UAR), it holds that $$\Exp \sbk{f(R)} \ge \dfrac{1}{2}f(S^*)$$
     \end{framedthm}
     
@@ -2159,7 +2183,26 @@
         \end{equation*}
     \end{proof}
 
-    TODO \todo{da finire}
+
+    We observe this proof can be also modified for functions that are non-negative, submodular but \tit{not} symmetric.
+
+    \begin{framedthm}{}
+        Given $n \in \N$, let $\func{f}{\powerset([n])}{\R}$ be a submodular and non-negative function. Given $\displaystyle S^* \in \argmax_{S \subseteq [n]}{f(S)}$, if $R$ is chosen from $[n]$ UAR, it holds that $$\Exp \sbk{f(R)} \ge \dfrac{1}{2}f(S^*)$$
+    \end{framedthm}
+
+    \begin{proof}
+         Consider the proof of the previous theorem; by simply replacing the application of the symmetry of $f$ in the last step with another application of the non-negativity, we obtain a $\tfrac{1}{4}$-approximation --- leaving the rest of the proof unchanged.
+    \end{proof}
+
+    In conclusion, we showed that
+    
+    \begin{itemize}
+        \item NN-MI submodular function have a $\rbk{1 - \tfrac{1}{e}}$-approximation
+        \item NN-S submodular functions have a $\tfrac{1}{2}$-approximation
+        \item NN sumbodular function have a $\tfrac{1}{4}$-approximation
+    \end{itemize}
+
+    Submodularity provides a standard approximation bound to many \NPclass-Hard \tit{maximization} problems. Furthermore, these same results can be obtained through \tit{supermodularity} for many \NPclass-Hard \tit{minimization} problems.
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
