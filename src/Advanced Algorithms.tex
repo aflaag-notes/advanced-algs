@@ -508,6 +508,35 @@
         It is easy to see that the cost directly depends on the number of recursive calls that the algorithm performs, which is $2^k$ in the worst case, and the cost of constructing $G[V - \{x\}]$, which we can assume to be $O\rbk{n^2}$. Hence, the algorithm has a total cost of $O \rbk{2^k \cdot n^2}$.
     }
 
+    \section{Exercises}
+
+    \begin{framedprob}{}
+        Does there exist a polytime algorithm that, given a graph $G = (V, E)$, returns \texttt{True} if and only if the maximum cut of $G$ has size $\abs E$?
+    \end{framedprob}
+
+    \solution{
+        If $G$ is bipartite, clearly the maximum cut of $G$ has size $\abs E$ --- it suffices to consider the cut induced by one of the two independent sets of $G$.
+
+        Viceversa, suppose that $G$ is not bipartite; a well-known result in graph theory shows that $G$ is not bipartite if and only if $G$ contains an odd-length cycle. Hence, let $C$ be an odd-length cycle of $G$; it is easy to see that it is not possible to include all the edges of $C$ inside the same cut, no matter the set of vertices we choose --- in fact, even if we consider alternating vertices in our set $S$, since $\abs {V(C)}$ is odd we will end up with an edge $uv \in E(C)$ such that either $u, v \in S$ or $u, v \notin S$, meaning that $uv \notin \mathrm{cut}(S)$.
+
+        This proves that $G$ is bipartite if and only if the maximum cut of $G$ has size $\abs{E(G)}$, meaning that a simple DFS over $G$ suffices to provide a polytime algorithm that solves the problem.
+    }
+
+    \begin{framedprob}{}
+        Let $G = (V, E)$ be a graph having a vertex cover of size $k$. Show that the vertices of $G$ can be colored with $k + 1$ colors in such a way that, for each $uv \in E$, $u$ and $v$ have different colors.
+    \end{framedprob}
+
+    \solution{
+        Let $S$ be the vertex cover of $G$ of size $k$ and consider a coloring function $f$ such that:
+
+        \begin{itemize}
+            \item each vertex in $S$ is assigned a different color in $[k]$
+            \item any vertex in $V - S$ is assigned $k + 1$
+        \end{itemize}
+
+        By way of contradiction, suppose that there is an edge $uv \in E$ such that$f(u) = f(v)$; since the vertices in $S$ all have different colors, and all the vertices outside $S$ are assigned $k + 1$ --- which is not in $[k]$ --- it must be that $f(u) = f(v) = k + 1$. However, if this is the case, it means that $uv$ has both endpoints outside $S$, meaning that $S$ is not a vertex cover of $G$ $\lightning$.
+    }
+
     \chapter{Mathematical Programming}
 
     Up to this point, we have introduced several \NPclass-Complete problems and discussed approximation algorithms that provide near-optimal solutions within a certain approximation ratio. We will now explore a new technique that can be leveraged to design approximation algorithms for a broader class of problems, namely \tbf{mathematical programming}.
@@ -1833,6 +1862,30 @@
         \end{equation*}
         implying that $2m_{\ell_2}^2 \le 4M_{\ell_2}^2 \iff m_{\ell_2} \le \sqrt 2 M_{\ell_2}$. Now, note that the maximum edge length $M_{C_4}$ w.r.t. $d_{C_4}$ is 1, and the minimum diagonal length $m_{C_4}$ w.r.t. $d_{C_4}$ is 2, which means that $m_{C_4} = 2 M_{C_4}$. Therefore, the embedding must have applied a distortion factor of at least $\sqrt 2$.
     \end{proof}
+
+    \section{Exercises}
+    
+    \begin{framedprob}{}
+        Let $d$ be a cut metric. Prove that $d$ satisfied the triangle inequality.
+    \end{framedprob}
+
+    \solution{
+        Let $d$ be defined over $T_1, \ldots, T_k$ and $\lambda_1, \ldots, \lambda_k >0$, i.e. $$d(x, y) := \sum_{i \in [k]}{\lambda_id_{T_i}(x, y)}$$ Fix $x$, $y$ and $z$; we observe that $$d(x, y) + d(y, z) = \sum_{i \in [k]}{\lambda_id_{T_i}(x, y)} + \sum_{i \in [k]}{\lambda_id_{T_i}(y, z)} = \sum_{i \in [k]}{\lambda_i \rbk {d_{T_i}(x, y) + d_{T_i}(y, z)}}$$ and since $d_{T_1}, \ldots, d_{T_k}$ are elementary cut metrics, they must satisfy the triangle inequality, therefore $$\sum_{i \in [k]}{\lambda_i \rbk {d_{T_i}(x, y) + d_{T_i}(y, z)}} \ge \sum_{i \in [k]}{\lambda_i d_{T_i}(x, z)} = d(x, z)$$ which proves that $d$ indeed satisfies the triangle inequality.
+    }
+
+    \begin{framedprob}{}
+        Let $G = (V, E)$ be the graph with node set $V = [2n]$ for $n \in \N$, and edge set $$E = \{\{i, i + 1\} \mid 1 \le i \le 2n - 1\} \cup \{\{2n, 1\}\}$$ meaning that $G$ is a cycle on $2n$ nodes. Let $d_G$ be the shortest path metric on $G$. Prove that $d_G$ can be embedded isometrically into $\ell_1$.
+    \end{framedprob}
+
+    \solution{
+        Consider the following function $\func{f}{V}{\R^2}$: $$f(i) = \soe{ll}{(0; i - 1) & 1 \le i \le n \\ (1; 2n - i) & n < i \le 2n}$$ Fix two vertices $j, k \in V$, and without loss of generality suppose that $j < k$. We observe that $$d_G(j, k) = \soe{ll}{k - j & k - j < n \\ 2n - (k - j) & k - j \ge n}$$ because if $k - j < n$ the number of edges of the shortest path between $j$ and $k$ is simply given by $k - j$, otherwise we must consider the \curlyquotes{other} half of the cycle as the shortest path between $j$ and $k$ --- if $k - j = n$ the distance is actually the same in both halves of the cycle. Now, we have 4 cases:
+
+        \begin{itemize}
+            \item $1 \le j < k \le n$: then we have that $k - j \le n - 1 < n \implies d_G(j, k) = k - j$ and $$\ell_1(f(j), f(k)) = \ell_1((0; j - 1), (0; k - 1)) = \abs{0 - 0} + \abs{j - 1 - (k - 1)} = \abs{j - k} = k - j$$ given that $j < k$
+            \item $1 \le j \le n$ and $n < k \le 2n$: then we have that $k - j \ge 2n - 1 \ge n \implies d_G(j, k) = 2n - (k - j)$ and $$\ell_1(f(j), f(k)) = \ell_1((0; j - 1), (1; 2n - k)) = \abs{0 - 1} + \abs{j - 1 - (2n - k)} = 1 + \abs{2n - k - (j - 1)}$$
+            \item $n < j < k \le 2n$: then we have that $k - j < 2n - n = n \implies d_G(j, k) = k - j$ and $$\ell_1(f(j), f(k)) = \ell_1((1; 2n - j), (1; 2n - k)) = \abs{1 - 1} + \abs{2n - j -(2n - k)} = \abs {j - k} = k - j$$ given that $j < k$
+        \end{itemize}
+    }
 
     \chapter{Submodular optimization}
 
