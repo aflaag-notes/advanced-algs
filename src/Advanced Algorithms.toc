@@ -27,3 +27,5 @@
 \contentsline {section}{\numberline {4.1}Submodular functions}{60}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}TODO}{63}{subsection.4.1.1}%
 \contentsline {section}{\numberline {4.2}Property variations}{65}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Online algorithms}{71}{chapter.5}%
+\contentsline {section}{\numberline {5.1}TODO}{74}{section.5.1}%

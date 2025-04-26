@@ -2257,6 +2257,145 @@
 
     Submodularity provides a standard approximation bound to many \NPclass-Hard \tit{maximization} problems. Furthermore, these same results can be obtained through \tit{supermodularity} for many \NPclass-Hard \tit{minimization} problems.
 
+    \chapter{Online algorithms}
+
+    TODO \todo{buco}
+
+    An \tbf{online algorithm} processes its input \tit{piece-by-piece} in a sequential manner, without having access to the entire input from the outset. In contrast, a traditional offline algorithm receives \tit{all the input at once} and must then compute a solution. Online algorithms are valuable because they enable solving problems without requiring full knowledge of the data beforehand. The importance of online algorithms has grown significantly with the rise of the Internet and the explosion of big data, where handling massive datasets has made memory management challenging, even for the most advanced supercomputers.
+
+    A practical example of online algorithms is seen in MBM, which is critical for example in online \tbf{advertising services}. Imagine an advertising platform where each user should be matched to \tit{at most one ad per hour}, and each ad can be assigned to \tit{at most one user per hour}. Based on user interests, the platform generates a list of possible ads for each individual. To maximize revenue, it aims to find the \tbf{largest possible matching} between users and ads. This scenario directly corresponds to MBM, where users form one set of the bipartite graph and ads form the other. However, in this context some challenges may arise, for instance
+
+    \begin{itemize}
+        \item the sheer volume of users and advertisements makes storing all the data impractical
+        \item the set of available users and ads changes continuously, so earlier matches might no longer be optimal
+    \end{itemize}
+
+    Online algorithms address both of these issues effectively. Still, because they must make decisions without knowing future inputs, they sometimes produce results that are \tit{not optimal in hindsight}. For instance, suppose that our online algorithm currently knows tha following association graph --- in which the \tit{red} nodes indicate the \tbf{ads} and the \tit{blue} ones indicate the \tbf{users}
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.3cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw, fill=Carmine] (1) []{$A$};
+            \node[circle, draw, fill=BlueLagoon] (2) [below of = 1]{$B$};
+            \node[circle, draw, fill=Carmine] (3) [right of = 1]{1};
+
+            % \path[every node/.style={font=\sffamily\small}]
+
+            \draw[-] (1) to (2);
+            \draw[-] (3) to (2);
+
+            ;
+        \end{tikzpicture}
+        % \caption{Given the set of red vertices $S$, the green edges represent $\mathrm{cut}(S)$.}
+    \end{figure}
+
+    Our algorithm has two options: either match user 1 to ad $A$ or match it to ad $B$. Without loss of generality, assume that user 1 is matched to ad $A$, as shown below
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.3cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw, fill=Carmine] (1) []{$A$};
+            \node[circle, draw, fill=BlueLagoon] (2) [below of = 1]{$B$};
+            \node[circle, draw, fill=Carmine] (3) [right of = 1]{1};
+
+            % \path[every node/.style={font=\sffamily\small}]
+
+            \draw[-] (1) [green] to (2);
+            \draw[-] (3) to (2);
+
+            ;
+        \end{tikzpicture}
+        % \caption{Given the set of red vertices $S$, the green edges represent $\mathrm{cut}(S)$.}
+    \end{figure}
+
+    Now, suppose that a new user 2 joins our service. After analyzing the preferences of the users, the system determines that only ad $A$ is compatible with user 2, meaning that the latter cannot be assigned any ad since ad $A$ is already matched with user 1.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.3cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw, fill=Carmine] (1) []{$A$};
+            \node[circle, draw, fill=BlueLagoon] (2) [below of = 1]{$B$};
+            \node[circle, draw, fill=Carmine] (3) [right of = 1]{1};
+            \node[circle, draw, fill=BlueLagoon] (4) [below of = 2]{2};
+
+            % \path[every node/.style={font=\sffamily\small}]
+
+            \draw[-] (1) [green] to (2);
+            \draw[-] (3) to (2);
+            \draw[-] (1) to (4);
+
+            ;
+        \end{tikzpicture}
+        % \caption{Given the set of red vertices $S$, the green edges represent $\mathrm{cut}(S)$.}
+    \end{figure}
+
+    However, in hindsight we see that this is \tit{not} the optimal solution: in fact, if our algorithm had matched user 1 to ad $B$, we could've been able to match both users.
+
+    This tendency toward non-optimal solutions is a \tit{defining feature} of online algorithms and is often \tit{unavoidable}. As a result, online algorithms are typically evaluated through \tbf{competitive analysis}, which measures the performance of an online algorithm relative to an optimal offline algorithm. The offline algorithm has the advantage of seeing the entire sequence of requests beforehand, while the online algorithm must respond to an \tit{unpredictable sequence}, making decisions without knowledge of future inputs. Unlike traditional worst-case analysis --- which evaluates an algorithm's behavior only on particularly difficult inputs --- competitive analysis demands strong performance across both easy and hard inputs, where difficulty is determined based on how well the optimal offline algorithm performs.
+
+    To formally assess the competitiveness of online algorithms, researchers employ the \tbf{adversary model}, in which an adversary provides \tit{deliberately challenging inputs} to the algorithm. In the case of deterministic algorithms, the adversary is assumed to have \tit{complete knowledge} of the algorithm's internal workings. Given that the online algorithm cannot anticipate future inputs, this all-knowing adversary can exploit its decisions and lead it into making suboptimal choices.
+
+    In particular, we are going to employ such adversary model to prove the following result.
+
+    \begin{framedthm}[label={mbm det}]{}
+        There is no deterministic online algorithm for MBM that can match more than $\tfrac{1}{2}$ of the edges of an optimal solution.
+    \end{framedthm}
+
+    \begin{proof}
+        We prove the result through an adversarial argument. On the first round, the adversary sends three vertices $a$, $b$, $x$, and two edges $\{a, x\}$ and $\{b, x\}$. The online algorithm has then 3 possible choices for $x$.
+
+        \begin{enumerate}
+            \item Match $x$ with $a$. On the next round, the adversary sends a new vertex $y$ and an edge $\{a, y\}$. Since $x$ has been matched to $a$, the new vertex $y$ cannot be matched, meaning that the algorithm returns a solution with a matching having size 1. However, an offline optimal solution would have returned the matching $\{\{b, x\}, \{a, y\}\}$, which has size 2. Therefore, the competitive ratio is $\tfrac{1}{2}$.
+            \item Match $x$ with $b$. Similarly to the previous case, on the next round the adversary sends a new vertex $y$ and an edge $\{b, y\}$. Since $x$ has been matched to $b$, the new vertex $y$ cannot be matched, but an offline solution would have returned the matching $\{\{a, x\}, \{b, y\}\}$. Therefore, the competitive ratio is still $\tfrac{1}{2}$.
+            \item Leave $x$ unmatched. On the next round, the adversary sends a new vertex $y$ and an edge $\{a, y\}$. Now our algorithm has two options.
+
+                \begin{itemize}
+                    \item Match $y$ with $a$; this solution is suboptimal, because an offline algorithm would have matched both $x$ and $y$. Hence, in this case the competitive ratio is again $\tfrac{1}{2}$
+                    \item Leave $y$ unmatched; this solution is suboptimal, because an offline algorithm would have matched both $x$ and $y$. Hence, in this case the competitive ratio is 0
+                \end{itemize}
+        \end{enumerate}
+
+        This concludes that the adversary can always send a set of vertices and edges such that the competitive ratio is at most $\tfrac{1}{2}$.
+    \end{proof}
+
+    TODO \todo{buco}
+
+    The previous theorem, together with the following proposition, imply that this online greedy algorithm is an optimal approximation for MBM.
+
+    \begin{framedprop}{}
+        Given a graph $G$, a maximum matching $M^*$ on $G$, and a maximal matching $M$ of $G$, we have that $$\abs M \ge \dfrac{1}{2} \abs{M^*}$$
+    \end{framedprop}
+
+    \begin{proof}
+        Let $S := \{v \in V(G) \mid \exists e \in M : v \in e\}$ be the set of vertices of $G$ that are matched by edges of $M$. Hence, by definition we have that $\abs S = 2 \abs M$.
+
+        We observe that:
+
+        \begin{itemize}
+            \item each node of $S$ is incident to at most one edge of $M^*$, otherwise $M^*$ would not have been a matching
+            \item each edge $e \in M^*$ must be incident to at least one node of $S$, since otherwise $M \cup \{e\}$ would be matching that extends $M$, contradicting the fact that it was maximal
+        \end{itemize}
+
+        Now, consider a function $\func{f}{M^*}{S}$ such that $f(e) \in S \cap e$: the first observation implies that $f$ is well-defined, while the second observation implies that $f$ is \tit{injective}. In particular, this concludes that $$\abs{M^*} \le \abs S = 2 \abs M \iff \abs M \ge \dfrac{1}{2} \abs{M^*}$$
+    \end{proof}
+
+    \section{TODO}
+
+    In the previous section we discussed how \tit{deterministic} online algorithms must contend with an all-knowing adversary when compared to their offline counterparts. To overcome some of these limitations, \tbf{randomness} can be introduced into the algorithm's behavior. In randomized online algorithms, the nature of the adversary varies depending on how much information they possess. A commonly studied scenario involves a randomized adversary, where the input sequence is generated according to a \tit{random distribution}. However, even in this setting we can still prove the following result.
+    
+    \begin{framedthm}{}
+        There is no randomized online algorithm for MBM that can expectedly match more than $\tfrac{3}{4}$ of the edges of an optimal solution for graphs chosen from a random distribution.
+    \end{framedthm}
+
+    \begin{proof}
+        Let $G_1$ be a graph such that $E(G_1) = \{\{a, x\}, \{b, x\}, \{b, y\}\}$, and let $G_2$ be the graph such that $E(G_2) = \{\{a, x\}, \{b, x\}, \{a, y\}\}$. Now, consider a distribution that assigns probability $\tfrac{1}{2}$ to both $G_1$ and $G_2$, and probability 0 to all the othe possible graphs.
+
+        On the first round, the adversary sends the edges $\{a, x\}$ and $\{b, x\}$; then, our algorithm will match $x$ to either $a$ or $b$ \todo{what if x unmatched?}, and clearly it will learn nothing about the vertex $y$ whose edges will be sent by the adversary on the next round --- namely, they can send either $\{b, y\}$ or $\{a, y\}$. Through a similar argument used to prove \cref{mbm det}, we see that the probability of $y$ being impossible to match on the next round is $\tfrac{1}{2}$. This implies that $$\Exp[\mbox{number of matched edges}] = TODO$$ TODO \todo{prev eq} However, an offline deterministic algorithm (which is a also randomized algorithm that makes no random choices) can always retun an optimal solution with 2 amtched edges, therefore the expected ratio is $$\dfrac{\tfrac{3}{2}}{2} = \dfrac{3}{4}$$
+    \end{proof}
+
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
-\end{document}
+\end{document4
