@@ -1827,7 +1827,7 @@
 
     It can be easily proven that this is indeed a metric --- we will omit the proof.
 
-    We are going to show that the shortest path metric cannot be embedded into $\ell_2$ over $\R^d$ withouth distortion. In particular, we will show the case for the cycle graph $C_4$. Consider the embedding $\func{f}{V(C_4)}{\R^2}$ such that $$f(1) = \rbk{-\dfrac{1}{2}; \dfrac{1}{2}} \quad f(2) = \rbk{\dfrac{1}{2}; \dfrac{1}{2}} \quad f(3) =\rbk{\dfrac{1}{2}; -\dfrac{1}{2}} \quad f(4) = \rbk{-\dfrac{1}{2}; -\dfrac{1}{2}}$$ It is easy to see that this embedding is isometrical from $d_{C_4}$ to $\ell_1$, since all distances are preserved. However, for the $\ell_2$ metrc the diagonals are \tit{not} isometric, in fact $$2 = d_{C_4}(1, 3) \neq \ell_2(f(1), f(3)) = \ell_2 \rbk{\rbk{-\dfrac{1}{2}; \dfrac{1}{2}},\rbk{\dfrac{1}{2}; -\dfrac{1}{2}}} = \sqrt 2$$ In particular, this embedding induces a distortion factor of at most $\sqrt 2$. Furthermore, thanks to the following lemma we prove that this distortion factor is actually the \tit{best} that we can achieve.
+    We are going to show that the shortest path metric cannot be embedded into $\ell_2$ over $\R^d$ without distortion. In particular, we will show the case for the cycle graph $C_4$. Consider the embedding $\func{f}{V(C_4)}{\R^2}$ such that $$f(1) = \rbk{-\dfrac{1}{2}; \dfrac{1}{2}} \quad f(2) = \rbk{\dfrac{1}{2}; \dfrac{1}{2}} \quad f(3) =\rbk{\dfrac{1}{2}; -\dfrac{1}{2}} \quad f(4) = \rbk{-\dfrac{1}{2}; -\dfrac{1}{2}}$$ It is easy to see that this embedding is isometrical from $d_{C_4}$ to $\ell_1$, since all distances are preserved. However, for the $\ell_2$ metrc the diagonals are \tit{not} isometric, in fact $$2 = d_{C_4}(1, 3) \neq \ell_2(f(1), f(3)) = \ell_2 \rbk{\rbk{-\dfrac{1}{2}; \dfrac{1}{2}},\rbk{\dfrac{1}{2}; -\dfrac{1}{2}}} = \sqrt 2$$ In particular, this embedding induces a distortion factor of at most $\sqrt 2$. Furthermore, thanks to the following lemma we prove that this distortion factor is actually the \tit{best} that we can achieve.
 
     \begin{framedlem}{Shortest Diagonal lemma}
         For any $y_1, y_2, y_3, y_4 \in \R^4$ it holds that $$\ell_2^2(y_1, y_3) + \ell_2^2(y_2, y_4) \le \ell_2^2(y_1, y_2) + \ell_2^2(y_2, y_3) + \ell_2^2(y_3, y_4) + \ell_2^2(y_4, y_1)$$
@@ -1866,7 +1866,7 @@
     \section{Exercises}
     
     \begin{framedprob}{}
-        Let $d$ be a cut metric. Prove that $d$ satisfied the triangle inequality.
+        Let $d$ be a cut metric. Prove that $d$ satisfies the triangle inequality.
     \end{framedprob}
 
     \solution{
@@ -1878,12 +1878,100 @@
     \end{framedprob}
 
     \solution{
-        Consider the following function $\func{f}{V}{\R^2}$: $$f(i) = \soe{ll}{(0; i - 1) & 1 \le i \le n \\ (1; 2n - i) & n < i \le 2n}$$ Fix two vertices $j, k \in V$, and without loss of generality suppose that $j < k$. We observe that $$d_G(j, k) = \soe{ll}{k - j & k - j < n \\ 2n - (k - j) & k - j \ge n}$$ because if $k - j < n$ the number of edges of the shortest path between $j$ and $k$ is simply given by $k - j$, otherwise we must consider the \curlyquotes{other} half of the cycle as the shortest path between $j$ and $k$ --- if $k - j = n$ the distance is actually the same in both halves of the cycle. Now, we have 4 cases:
+        First, we observe that the shortest path metric on a $2n$-long cycle graph is defined as follows: $$\forall j, k \in [2n] \quad d_G(j, k) = \soe{ll}{\abs{k - j} & \abs{k - j} \le n \\ 2n - \abs{k - j} & \abs{k - j} > n}$$ Moreover, we observe that $\ell_1$ defined on two binary vectors $x, y \in \{0, 1\}^h$ is equivalent to their \href{https://en.wikipedia.org/wiki/Hamming_distance}{Hamming distance}, i.e. $$\ell_1(x, y) = d_H(x, y) = \abs{\{i : x_i \neq y_i\}}$$ and in particular $$\forall j, k \in [2n] \quad \ell_1(f(j), f(k)) = d_H(f(j), f(k))$$
+
+        Now, consider the function $\func{f}{V(C_{2n})}{\R^n}$ defined as follows: $$\forall i \in [2n] \quad f(i) = \soe{ll}{0^{n - i + 1}1^{i - 1} & i \le n \\ 1^{2n - i + 1}0^{i - 1 - n} & i > n}$$ where the notation $0^a1^b$ stands for the vector $(\underbrace{0, \ldots, 0}_{a \ \mathrm{values}}, \underbrace{1, \ldots, 1}_{b \ \mathrm{values}}) \in \R^{a + b}$. At first, this definition of $f$ may seem counterintuitive, but if we consider each possible $f(i)$ the following nice pattern of \curlyquotes{sliding window} emerges:
+
+    \begin{center}
+        \begin{tabular}{c|c}
+            \hline
+            $i$ & $f(i)$ \\
+            \hline\hline
+            1 & 0000 \\
+            \hline
+            2 & 0001 \\ 
+            \hline
+            3 & 0011 \\
+            \hline
+            4 & 0111 \\
+            \hline
+            5 & 1111 \\
+            \hline
+            6 & 1110 \\
+            \hline
+            7 & 1100 \\
+            \hline
+            8 & 1000 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+        Finally, fix $j, k \in [2n]$, and without loss of generality suppose that $j < k$ -- in particular, this implies that $\abs{k - j} = k - j$. We have some cases to handle.
 
         \begin{itemize}
-            \item $1 \le j < k \le n$: then we have that $k - j \le n - 1 < n \implies d_G(j, k) = k - j$ and $$\ell_1(f(j), f(k)) = \ell_1((0; j - 1), (0; k - 1)) = \abs{0 - 0} + \abs{j - 1 - (k - 1)} = \abs{j - k} = k - j$$ given that $j < k$
-            \item $1 \le j \le n$ and $n < k \le 2n$: then we have that $k - j \ge 2n - 1 \ge n \implies d_G(j, k) = 2n - (k - j)$ and $$\ell_1(f(j), f(k)) = \ell_1((0; j - 1), (1; 2n - k)) = \abs{0 - 1} + \abs{j - 1 - (2n - k)} = 1 + \abs{2n - k - (j - 1)}$$
-            \item $n < j < k \le 2n$: then we have that $k - j < 2n - n = n \implies d_G(j, k) = k - j$ and $$\ell_1(f(j), f(k)) = \ell_1((1; 2n - j), (1; 2n - k)) = \abs{1 - 1} + \abs{2n - j -(2n - k)} = \abs {j - k} = k - j$$ given that $j < k$
+            \item $j, k \le n$; therefore, we have that
+                \begin{itemize}
+                    \item $j, k \le n \implies k - j \le n \implies d_G(j, k) = k - j$
+                    \item $j < k \implies n - j + 1 > n - k + 1 \land j - 1 < k - 1$
+                \end{itemize}
+                and thus, to evaluate the Hamming distance between $f(j)$ and $f(k)$ we need to consider the \curlyquotes{middle} section in which the two binary vectors may differ
+                \begin{equation*}
+                    \begin{split}
+                        \ell_1(f(j), f(k)) &= d_H(0^{n - j + 1}1^{j - 1}, 0^{n - k + 1}1^{k - 1}) \\
+                                           &= [n - (j - 1)] - [(n - k + 1) + 1] + 1 \\
+                                           &= [n - j + 1] - [n - k + 2] + 1 \\
+                                           &= k - j \\
+                                           &= d_G(j, k)
+                    \end{split}
+                \end{equation*}
+
+            \item $j, k > n$; therefore, we have that
+                \begin{itemize}
+                    \item $j, k > n \implies k - j < n \implies d_G(j, k) = k - j$
+                    \item $j < k \implies 2n - j + 1 > 2n - k + 1 \land j - 1 - n < k - 1 - n$
+                \end{itemize}
+                hence again, we just need to consider the \curlyquotes{middle} section in this case too
+                \begin{equation*}
+                    \begin{split}
+                        \ell_1(f(j), f(k)) &= d_H(1^{2n - j + 1}0^{j - 1- n}, 1^{2n - k + 1}, 0^{k - 1- n}) \\
+                                           &= [n - (k - 1- n)] - [(2n - j + 1) + 1] + 1 \\
+                                           &= [n - k + 1 + n] - [2n - j + 2] + 1 \\
+                                           &= k - j \\
+                                           &= d_G(j, k)
+                    \end{split}
+                \end{equation*}
+
+            \item $j \le n$ and $k < n$. We have two subcases
+                \begin{enumerate}
+                    \item $k - j \le n$; therefore, we have that
+                        \begin{itemize}
+                            \item $k - j \le n \implies d_G(j, k) = k - j$
+                            \item $k - j \le n \implies n - j + 1 \le 2n - k + 1 \land j - 1 \ge k - n - 1$
+                        \end{itemize}
+                        and thus, in this case to evaluate the Hamming distance between $f(j)$ and $f(k)$ we need to consider the sections in which the two vectors can be 0 --- since they can only coincide when they are both 1
+                        \begin{equation*}
+                            \begin{split}
+                                \ell_1(f(j), f(k)) &= d_H(0^{n - j + 1}1^{j - 1}, 1^{2n - k + 1}0^{k - 1- n}) \\
+                                                   &= (n - j + 1) + (k - 1 - n) \\
+                                                   &= k - j \\
+                                                   &= d_G(j, k)
+                            \end{split}
+                        \end{equation*}
+                    \item $k - j > n$; therefore, we have that
+                        \begin{itemize}
+                            \item $k - j > n \implies d_G(j, k) = 2n - k + j$
+                            \item $k - j > n \implies n - j + 1 > 2n - k + 1 \land j - 1 < k - n - 1$
+                        \end{itemize}
+                        and thus, in this case to evaluate the Hamming distance between $f(j)$ and $f(k)$ instead we need to consider the sections in which the two vectors can be 1 --- since they can only coincide when they are both 0
+                        \begin{equation*}
+                            \begin{split}
+                                \ell_1(f(j), f(k)) &= d_H(0^{n - j + 1}1^{j - 1}, 1^{2n - k + 1}0^{k - 1- n}) \\
+                                                   &= (j - 1) + (2n - k + 1) \\
+                                                   &= 2n - j + k \\
+                                                   &= d_G(j, k)
+                            \end{split}
+                        \end{equation*}
+                \end{enumerate}
         \end{itemize}
     }
 
@@ -2398,4 +2486,4 @@
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
-\end{document4
+\end{document}

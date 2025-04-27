@@ -23,9 +23,9 @@
 \contentsline {subsection}{\numberline {3.2.1}Metric relaxations}{50}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Shortest path metric}{54}{subsection.3.2.2}%
 \contentsline {section}{\numberline {3.3}Exercises}{55}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Submodular optimization}{58}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Submodular functions}{60}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}TODO}{63}{subsection.4.1.1}%
-\contentsline {section}{\numberline {4.2}Property variations}{65}{section.4.2}%
-\contentsline {chapter}{\numberline {5}Online algorithms}{71}{chapter.5}%
-\contentsline {section}{\numberline {5.1}TODO}{74}{section.5.1}%
+\contentsline {chapter}{\numberline {4}Submodular optimization}{59}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Submodular functions}{61}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}TODO}{64}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Property variations}{66}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Online algorithms}{72}{chapter.5}%
+\contentsline {section}{\numberline {5.1}TODO}{75}{section.5.1}%
