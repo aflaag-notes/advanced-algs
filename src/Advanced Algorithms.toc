@@ -15,6 +15,7 @@
 \contentsline {section}{\numberline {2.4}The Densest Subgraph problem}{25}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Approximation through duality}{30}{subsection.2.4.1}%
 \contentsline {section}{\numberline {2.5}The Unique Games Conjecture}{39}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Exercises}{41}{section.2.6}%
 \contentsline {chapter}{\numberline {3}Metric geometry}{42}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Metrics}{43}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Cut metrics}{43}{subsection.3.1.1}%

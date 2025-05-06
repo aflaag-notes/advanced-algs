@@ -1052,7 +1052,7 @@
 
     Now, we are going to present a \tbf{greedy algorithm}, developed by \textcite{charikar} in 2000, and we will prove that this algorithm yields a $\tfrac{1}{2}$-approximation of DS.
 
-    \begin{framedalgo}{Charikar's algorithm}
+    \begin{framedalgo}[label={charikar's algo}]{Charikar's algorithm}
         Given an undirected graph $G = (V, E)$, the algorithm returns a $\tfrac{1}{2}$-approximation solution of DS on $G$. \\
         \hrule
 
@@ -1480,6 +1480,67 @@
     \begin{framedcor}{}
         If the UGC is true, then $\mathrm{IG}_{\mathrm{MC}}^{\mathrm{SDP}} = \alpha(\mathrm{MC})$ and $\mathrm{IG}_\mathrm{VC} = \alpha(\mathrm{VC})$.
     \end{framedcor}
+
+    \section{Exercises}
+    
+    \begin{framedprob}{}
+        Show that, for each $\varepsilon > 0$, there exists a graph $G$ such that \cref{charikar's algo} returns a subgraph of $G$ having density not larger than $\tfrac{1}{2} + \varepsilon$ times the optimal --- i.e. the approximation bound of $\tfrac{1}{2}$ is optimal.
+    \end{framedprob}
+
+    \solution{
+        TODO \todo{da fare}
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+                \node[circle, draw] (1) []{};
+                \node[circle, draw] (2) [below of = 1, yshift = 0.5cm]{};
+                \node[circle, draw] (3) [below of = 2, yshift = 0.5cm]{};
+                \node[circle, draw] (4) [below of = 3, yshift = 0.5cm]{};
+                \node[circle, draw] (5) [left of = 2]{};
+                \node[circle, draw] (6) [left of = 3]{};
+
+                \node[circle, draw] (7) [right of = 1, yshift = -0.625cm]{};
+                \node[circle, draw] (8) [right of = 7]{};
+                \node[circle, draw] (9) [right of = 4, yshift = 0.625cm]{};
+                \node[circle, draw] (10) [right of = 9]{};
+
+                \node[circle, draw] (11) [right of = 8]{};
+                \node[circle, draw] (12) [right of = 11]{};
+                \node[circle, draw] (13) [right of = 10]{};
+                \node[circle, draw] (14) [right of = 13]{};
+
+                % \path[every node/.style={font=\sffamily\small}]
+
+                \draw[-] (1) to (5);
+                \draw[-] (1) to (6);
+                \draw[-] (2) to (5);
+                \draw[-] (2) to (6);
+                \draw[-] (3) to (5);
+                \draw[-] (3) to (6);
+                \draw[-] (4) to (5);
+                \draw[-] (4) to (6);
+
+                \draw[-] (7) to (8);
+                \draw[-] (7) to (9);
+                \draw[-] (7) to (10);
+                \draw[-] (8) to (9);
+                \draw[-] (8) to (10);
+                \draw[-] (9) to (10);
+
+                \draw[-] (11) to (12);
+                \draw[-] (11) to (13);
+                \draw[-] (11) to (14);
+                \draw[-] (12) to (13);
+                \draw[-] (12) to (14);
+                \draw[-] (13) to (14);
+
+                ;
+            \end{tikzpicture}
+            \caption{An example of the graph $G$ with $t = 2$, consisting of a $K_{2,4}$ and two $K_4$'s.}
+        \end{figure}
+    }
 
     \chapter{Metric geometry}
 
