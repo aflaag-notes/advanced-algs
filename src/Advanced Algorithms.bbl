@@ -123,6 +123,41 @@
     \field{year}{2009}
   \endentry
 
+  \entry{berge}{article}{}{}
+    \name{author}{1}{}{%
+      {{hash=BC}{%
+         family={Berge},
+         familyi={B\bibinitperiod},
+         given={Claude},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Proceedings of the National Academy of Sciences}%
+    }
+    \strng{namehash}{BC1}
+    \strng{fullhash}{BC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Ber57}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \verb{doi}
+    \verb 10.1073/pnas.43.9.842
+    \endverb
+    \field{issn}{1091-6490}
+    \field{number}{9}
+    \field{pages}{842–844}
+    \field{title}{TWO THEOREMS IN GRAPH THEORY}
+    \verb{url}
+    \verb http://dx.doi.org/10.1073/pnas.43.9.842
+    \endverb
+    \field{volume}{43}
+    \field{journaltitle}{Proceedings of the National Academy of Sciences}
+    \field{month}{09}
+    \field{year}{1957}
+  \endentry
+
   \entry{bourgain}{article}{}{}
     \name{author}{1}{}{%
       {{hash=BJ}{%
@@ -278,6 +313,47 @@
     \field{journaltitle}{SIAM Journal on Computing}
     \field{month}{01}
     \field{year}{2011}
+  \endentry
+
+  \entry{hopcroft}{article}{}{}
+    \name{author}{2}{}{%
+      {{hash=HJE}{%
+         family={Hopcroft},
+         familyi={H\bibinitperiod},
+         given={John\bibnamedelima E.},
+         giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=KRM}{%
+         family={Karp},
+         familyi={K\bibinitperiod},
+         given={Richard\bibnamedelima M.},
+         giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Society for Industrial & Applied Mathematics (SIAM)}%
+    }
+    \strng{namehash}{HJEKRM1}
+    \strng{fullhash}{HJEKRM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{HK73}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \verb{doi}
+    \verb 10.1137/0202019
+    \endverb
+    \field{issn}{1095-7111}
+    \field{number}{4}
+    \field{pages}{225–231}
+    \field{title}{An $n^{5/2} $ Algorithm for Maximum Matchings in Bipartite Graphs}
+    \verb{url}
+    \verb http://dx.doi.org/10.1137/0202019
+    \endverb
+    \field{volume}{2}
+    \field{journaltitle}{SIAM Journal on Computing}
+    \field{month}{12}
+    \field{year}{1973}
   \endentry
 
   \entry{karp}{inbook}{}{}

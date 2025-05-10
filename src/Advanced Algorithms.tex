@@ -1728,7 +1728,7 @@
     \end{proof}
 
     \begin{framedlem}[label={metric lemma}]{}
-        For any $d$, and any set $X \underset{fin}{\subseteq} \R^d$, the $\ell_1$ metric over $X$ is isometrically embedded into a cut metric defined over $d \cdot(\abs x - 1)$ cuts.
+        For any $d$, and any set $X \underset{fin}{\subseteq} \R^d$, the $\ell_1$ metric over $X$ is isometrically embedded into a cut metric defined over $d \cdot(\abs X - 1)$ cuts.
     \end{framedlem}
 
     \begin{proof}
@@ -2408,7 +2408,217 @@
 
     \chapter{Online algorithms}
 
-    TODO \todo{buco}
+    Up to this point, we have explored the \tbf{Maximal Matching} problem primarily through its connections to other computational problems. In this section, however, we shift our focus to \tit{matchings} in \tbf{bipartite graphs} --- i.e. the Maximal Bipartite Matching (MBM) problem. These matchings are particularly significant due to their applicability in modeling a wide range of real-world scenarios. A classic example is the \tbf{task assignment problem}, where the goal is to allocate tasks to employees optimally. This can be framed as a \tit{maximum matching} problem in a bipartite graph: one partition represents the \tit{tasks}, the other the \tit{employees}, and edges connect each employee to the tasks they are qualified to perform.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw, fill=Carmine] (1) []{};
+            \node[circle, draw, fill=Carmine] (2) [below of = 1]{};
+            \node[circle, draw, fill=Carmine] (3) [below of = 2]{};
+            \node[circle, draw, fill=Carmine] (4) [below of = 3]{};
+            \node[circle, draw, fill=BlueLagoon] (5) [right of = 1]{};
+            \node[circle, draw, fill=BlueLagoon] (6) [below of = 5]{};
+            \node[circle, draw, fill=BlueLagoon] (7) [below of = 6]{};
+            \node[circle, draw, fill=BlueLagoon] (8) [below of = 7]{};
+
+            % \path[every node/.style={font=\sffamily\small}]
+
+            \draw[-] (1) to (5);
+            \draw[-] (1) to (6);
+            \draw[-] (2) to (7);
+            \draw[-] (2) [red] to (8);
+            \draw[-] (3) to (6);
+            \draw[-] (4) [red] to (5);
+            \draw[-] (4) to (8);
+
+            ;
+        \end{tikzpicture}
+        % \caption{A .}
+    \end{figure}
+
+    Consider the matching on the bipartite graph shown in this figure: we observe that it is neither \tit{maximal} nor \tit{maximum}. In fact, we can still add an edge to our matching and obtain a matching of larger cardinality, as shown below:
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw, fill=Carmine] (1) []{};
+            \node[circle, draw, fill=Carmine] (2) [below of = 1]{};
+            \node[circle, draw, fill=Carmine] (3) [below of = 2]{};
+            \node[circle, draw, fill=Carmine] (4) [below of = 3]{};
+            \node[circle, draw, fill=BlueLagoon] (5) [right of = 1]{};
+            \node[circle, draw, fill=BlueLagoon] (6) [below of = 5]{};
+            \node[circle, draw, fill=BlueLagoon] (7) [below of = 6]{};
+            \node[circle, draw, fill=BlueLagoon] (8) [below of = 7]{};
+
+            % \path[every node/.style={font=\sffamily\small}]
+
+            \draw[-] (1) to (5);
+            \draw[-] (1) [red] to (6);
+            \draw[-] (2) to (7);
+            \draw[-] (2) [red] to (8);
+            \draw[-] (3) to (6);
+            \draw[-] (4) [red] to (5);
+            \draw[-] (4) to (8);
+
+            ;
+        \end{tikzpicture}
+        % \caption{A matching on a bipartite graph.}
+    \end{figure}
+
+    However, this matching is now \tit{maximal}, but not \tit{maximum}. In fact, the following is a matching of the same bipartite graph but that has larger cardinality than the previous one.
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw, fill=Carmine] (1) []{};
+            \node[circle, draw, fill=Carmine] (2) [below of = 1]{};
+            \node[circle, draw, fill=Carmine] (3) [below of = 2]{};
+            \node[circle, draw, fill=Carmine] (4) [below of = 3]{};
+            \node[circle, draw, fill=BlueLagoon] (5) [right of = 1]{};
+            \node[circle, draw, fill=BlueLagoon] (6) [below of = 5]{};
+            \node[circle, draw, fill=BlueLagoon] (7) [below of = 6]{};
+            \node[circle, draw, fill=BlueLagoon] (8) [below of = 7]{};
+
+            % \path[every node/.style={font=\sffamily\small}]
+
+            \draw[-] (1) [red] to (5);
+            \draw[-] (1) to (6);
+            \draw[-] (2) [red] to (7);
+            \draw[-] (2) to (8);
+            \draw[-] (3) [red] to (6);
+            \draw[-] (4) to (5);
+            \draw[-] (4) [red] to (8);
+
+            ;
+        \end{tikzpicture}
+        \caption{A matching on a bipartite graph.}
+    \end{figure}
+
+    However, let us take a closer look to what differentiates our two matching: we see that to obtain one from the other we can simply \tit{swap} all the edges of our matching. Moreover, we see that all the edges of the maximal matching actually form a \tit{path}, whose edges alternate between being outside and inside the matching. Furthermore, both the first and the last edge of this path are outside the matching, which must imply that the number of edges \tit{outside} the matching is one more than the number of inside edges.
+
+    In general, given a matching $M$ in a graph $G$, we say that a vertex $v \in V(G)$ is \tbf{free} w.r.t. $M$ if there are no edges $e \in M$ such that $e \cap v \neq \varnothing$. An edge $xy \in E(G)$ is said to be \tit{disjoint} from $M$ if both $x$ and $y$ are free w.r.t. $M$.
+
+    Now, we can formalize the concept that we introduced on this smalle example through the following definitions.
+
+    \begin{frameddefn}{Alternating path}
+        Given a graph $G$, and a matching $M$ on $G$, an \tbf{$M$-alternating path} is a path of $G$ that starts at a free node w.r.t. $M$, and is composed of edges that alternate between $M$ and $E(G) - M$.
+    \end{frameddefn}
+
+        \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{1};
+            \node[circle, draw] (2) [right of = 1]{2};
+            \node[circle, draw] (3) [right of = 2]{3};
+            \node[circle, draw] (4) [right of = 3]{4};
+            \node[circle, draw] (5) [below of = 1]{5};
+            \node[circle, draw] (6) [below of = 2]{6};
+            \node[circle, draw] (7) [below of = 3]{7};
+            \node[circle, draw] (8) [below of = 4]{8};
+
+            \draw[-] (1) [red] to (5);
+            \draw[-] (1) to (6);
+            \draw[-] (2) to (6);
+            \draw[-] (2) to (5);
+            \draw[-] (2) [red] to (7);
+            \draw[-] (3) to (7);
+            \draw[-] (3) [red] to (8);
+            \draw[-] (4) to (7);
+            \draw[-] (4) to (8);
+
+            ;
+        \end{tikzpicture}
+        \caption{For instance, if $M$ is the set of \tit{red} edges --- which forms a matching of the graph --- then $6 \ \{6, 2\} \ 2 \ \{2, 7\} \ 7 \ \{7, 3\} \ 3 \ \{3, 8\} \ 8$ is an $M$-alternating path.}
+        % \label{}
+    \end{figure}
+
+    \begin{frameddefn}{Augmenting path}
+        Given a graph $G$, and a matching $M$ on $G$, an \tbf{$M$-augmenting path} is an $M$-alternating path that ends at a free vertex w.r.t. $M$.
+    \end{frameddefn}
+
+    For example, if we consider the path $$6 \ \{6, 2\} \ 2 \ \{2, 7\} \ 7 \ \{7, 3\} \ 3 \ \{3, 8\} \ 8 \ \{8, 4 \} \ 4$$ this is actually an $M$-augmenting path of the previous graph. Augmenting paths are very useful because they can be used to \tit{expand} the cardinality of an initial matching. In fact, in the previous graph we can actually define a \tit{larger} matching by \tbf{swapping} the edges of this augmenting path, as shown below
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw] (1) []{1};
+            \node[circle, draw] (2) [right of = 1]{2};
+            \node[circle, draw] (3) [right of = 2]{3};
+            \node[circle, draw] (4) [right of = 3]{4};
+            \node[circle, draw] (5) [below of = 1]{5};
+            \node[circle, draw] (6) [below of = 2]{6};
+            \node[circle, draw] (7) [below of = 3]{7};
+            \node[circle, draw] (8) [below of = 4]{8};
+
+            \draw[-] (1) [red] to (5);
+            \draw[-] (1) to (6);
+            \draw[-] (2) [red] to (6);
+            \draw[-] (2) to (5);
+            \draw[-] (2) to (7);
+            \draw[-] (3) [red] to (7);
+            \draw[-] (3) to (8);
+            \draw[-] (4) to (7);
+            \draw[-] (4) [red] to (8);
+
+            ;
+        \end{tikzpicture}
+        % \caption{For instance, if $M$ is the set of \tit{red} edges --- which forms a matching of the graph --- then $6 \ \{6, 2\} \ 2 \ \{2, 7\} \ 7 \ \{7, 3\} \ 3 \ \{3, 8\} \ 8$ is an $M$-alternating path.}
+        % \label{}
+    \end{figure}
+
+    This suggests that the presence of augmenting paths in a graph is a \tit{sufficient} condition for a matching \tit{not} to be maximum, but we can actually prove that it is also \tit{necessary}, as stated in the following theorem, proved by \textcite{berge} in 1957.
+
+    \begin{framedthm}[label={aug paths}]{Berge's theorem}
+        Given a graph $G$, $M$ is a maximum matching of $G$ if and only if in $G$ there are no $M$-augmenting paths.
+    \end{framedthm}
+
+    \proofiff{
+        By contrapositive, consider a graph $G$ and a matching $M$ such that there is an $M$-augmenting path $P$ in $G$. Moreover, by way of contradiction assume that $M$ is maximum; however $M \Delta E(P)$ is a larger matching than $M$ --- here, $\Delta$ is the \href{https://en.wikipedia.org/wiki/Symmetric_difference}{symmetric difference}, therefore the operation $M \Delta E(P)$ has the same effect of \tit{swapping} the edges of $P$ between the ones in $M$ and in $E(P) - M$.
+    }{
+        By contrapositive, consider a graph $G$ and a matching $M$ of $G$ that is not maximum, i.e. there exists a matching $M^*$ of $G$ such that $\abs M < \abs{M^*}$. Consider the subgraph of $G$ that has the vertices of $V(G)$ and the edges described by $M \Delta M^*$; the symmetric difference of these two sets will yield the set of edges that are either in $M$ or in $M^*$, but not in $M \cap M^*$, therefore this subgraph is \tit{not} a multigraph. Moreover, since $M$ and $M^*$ are both matchings, we have that
+
+        \begin{enumerate}[label={(\arabic*)}]
+            \item the degrees of the vertices of this subgraph can be either 0, 1 or 2
+            \item in each component of the subgraph the edges \tit{must} alternate between $M$ and $M^*$
+        \end{enumerate}
+
+        By the observation (1), we have that each component of the subgraph can be either
+
+        \begin{itemize}
+            \item a isolated vertex
+            \item a cycle
+            \item a path
+        \end{itemize}
+
+        and by observation (2), we have that all the cycle components must have \tit{even} length, which implies that they have the same number of edges of $M$ and $M^*$. On the other hand, path components may have either even or odd length; in particular, even-length paths must have the same number of edges of $M$ and $M^*$ --- as for cycle components --- while odd-length paths have a different number of edges of $M$ and $M^*$. However, since $\abs M < \abs{M^*}$, there must be at least one path component of this subgraph such that its edges of $M$ are less than the edges of $M^*$, and this is clearly an $M$-augmenting path.
+    }
+
+    This theorem has been used to construct many algorithms for finding maximum matchings on bipartite graphs, the easiest one being the following.
+
+    \begin{framedalgo}{Maximum Bipartite Matching}
+        Given a bipartite graph $G$, the algorithm returns a maximum matching of $G$. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{MaximumBipartiteMatching}{$G$}
+                \State $M := \varnothing$
+                \While{$\exists P \ M$-augmenting path}
+                    \State $M := M \Delta P$
+                \EndWhile
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
+
+    In this algorithm, augmenting paths can be identified using either DFS or BFS, resulting in a runtime of $O(mn)$. However, more efficient variants have been developed to reduce this complexity by optimizing the way augmenting paths are found --- most notably, the \href{https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm}{Hopcroft–Karp algorithm} \cite{hopcroft}. Given a bipartite graph $G$ bipartitioned through $(A, B)$, the key idea is to perform a BFS starting simultaneously from all unmatched vertices in $A$, continuing until at least one free vertex in $B$ is reached; this produces a BFS forest. Then, a DFS is executed over such forest, beginning from the unmatched nodes in $B$, to discover augmenting paths. Each such path allows for alternating the matching along its edges, thereby increasing the overall matching size. The algorithm repeats this process until no more augmenting paths can be found. This approach improves the runtime to $O(m \sqrt n)$, a significant efficiency gain over the basic method.
+
+    \section{The online approach}
 
     An \tbf{online algorithm} processes its input \tit{piece-by-piece} in a sequential manner, without having access to the entire input from the outset. In contrast, a traditional offline algorithm receives \tit{all the input at once} and must then compute a solution. Online algorithms are valuable because they enable solving problems without requiring full knowledge of the data beforehand. The importance of online algorithms has grown significantly with the rise of the Internet and the explosion of big data, where handling massive datasets has made memory management challenging, even for the most advanced supercomputers.
 
@@ -2423,7 +2633,7 @@
 
     \begin{figure}[H]
         \centering
-        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.3cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
 
             \node[circle, draw, fill=Carmine] (1) []{$A$};
             \node[circle, draw, fill=BlueLagoon] (2) [below of = 1]{$B$};
@@ -2443,7 +2653,7 @@
 
     \begin{figure}[H]
         \centering
-        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.3cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
 
             \node[circle, draw, fill=Carmine] (1) []{$A$};
             \node[circle, draw, fill=BlueLagoon] (2) [below of = 1]{$B$};
@@ -2463,12 +2673,12 @@
 
     \begin{figure}[H]
         \centering
-        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.3cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
 
             \node[circle, draw, fill=Carmine] (1) []{$A$};
             \node[circle, draw, fill=BlueLagoon] (2) [below of = 1]{$B$};
             \node[circle, draw, fill=Carmine] (3) [right of = 1]{1};
-            \node[circle, draw, fill=BlueLagoon] (4) [below of = 2]{2};
+            \node[circle, draw, fill=BlueLagoon] (4) [below of = 3]{2};
 
             % \path[every node/.style={font=\sffamily\small}]
 
@@ -2540,7 +2750,7 @@
     \end{framedthm}
 
     \begin{proof}
-        Let $G_1$ be a graph such that $E(G_1) = \{\{a, x\}, \{b, x\}, \{b, y\}\}$, and let $G_2$ be the graph such that $E(G_2) = \{\{a, x\}, \{b, x\}, \{a, y\}\}$. Now, consider a distribution that assigns probability $\tfrac{1}{2}$ to both $G_1$ and $G_2$, and probability 0 to all the othe possible graphs.
+        Let $G_1$ be a graph such that $E(G_1) = \{\{a, x\}, \{b, x\}, \{b, y\}\}$, and let $G_2$ be the graph such that $E(G_2) = \{\{a, x\}, \{b, x\}, \{a, y\}\}$. Now, consider a distribution that assigns probability $\tfrac{1}{2}$ to both $G_1$ and $G_2$, and probability 0 to all the other possible graphs.
 
         On the first round, the adversary sends the edges $\{a, x\}$ and $\{b, x\}$; then, our algorithm will match $x$ to either $a$ or $b$ \todo{what if x unmatched?}, and clearly it will learn nothing about the vertex $y$ whose edges will be sent by the adversary on the next round --- namely, they can send either $\{b, y\}$ or $\{a, y\}$. Through a similar argument used to prove \cref{mbm det}, we see that the probability of $y$ being impossible to match on the next round is $\tfrac{1}{2}$. This implies that $$\Exp[\mbox{number of matched edges}] = TODO$$ TODO \todo{prev eq} However, an offline deterministic algorithm (which is a also randomized algorithm that makes no random choices) can always retun an optimal solution with 2 amtched edges, therefore the expected ratio is $$\dfrac{\tfrac{3}{2}}{2} = \dfrac{3}{4}$$
     \end{proof}
