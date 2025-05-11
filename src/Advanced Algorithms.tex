@@ -2170,11 +2170,11 @@
         For any $n \in \N$, the function $\func{f}{\powerset([n])}{\R}$ is submodular if and only if it has diminishing returns.
     \end{framedthm}
 
-    \begin{proof}
+    \proofiff{
         Let $\func{f}{\powerset([n])}{\R}$ be a submodular function for some $n \in \N$, and fix $A \subseteq B \subseteq [n]$ and $x \in [n] - B$; by submodularity of $f$, we have that $$f(A \cup \{x\}) + f(B) \ge f(A \cup \{x\} \cup B) + f((A \cup \{x\}) \cap B)$$ Now, since $A \subseteq B$, and $x \notin B$, we have that $$f(A \cup \{x\}) + f(B) \ge f(B \cup \{x\}) + f(A)$$ Lastly, rearranging the terms, we get that $$\Delta_f(x \mid A) := f(A \cup \{x\}) - f(A) \ge f(B \cup \{x\}) - f(B) =: \Delta_f(x \mid B)$$
-
-        TODO \todo{do the other direction}
-    \end{proof}
+    }{
+        Solved in \cref{submod ex}.
+    }
 
     \subsection{TODO}
 
@@ -2405,6 +2405,57 @@
     \end{itemize}
 
     Submodularity provides a standard approximation bound to many \NPclass-Hard \tit{maximization} problems. Furthermore, these same results can be obtained through \tit{supermodularity} for many \NPclass-Hard \tit{minimization} problems.
+
+    \section{Exercises}
+
+    \begin{framedprob}[label={submod ex}]{}
+        Prove that, for any $n \in \N$, if the function $\func{f}{\mathcal P([n])}{\R}$ has diminishing returns, it is sumbodular.
+    \end{framedprob}
+
+    \solution{
+        First, we are going to prove a \tit{stronger} version of the diminishing return property, by extending it to \tit{subsets} of elements --- instead of single elements. The notation is a natural extension of the one we used so far.
+
+        \claim{
+            $\forall A \subseteq B \subseteq [n], C \subseteq [n] - B \quad \Delta_f(C \mid A) \ge \Delta_f(C \mid B)$.
+        }{
+            Fix three sets $A, B, C \subseteq [n]$ such that $A \subseteq B \subseteq [n]$ and $C \subseteq [n] - B$. Moreover, let $C := \{c_1, \ldots, c_k\}$, and for each $i \in [k]$ let $C_i := \{c_1, \ldots, c_i\}$. We proceed by induction on $i$.
+
+            For the base case, we have that $C_1 = \{c_1\}$, hence by the diminishing return property we have that $$\Delta_f(C_1 \mid A) = \Delta_f(c_1 \mid A) \ge \Delta_f(c_1 \mid B) = \Delta_f(C_1 \mid B)$$ Now, assume inductively that the property holds for $C_{i - 1}$; then, we get that
+
+            \begin{equation*}
+                \begin{split}
+                    \Delta_f(C_i \mid A) &= f(C_i \cup A) - f(A) \\
+                                         &= f(\{c_1, \ldots, c_i\} \cup A) - f(A) \\
+                                         &= f(\{c_1, \ldots, c_{i - 1}\} \cup \{c_i\} \cup A) - f(A) \\
+                                         &= f(C_{i - 1} \cup \{c_i\} \cup A) - f(A) \\
+                                         &= f(C_{i - 1} \cup \{c_i\} \cup A) - f(A) + f(C_{i - 1} \cup A) - f(C_{i - 1} \cup A) \\
+                                         &= \Delta_f(C_{i - 1} \mid A) + \Delta_f(c_i \mid C_{i - 1} \cup A)
+                \end{split}
+            \end{equation*}
+            Now, by applying induction on the first term, and the diminishing return property on the second term, we get that
+            \begin{equation*}
+                \begin{split}
+                    \Delta_f(C_i \mid A) &= \Delta_f(C_{i - 1} \mid A) + \Delta_f(c_i \mid C_{i - 1} \cup A) \\
+                                         &\ge \Delta_f(C_{i - 1} \mid B) + \Delta_f(c_i \mid C_{i - 1} \cup B) \\
+                                         &= f(C_{i - 1} \cup B) - f(B) + f(\{c_i\} \cup C_{i - 1} \cup B) - f(C_{i - 1} \cup B) \\
+                                         &= f(C_i \cup B) - f(B) \\
+                                         &= \Delta_f(C_i \mid B)
+                \end{split}
+            \end{equation*}
+        }
+
+        Now, fix two sets $S, T \subseteq [n]$; note that it always holds that $(S \cap T) \subseteq T \subseteq [n]$ and $(S - T) \subseteq [n] - T$ for any choice of $S$ and $T$. Hence, we can obtain the following algebraic manipulation
+        \begin{equation*}
+            \begin{split}
+                     & \Delta_f(S - T \mid S \cap T) \ge \Delta_f(S - T \mid T) \\
+                \iff & \Delta_f(S - (S \cap T) \mid S \cap T) \ge \Delta_f(S - ((S \cap T) \cup T) \mid (S \cap T) \cup T) \\
+                \iff & f((S \cap T) \cup S) - f(S \cap T) \ge f((S \cap T) \cup S \cup T) - f((S \cap T) \cup T) \\
+                \iff & f((S \cap T) \cup S) + f((S \cap T) \cup T) \ge f((S \cap T) \cup S \cup T) + f(S \cap T) \\
+                \iff & f(S) + f(T) \ge f(S \cup T) + f(S \cap T)
+            \end{split}
+        \end{equation*}
+        which proves that $f$ is indeed submodular.
+    }
 
     \chapter{Online algorithms}
 
