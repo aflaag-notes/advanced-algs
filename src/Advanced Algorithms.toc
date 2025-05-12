@@ -29,6 +29,6 @@
 \contentsline {subsection}{\numberline {4.1.1}TODO}{64}{subsection.4.1.1}%
 \contentsline {section}{\numberline {4.2}Property variations}{66}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Exercises}{71}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Online algorithms}{73}{chapter.5}%
-\contentsline {section}{\numberline {5.1}The online approach}{77}{section.5.1}%
-\contentsline {section}{\numberline {5.2}TODO}{80}{section.5.2}%
+\contentsline {chapter}{\numberline {5}Online algorithms}{74}{chapter.5}%
+\contentsline {section}{\numberline {5.1}The online approach}{78}{section.5.1}%
+\contentsline {section}{\numberline {5.2}TODO}{81}{section.5.2}%

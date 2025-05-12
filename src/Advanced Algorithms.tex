@@ -1568,7 +1568,7 @@
     In order to reason about SC, we are going to introduce the following type of graph, invented by \textcite{erdos} in 1959.
 
     \begin{frameddefn}{Erdős-Rényi random graph}
-        Given two values $n \in \N$ and $\mu \in [0, 1]$, the \href{https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model}{Erdős-Rényi random graph} $G(n, \mu)$ is a graph that has a fixed vertex set $V(G) = [n]$, and a \tit{probabilistic} edge set $E(G)$ such that $$\forall e \in [V(G)]^2 \quad \Pr[e \in E(G)] = \mu$$
+        Given two values $n \in \N$ and $\mu \in [0, 1]$, the \href{https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model}{Erdős-Rényi random graph} $G(n, \mu)$ is a graph that has a fixed vertex set $V(G) = [n]$, and a \tit{probabilistic} edge set $E(G)$ such that $$\forall e \in \binom{V(G)}{2} \quad \Pr[e \in E(G)] = \mu$$
     \end{frameddefn}
 
     By definition, this model represents an \tit{evenly sparse graph}, because for each $S \subseteq V(G)$ it holds that $$ \mathbb E[\psi(S)] = \dfrac{\mathbb E\sbk{\abs{\mathrm{cut}(S)}}}{\abs S \cdot \abs{\overline S}} = \dfrac{\sum_{ij \in S \times \overline S}{\Pr \sbk{ij \in \mathrm{cut}(S)}}}{\abs S \cdot  \abs{\overline S}}= \dfrac{\mu \cdot \abs S \cdot \abs{\overline S}}{\abs S \cdot \abs{\overline S}} = \mu$$
@@ -1632,7 +1632,7 @@
     But why are we discussing cut metrics in the first place? We are going to show that the concept of elementary cut metric is \tit{deeply} related to the concept of \tit{sparsity} previously introduced. First, consider the following definition.
 
     \begin{frameddefn}{Cut-ratio}
-        Given a graph $G$, and a subset $T \subseteq V(G)$, the \tbf{cut-ratio} induced by the elementary cut metric $d_T$ is defined as $$\phi(d_T) := \dfrac{\sum_{xy \in E(G)}{d_T(x, y)}}{\sum_{xy \in [V(G)]^2}{d_T(x, y)}}$$
+        Given a graph $G$, and a subset $T \subseteq V(G)$, the \tbf{cut-ratio} induced by the elementary cut metric $d_T$ is defined as $$\phi(d_T) := \dfrac{\sum_{xy \in E(G)}{d_T(x, y)}}{\sum_{xy \in \binom{V(G)}{2}}{d_T(x, y)}}$$
     \end{frameddefn}
 
     Through some algebraic manipulation, we see that the cut-ratio of $d_T$ is in fact the sparsity of $T$, as shown in the following proposition.
@@ -1642,7 +1642,7 @@
     \end{framedprop}
     
     \begin{proof}
-        We observe that $$\phi(d_T) := \dfrac{\sum_{ij \in E(G)}{d_T(x, y)}}{\sum_{ij \in [V(G)]^2}{d_T(x, y)}} = \dfrac{\sum_{xy \in E(G)}{\1[x \in T \oplus y \in T]}}{\sum_{xy \in [V(G)]^2}{\1[x \in T \oplus y \in T]}} = \dfrac{\mathrm{cut}(S)}{\abs S \cdot \abs{\overline S}} = \psi(T)$$
+        We observe that $$\phi(d_T) := \dfrac{\sum_{ij \in E(G)}{d_T(x, y)}}{\sum_{ij \in \binom{V(G)}{2}}{d_T(x, y)}} = \dfrac{\sum_{xy \in E(G)}{\1[x \in T \oplus y \in T]}}{\sum_{xy \in \binom{V(G)}{2}}{\1[x \in T \oplus y \in T]}} = \dfrac{\mathrm{cut}(S)}{\abs S \cdot \abs{\overline S}} = \psi(T)$$
     \end{proof}
 
     We can generalize the concept of elementary cut metric through \tbf{cut metrics}, i.e. linear combinations over a given set of elementary cut metrics, as defined below.
@@ -1669,11 +1669,11 @@
         Let $\lambda_1, \ldots, \lambda_k > 0$ be the coefficients that define $d$; then, thanks to the claim, we get
         \begin{equation*}
             \begin{split}
-                \phi(d) &= \dfrac{\sum_{xy \in E(G)}{d(x, y)}}{\sum_{xy \in [V(G)]^2}{d(x, y)}} \\
-                        &= \dfrac{\sum_{xy \in E(G)}{\sum_{i \in [k]}{\lambda_i d_{T_i}(x, y)}}}{\sum_{xy \in [V(G)]^2}{\sum_{i \in [k]}{\lambda_i d_{T_i}(x, y)}}} \\
-                        &= \dfrac{\sum_{i \in [k]}{\sum_{xy \in E(G)}{\lambda_i d_{T_i}(x, y)}}}{\sum_{i \in [k]}{\sum_{xy \in [V(G)]^2}{\lambda_i d_{T_i}(x, y)}}} \\
-                        &\ge \min_{j \in [k]}{\dfrac{\sum_{xy \in E(G)}{\lambda_j d_{T_j}(x,y)}}{\sum_{xy \in [V(G)]^2}{\lambda_j d_{T_j}(x, y)}}} \\
-                        &= \min_{j \in [k]}{\dfrac{\sum_{xy \in E(G)}{d_{T_j}(x, y)}}{\sum_{xy \in [V(G)]^2}{d_{T_j}(x,y)}}} \\
+                \phi(d) &= \dfrac{\sum_{xy \in E(G)}{d(x, y)}}{\sum_{xy \in \binom{V(G)}{2}}{d(x, y)}} \\
+                        &= \dfrac{\sum_{xy \in E(G)}{\sum_{i \in [k]}{\lambda_i d_{T_i}(x, y)}}}{\sum_{xy \in \binom{V(G)}{2}}{\sum_{i \in [k]}{\lambda_i d_{T_i}(x, y)}}} \\
+                        &= \dfrac{\sum_{i \in [k]}{\sum_{xy \in E(G)}{\lambda_i d_{T_i}(x, y)}}}{\sum_{i \in [k]}{\sum_{xy \in \binom{V(G)}{2}}{\lambda_i d_{T_i}(x, y)}}} \\
+                        &\ge \min_{j \in [k]}{\dfrac{\sum_{xy \in E(G)}{\lambda_j d_{T_j}(x,y)}}{\sum_{xy \in \binom{V(G)}{2}}{\lambda_j d_{T_j}(x, y)}}} \\
+                        &= \min_{j \in [k]}{\dfrac{\sum_{xy \in E(G)}{d_{T_j}(x, y)}}{\sum_{xy \in \binom{V(G)}{2}}{d_{T_j}(x,y)}}} \\
                         &= \min_{j \in [k]}{\phi(d_{T_j})}
             \end{split}
         \end{equation*}
@@ -1766,8 +1766,8 @@
         \centering
         \[\begin{array}{ccl}
             \qquad\qquad\quad
-            & \max \; \dfrac{\sum_{ij \in E(G)}{d_{ij}}}{\sum_{ij \in [V(G)]^2}{d_{ij}}} \\\\
-            & \sum\limits_{S \subseteq V(G)}{\lambda_Sd_S(i, j)}  = d_ij & \forall ij \in [V(G)]^2 \\
+            & \max \; \dfrac{\sum_{ij \in E(G)}{d_{ij}}}{\sum_{ij \in \binom{V(G)}{2}}{d_{ij}}} \\\\
+            & \sum\limits_{S \subseteq V(G)}{\lambda_Sd_S(i, j)}  = d_ij & \forall ij \in \binom{V(G)}{2} \\
             & \lambda \in \R^{2^n} \\
             & d \in \R^{\abs{\binom{n}{2}}} \\
         \end{array}\]
@@ -1783,8 +1783,8 @@
         \[\begin{array}{ccl}
             \qquad\qquad\quad
             & \max \; \displaystyle \sum_{ij \in E(G)}{d_{ij}} \\\\
-            & \sum\limits_{S \subseteq V(G)}{\lambda_Sd_S(i, j)}  = d_ij & \forall ij \in [V(G)]^2 \\
-            & \sum\limits_{ij \in [V(G)]^2}{d_ij} = 1 \\
+            & \sum\limits_{S \subseteq V(G)}{\lambda_Sd_S(i, j)}  = d_ij & \forall ij \in \binom{V(G)}{2} \\
+            & \sum\limits_{ij \in \binom{V(G)}{2}}{d_ij} = 1 \\
             & \lambda \in \R^{2^n} \\
             & d \in \R^{\abs{\binom{n}{2}}} \\
         \end{array}\]
@@ -1811,7 +1811,7 @@
             \qquad\qquad\quad
             & \max \; \displaystyle \sum_{ij \in E(G)}{d_{ij}} \\\\
             & x_{ij} + x{jk} \ge x_{ik} & \forall i, j ,k \in V(G) \\
-            & \sum\limits_{ij \in [V(G)]^2}{d_ij} = 1 \\
+            & \sum\limits_{ij \in \binom{V(G)}{2}}{d_ij} = 1 \\
             & \lambda \in \R^{2^n} \\
             & d \in \R^{\abs{\binom{n}{2}}} \\
         \end{array}\]
@@ -1848,7 +1848,7 @@
             \qquad\qquad\quad
             & \max \; \displaystyle \sum_{ij \in E(G)}{\abk{x_i,x_i} - 2 \abk{x_i,x_j} + \abk{x_j,x_j}} \\\\
             & \abk{x_i, x_j} - \abk{x_j, x_j} + \abk{x_j, x_k} \le \abk{x_i, x_k} & \forall i, j ,k \in V(G) \\
-            & \sum\limits_{ij \in [V(G)]^2}{\abk{x_i,x_i} - 2 \abk{x_i,x_j} + \abk{x_j,x_j}} = 1 \\
+            & \sum\limits_{ij \in \binom{V(G)}{2}}{\abk{x_i,x_i} - 2 \abk{x_i,x_j} + \abk{x_j,x_j}} = 1 \\
             & \lambda \in \R^{2^n} \\
             & d \in \R^{\abs{\binom{n}{2}}} \\
         \end{array}\]
@@ -2173,7 +2173,7 @@
     \proofiff{
         Let $\func{f}{\powerset([n])}{\R}$ be a submodular function for some $n \in \N$, and fix $A \subseteq B \subseteq [n]$ and $x \in [n] - B$; by submodularity of $f$, we have that $$f(A \cup \{x\}) + f(B) \ge f(A \cup \{x\} \cup B) + f((A \cup \{x\}) \cap B)$$ Now, since $A \subseteq B$, and $x \notin B$, we have that $$f(A \cup \{x\}) + f(B) \ge f(B \cup \{x\}) + f(A)$$ Lastly, rearranging the terms, we get that $$\Delta_f(x \mid A) := f(A \cup \{x\}) - f(A) \ge f(B \cup \{x\}) - f(B) =: \Delta_f(x \mid B)$$
     }{
-        Solved in \cref{submod ex}.
+        Proved in \cref{submod ex}.
     }
 
     \subsection{TODO}
@@ -2238,7 +2238,7 @@
     \end{framedalgo}
 
     \begin{framedthm}{\textsc{NWFapprox}'s approximation ratio}
-        Given an NN-MI submodular function $\func{f}{\powerset(X)}{\R}$, a value $k \in \N$, and an optimal set $\displaystyle S^* \in \argmax_{S \in [X]^k}{f(S)}$, let $S := \textsc{NWFapprox}(f, k)$. Then, it holds that $$f(S) \ge \rbk{1 - \dfrac{1}{e}}f(S^*)$$
+        Given an NN-MI submodular function $\func{f}{\powerset(X)}{\R}$, a value $k \in \N$, and an optimal set $\displaystyle S^* \in \argmax_{S \in \binom{X}{k}}{f(S)}$, let $S := \textsc{NWFapprox}(f, k)$. Then, it holds that $$f(S) \ge \rbk{1 - \dfrac{1}{e}}f(S^*)$$
     \end{framedthm}
 
     \begin{proof}
@@ -2455,6 +2455,39 @@
             \end{split}
         \end{equation*}
         which proves that $f$ is indeed submodular.
+    }
+
+    \begin{framedprob}{}
+        Given $n \in \N$, suppose that the function $\func{f}{\mathcal P([n])}{\R}$ satisfies the following property: $$\forall \{i, j\} \in \binom{[n]}{2}, S \subseteq [n] - \{i, j\} \quad f(S \cup \{i\}) + f(S \cup \{j\}) \ge f(S \cup \{i, j \}) + f(S)$$ Prove that $f$ has the diminishing returns property.
+    \end{framedprob}
+
+    \solution{
+        Fix two sets $A \subseteq B \subseteq [n]$, and an element $x \in [n] - B$. Let $B - A = \{b_1, \ldots, b_m\}$ and for each $k \in [m]$ let $B_k := \{b_1, \ldots, b_k\}$. We claim the following.
+
+        \claim{
+            For any $k \in [m]$ it holds that $\Delta_f(x \mid A) \ge \Delta_f(x \mid A \cup B_k)$.
+        }{
+            We proceed by induction on $k$; consider $b_1 \in B - A$ --- and in particular $b_1 \neq x$; then clearly $A \subseteq [n] - \{x , b_1\}$ which means that we can use the property in the hypothesis as follows
+            \begin{equation*}
+                \begin{split}
+                         & f(A \cup \{x\}) + f(A \cup \{b_1\}) \ge f(A \cup \{x, b_1\}) + f(A) \\
+                    \iff & f(A \cup \{x\}) - f(A) \ge f(A \cup \{b_1\} \cup \{x\}) - f(A \cup \{b_1\}) \\
+                    \iff & \Delta_f(x \mid A) \ge \Delta_f(x \mid A \cup \{b_1\}) = \Delta_f(x \mid A \cup B_1)
+                \end{split}
+            \end{equation*}
+            Now, assume inductively that for $1 < k - 1 \le m$ it holds that $\Delta_f(x \mid A) \ge \Delta_f(x \mid B_{k - 1})$, and consider an element $b_k \in B - (A \cup B_{k - 1})$ --- and in particular $b_k \neq x$. Then, clearly $A \cup B_{k - 1} \subseteq [n] - \{x, b_k\}$ which means that we can use the property in the hypothesis as follows
+            \begin{equation*}
+                \begin{split}
+                         & f(A \cup B_{k - 1} \cup \{x\}) + f(A \cup B_{k - 1} \cup \{b_k\}) \ge f(A \cup B_{k - 1} \cup \{x, b_k\}) + f(A \cup B_{k - 1}) \\
+                    \iff & f(A \cup B_{k - 1} \cup \{x\}) + f(A \cup B_k) \ge f(A \cup B_k \cup \{x\}) + f(A \cup B_{k - 1}) \\
+                    \iff & f(A \cup B_{k - 1} \cup \{x\}) - f(A \cup B_{k - 1}) \ge f(A \cup B_k \cup \{x\}) - f(A \cup B_k) \\
+                    \iff & \Delta_f(x \mid A \cup B_{k - 1}) \ge \Delta_f(x \mid A \cup B_k)
+                \end{split}
+            \end{equation*}
+            and by inductive hypothesis we get that $$\Delta_f(x \mid A) \ge \Delta_f(x \mid A \cup B_{k - 1}) \ge \Delta_f(x \mid A \cup B_k)$$
+        }
+
+        In particular, by the claim we have that for $k = m$ it holds that $$\Delta_f(x \mid A) \ge \Delta_f(x \mid A \cup B_m) = \Delta_f(x \mid A \cup B_{\abs{B - A}}) = \Delta_f(x \mid A \cup (B - A)) = \Delta_f(x \mid B)$$ which proves that $f$ has the diminishing returns property.
     }
 
     \chapter{Online algorithms}
