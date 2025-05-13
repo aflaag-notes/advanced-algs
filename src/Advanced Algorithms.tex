@@ -2839,6 +2839,34 @@
         On the first round, the adversary sends the edges $\{a, x\}$ and $\{b, x\}$; then, our algorithm will match $x$ to either $a$ or $b$ \todo{what if x unmatched?}, and clearly it will learn nothing about the vertex $y$ whose edges will be sent by the adversary on the next round --- namely, they can send either $\{b, y\}$ or $\{a, y\}$. Through a similar argument used to prove \cref{mbm det}, we see that the probability of $y$ being impossible to match on the next round is $\tfrac{1}{2}$. This implies that $$\Exp[\mbox{number of matched edges}] = TODO$$ TODO \todo{prev eq} However, an offline deterministic algorithm (which is a also randomized algorithm that makes no random choices) can always retun an optimal solution with 2 amtched edges, therefore the expected ratio is $$\dfrac{\tfrac{3}{2}}{2} = \dfrac{3}{4}$$
     \end{proof}
 
+    TODO \todo{buco}
+
+    % \begin{framedalgo}{The Market Process algorithm}
+    %     Given a bipartite graph $G$ with bipartition $(A, U)$, the algorithm returns a matching on $G$. \\
+    %     \hrule
+    %
+    %     \quad
+    %     \begin{algorithmic}[1]
+    %         \Function{Inizialization}{}
+    %             \For{$j \in A$}
+    %                 \State Sample $w_j$ from $[0,1]$ independently and UAR
+    %                 \State $p_j := e^{w_j - 1}$ \Comment{the price of the ad $j$}
+    %             \EndFor
+    %         \EndFunction
+    %         \Function{MarketProcess}{$G$}
+    %             \State \textsc{Inizialization}()
+    %             \State $M := \varnothing$
+    %                 \For{$i \in U$}
+    %                     \State $A' := \{j \in A \mid \nexists i' \in U : \{i', j \} \in M\}$ \Comment{set of unmatched ads}
+    %                     \For{$j \in A'$}
+    %                         \State $v_i(j) := \1[j \in \mathcal N(i)]$ \Comment{the value of ad $j$ for user $i$}
+    %                     \EndFor
+    %                 \EndFor
+    %             \State \textbf{return} $M$
+    %         \EndFunction
+    %     \end{algorithmic}
+    % \end{framedalgo}
+
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
 \end{document}
