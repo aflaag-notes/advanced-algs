@@ -32,3 +32,5 @@
 \contentsline {chapter}{\numberline {5}Online algorithms}{74}{chapter.5}%
 \contentsline {section}{\numberline {5.1}The online approach}{78}{section.5.1}%
 \contentsline {section}{\numberline {5.2}TODO}{81}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}The Market Process algorithm}{81}{subsection.5.2.1}%
+\contentsline {section}{\numberline {5.3}The Expert model}{82}{section.5.3}%

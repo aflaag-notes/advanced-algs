@@ -2839,33 +2839,236 @@
         On the first round, the adversary sends the edges $\{a, x\}$ and $\{b, x\}$; then, our algorithm will match $x$ to either $a$ or $b$ \todo{what if x unmatched?}, and clearly it will learn nothing about the vertex $y$ whose edges will be sent by the adversary on the next round --- namely, they can send either $\{b, y\}$ or $\{a, y\}$. Through a similar argument used to prove \cref{mbm det}, we see that the probability of $y$ being impossible to match on the next round is $\tfrac{1}{2}$. This implies that $$\Exp[\mbox{number of matched edges}] = TODO$$ TODO \todo{prev eq} However, an offline deterministic algorithm (which is a also randomized algorithm that makes no random choices) can always retun an optimal solution with 2 amtched edges, therefore the expected ratio is $$\dfrac{\tfrac{3}{2}}{2} = \dfrac{3}{4}$$
     \end{proof}
 
+    \subsection{The Market Process algorithm}
+
     TODO \todo{buco}
 
-    % \begin{framedalgo}{The Market Process algorithm}
-    %     Given a bipartite graph $G$ with bipartition $(A, U)$, the algorithm returns a matching on $G$. \\
-    %     \hrule
-    %
-    %     \quad
-    %     \begin{algorithmic}[1]
-    %         \Function{Inizialization}{}
-    %             \For{$j \in A$}
-    %                 \State Sample $w_j$ from $[0,1]$ independently and UAR
-    %                 \State $p_j := e^{w_j - 1}$ \Comment{the price of the ad $j$}
-    %             \EndFor
-    %         \EndFunction
-    %         \Function{MarketProcess}{$G$}
-    %             \State \textsc{Inizialization}()
-    %             \State $M := \varnothing$
-    %                 \For{$i \in U$}
-    %                     \State $A' := \{j \in A \mid \nexists i' \in U : \{i', j \} \in M\}$ \Comment{set of unmatched ads}
-    %                     \For{$j \in A'$}
-    %                         \State $v_i(j) := \1[j \in \mathcal N(i)]$ \Comment{the value of ad $j$ for user $i$}
-    %                     \EndFor
-    %                 \EndFor
-    %             \State \textbf{return} $M$
-    %         \EndFunction
-    %     \end{algorithmic}
-    % \end{framedalgo}
+    \begin{framedalgo}{The Market Process algorithm}
+        Given a bipartite graph $G$ with bipartition $(A, U)$, the algorithm returns a matching on $G$. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{Inizialization}{}
+                \For{$j \in A$}
+                    \State Sample $w_j$ from $[0,1]$ independently and UAR
+                    \State $p_j := e^{w_j - 1}$ \Comment{the price of the ad $j$}
+                \EndFor
+            \EndFunction
+            \Function{MarketProcess}{$G$}
+                \State \textsc{Inizialization}()
+                \State $M := \varnothing$
+                    \For{$i \in U$}
+                        \State $A' := \{j \in A \mid \nexists i' \in U : \{i', j \} \in M\}$ \Comment{set of unmatched ads}
+                        \For{$j \in A'$}
+                            \State $v_i(j) := \1[j \in \mathcal N(i)]$ \Comment{the value of ad $j$ for user $i$}
+                        \EndFor
+                    \EndFor
+                \State \textbf{return} $M$
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
+
+    TODO \todo{huge hole}
+
+    \section{The Expert model}
+
+    In statistics, economics, and machine learning, the so-called \tbf{expert model} is a technique used to combine several \tit{weaker models} into a more \tit{powerful} overall model. This approach is closely related to the concept of \tbf{boosting} (or \tit{bootstrapping}). Given a training dataset, the data is divided into $n$ separate chunks, and $n$ different models called \tbf{experts} are trained independently one on each chunk. During testing, each expert produces a prediction, resulting in $n$ predictions. The expert model then determines how to \tit{combine} these predictions or selects the most appropriate one to form the final output.
+
+    The idea can be summarized as follows:
+
+    \begin{enumerate}
+        \item let $m_1, \ldots, m_n$ be the trained experts
+        \item at each time $t = 1, \ldots, T$ we read a \tit{prediction vector} $y_t = [y_{1, t} \ \cdots \ y_{n, t}]$ where each $y_{i, t} \in \{0, 1\}$ is a prediction of the $i$-th expert $m_i$
+        \item using $y_t$ we produce a final prediction $z_t \in \{0, 1\}$
+        \item after reading the real outcome $x_t$, we lose a point if $z_t \neq x_t$, otherwise we gain one
+    \end{enumerate}
+
+    The easiest way to use the prediction vector $y_t$ is to randomly choose which of the experts' prediction will be the final one. If there is at least one \tbf{perfect expert} --- an expert whose predictions are always correct --- we can use a naïve alogritm in order to discard the non-perfect experts until only the perfect ones remain.
+
+    \begin{framedalgo}{The Naïve Expert model}
+        Given a set $M$ of trained experts, in which at least one of them is perfect, the algorithm yields predictions over time $T$. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{naïveExpertModel}{$M$, $T$}
+                \State $S := [\abs M]$
+                \For{$t \in [T]$}
+                    \State Read $y_t = [y_{1, t} \ \cdots \ y_{n, t}]$
+                    \State Choose $i \in S$ UAR
+                    \State Read the outcome $x_t \in \{0, 1\}$
+                    \If{$x_t \neq y_{i, t}$}
+                        \State $S = S - \{j \mid y_{j, t} \neq x_t\}$
+                    \EndIf
+                \EndFor
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
+
+    We observe that, in the \curlyquotes{worst} case at each iteration only the $i$-th expert has made a mistake, meaning that this procedure will make at most $\abs M - 1$ mistakes.
+
+    \begin{framedprop}{}
+        Given a set of trained experts $M$, in which at least one of them is perfect, the procedure $\textsc{naïveExpertModel}(M)$ makes at most $\abs M - 1$ mistakes.
+    \end{framedprop}
+
+    More complex expert systems make use of a \tit{large} number of experts, therefore this naïve procedure requires too many iterations to \curlyquotes{reach} the perfect experts. The following approach provides a faster alternative.
+
+    \begin{framedalgo}{The Halving Expert model}
+        Given a set $M$ of trained experts, in which at least one of them is perfect, the algorithm yields predictions over time $T$. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{halvingExpertModel}{$M$, $T$}
+                \State $S := [\abs M]$
+                \For{$t \in [T]$}
+                    \State Read $y_t = [y_{1, t} \ \cdots \ y_{n, t}]$
+                    \State Let $z_t$ be the majority of the predictions in $y_t$
+                    \State Read the outcome $x_t \in \{0, 1\}$
+                    \If{$x_t \neq z_t$}
+                        \State $S = S - \{j \mid y_{j, t} \neq x_t\}$
+                    \EndIf
+                \EndFor
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
+
+    This algorithms is identical to the naïve approach except for a very important detail: instead of choosing the $i$-th expert UAR, this approach uses a \tbf{majority voting system}. In fact, since $z_t$ is the majority of the predictions in $y_t$, and the values of the outputs are either 0 or 1, at each mistake now \tit{at least half} of the experts must be wrong, thus discarded. Hence, we get the following proposition.
+
+    \begin{framedprop}{}
+        Given a set of trained experts $M$, in which at least one of them is perfect, the procedure $\textsc{halvingExpertModel}(M)$ makes at most $\floor{\log n}$ mistakes.
+    \end{framedprop}
+
+    Both of these algorithms rely on the guarantee that \tit{at least one} perfect model is present in the input, but what there is no such model? In this case, the algorithm will clearly discard all the experts eventually. Consider the following procedure.
+
+    \begin{framedalgo}{The Iterative Halving Expert model}
+        Given a set $M$ of trained experts, the algorithm yields predictions over time $T$. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{iterativeHalvingExpertModel}{$M$, $T$}
+                \State $S := [\abs M]$
+                \For{$t \in [T]$}
+                    \State Read $y_t = [y_{1, t} \ \cdots \ y_{n, t}]$
+                    \State Let $z_t$ be the majority of the predictions in $y_t$
+                    \State Read the outcome $x_t \in \{0, 1\}$
+                    \If{$x_t \neq z_t$}
+                        \State $S = S - \{j \mid y_{j, t} \neq x_t\}$
+                        \If{$S = \varnothing$} \Comment{if $S$ became empty, repeat the process}
+                            \State $S = [\abs M]$
+                        \EndIf
+                    \EndIf
+                \EndFor
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
+
+    This procedure is identical to the previous one, but now if $S$ becomes empty we fill it again in order to repeat the process until time $T$. How many mistakes this algorithm makes at most?
+
+    \begin{framedthm}{}
+        Given a set of trained experts $M$, the number $m$ of mistakes made by the procedure $\textsc{iterativeHalvingExpertModel}(M, T)$ is such that $$m \le (m^* + 1)(\floor{\log n} + 1)$$ where $m^*$ is the number of mistakes of the best expert after $T$ rounds.
+    \end{framedthm}
+    
+    \begin{proof}{Proof sketch.}
+        We can split the algorithm into \tit{phases}, and each phase begins whenever $S$ is set to $[\abs M]$. Clearly, since there may be no perfect trained experts in the input, each expert could make at least one mistake during each phase. Moreover, in each phase the algorithm will make at most $\floor{\log n} + 1$ mistakes, because of the majority rule. Hence, given that there are at most $m^* + 1$ phases, the bound follows.
+    \end{proof}
+
+    Can we improve this idea? Consider the following procedure.
+
+    \begin{framedalgo}{The Weighted Majority Expert model}
+        Given a set $M$ of trained experts, the algorithm yields predictions over time $T$. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{weightedMajorityExpertModel}{$M$, $T$}
+                \For{$i \in [\abs M]$}
+                    \State $w_i := 1$
+                \EndFor
+                \For{$t \in [T]$}
+                    \State Read $y_t = [y_{1, t} \ \cdots \ y_{n, t}]$
+                    \State $A_t := \sum\limits_{\substack{i \in [n] : \\ y_{i , t} = 1}}{w_i}$
+                    \State $B_t := \sum\limits_{\substack{i \in [n] : \\ y_{i , t} = 0}}{w_i}$
+                    \If{$A_t \ge B_t$}
+                        \State $z_t := 1$
+                    \Else
+                        \State $z_t := 0$
+                    \EndIf
+                    \State Read the outcome $x_t \in \{0, 1\}$
+                    \If{$x_t \neq z_t$}
+                        \For{$i \in [\abs M]$}
+                            \If{$y_{i, t} \neq x_t$}
+                                \State $w_i = \tfrac{w_i}{2}$
+                            \EndIf
+                        \EndFor
+                    \EndIf
+                \EndFor
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
+    
+    This procedure is a refined version of the halving model, in which we consider a \tbf{weighted majority} instead of a simple majority rule. This allows to \tit{tweak the weights} of the experts --- in this case, halving their weight if they were wrong --- instead of removing them entirely.
+
+    \begin{framedthm}{}
+        Given a set of trained experts $M$, the number $m$ of mistakes made by the procedure $\textsc{weightedMajorityExpertModel}(M, T)$ is such that $$m \le 2.41 \cdot (m^* + \log n)$$ where $m^*$ is the number of mistakes of the best expert after $T$ rounds.
+    \end{framedthm}
+
+    \begin{proof}
+        TODO \todo{da fare}
+    \end{proof}
+
+    Even if it is not known whether this bound is \tit{tight}, the following result can be proven.
+
+    \begin{framedthm}{}
+        Given a set trained experts $M$, for every deterministic algorithm based on the expert model the total number of mistakes $m$ is such that $m \ge \log n$ and $m \ge 2{m^*}$, where $m^*$ is the number of mistakced of the best expert after $T$ rounds.
+    \end{framedthm}
+
+    \begin{proof}
+        By way of contradiction, suppose that there is an algorithm $A_1$ for the expert model that makes $m < 2{m^*}$ mistakes. Consider two experts $E_0$ and $E_1$ such that the first one always returns 0 and the second one always returns 1. Now, suppose that the algorithm makes a mistake on each of the $T$ iterations, i.e. $m = T$.
+
+        Then, at time $t = T$ either $E_0$ or $E_1$ will have made at most $\tfrac{T}{2}$ mistakes, which implies that $m^* \le \tfrac{T}{2}$. However, this means that $$T = m < 2{m^*} \le T$$ rasing a contradiction --- the last inequality follows from the fact that $m^*$ is always upper bounded by the number of rounds $T$. This proves that $m \ge 2{m^*}$, which proves the second bound of the statement.
+
+        Regarding the first bound, a similar argument could be applied through some $2^n$ experts $E_0, E_1, \ldots, E_{2^n}$ such that the first $n$ outputs of each $i$-th expert corresponds to the binary encoding of $i$ --- e.g. for $n = 3$ we have that $E_0$ returns 0, 0, 0 while $E_7$ returns 1,1,1.
+    \end{proof}
+
+    Nonetheless, this bound can be improved through \tit{randomization}, as presented in the following algorithm.
+
+    \begin{framedalgo}{The Randomized Weighted Majority Expert model}
+        Given a set $M$ of trained experts, the algorithm yields predictions over time $T$. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{randWeightedMajorityExpertModel}{$M$, $T$}
+                \For{$i \in [\abs M]$}
+                    \State $w_i := 1$
+                \EndFor
+                \For{$t \in [T]$}
+                    \State Read $y_t = [y_{1, t} \ \cdots \ y_{n, t}]$
+                    \State Create a distribution $P_t$ such that $P_t(i) = \tfrac{w_i}{\sum_{j \in [n]}{w_j}}$
+                    \State Sample $i$ form $P_t$
+                    \State Read the outcome $x_t \in \{0, 1\}$
+                    \If{$x_t \neq z_t$}
+                        \For{$i \in [\abs M]$}
+                            \If{$y_{i, t} \neq x_t$}
+                                \State $w_i = (1 - \varepsilon) w_i$
+                            \EndIf
+                        \EndFor
+                    \EndIf
+                \EndFor
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
+
+    \begin{framedthm}{}
+        Given a set of trained experts $M$, the number $m$ of mistakes made by the procedure $\textsc{randWeightedMajorityExpertModel}(M, T)$ is such that $$\mathbb E [m] \le (1 + \varepsilon) m^* + \dfrac{\ln n}{\varepsilon}$$ for each $0 < \varepsilon < \tfrac{1}{2}$ where $m^*$ is the number of mistakes of the best expert after $T$ rounds.
+    \end{framedthm}
+
+    \begin{proof}
+        TODO \todo{da fare}
+    \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
