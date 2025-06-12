@@ -3016,7 +3016,24 @@
     \end{framedthm}
 
     \begin{proof}
-        TODO \todo{da fare}
+        Let $w^{(t)}_i$ be the weight of the $i$-th expert at the end of round $t$, after the update step, and for each $t \in [T]$ let $W^{(t)} = \sum_{i = 1}^{n}{w_i^{(t)}}$ be the sum of all the weights of the experts. We observe that
+        
+        \begin{itemize}
+            \item $w_i^{(0)} = 1$ for all $i \in [n]$ by definition, hence $W^{(0)} = n$
+            \item $W^{(t)} \ge W^{(t + 1)}$ since on each iteration either all the weights remain the same or some of them get halved
+        \end{itemize}
+
+        but we can actually find a tighter bound.
+
+        \claim{
+            On each round $t \in [T]$, if $z_t \neq x_t$ then $\tfrac{3}{4}W^{(t)} \ge W^{(t  + 1)}$.
+        }{
+            Let $I^{(t)}$ be the total weight of the wrong experts at the beginning of round $t$, i.e. $$I^{(t)} := \sum_{\substack{i \in [n]} : \\ y_{i, t} \neq x_t}{w_i^{(t)}}$$ If $z_t \neq x_t$ the weight of at least half of the experts will get halved, hence $I^{(t)} \ge \tfrac{1}{2}W^{(t)}$. Thus, we have that $$W^(t + 1) = \dfrac{I^{(t)}}{2} + (W^{(t)} - I^{(t)}) = W^{(t)} - \dfrac{I^{(t)}}{2} \le W^{(t)}- \dfrac{W^{(t)}}{4} = \dfrac{3}{4}W^{(t)}$$
+        }
+
+        Through the claim, we inductively get that $$W^{(T)} \le \rbk{\dfrac{3}{4}}^m W^{(0)} = \rbk{\dfrac{3}{4}}^m n$$ Now, if $i^*$ is one of the \curlyquotes{best} experts --- i.e. one of those who made $m^*$ mistakes --- it holds that $W^{(T)} \ge w_{i^*}^{(T)}$. Since the $i^*$-th expert made $m^*$ mistakes, its original weight got halved $m^*$ times, therefore $w_{i^*}^{(T)} = 2^{-m^*}$.
+
+        Finally, putting everything together we get that $$2^{-m^*} = w_{i^*}^{(T)} \le W^{(T)} \le \rbk{\dfrac{3}{4}}^m n$$ and solving for $m$, we get the upper bound of the claim $$m \le \dfrac{1}{\log \tfrac{4}{3}} (m^* + \log n) \le 2.41 \cdot (m^* + \log n)$$
     \end{proof}
 
     Even if it is not known whether this bound is \tit{tight}, the following result can be proven.
@@ -3026,16 +3043,16 @@
     \end{framedthm}
 
     \begin{proof}
-        By way of contradiction, suppose that there is an algorithm $A_1$ for the expert model that makes $m < 2{m^*}$ mistakes. Consider two experts $E_0$ and $E_1$ such that the first one always returns 0 and the second one always returns 1. Now, suppose that the algorithm makes a mistake on each of the $T$ iterations, i.e. $m = T$.
-
-        Then, at time $t = T$ either $E_0$ or $E_1$ will have made at most $\tfrac{T}{2}$ mistakes, which implies that $m^* \le \tfrac{T}{2}$. However, this means that $$T = m < 2{m^*} \le T$$ rasing a contradiction --- the last inequality follows from the fact that $m^*$ is always upper bounded by the number of rounds $T$. This proves that $m \ge 2{m^*}$, which proves the second bound of the statement.
-
-        Regarding the first bound, a similar argument could be applied through some $2^n$ experts $E_0, E_1, \ldots, E_{2^n}$ such that the first $n$ outputs of each $i$-th expert corresponds to the binary encoding of $i$ --- e.g. for $n = 3$ we have that $E_0$ returns 0, 0, 0 while $E_7$ returns 1,1,1.
+        % % By way of contradiction, suppose that there is an algorithm $A_1$ for the expert model that makes $m < 2{m^*}$ mistakes. Consider two experts $E_0$ and $E_1$ such that the first one always returns 0 and the second one always returns 1. Now, suppose that the algorithm makes a mistake on each of the $T$ iterations, i.e. $m = T$.
+        %
+        % % Then, at time $t = T$ either $E_0$ or $E_1$ will have made at most $\tfrac{T}{2}$ mistakes, which implies that $m^* \le \tfrac{T}{2}$. However, this means that $$T = m < 2{m^*} \le T$$ rasing a contradiction --- the last inequality follows from the fact that $m^*$ is always upper bounded by the number of rounds $T$. This proves that $m \ge 2{m^*}$, which proves the second bound of the statement.
+        %
+        % % Regarding the first bound, a similar argument could be applied through some $2^n$ experts $E_0, E_1, \ldots, E_{2^n}$ such that the first $n$ outputs of each $i$-th expert corresponds to the binary encoding of $i$ --- e.g. for $n = 3$ we have that $E_0$ returns 0, 0, 0 while $E_7$ returns 1,1,1.
     \end{proof}
 
     Nonetheless, this bound can be improved through \tit{randomization}, as presented in the following algorithm.
 
-    \begin{framedalgo}{The Randomized Weighted Majority Expert model}
+    \begin{framedalgo}{The Random Weighted Majority Expert model}
         Given a set $M$ of trained experts, the algorithm yields predictions over time $T$. \\
         \hrule
 
@@ -3069,6 +3086,98 @@
     \begin{proof}
         TODO \todo{da fare}
     \end{proof}
+
+    \section{Scoring rules}
+
+    As previously mentioned, the expert model is commonly used in machine learning to identify the best predictor from a fixed set of models. While effective, this approach does not allow for modifying the experts themselves --- they remain unchanged regardless of their performance. But what if we want to adapt the predictor set over time, for example, by removing or replacing models that frequently make mistakes?
+
+    This limitation is addressed by the \tbf{forecaster model}, which outputs probabilities rather than fixed predictions. For instance, consider a model predicting whether it will rain tomorrow. An expert model would use something like the weighted majority algorithm to output either a 0 (no rain) or a 1 (rain). In contrast, a forecaster model would return a probability distribution such as $(\mu , 1 - \mu)$, where $\mu$ is the predicted probability of a sunny day.
+
+    In expert models, individual predictors adjust their weights after incorrect predictions --- effectively incurring a penalty. For forecaster models, however, such \tbf{payoff scheme} must be adapted. If the forecaster outputs $(0.5, 0.5)$ and it rains, should that be considered wrong?
+
+    A possible payoff scheme works as follows: if the forecaster assigns a probability $x \in [0,1]$ to an event occurring, it earns $x$ points if the event happens, and loses $1 - x$ points if it doesn't. This is meant to encourage the forecaster to report $x = \mu$ as the prediction, where $\mu$ is what he believes the probability of the even really is. In particular, the \tbf{expected gain} $g_\mu(x)$ under this scheme, assuming the forecaster believes the event has probability $\mu$ and it claims $x$ as the probability of the event, is given by $$g_\mu(x) = \Exp_\mu \sbk{P_x} = x \mu + (1 -x )(1 - \mu)$$ However we observe that $$\dfrac{d}{dx}g_\mu(x) = \mu + (1 - \mu)(-1) = 2\mu - 1$$ which means that the minimum value of the gain is reached on $x = 1$ if $\mu < \tfrac{1}{2}$, and at $x = 0$ otherwise --- recall that $\mu \in [0, 1]$. This means that such payoff scheme actually incentivizes the model to \tit{lie}, i.e. to claim that either $x = 1$ or $x = 0$ without values in between!
+
+    To fix this problem, we need a payoff schemes based on \tbf{scoring rules}. They act as a generalization of the payoff scheme, where the gain and the payoff do not have to be sum to 1. In other wrods, if the forecaster guesses $x \in [0, 1]$ as the probability of the even, then it gains $f_1(x)$ points if the event really happens, otherwise it loses $f_0(x)$ points --- in the pvrious scheme, $f_1(x) = x$ and $f_0(x) = 1- x$. Hence, the expected gain now becomes $$g_\mu(x) = \Exp_\mu[P_x] = f_1(x) \mu + f_0(x)(1 - \mu)$$ An optimal scoring rule would be one that makes the model converge to $x = \mu$.
+
+    \begin{frameddefn}{Scoring rule}
+        Given two functions $\func{f_0, f_1}{X}{[0, 1]}$, we say that the pair $(f_0, f_1)$ is a \tbf{scoring rule} if for all $\mu \in [0, 1]$ it holds that $$\argmax_{x \in [0, 1]}{g_\mu(x)} = \argmax_{x \in [0, 1]} {(f_1(x) \mu + f_0(x)(1 - \mu))}= \mu$$
+    \end{frameddefn}
+
+    We observe that this definition implies that there is \tit{only one} maximizing $x$ value, i.e.. $\mu$ itself.
+
+    Good scoring rules are \tit{hard} to find, and vary depending on the context. However, even finding simple scoring rules is hard. The following is a commonly used scoring rule.
+
+    \begin{frameddefn}{Quadratic Scoring Rule}
+        The \tbf{Quadratic Scoring Rule} is defined as follows $$f_0(x) = 1 - x^2$$ $$f_1(x) = 1 - (1 - x)^2$$
+    \end{frameddefn}
+
+    \begin{framedthm}{}
+        The Quadratic Scoring Rule is a scoring rule.
+    \end{framedthm}
+
+    \begin{proof}
+        First, we observe that
+        \begin{equation*}
+            \begin{split}
+                g_\mu(x) &= f_1(x)\mu + f_0(x)(1 - \mu) \\
+                         &= (1 - (1 - x)^2) \mu + (1 - x^2)(1 - \mu) \\
+                         &= \mu - \mu(1 - x)^2 + (1 - \mu) - (1 - \mu)x^2 \\
+                         &= 1 - \mu(1 - 2x + x^2) - (1 - \mu)x^2 \\
+                         &= 1 - \mu - 2\mu x + \mu x^2 - x^2 - \mu x^2 \\
+                         &= 1 - \mu - 2 \mu x - x^2
+            \end{split}
+        \end{equation*}
+        the derivative of which is $$\dfrac{d}{dx}g_\mu(x) = \dfrac{d}{dx}(1 - \mu - 2 \mu x - x^2) = 2 \mu - 2x$$ This implies that $g_\mu (x)$ is strictly increasing for $x < \mu$ and strictly decreasing for $x > \mu$. Hence, it must be that the \tit{unique maximum} is reached when $x = \mu$.
+    \end{proof}
+
+    Another known and commonly employed scoring rule is the following.
+
+    \begin{frameddefn}{Binary Logarithmic Scoring Rule}
+        The \tbf{Binary Logarithmic Scoring Rule} is defined as follows $$f_0(x) = \ln(1 - x)$$ $$f_1(x) = \ln x$$
+    \end{frameddefn}
+
+    \begin{framedthm}{}
+        The Binary Logarithmic Scoring Rule is a scoring rule.
+    \end{framedthm}
+    
+    \begin{proof}
+        First, by definition we have that
+        \begin{equation*}
+            \begin{split}
+                g_\mu(x) &= f_1(x)\mu + f_0(x)(1 - \mu) \\
+                         &= \mu \ln(x) + (1 - \mu) \ln(1 - x) \\
+            \end{split}
+        \end{equation*}
+        the derivative of which is
+        \begin{equation*}
+            \begin{split}
+                \dfrac{d}{dx}{g_\mu(x)} &= \dfrac{d}{dx}(\mu \ln(x) + (1 - \mu) \ln(1 - x)) \\
+                                        &= \dfrac{\mu}{x} + \dfrac{1 - \mu}{ - ( 1 - x)} \\
+                                        &= \dfrac{\mu - x}{x - x^2}
+            \end{split}
+        \end{equation*}
+        This implies that $g_\mu(x)$ is strictly increasing for $x < \mu$ and strictly decreasing for $x > \mu$. Hence, it must be that the \tit{unique maximum} is reached when $x = \mu$.
+    \end{proof}
+
+    What if we have more than 2 possible outcomes, such as a set $\{0, 1, \ldots, k - 1\}$ of $k$ possible categories having distributions $$\overline \mu = [\mu_0, \mu_1, \ldots, \mu_{k - 1}]$$? In this case, we can use the following scoring rule, which is a \tit{generalization} of the Binary Logarithmic Scoring Rule.
+
+    \begin{framedthm}{Cross-Entropy Scoring Rule}
+        Given a vector of distributions $\overline \mu = [\mu_0, \mu_1, \ldots, \mu_{k - 1}]$, the \tbf{Cross-Entropy Scoring Rule} is defined as follows $$\forall i \in [k] \quad f_i(x) = (x_0, \ldots, x_{k - 1}) = \ln(x_i)$$
+    \end{framedthm}
+
+    Clearly, the gain of this function is analogously generalized by extending the sum to all the functions $f_i(x_0, \ldots, x_{k - 1})$, as shown below.
+
+    \begin{framedthm}{}
+        Given a vector of distributions $\overline \mu = [\mu_0, \mu_1, \ldots, \mu_{k - 1}]$, the function $$g_{\overline \mu}=\sum_{i = 0}^{k - 1}\mu_i f_i(x_0, \ldots, x_{k - 1}) = \sum_{ i = 0}^{k - 1}{\mu_i \ln (x_i)}$$ is uniquely maximized at $\overline x = \overline \mu$.
+    \end{framedthm}
+
+    \begin{proof}
+        Omitted.
+    \end{proof}
+
+    \section{Selection processes}
+
+    TODO \todo{da fare}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
