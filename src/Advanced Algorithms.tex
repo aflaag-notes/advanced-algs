@@ -3161,9 +3161,9 @@
 
     What if we have more than 2 possible outcomes, such as a set $\{0, 1, \ldots, k - 1\}$ of $k$ possible categories having distributions $$\overline \mu = [\mu_0, \mu_1, \ldots, \mu_{k - 1}]$$? In this case, we can use the following scoring rule, which is a \tit{generalization} of the Binary Logarithmic Scoring Rule.
 
-    \begin{framedthm}{Cross-Entropy Scoring Rule}
+    \begin{frameddefn}{Cross-Entropy Scoring Rule}
         Given a vector of distributions $\overline \mu = [\mu_0, \mu_1, \ldots, \mu_{k - 1}]$, the \tbf{Cross-Entropy Scoring Rule} is defined as follows $$\forall i \in [k] \quad f_i(x) = (x_0, \ldots, x_{k - 1}) = \ln(x_i)$$
-    \end{framedthm}
+    \end{frameddefn}
 
     Clearly, the gain of this function is analogously generalized by extending the sum to all the functions $f_i(x_0, \ldots, x_{k - 1})$, as shown below.
 
@@ -3177,7 +3177,61 @@
 
     \section{Selection processes}
 
-    TODO \todo{da fare}
+    Suppose that we have a sequence of items and we wish to select the best one in an \tit{online manner}. In the literature, this is known as the \tbf{Secretary Problem}, where we have to select the bast applicant out of a sequence of $n$ applicants, and the candidates are shown UAR in an \tit{online manner}. At any point in time, we can order the applicant we saw w.r.t. their ability. When wee see a candidate we immediately have to decide whether to hire them or not.
+
+    Suppose that we have three candidates $c_1$, $c_2$ and $c_3$ whose ability follows the ordering $c_2 > c_1 > c_3$. We observe that there are 3! possible arrival ordering for the three candidates. We propose the following three algorithms:
+
+    \begin{enumerate}
+        \item Pick the first candidate you see. This algorithm picks the best candidate --- i.e. $c_2$ in our example --- with probability $\dfrac{2}{3!} = \dfrac{2}{6} = \dfrac{1}{3}$.
+        \item Pick the last candidate you see. This algorithm has the same probability of the first one of picking the best candidate, i.e. $\dfrac{1}{3}$.
+        \item Pick the second candidate if they are better than the first candidate, otherwise pick the third candidate. This algorithm picks the best candidate with probability
+            \begin{equation*}
+                \begin{split}
+                      & \sum_{i = 1}^3{\Pr[c_2 \ \mbox{is in the $i$-th position}] \cdot \Pr[c_2 \ \mbox{is picked} \mid c_2 \ \mbox{is in the $i$-th position}]} \\
+                    = & \dfrac{1}{3} \cdot 0 + \dfrac{1}{3} \cdot 1 + \dfrac{1}{3} \cdot \dfrac{1}{2} \\
+                    = & \dfrac{1}{2}
+                \end{split}
+            \end{equation*}
+    \end{enumerate}
+    
+    This example clearly shows that \tit{confronting} the various candidates achieves a better result --- as the intuition would suggest. However, we recall that in our setting we can only check previous candidates, meaning that we could potentially \tit{miss} the best candidate. Nonetheless, we would still get a \curlyquotes{good enough} candidate.
+
+    To generalize this idea, we use a \tbf{threshold process}:
+
+    \begin{itemize}
+        \item we observe the first $t$ candidates, without hiring any of them
+        \item then, we keep observing the following candidates, hiring the first candidate that is better than all of the first $t$ cnadidates
+        \item if no such candidate is found, we stick with the last candidate seen
+    \end{itemize}
+
+    What is the \tit{probability of success} of this procedure?
+
+    \begin{framedlem}{}
+        The probability of success of the $t$-threshold process over $n$ candidates $c_1, \ldots, c_n$ is $$\Pr[\mbox{best candidate hired}] = \dfrac{t}{n}(H_{n - 1} - H_{t - 1})$$ where $H_k = \sum_{i = 1}^k{\tfrac{1}{i}}$ is the $k$-th Harmonic number.
+    \end{framedlem}
+
+    \begin{proof}
+        First, we observe that
+        \begin{equation*}
+            \begin{split}
+                \Pr[\mbox{best candidate hired}] &= \sum_{i = 1}^n{\Pr[\mbox{$c_i$ hired and $c_i$ best}]} \\
+                                                 &= \sum_{i = 1}^n{\Pr[\mbox{$c_i$ hired $\mid$ $c_i$ best}] \cdot \Pr[\mbox{$c_i$ best}]} \\
+                                                 &= \dfrac{1}{n} \sum_{i = 1}^n{\Pr[\mbox{$c_i$ hired $\mid$ $c_i$ best}]} \\
+                                                 &= \dfrac{1}{n} \rbk {\sum_{i = 1}^t{\Pr[\mbox{$c_i$ hired $\mid$ $c_i$ best}]} + \sum_{i = t + 1}^n{\Pr[\mbox{$c_i$ hired $\mid$ $c_i$ best}]} } \\
+                                                 &= \dfrac{1}{n} \rbk{0  + \sum_{i = t + 1}^n{\Pr[\mbox{$c_i$ hired $\mid$ $c_i$ best}]}} \\
+                                                 &= \dfrac{1}{n} \sum_{i = t + 1}^n{\Pr[\mbox{$c_i$ hired $\mid$ $c_i$ best}]}
+            \end{split}
+        \end{equation*}
+        However, we observe that the event \curlyquotes{$\mbox{$c_i$ is hired $\mid$ $c_i$ best}$} is equivalent to the event \curlyquotes{the second best candidate among $c_1, \ldots, c_i$ is in one of the first $t$ positions $\mid$ $c_i$ is the best}. Hence, since we want the second best candidate among $c_1, \ldots, c_i$ to fall within the first $t$ ones the probability of this event is $\dfrac{t}{i - 1}$ --- since $c_i$ cannot be the second best candidate, given that it is \tit{the best}. Therefore, we have that
+        \begin{equation*}
+            \begin{split}
+                \Pr[\mbox{best candidate hired}] &= \dfrac{1}{n} \sum_{i = t + 1}^n{\Pr[\mbox{$c_i$ hired $\mid$ $c_i$ best}]} \\
+                                                 &= \dfrac{1}{n} \sum_{i = t + 1}^n{\dfrac{t}{i - 1}} \\
+                                                 &= \dfrac{t}{n} \sum_{j = t}^{n - 1}{\dfrac{1}{j}} \\
+                                                 &= \dfrac{t}{n} (H_{n - 1} - H_{t - 1})
+            \end{split}
+        \end{equation*}
+    \end{proof}
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
