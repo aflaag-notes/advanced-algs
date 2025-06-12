@@ -142,7 +142,7 @@
         The \tbf{Maximum Cut} (MC) problem is defined as follows: given an undirected graph $G = (V, E)$, determine the set $S \subseteq V$ that maximizes $\abs{\mathrm{cut}(S)}$.
     \end{frameddefn}
 
-    Although this problem is known to be \textsf{APX-Hard} \cite{maxcut}, approximation algorithms and heuristic methods like greedy algorithms and local search are commonly used to find near-optimal solutions.
+    Although this problem is known to be \textsf{APX-hard} \cite{maxcut}, approximation algorithms and heuristic methods like greedy algorithms and local search are commonly used to find near-optimal solutions.
 
     For now, we present the following \tbf{randomized algorithm}, which provides a straightforward $\frac{1}{2}$-approximation for MC. This algorithm runs in polynomial time and achieves the approximation guarantee with high probability.
 
@@ -415,7 +415,7 @@
         Consider an optimal solution $S^*$ to VC on $G$, and let $M = \{e_1, \ldots, e_t\}$. Note that at each iteration of the algorithm exactly 1 edge is added to $M \subseteq V$, hence it always holds that $$S_i \cap S_{i + 1} = e_i = \{u, v\}$$ for any iteration $i \in [t - 1]$. Moreover, since $M$ is a matching, it holds that $\forall e, e' \in M \quad e \cap e' = \varnothing$, therefore $\abs{S} = 2 \abs{M}$. Finally, by the previous theorem we have that $\abs{M} \le \abs{S^*}$, concluding that $$\abs S = 2 \abs M \le 2 \abs{S^*}$$
     \end{proof}
     
-    This 2-approximation algorithm is conjectured to be optimal, but it has not been proven yet. In fact, VC is conjectured to be \NPclass-Hard to $(2 - \varepsilon)$-approximate, for any $\varepsilon > 0$.
+    This 2-approximation algorithm is conjectured to be optimal, but it has not been proven yet. In fact, VC is conjectured to be \NPclass-hard to $(2 - \varepsilon)$-approximate, for any $\varepsilon > 0$.
 
     Interestingly, the decisional version of VC is \href{https://en.wikipedia.org/wiki/Parameterized_complexity#FPT}{Fixed Parameter Tractable}. This characterization comes from the nature of the problem: for each edge $e = \{u, v\}$ of a given undirected graph $G = (V, E)$, either $u$ or $v$ has to be in the vertex cover, therefore it possible to approach VC by trying all possible choices of set of vertices $S \subseteq V$, and backtrack if necessary. The following algorithm employs this idea.
 
@@ -616,7 +616,7 @@
         By way of contradiction, suppose that $S^*$ is not a minimum vertex cover. Hence, there must be another vertex cover $S'$ such that $\abs{S'} < \abs{S^*}$. By the previous claim, this implies that there exists a feasible solution $\{x'_u\}_{u \in V}$ for the IP that has value $\abs{S'}$, but then $$\sum_{u \in V}{x'_u} = \abs{S'} < \abs{S^*} = \sum_{u \in V}{x^*_u}$$ which contradicts the optimality of the solution of $\{x^*_u\}_{u \in V}$ for the IP.
     \end{proof}
 
-    In particular, this lemma implies that VC can be reduced to Integer programming, indeed solving IPs is actually \NPclass-Hard \cite{karp}, differently from LPs. This result shows that IPs cannot be used \tit{directly} to obtain perfect solutions, but they are still very useful thanks to \tbf{relaxation}.
+    In particular, this lemma implies that VC can be reduced to Integer programming, indeed solving IPs is actually \NPclass-hard \cite{karp}, differently from LPs. This result shows that IPs cannot be used \tit{directly} to obtain perfect solutions, but they are still very useful thanks to \tbf{relaxation}.
 
     To \tit{relax} an IP, we simply replace the constraint $x \in \{0, 1\}^n$ with $0 \le x \le 1$, transforming the IP into an LP.
 
@@ -1444,7 +1444,7 @@
     The \tbf{value} of a UCL instance is the ratio of the edges that are satisfiable by any assignment. Hence, for satisfiable instances the ratio is 1, and we can find a satisfiying assignment as described. In contrast, determining the value of an unsatisfiable game --- even approximately --- appears to be very hard. This difficulty was formalized by \textcite{khot} in terms of \NPclass-hardness, as follows.
 
     \begin{framedconj}{Unique Games Conjecture (UGC)}
-        It is conjectured that for each $\varepsilon > 0$ there is a value $k_\varepsilon$ for which it is $\NPclass-Hard$ to determine if for a UCL instance with $k_\varepsilon$ labels one of the following holds:
+        It is conjectured that for each $\varepsilon > 0$ there is a value $k_\varepsilon$ for which it is $\NPclass-hard$ to determine if for a UCL instance with $k_\varepsilon$ labels one of the following holds:
 
         \begin{itemize}
             \item at most an $\varepsilon$-fraction of the edges are satisfied
@@ -1462,14 +1462,14 @@
 
     TODO \todo{buco}
     
-    Given a problem that can be described through a CSP $\mathcal C$, let $\alpha(\mathcal C)$ be the best possible approximation ratio for $\mathcal C$, i.e. the minimum ratio such that the problem does not become \NPclass-Hard to approximate. The following theorem, proved by \textcite{raghavendra}, shows that the relationship between approximation algorithms, SDPs, and the UGC is as strong as it can be.
+    Given a problem that can be described through a CSP $\mathcal C$, let $\alpha(\mathcal C)$ be the best possible approximation ratio for $\mathcal C$, i.e. the minimum ratio such that the problem does not become \NPclass-hard to approximate. The following theorem, proved by \textcite{raghavendra}, shows that the relationship between approximation algorithms, SDPs, and the UGC is as strong as it can be.
 
     \begin{framedthm}{Raghavendra's theorem}
         For every CSP $\mathcal C$ with values in $[q]$ and arity $k$, the following hold.
 
         \begin{itemize}
             \item There is an SDP with IG of $\alpha(\mathcal C)$ and a rounding algorithm that is an $\alpha(\mathcal C)$-approximation of $\mathcal C$.
-            \item If the UGC is true, it is \NPclass-Hard to approximate $\mathcal C$ with a ratio $\alpha(\mathcal C) - \varepsilon$ for any $\varepsilon > 0$.
+            \item If the UGC is true, it is \NPclass-hard to approximate $\mathcal C$ with a ratio $\alpha(\mathcal C) - \varepsilon$ for any $\varepsilon > 0$.
         \end{itemize}
     \end{framedthm}
 
@@ -1573,7 +1573,7 @@
 
     By definition, this model represents an \tit{evenly sparse graph}, because for each $S \subseteq V(G)$ it holds that $$ \mathbb E[\psi(S)] = \dfrac{\mathbb E\sbk{\abs{\mathrm{cut}(S)}}}{\abs S \cdot \abs{\overline S}} = \dfrac{\sum_{ij \in S \times \overline S}{\Pr \sbk{ij \in \mathrm{cut}(S)}}}{\abs S \cdot  \abs{\overline S}}= \dfrac{\mu \cdot \abs S \cdot \abs{\overline S}}{\abs S \cdot \abs{\overline S}} = \mu$$
 
-    The Maximum Cut problem --- which we discussed in \cref{maxcut} --- can be reduced to SC, implying that the latter is \NPclass-Hard as well. Nevertheless, the problem can be approximated through the \tbf{Leighton-Rao algorithm} \cite{leightonrao}, which relies on LP relaxation and a series of reduction steps. In particular, its integrality gap is bounded using \tit{geometric arguments}, therefore in the following sections we will focus on \tbf{metric geometry} in order to establish this result.
+    The Maximum Cut problem --- which we discussed in \cref{maxcut} --- can be reduced to SC, implying that the latter is \NPclass-hard as well. Nevertheless, the problem can be approximated through the \tbf{Leighton-Rao algorithm} \cite{leightonrao}, which relies on LP relaxation and a series of reduction steps. In particular, its integrality gap is bounded using \tit{geometric arguments}, therefore in the following sections we will focus on \tbf{metric geometry} in order to establish this result.
 
     \section{Metrics}
 
@@ -2218,7 +2218,7 @@
         \end{equation*}
     \end{proof}
 
-    Since MC is \NPclass-Hard, this proposition implies that the problem of maximizing non-negative, monotone increasing, and submodular functions over $k$ elements is \NPclass-Hard as well. In fact, the $\rbk{1 - \tfrac{1}{e}}$-approximation for MC that we previously discussed is a specific instance of a more general algorithm, first presented by \textcite{nwf}, that aims at maximizing a Non-Negative and Monotone Increasing (NN-MI) submodular function.
+    Since MC is \NPclass-hard, this proposition implies that the problem of maximizing non-negative, monotone increasing, and submodular functions over $k$ elements is \NPclass-hard as well. In fact, the $\rbk{1 - \tfrac{1}{e}}$-approximation for MC that we previously discussed is a specific instance of a more general algorithm, first presented by \textcite{nwf}, that aims at maximizing a Non-Negative and Monotone Increasing (NN-MI) submodular function.
 
     \begin{framedalgo}{NWF approximation}
         Given an NN-MI submodular function $\func{f}{\powerset(X)}{\R}$, and a value $k \in \N$, the algorithm returns a subset $S \subseteq X$. \\
@@ -2404,7 +2404,7 @@
         \item NN sumbodular function have a $\tfrac{1}{4}$-approximation
     \end{itemize}
 
-    Submodularity provides a standard approximation bound to many \NPclass-Hard \tit{maximization} problems. Furthermore, these same results can be obtained through \tit{supermodularity} for many \NPclass-Hard \tit{minimization} problems.
+    Submodularity provides a standard approximation bound to many \NPclass-hard \tit{maximization} problems. Furthermore, these same results can be obtained through \tit{supermodularity} for many \NPclass-hard \tit{minimization} problems.
 
     \section{Exercises}
 
@@ -3028,7 +3028,7 @@
         \claim{
             On each round $t \in [T]$, if $z_t \neq x_t$ then $\tfrac{3}{4}W^{(t)} \ge W^{(t  + 1)}$.
         }{
-            Let $I^{(t)}$ be the total weight of the wrong experts at the beginning of round $t$, i.e. $$I^{(t)} := \sum_{\substack{i \in [n]} : \\ y_{i, t} \neq x_t}{w_i^{(t)}}$$ If $z_t \neq x_t$ the weight of at least half of the experts will get halved, hence $I^{(t)} \ge \tfrac{1}{2}W^{(t)}$. Thus, we have that $$W^(t + 1) = \dfrac{I^{(t)}}{2} + (W^{(t)} - I^{(t)}) = W^{(t)} - \dfrac{I^{(t)}}{2} \le W^{(t)}- \dfrac{W^{(t)}}{4} = \dfrac{3}{4}W^{(t)}$$
+            Let $I^{(t)}$ be the total weight of the wrong experts at the beginning of round $t$, i.e. $$I^{(t)} := \sum_{\substack{i \in [n]} : \\ y_{i, t} \neq x_t}{w_i^{(t)}}$$ If $z_t \neq x_t$ the weight of at least half of the experts will get halved, hence $I^{(t)} \ge \tfrac{1}{2}W^{(t)}$. Thus, we have that $$W^{(t + 1)} = \dfrac{I^{(t)}}{2} + (W^{(t)} - I^{(t)}) = W^{(t)} - \dfrac{I^{(t)}}{2} \le W^{(t)}- \dfrac{W^{(t)}}{4} = \dfrac{3}{4}W^{(t)}$$
         }
 
         Through the claim, we inductively get that $$W^{(T)} \le \rbk{\dfrac{3}{4}}^m W^{(0)} = \rbk{\dfrac{3}{4}}^m n$$ Now, if $i^*$ is one of the \curlyquotes{best} experts --- i.e. one of those who made $m^*$ mistakes --- it holds that $W^{(T)} \ge w_{i^*}^{(T)}$. Since the $i^*$-th expert made $m^*$ mistakes, its original weight got halved $m^*$ times, therefore $w_{i^*}^{(T)} = 2^{-m^*}$.
@@ -3043,11 +3043,11 @@
     \end{framedthm}
 
     \begin{proof}
-        % % By way of contradiction, suppose that there is an algorithm $A_1$ for the expert model that makes $m < 2{m^*}$ mistakes. Consider two experts $E_0$ and $E_1$ such that the first one always returns 0 and the second one always returns 1. Now, suppose that the algorithm makes a mistake on each of the $T$ iterations, i.e. $m = T$.
-        %
-        % % Then, at time $t = T$ either $E_0$ or $E_1$ will have made at most $\tfrac{T}{2}$ mistakes, which implies that $m^* \le \tfrac{T}{2}$. However, this means that $$T = m < 2{m^*} \le T$$ rasing a contradiction --- the last inequality follows from the fact that $m^*$ is always upper bounded by the number of rounds $T$. This proves that $m \ge 2{m^*}$, which proves the second bound of the statement.
-        %
-        % % Regarding the first bound, a similar argument could be applied through some $2^n$ experts $E_0, E_1, \ldots, E_{2^n}$ such that the first $n$ outputs of each $i$-th expert corresponds to the binary encoding of $i$ --- e.g. for $n = 3$ we have that $E_0$ returns 0, 0, 0 while $E_7$ returns 1,1,1.
+        By way of contradiction, suppose that there is an algorithm $A_1$ for the expert model that makes $m < 2{m^*}$ mistakes. Consider two experts $E_0$ and $E_1$ such that the first one always returns 0 and the second one always returns 1. Now, suppose that the algorithm makes a mistake on each of the $T$ iterations, i.e. $m = T$.
+
+        Then, at time $t = T$ either $E_0$ or $E_1$ will have made at most $\tfrac{T}{2}$ mistakes, which implies that $m^* \le \tfrac{T}{2}$. However, this means that $$T = m < 2{m^*} \le T$$ rasing a contradiction --- the last inequality follows from the fact that $m^*$ is always upper bounded by the number of rounds $T$. This proves that $m \ge 2{m^*}$, which proves the second bound of the statement.
+
+        Regarding the first bound, a similar argument could be applied through some $2^n$ experts $E_0, E_1, \ldots, E_{2^n}$ such that the first $n$ outputs of each $i$-th expert corresponds to the binary encoding of $i$ --- e.g. for $n = 3$ we have that $E_0$ returns 0, 0, 0 while $E_7$ returns 1,1,1.
     \end{proof}
 
     Nonetheless, this bound can be improved through \tit{randomization}, as presented in the following algorithm.
@@ -3080,11 +3080,55 @@
     \end{framedalgo}
 
     \begin{framedthm}{}
-        Given a set of trained experts $M$, the number $m$ of mistakes made by the procedure $\textsc{randWeightedMajorityExpertModel}(M, T)$ is such that $$\mathbb E [m] \le (1 + \varepsilon) m^* + \dfrac{\ln n}{\varepsilon}$$ for each $0 < \varepsilon < \tfrac{1}{2}$ where $m^*$ is the number of mistakes of the best expert after $T$ rounds.
+        Given a set of trained experts $M$, the number $m$ of mistakes made by the procedure $\textsc{randWeightedMajorityExpertModel}(M, T)$ is such that $$\mathbb E [m] \le (1 + \varepsilon) m^* + \dfrac{1}{\varepsilon}\ln n$$ for each $0 < \varepsilon < \tfrac{1}{2}$ where $m^*$ is the number of mistakes of the best expert after $T$ rounds.
     \end{framedthm}
 
     \begin{proof}
-        TODO \todo{da fare}
+        Let $w_i^{(t)}$ be the weight of the $i$-th expert at the end of round $t$, after the update step, and for each $t \in [T]$ let
+
+        \begin{itemize}
+            \item $W^{(t)} = \sum_{i = 1}^n{w_i^{(t)}}$ be the sum of all the weights of the experts
+            \item $I^{(t)}$ be the weighted fraction of experts that are wrong at rround $t$ $$I^{(t)} = \dfrac{\sum_{\substack{i \in [n] : \\ y_{i, t} \neq x_t}}{w_i^{(t)}}}{\sum_{i \in [n]}{w_i^{(t)}}} = \dfrac{1}{W^{(t)}} \sum_{\substack{i \in [n] : \\ y_{i, t} \neq x_t}}{w_i^{(t)}}$$
+        \end{itemize}
+
+        Let $i^*$ be one of the best experts, i.e. one of those that make $m^*$ mistakes; then, we have that $$W^{(T)} \ge w_{i^*}^{T} = w_{i^*}^{(0)}(1 - \varepsilon)^{m^*} = (1 - \varepsilon)^{m^*}$$ given that $w_i^{(0)} = 1$ for all $i \in [n]$.
+
+        \claim[Claim 1]{
+            For each $t \in [T]$ it holds that $\displaystyle W^{(t)} = n \prod_{s = 1}^t{\rbk{1 - \varepsilon I^{(s)}}}$.
+        }{
+            We observe that for any $t \in [T]$ it holds that
+            \begin{equation*}
+                \begin{split}
+                    W^{(t + 1)} &= \sum_{i = 1}^n{w_i^{(t + 1)}} \\
+                                &= \sum_{i = 1}^n{w_i^{(t)}(1 - \varepsilon \cdot \1 \sbk{y_{i , t + 1} \neq x_{t + 1}})} \\
+                                &= \sum_{i = 1}^n{w_i^{(t)}} - \varepsilon \cdot \sum_{\substack{i \in [n] : \\ y_{i , t + 1} \neq x_{t + 1}}}{w_i^{(t)}} \\
+                                &= W^{(t)} - \dfrac{W^{(t)}}{W^{(t)}} \cdot \varepsilon \cdot \sum_{\substack{i \in [n] : \\ y_{i , t + 1} \neq x_{t + 1}}}{w_i^{(t)}} \\
+                                &= W^{(t)} \rbk{1 - \varepsilon I^{(t + 1)}}
+                \end{split}
+            \end{equation*}
+            Now, since $W^{(0)} = n$ by definition, we inductively get that $$W^{(t + 1)} = W^{(0)} \prod_{s = 1}^{t + 1}{\rbk{1 - \varepsilon I^{(s)}}} = n \prod_{s = 1}^t{\rbk{1 - \varepsilon I^{(s)}}}$$
+        }
+
+        Hence, by this claim and the previous observation, we get that $$n \prod_{s = 1}^T{ \rbk{1 - \varepsilon I^{(s)}}} = W^{(T)} \ge (1 - \varepsilon) ^{m^*} \implies \ln n + \sum_{s = 1}^T{\ln \rbk{ 1 - \varepsilon I^{(s)}}} \ge m^* \ln (1 - \varepsilon)$$
+
+        Now, since $\ln ( 1- x) \le -x$ for all $0 \le x < 1$, we also know that $$\ln n - \varepsilon \sum_{s = 1}^T{I^{(s)}} \ge \ln n + \sum_{s = 1}^T{\ln \rbk{1 - \varepsilon I^{(s)}}}$$ thus concluding that $$\ln n - \varepsilon \sum_{s = 1}^T{I^{(s)}} \ge m^* \ln (1 - \varepsilon)$$ which in turn implies that $$\sum_{s = 1}^T{I^{(s)}} \ge m^* \dfrac{1}{\varepsilon} \ln n - \dfrac{1}{\varepsilon} m^* \ln (1 - \varepsilon)$$
+
+        \claim[Claim 2]{
+            $\Exp [m] = \sum_{s = 1}^T{I^{(s)}}$.
+        }{
+            Through algebraic manipulation we get that
+            \begin{equation*}
+                \begin{split}
+                    \Exp[m] &= \sum_{s = 1}^T{\Pr[\mbox{mistake at round $s$}]} \\
+                            &= \sum_{s = 1}^T{\Pr[\mbox{a wrong expert is picked at round $s$}]} \\
+                            &= \sum_{s = 1}^T{\sum_{\substack{i \in [n] : \\ y_{i, s} \neq x_s} }{\Pr[\mbox{expert $i$ picked at round $s$}]}} \\
+                            &= \sum_{s = 1}^T{\sum_{\substack{i \in [n] : \\ y_{i, s} \neq x_x}}}{\dfrac{w_i^{(s)}}{\sum\limits_{i \in [n]}{w_i^{(s)}}}} \\
+                            &= \sum_{s = 1}^T{I^{(s)}}
+                \end{split}
+            \end{equation*}
+        }
+
+        Finally, by the previous equivalence and Claim 2, we conclude that $$\Exp[m] = \sum_{s= 1}^T{I^{(s)}} \ge m^* \dfrac{1}{\varepsilon} \ln n - \dfrac{1}{\varepsilon} \ln (1 - \varepsilon)  = (1 + \varepsilon) m^* + \dfrac{1}{\varepsilon} \ln n$$
     \end{proof}
 
     \section{Scoring rules}
@@ -3233,6 +3277,116 @@
         \end{equation*}
     \end{proof}
 
+    \begin{framedthm}{}
+        If $t = \floor{\tfrac{n}{e}}$, the probability of success of the $t$-threshold process on $n$ candidates $c_1, \ldots, c_n$ is at least $\tfrac{1}{e} - o(1)$.
+    \end{framedthm}
+
+    \begin{proof}
+        First, observe that $$H_{n - 1} - H_{t - 1} = \sum_{k = t}^{n - 1}{\dfrac{1}{k}} \ge \sum_{k = t}^{n - 1}{\int_k^{k + 1}{\dfrac{1}{x}dx}} = \int_t^n{\dfrac{1}{2}dx = \ln \abs{\dfrac{n}{t}}}$$ and since $t = \floor{\tfrac{n}{e}}$ we have that $$\ln \abs{\dfrac{n}{t}} = \ln \abs{\dfrac{n}{\floor{\tfrac{n}{e}}}} \ge \ln \abs{\dfrac{n}{\tfrac{n}{e}}} = \ln e = 1$$ Hence, by the previous lemma we get that
+        \begin{equation*}
+            \begin{split}
+                \Pr[\mbox{best candidate hired}] &= \dfrac{t}{n}(H_{n - 1} - H_{t - 1}) \\
+                                                 &\ge \dfrac{t}{n} \cdot 1 \\
+                                                 &\ge \dfrac{\floor{\tfrac{n}{e}}}{n} \\
+                                                 &> \dfrac{\tfrac{n}{e} - 1}{n} \\
+                                                 &= \dfrac{1}{e} - \dfrac{1}{n} \\
+            \end{split}
+        \end{equation*}
+        which clearly goes to $\tfrac{1}{e}$ as $n$ grows to $+ \infty$.
+    \end{proof}
+
+    Now, we are going to consider a variant, known as the \tbf{Prophet Inequalities Problem}. Suppose that each candidate $c_i$ has a \curlyquotes{score} sampled independently from a known random variable $X_i \ge 0$. The setup is the identical: we still get to see the candidates in order and we stil have to select onlyh one of them in an \tit{online fashion}. Additionally, we get to see the distributions of the scores \tit{a priori}.
+
+    As an example, suppose that we have two candidates $c_1$ and $c_2$ with score variables $X_1$ and $X_2$ defined as follows $$\Pr[X_1 = 0] = \Pr[X_1 = 1] = \Pr[X_2 = \tfrac{1}{3}] = \Pr[X_2 = \tfrac{4}{3}] = \tfrac{1}{2}$$ Consider the following algorithm: if $X_1 = 0$ then we accept $X_2$, otherwise we accept $X_1$. Let $A$ be the output of this algorithm; what is the expected value of $A$?
+    \begin{equation*}
+        \begin{split}
+            \Exp[A] &= \Pr[X_1 = 0] \Exp[X_2] + \Pr[X_1 = 1] \cdot 1 \\
+                    &= \dfrac{1}{2} \rbk{\dfrac{1}{3} \cdot \dfrac{1}{2} + \dfrac{4}{3} \cdot \dfrac{1}{2}} + \dfrac{1}{2} \\
+                    &= \dfrac{11}{12}
+        \end{split}
+    \end{equation*}
+    For the expected value of the \tit{best score}, instead, we have that
+    \centeredeq{1}{$
+    % \begin{equation*}
+        \begin{split}
+            \Exp[\max(X_1, X_2)] &= \Pr \sbk{X_2 = \dfrac{4}{3}} + \Pr \sbk{X_2 = \dfrac{1}{3}} \cdot \Pr[X_1 = 1] \cdot 1 + \Pr \sbk{X_2 = \dfrac{1}{3}} \cdot \Pr[X_1 = 0] \cdot \dfrac{1}{3} \\
+                                 &= \dfrac{1}{2} \cdot \dfrac{4}{3} + \dfrac{1}{2} \cdot \dfrac{1}{2} \cdot 1 + \dfrac{1}{2} \cdot \dfrac{1}{2} \cdot \dfrac{1}{3} \\
+                                 &= 1
+        \end{split}
+    % \end{equation*}
+    $}
+    Therefore, we get that $$\Exp[A] \ge \dfrac{11}{12} \Exp[\max(X_1, X_2)]$$ Can we always be competitive over $n$ candidate? The following theorem shows that no onlie algorithm can give an approximation better than $\tfrac{1}{2}$.
+
+    \begin{framedthm}{}
+        There is no randomized online algorithm for the Prophet Inequalities problem that can expectedly return the best candidate with score greater than $\tfrac{1}{2}$ times the score of the optimal candidate --- for scores chosen from a random distribution.
+    \end{framedthm}
+
+    \begin{proof}
+        Fix a small $\varepsilon \in (0, 1]$; let $X_1$ and $X_2$ be two random score variables where, such that $\Pr[X_1 = 1] = 1$, $\Pr[X_2 = \tfrac{1}{\varepsilon}] = \varepsilon$ and $\Pr[X_2 = 0] = 1 - \varepsilon$.
+
+        \claim[Claim 1]{
+            Any online algorithm over $X_1$ and $X_2$ will always make a choice with expected value equal to 1.
+        }{
+            Fix an online algorithm, and let $A$ be its output. We know that $A$ can either be $X_1$ or $X_2$, and by definition it holds that $\Exp[X_1] = 1$. Moreover, we have that $$\Exp[X_2] = \dfrac{1}{\varepsilon} \cdot \varepsilon + (1 - \varepsilon) \cdot 0 = 1$$ Therefore $\Exp[A] = 1$ will always hold.
+        }
+
+        \claim[Claim 2]{
+            $\Exp[\max(X_1, X_2)] = 2 - \varepsilon$.
+        }{
+            By definition, we have that $$\Exp[\max(X_1, X_2)] = \dfrac{1}{\varepsilon} \cdot \Pr \sbk {X_2 = \tfrac{1}{\varepsilon}} + 1 \cdot \Pr[X_2 = 0] = \dfrac{1}{\varepsilon} \cdot \varepsilon + 1 \cdot (1 - \varepsilon) = 2 - \varepsilon$$
+        }
+
+        The two claims directly conclude that for any solution $A$ returned by any algorithm, it holds that $$\Exp[A] = \dfrac{1}{2 - \varepsilon} \Exp[\max(X_1, X_2)]$$
+    \end{proof}
+
+    The following is an algorithm that reaches this optimal bound.
+
+    \begin{framedalgo}[]{Optimal Prophet Inequalities problem}
+        Given some scoring variables $X_1, \ldots, X_n$, and a value $\tau$, the algorithm returns the best candidate w.r.t. the scoring variables. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{prophetIneq}{$X_1, \ldots, X_n$, $\tau$}
+                \For{$i \in [n]$}
+                    \State Observe an independent sample $v_i$ from $X_i$
+                    \If{$v_i \ge \tau$}
+                        \State \textbf{return} $v_i$
+                    \EndIf
+                \EndFor
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
+
+    \begin{framedthm}{}
+        Given $n$ scoring variables $X_1, \ldots, X_n$ for the Prophet Inequalities problem, let $\tau^* = \max(X_1, \ldots, X_n)$. Then, if $A_{\tau^*} = \textsc{prophetIneq}(X_1, \ldots, X_n, \tau)$, it holds that $$\Exp[A_{\tau^*}] \ge \tau^*$$
+    \end{framedthm}
+
+    \begin{proof}
+        Fix a value $\tau$, and let $$\mu_\tau := \Pr[\exists X_i \ge \tau] = \Pr[\mbox{a candidate is selected}]$$ Moreover, for each $x$ let $(x)^+$ be defined as $(x)^+ \max(0, x)$ Now, for any $\tau$ it holds that
+        \begin{equation*}
+            \begin{split}
+                \Exp[A_\tau] &= \mu_\tau \cdot \tau + \sum_{i = 1}^n{\Pr[\max(X_1, \ldots, x_{i -1 }) < t] \cdot \Exp[(X_i - \tau)^+]} \\
+                             &\ge \mu_\tau \cdot \tau + \sum_{i = 1}^n{\Pr[\max(X_\1, \ldots, x_n) < t] \cdot \Exp[(X_i - \tau)^+]} \\
+                             &= \mu_\tau \cdot \tau + \sum_{i = 1}^n{(1 - \mu_\tau)\Exp[(X_i - \tau)^+]} \\
+                             &= \mu_\tau \cdot \tau + (1 - \mu_\tau)\Exp \sbk{\sum_{i = 1}^n{(X_i - \tau)^+}} \\
+                             &\ge \mu_\tau \cdot \tau + (1 - \mu_\tau) \Exp\sbk{\max_{i \in [n]}{(X_i - \tau)^+}} \\
+                             &= \mu_\tau \cdot \tau + (1 - \mu_\tau) \Exp \sbk{\max_{i \in [n]}{\max(0, X_i - \tau)}} \\
+                             &= \mu_\tau \cdot \tau + (1 - \mu_\tau) \Exp \sbk{\max(0, \max_{i \in[n]}(X_i) - \tau)} \\
+                             &\ge \mu_\tau \cdot \tau + (1 - \mu_\tau) \Exp \sbk {\max_{i \in [n]}{(X_i)} - \tau} \\
+                             &= \mu_\tau \cdot \tau + (1 - \mu_\tau) \rbk{\Exp \sbk{\max_{i \in [n]}{(X_i)}} - \tau}
+            \end{split}
+        \end{equation*}
+        Now, given that $\tau^* = \tfrac{1}{2} \Exp \sbk{\max_{i \in [n]}{(X_i)}}$, we conclude that
+        \begin{equation*}
+            \begin{split}
+                \Exp[A_{\tau^*}] &\ge \mu_{\tau^*} \cdot \tau^* + (1 - \mu_{\tau^*}) \rbk{\Exp\sbk{\max_{i \in [n]}{(X_i)}} - \tau^*} \\
+                                 &= \mu_{\tau ^*} \cdot \tau^* + (1 - \mu_{\tau^*}) (2 \tau^* - \tau^*) \\
+                                 &= \tau^*
+            \end{split}
+        \end{equation*}
+    \end{proof}
+    
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
 \end{document}
