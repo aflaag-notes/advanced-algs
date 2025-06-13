@@ -315,6 +315,47 @@
     \field{year}{2011}
   \endentry
 
+  \entry{goemans}{article}{}{}
+    \name{author}{2}{}{%
+      {{hash=GMX}{%
+         family={Goemans},
+         familyi={G\bibinitperiod},
+         given={Michel\bibnamedelima X.},
+         giveni={M\bibinitperiod\bibinitdelim X\bibinitperiod},
+      }}%
+      {{hash=WDP}{%
+         family={Williamson},
+         familyi={W\bibinitperiod},
+         given={David\bibnamedelima P.},
+         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Association for Computing Machinery (ACM)}%
+    }
+    \strng{namehash}{GMXWDP1}
+    \strng{fullhash}{GMXWDP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{GW95}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \verb{doi}
+    \verb 10.1145/227683.227684
+    \endverb
+    \field{issn}{1557-735X}
+    \field{number}{6}
+    \field{pages}{1115–1145}
+    \field{title}{Improved approximation algorithms for maximum cut and satisfiability problems using semidefinite programming}
+    \verb{url}
+    \verb http://dx.doi.org/10.1145/227683.227684
+    \endverb
+    \field{volume}{42}
+    \field{journaltitle}{Journal of the ACM}
+    \field{month}{11}
+    \field{year}{1995}
+  \endentry
+
   \entry{hopcroft}{article}{}{}
     \name{author}{2}{}{%
       {{hash=HJE}{%

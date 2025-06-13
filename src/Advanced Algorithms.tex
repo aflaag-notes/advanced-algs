@@ -225,7 +225,14 @@
 
         Therefore, the probability that at least one among $S_1, \ldots, S_t$ is a \curlyquotes{good} solution is bounded by $$\Pr[\exists i \in [t] \quad C_i > (1 - \varepsilon) \mathbb E [C_i]] = 1 - \Pr[\forall i \in [t] \quad C_i \le (1 - \varepsilon) \mathbb E [C_i]] \ge 1 - \delta$$
 
-        placeholder \todo{last part}
+        Finally, since the $\argmax$ operation in the algorithm will select in the \curlyquotes{worst} case such good solution, we conclude that
+        \begin{equation*}
+            \begin{split}
+                \Pr \sbk{\abs{\mathrm{cut}(S)} > \dfrac{1 - \varepsilon}{2} \abs{\mathrm{cut}(S^*)}} &\ge \Pr \sbk {\exists i \in [t] \quad C_i > \dfrac{1 - \varepsilon}{2} \abs{\mathrm{cut}(S^*)}} \\
+                                                                                                     &\ge \Pr[\exists i \in [t] \quad C_i > (1 - \varepsilon) \Exp[C_i]] \\
+                                                                                                     &\ge 1 - \delta
+            \end{split}
+        \end{equation*}
     \end{proof}
 
     Note that this result is \tit{very powerful}: for instance, if $\varepsilon = \delta = 0.1$, we get that $$\Pr[\abs{\mathrm{cut}(S)} > 0.45 \cdot \abs{\mathrm{cut}(S^*)}] \ge 0.9$$ and $t \approx 46$, meaning that we just need to run the \textsc{RandomCut} algorithm approximately 46 times in order to get a solution that is better than a $0.45$-approximation with $90\%$ probability.
@@ -787,7 +794,7 @@
     \begin{proof}
         Each iteration of the outermost \ttt{for} loop will be referred to as \tit{phase}.
 
-        \claim{
+        \claim[Claim 1]{
             The element $i$ is covered by $A$ in \tit{phase} $k$ with probability at least $1 - \frac{1}{e}$.
         }{
             \begin{equation*}
@@ -801,13 +808,13 @@
             \end{equation*}
         }
 
-        \claim{
+        \claim[Claim 2]{
             The element $i$ is not covered by any set of $A$ with probability at most $\frac{1}{n^2}$.
         }{
             \begin{equation*}
                 \begin{split}
                     \Pr[i \ \mathrm{is \ not \ covered \ by \ any \ set \ of} \ A] &= \prod_{k = 1}^{\ceil{2 \ln n}}{\Pr[i \ \mathrm{is \ not \ covered \ in \ \mathit{phase}} \ k]} \\
-                                                                                   &\le \prod_{k = 1}^{\ceil{2 \ln n}}{\dfrac{1}{e}} \quad \quad (\mathrm{previous \ claim}) \\
+                                                                                   &\le \prod_{k = 1}^{\ceil{2 \ln n}}{\dfrac{1}{e}} \quad \quad (\mathrm{by \ Claim \ 1}) \\
                                                                                    &= e^{- \ceil {2 \ln n }} \\
                                                                                    &\le e^{- 2 \ln n} \\
                                                                                    &= \dfrac{1}{n^2}
@@ -815,14 +822,14 @@
             \end{equation*}
         }
 
-        \claim{
+        \claim[Claim 3]{
             $A$ is a set cover with probability at least $1 - \frac{1}{n}$.
         }{
             \begin{equation*}
                 \begin{split}
                     \Pr[A \ \mathrm{is \ not \ a \ set \ cover}] &= \Pr[\exists i \quad i \ \mathrm{is \ not \ covered \ by \ any \ set \ of} \ A] \\
                                                                  &\le \sum_{i = 1}^n{\Pr[i \ \mathrm{is \ not \ covered \ by \ any \ set \ of} \ A]} \\
-                                                                 &\le \sum_{i = 1}^n{\dfrac{1}{n^2}} \quad \quad (\mathrm{previous \ claim}) \\
+                                                                 &\le \sum_{i = 1}^n{\dfrac{1}{n^2}} \quad \quad (\mathrm{by \ Claim \ 2}) \\
                                                                  &= \dfrac{n}{n^2} \\
                                                                  &= \dfrac{1}{n}
                 \end{split}
@@ -1336,8 +1343,6 @@
     
     Notice that this is the LP that corresponds to the \tbf{Minimum Max-Degree Orientation} problem, which asks to find the edge orientation with the lowest possible maximum degree. In fact, observe that $$\forall i \in V \quad \delta - \sum_{\substack{j \in V : \\ ij \in E}}{\gamma_{ij}} \ge 0 \iff \delta \ge \deg(i)$$
 
-    TODO \todo{missing last part}
-
     Even though this approach yields a $\tfrac{1}{2}$-approximation algorithm that runs in only $n$ iterations, it may still be too slow for very large graphs. Can we improve the algorithm further? Consider how \textsc{Charikar} algorithm works: at each iteration, it removes the vertex with the minimum degree from the current graph. What if, instead of removing just one such vertex per iteration, we remove all vertices of minimum degree \tit{at once}?
 
     \begin{framedalgo}{Charikar's algorithm (improved version)}
@@ -1420,12 +1425,143 @@
             $\forall v \in S^* \quad \deg_{G[S^*]}(v) \ge \rho(G[S^*])$
         }{
             Fix a vertex $v \in S^*$. By optimality of $S$, we know that $\rho(G[S^*]) \ge \rho(G[S^* - \{v\}])$. Moreover, note that $$\rho(G[S^* - \{v\}]) = \dfrac{\abs{E(G[S^* - \{v\}])}}{\abs{S^* - \{v\}}} = \dfrac{\abs{E(G[S^*])} - \deg_{G[S^*]}(v)}{\abs{S^*} - 1}$$ Therefore, we have that $$\rho(G[S^*]) \ge \rho(G[S^* - \{v\}]) \iff \dfrac{\abs{E(G[S^*])}}{\abs{S^*}} \ge \dfrac{\abs{E(G[S^*])} - \deg_{G[S^*]}(v)}{\abs{S^*} - 1}$$ and the claim follows by solving the inequality.
-            
-            TODO \todo{da finire}
         }
+
+        Now, we observe that by construction of the algorithm, at least one node is removed in each iteration, since at least the vertex with minimum degree will be selected, hence $$\min_{v \in S_i}{\deg_{G[S_i]}(v)} \le \avg_{v \in S_i}{\deg_{G[S_i]}(v)} \le (1 + \varepsilon) \avg_{v \in S_i}{\deg_{G[S_i]}(v)}$$ Thus, the alogrithm will eventualy select a verex of $S^*$. Let $i$ be the first iteration such that $A_i \cap S^* \neq \varnothing$. Since $i$ is the smallest iteration with such property, it must hold that $S^* \subseteq S_i$. Hence, for any vertex $v_i \in A_i \cap S^*$ it holds that $$\rho(G[S^*]) \le \deg_{G[S^*]}(v) \le \deg_{G[S_i]}(v) \le (1 + \varepsilon) \avg_{v \in S_i}{\deg_{G[S_i]}(v)} = 2 (1 + \varepsilon) \rho(G[S_{i + 1}])$$ concluding that $$\rho(G[S_i]) \ge \dfrac{1}{2(1 + \varepsilon)}\rho(G[S^*])$$ which means that the solution $S$ returned by the algorithm will be at least as good as a $\tfrac{1}{2 (1 + \varepsilon)}$-approximation $$S \in \argmax_{j \in [n]}{\rho(G[S_j])} \ge \rho(G[S_i]) \ge \dfrac{1}{2(1 + \varepsilon)} \rho(G[S^*])$$
+
+        Now, fix an iteration $k \in [n]$; we observe that
+        \begin{equation*}
+            \begin{split}
+                2 \abs{E(G[S_k])} &= \sum_{v \in S_k}{\deg_{G[S_k]}(v)} \\
+                                  &= \sum_{v \in A_k}{\deg_{G[S_k]}(v)} + \sum_{v \in S_k - A_k}{\deg_{G[S_k]}(v)} \\
+                                  &\ge \sum_{v \in S_k - A_k}{\deg_{G[S_k]}(v)} \\
+                                  &> \sum_{v \in S_k - A_k}{(1 + \varepsilon) \avg_{ u \in S_k}{\deg_{G[S_k]}(v)}} \\
+                                  &= (\abs {S_k} - \abs{A_k})(1 + \varepsilon) \avg_{u \in S_k}{\deg_{G[S_k]}(u)} \\
+                                  &= \abs{S_{k + 1}}(1 + \varepsilon) \dfrac{2 \abs{E(G[S_k])}}{\abs{S_k}}
+            \end{split}
+        \end{equation*}
+        Thus, we get that $$2 \abs{E(G[S_k])} > \abs{S_{k + 1}} (1 + \varepsilon)\dfrac{2 \abs{E(G[S_k])}}{\abs{S_k}} \implies 1 > \dfrac{\abs{S_{k + 1}}}{S_k}(1 + \varepsilon) \implies \abs{S_{k + 1}} < \dfrac{\abs{S_k}}{1 + \varepsilon}$$
+
+        Finally, let $i^*$ be the last iteration of the algorithm; since $\abs{S_0} = n$ and $i^*$ is reached when $\abs{S_{i^*}} = 1$, we conclude that $$\abs{S^*} < \dfrac{n}{(1 + \varepsilon)^{i^*}} \implies 1 < \dfrac{n}{(1 + \varepsilon)^{i^*}} \implies i^* \le \log_{1 + \varepsilon}{n}$$
     \end{proof}
 
-    TODO \todo{buco}
+    \section{Semidefinite programming}
+
+    In TODO \todo{add section} we mentioned that the best known approximation ratio for the Max-Cut problem is around 0.878 \todo{i think we didn't, mention it}. We are now ready to discuss this ratio.
+
+    First, let's look at the approaches that we used for the approximation we presented: we provided a $\tfrac{1}{2}$-approximation for Max-Cut that does not even look at the structure of the graph itself, and simply flips coins in order to decide if the corresponding vertex has to be added to the output.
+
+    Now, let us build a IP that models the Max-Cut problem: for each edge $\{i, j\}$ define a variable $y_{ij}$, and for each vertex define a variable $x_v$.
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{ccl}
+            \qquad\qquad\quad
+            & \max \; \displaystyle \sum_{ij \in E(G)}{y_{ij}} \\\\
+            & y_{ij} \le x_i + x_j & \forall \{i, j\} \in E(G) \\
+            & y_{ij} \le 2 - (x_i + x_j) & \forall \{i, j\} \in E(G) \\
+            & x_v \in \{0,1\} & \forall u \in V(G) \\
+            & y_{ij} \in \{0,1\} & \forall \{i, j\} \in E(G) \\
+        \end{array}\]
+        \caption{IP for MC.}
+    \end{figure}
+
+    We observe that the constraints on $y_{ij}$ ensure that $y_{ij} = 1$ if and only if $x_i \neq x_j$. Moreover, we don't need to force $y_{ij} = 1$ when $i$ is in the set and $j$ is not (or vice versa) because the \tit{maximization} will enforce this in the solution automatically.
+
+    Now, let us consider the LP relaxation of this IP: the optimal solution of such relaxation will always set every single vertex variable $x_v$ to $\tfrac{1}{2}$, and every edge variable $y_{ij}$ to 1. In other words, the optimal solution to the LP relaxation gives \tit{no information}. Indeed, this is exactly the reason why the $\tfrac{1}{2}$-approximation we presented can just flip coints for every vertex without even looking at the structure of the input.
+
+    Then, how good can this relaxation get? Since our algorithm is a $\tfrac{1}{2}$-approximation, we already know that $\mbox{IG}_\mathrm{MC} \le 2$. Moreover, it can be proven that for any $n \in \N$ the gap of $K_n$ is at least $2 - \varepsilon$ for $\varepsilon > 0$, concluding that $\mbox{IG}_{\mathrm{MC}} = 2$.
+
+    Despite many efforts, for a very long time researchers believed that no improvement over this result could be achieved. However, in a groundbreaking paper published in 1995 \textcite{goemans} proved everyone wrong, by completely changing the approach: instead of using an IP, they modeled the Max-Cut problem through a \tbf{Quadratic Program} (QP).
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{ccl}
+            \qquad\qquad\quad
+            & \max \; \dfrac{1}{2} x^TQx + c^Tx \\\\
+            & Ax \le b \\
+            & x \in V \\
+        \end{array}\]
+        \caption{Standard form of a QP.}
+    \end{figure}
+
+    The QP that exactly models the Max-Cut is very similar to the IP we previously discussed, with the exception of edge constraints being \curlyquotes{implicit} in the objective function.
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{ccl}
+            \qquad\qquad\quad
+            & \max \; \displaystyle \sum_{ij \in E(G)}{\dfrac{1 - x_i x_j}{2}} \\\\
+            & x_v \in \{-1, 1\} & \forall v \in V(G) \\
+        \end{array}\]
+        \caption{QP for MC.}
+    \end{figure}
+
+    In fact, we observe that for any edge $\{i, j\} \in E(G)$ we have that $$\dfrac{1 - x_ix_j}{2} = \soe{ll}{0 & x_i = x_j \\ 1 & x_i \neq x_j}$$
+
+    Nonetheless, solving quadratic programs is also \NPclass-hard. However, the \tit{ingenious} idea of Goemans and Williamson was to \tit{cast} this QP into a \tbf{Semidefinite Prorgam} (SDP).
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{ccl}
+            \qquad\qquad\quad
+            & \max \; \displaystyle \sum_{i,j \in [n]}{c_{i, j } \abk{v_i, v_j}} \\\\
+            & \max \; \sum\limits_{i, j \in [n]}{a_{i, j , k} \abk{v_i, v_j}} \le b_k & \forall k \in [n] \\
+            & v_i \in \R^n & \forall i \in [n]\\
+        \end{array}\]
+        \caption{Standard form of an SDP.}
+    \end{figure}
+
+    Differently from IPs and QPs, SDPs work on \tit{vector variables}, where $\abk{v_i, v_j}$ denotes the dot product between the two vectors. However, SDPs can also be solved in polynomial time --- like LPs --- through an extension of the Ellipsoid method.
+
+    The following is Goemans and Williamson's SDP relaxation for the Max-Cut problem:
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{ccl}
+            \qquad\qquad\quad
+            & \max \; \displaystyle \sum_{ij \in E(G)}{\dfrac{1 - \abk{v_i, v_j}}{2}} \\\\
+            & \abk{v_i, v_i} = 1 & \forall i \in [n] \\
+            & v_i \in \R^n & \forall i \in [n] \\
+        \end{array}\]
+        \caption{SPD for MC.}
+    \end{figure}
+
+    Let $\overline x$ be a feasible solution to the QP. If we map each component $\overline x_i$ with the vector $v_i = [\overline x_i \ 0 \ \ldots \ 0]^T$, we see that $$\abk{v_i, v_j} = \sum_{k \in [n]}{v_{k}(i)v_k(j)} = \overline x_i \overline x_j$$ Moreover, we observe that  the constraint $\abk{v_i, v_i} = 1$ is always satisfied $$\abk{v_i, v_i} = \sum_{k \in [n]}{v_k(i)^2} = {\overline x_i}^2 = 2$$ This concludes that $$\mathrm{SDP}^*_\mathrm{MC} \ge \mathrm{QP}^*$$
+
+    However, the algorithm proposed by the two authors is \tit{very} surprising.
+
+    \begin{framedalgo}{GW approximation for Max-Cut}
+        Given a graph $G$, the algorithm returns a cut of $G$. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{GWapprox}{$G$}
+                \State $\{v_1, \ldots, v_n\} := \mathrm{SDP}_\mathrm{MC}(G)$
+                \State $S_n := \{x \in \R^n \mid \norm{x} = 1\}$ \Comment{$S_n$ is the $n$-dimensional hypersphere of radius 1}
+                \State Sample a vector $y$ from $S_n$ UAR
+                \State $S := \{i \mid \abk{v_i, y} \ge 0\}$
+                \State \tbf{return} $S$
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
+
+    \begin{framedthm}{}
+        Given a graph $G$, let $S^*$ be an optimal solution to MC of $G$; then, if $S = \textsc{GWapprox}(G)$, it holds that $$\Exp \sbk{\abs{\mathrm{cut}(S)}} \ge \alpha_{\mathrm{GW}} \cdot \abs{\mathrm{cut}(S^*)}$$ where $$\alpha_{\mathrm{GW}} = \dfrac{2}{\pi} \min_{x \in (-1, 1)}{\dfrac{\arccos(x)}{\pi}} = 0.878  \ldots$$
+    \end{framedthm}
+
+    \begin{proof}
+        Omitted.
+    \end{proof}
+
+    We observe that the approximation ratio $\alpha_{\mathrm{GW}}$ is actually \tit{tight}. In fact, it can be proven that $\mathrm{IG}_{\mathrm{MC}}^{\mathrm{SDP}} = \alpha_{\mathrm{GW}}$, where the upper bound is given by the graph $C_n$ --- details omitted.
+
+    \begin{framedthm}{}
+        $\mathrm{IG}_{\mathrm{MC}}^{\mathrm{SDP}} = \alpha_{\mathrm{GW}}$
+    \end{framedthm}
+
+    This concludes that Goemans and Williamson's algorithm is \tit{the best} rounding algorithm that can be achieved through SDPs. Moreover, researchers believe that this approximation is the best that can be achieved in general for MC. In particular, the main reasong behind such hypothesis is the \tbf{Unique Games Conjecture}, which will be discussed in the following section.
 
     \section{The Unique Games Conjecture}
 
@@ -1460,7 +1596,7 @@
         A constraint $C_j = \abk{I_j, P_j}$ is said to be \tit{satisfied} by an assignment $\func{\alpha}{I_j}{\{0, 1\}}$ if $P_j \smat{x_{i_1} & \ldots & x_{i_k} \\ \alpha(x_{i_1}) & \ldots & \alpha(x_{i_k})}$ evaluates to true.
     \end{frameddefn}
 
-    TODO \todo{buco}
+    The goal of a CSP is to find an assignment maximizing the number of satisfied constraints. Many optimization problems can be described in terms of CSP, and in particular the Max-Cut problem --- which we mentioned at the end of the previous section. In fact, MC can be described through a CSP with value $q = 2$, and predicate set $\mathcal P = \{p(a, b)\}$ with arity 2, where $p(a, b) = \mbox{\curlyquotes{$a \neq b$}}$. Then, given a graph $G$, for each node $x \in V(G)$ we define the variable $x_v$, and for each edge $uv \in E(G)$ we define the constraint $p(x_u, x_v)$.
     
     Given a problem that can be described through a CSP $\mathcal C$, let $\alpha(\mathcal C)$ be the best possible approximation ratio for $\mathcal C$, i.e. the minimum ratio such that the problem does not become \NPclass-hard to approximate. The following theorem, proved by \textcite{raghavendra}, shows that the relationship between approximation algorithms, SDPs, and the UGC is as strong as it can be.
 
@@ -1810,10 +1946,10 @@
         \[\begin{array}{ccl}
             \qquad\qquad\quad
             & \max \; \displaystyle \sum_{ij \in E(G)}{d_{ij}} \\\\
-            & x_{ij} + x{jk} \ge x_{ik} & \forall i, j ,k \in V(G) \\
-            & \sum\limits_{ij \in \binom{V(G)}{2}}{d_ij} = 1 \\
+            & x_{ij} + x_{jk} \ge x_{ik} & \forall i, j ,k \in V(G) \\
+            & \sum\limits_{ij \in \binom{V(G)}{2}}{d_{ij}} = 1 \\
             & \lambda \in \R^{2^n} \\
-            & d \in \R^{\abs{\binom{n}{2}}} \\
+            & d \in \R^{\abs{\binom{V(G)}{2}}} \\
         \end{array}\]
         \caption{Metric LP relaxation for SC.}
     \end{figure}
@@ -1850,7 +1986,7 @@
             & \abk{x_i, x_j} - \abk{x_j, x_j} + \abk{x_j, x_k} \le \abk{x_i, x_k} & \forall i, j ,k \in V(G) \\
             & \sum\limits_{ij \in \binom{V(G)}{2}}{\abk{x_i,x_i} - 2 \abk{x_i,x_j} + \abk{x_j,x_j}} = 1 \\
             & \lambda \in \R^{2^n} \\
-            & d \in \R^{\abs{\binom{n}{2}}} \\
+            & d \in \R^{\abs{\binom{V(G)}{2}}} \\
         \end{array}\]
         \caption{$\ell_2^2$ metric SDP relaxation for SC.}
     \end{figure}
@@ -3297,7 +3433,7 @@
 
     Now, we are going to consider a variant, known as the \tbf{Prophet Inequalities Problem}. Suppose that each candidate $c_i$ has a \curlyquotes{score} sampled independently from a known random variable $X_i \ge 0$. The setup is the identical: we still get to see the candidates in order and we stil have to select onlyh one of them in an \tit{online fashion}. Additionally, we get to see the distributions of the scores \tit{a priori}.
 
-    As an example, suppose that we have two candidates $c_1$ and $c_2$ with score variables $X_1$ and $X_2$ defined as follows $$\Pr[X_1 = 0] = \Pr[X_1 = 1] = \Pr[X_2 = \tfrac{1}{3}] = \Pr[X_2 = \tfrac{4}{3}] = \tfrac{1}{2}$$ Consider the following algorithm: if $X_1 = 0$ then we accept $X_2$, otherwise we accept $X_1$. Let $A$ be the output of this algorithm; what is the expected value of $A$?
+    As an example, suppose that we have two candidates $c_1$ and $c_2$ with score variables $X_1$ and $X_2$ defined as follows $$\Pr[X_1 = 0] = \Pr[X_1 = 1] = \Pr \sbk{X_2 = \tfrac{1}{3}} = \Pr \sbk {X_2 = \tfrac{4}{3}} = \tfrac{1}{2}$$ Consider the following algorithm: if $X_1 = 0$ then we accept $X_2$, otherwise we accept $X_1$. Let $A$ be the output of this algorithm; what is the expected value of $A$?
     \begin{equation*}
         \begin{split}
             \Exp[A] &= \Pr[X_1 = 0] \Exp[X_2] + \Pr[X_1 = 1] \cdot 1 \\
