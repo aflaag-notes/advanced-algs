@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.3 $
+% $ biblatex bbl format version 3.2 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -16,8 +16,8 @@
   {}
 \endgroup
 
-\datalist[entry]{anyt/global//global/global/global}
-  \entry{maxcut}{article}{}{}
+\datalist[entry]{anyt/global//global/global}
+  \entry{maxcut}{article}{}
     \name{author}{5}{}{%
       {{hash=AS}{%
          family={Arora},
@@ -66,7 +66,8 @@
     \field{issn}{1557-735X}
     \field{number}{3}
     \field{pages}{501–555}
-    \field{title}{Proof verification and the hardness of approximation problems}
+    \field{title}{Proof verification and the hardness of approximation
+  problems}
     \verb{url}
     \verb http://dx.doi.org/10.1145/278298.278306
     \endverb
@@ -76,7 +77,7 @@
     \field{year}{1998}
   \endentry
 
-  \entry{arora}{article}{}{}
+  \entry{arora}{article}{}
     \name{author}{3}{}{%
       {{hash=AS}{%
          family={Arora},
@@ -123,7 +124,7 @@
     \field{year}{2009}
   \endentry
 
-  \entry{berge}{article}{}{}
+  \entry{berge}{article}{}
     \name{author}{1}{}{%
       {{hash=BC}{%
          family={Berge},
@@ -158,7 +159,7 @@
     \field{year}{1957}
   \endentry
 
-  \entry{bourgain}{article}{}{}
+  \entry{bourgain}{article}{}
     \name{author}{1}{}{%
       {{hash=BJ}{%
          family={Bourgain},
@@ -184,7 +185,8 @@
     \field{issn}{1565-8511}
     \field{number}{1–2}
     \field{pages}{46–52}
-    \field{title}{On lipschitz embedding of finite metric spaces in Hilbert space}
+    \field{title}{On lipschitz embedding of finite metric spaces in Hilbert
+  space}
     \verb{url}
     \verb http://dx.doi.org/10.1007/BF02776078
     \endverb
@@ -194,7 +196,7 @@
     \field{year}{1985}
   \endentry
 
-  \entry{charikar}{inbook}{}{}
+  \entry{charikar}{inbook}{}
     \name{author}{1}{}{%
       {{hash=CM}{%
          family={Charikar},
@@ -220,14 +222,15 @@
     \field{isbn}{9783540444367}
     \field{issn}{0302-9743}
     \field{pages}{84–95}
-    \field{title}{Greedy Approximation Algorithms for Finding Dense Components in a Graph}
+    \field{title}{Greedy Approximation Algorithms for Finding Dense Components
+  in a Graph}
     \verb{url}
     \verb http://dx.doi.org/10.1007/3-540-44436-X_10
     \endverb
     \field{year}{2000}
   \endentry
 
-  \entry{erdos}{article}{}{}
+  \entry{erdos}{article}{}
     \name{author}{2}{}{%
       {{hash=EP}{%
          family={Erdős},
@@ -268,7 +271,7 @@
     \field{year}{2022}
   \endentry
 
-  \entry{fmv}{article}{}{}
+  \entry{fmv}{article}{}
     \name{author}{3}{}{%
       {{hash=FU}{%
          family={Feige},
@@ -315,7 +318,7 @@
     \field{year}{2011}
   \endentry
 
-  \entry{goemans}{article}{}{}
+  \entry{goemans}{article}{}
     \name{author}{2}{}{%
       {{hash=GMX}{%
          family={Goemans},
@@ -346,7 +349,8 @@
     \field{issn}{1557-735X}
     \field{number}{6}
     \field{pages}{1115–1145}
-    \field{title}{Improved approximation algorithms for maximum cut and satisfiability problems using semidefinite programming}
+    \field{title}{Improved approximation algorithms for maximum cut and
+  satisfiability problems using semidefinite programming}
     \verb{url}
     \verb http://dx.doi.org/10.1145/227683.227684
     \endverb
@@ -356,7 +360,7 @@
     \field{year}{1995}
   \endentry
 
-  \entry{hopcroft}{article}{}{}
+  \entry{hopcroft}{article}{}
     \name{author}{2}{}{%
       {{hash=HJE}{%
          family={Hopcroft},
@@ -387,7 +391,8 @@
     \field{issn}{1095-7111}
     \field{number}{4}
     \field{pages}{225–231}
-    \field{title}{An $n^{5/2} $ Algorithm for Maximum Matchings in Bipartite Graphs}
+    \field{title}{An $n^{5/2} $ Algorithm for Maximum Matchings in Bipartite
+  Graphs}
     \verb{url}
     \verb http://dx.doi.org/10.1137/0202019
     \endverb
@@ -397,7 +402,7 @@
     \field{year}{1973}
   \endentry
 
-  \entry{karp}{inbook}{}{}
+  \entry{karp}{inbook}{}
     \name{author}{1}{}{%
       {{hash=KRM}{%
          family={Karp},
@@ -429,7 +434,7 @@
     \field{year}{1972}
   \endentry
 
-  \entry{khot}{inproceedings}{}{}
+  \entry{khot}{inproceedings}{}
     \name{author}{1}{}{%
       {{hash=KS}{%
          family={Khot},
@@ -448,7 +453,8 @@
     \field{labelalpha}{Kho02}
     \field{sortinit}{K}
     \field{sortinithash}{K}
-    \field{booktitle}{Proceedings of the thiry-fourth annual ACM symposium on Theory of computing}
+    \field{booktitle}{Proceedings of the thiry-fourth annual ACM symposium on
+  Theory of computing}
     \verb{doi}
     \verb 10.1145/509907.510017
     \endverb
@@ -461,7 +467,7 @@
     \field{year}{2002}
   \endentry
 
-  \entry{ig_sc}{article}{}{}
+  \entry{ig_sc}{article}{}
     \name{author}{1}{}{%
       {{hash=LL}{%
          family={Lovász},
@@ -495,7 +501,7 @@
     \field{year}{1975}
   \endentry
 
-  \entry{leightonrao}{inproceedings}{}{}
+  \entry{leightonrao}{inproceedings}{}
     \name{author}{2}{}{%
       {{hash=LT}{%
          family={Leighton},
@@ -520,13 +526,15 @@
     \field{labelalpha}{LR88}
     \field{sortinit}{L}
     \field{sortinithash}{L}
-    \field{booktitle}{[Proceedings 1988] 29th Annual Symposium on Foundations of Computer Science}
+    \field{booktitle}{[Proceedings 1988] 29th Annual Symposium on Foundations
+  of Computer Science}
     \field{pages}{422\bibrangedash 431}
-    \field{title}{An approximate max-flow min-cut theorem for uniform multicommodity flow problems with applications to approximation algorithms}
+    \field{title}{An approximate max-flow min-cut theorem for uniform
+  multicommodity flow problems with applications to approximation algorithms}
     \field{year}{1988}
   \endentry
 
-  \entry{nwf}{article}{}{}
+  \entry{nwf}{article}{}
     \name{author}{3}{}{%
       {{hash=NGL}{%
          family={Nemhauser},
@@ -558,13 +566,14 @@
     \field{sortinit}{N}
     \field{sortinithash}{N}
     \field{pages}{265\bibrangedash 294}
-    \field{title}{An analysis of approximations for maximizing submodular set functions—I}
+    \field{title}{An analysis of approximations for maximizing submodular set
+  functions—I}
     \field{volume}{14}
     \field{journaltitle}{Mathematical programming}
     \field{year}{1978}
   \endentry
 
-  \entry{raghavendra}{inproceedings}{}{}
+  \entry{raghavendra}{inproceedings}{}
     \name{author}{1}{}{%
       {{hash=RP}{%
          family={Raghavendra},
@@ -583,13 +592,15 @@
     \field{labelalpha}{Rag08}
     \field{sortinit}{R}
     \field{sortinithash}{R}
-    \field{booktitle}{Proceedings of the fortieth annual ACM symposium on Theory of computing}
+    \field{booktitle}{Proceedings of the fortieth annual ACM symposium on
+  Theory of computing}
     \verb{doi}
     \verb 10.1145/1374376.1374414
     \endverb
     \field{pages}{245–254}
     \field{series}{STOC ’08}
-    \field{title}{Optimal algorithms and inapproximability results for every CSP?}
+    \field{title}{Optimal algorithms and inapproximability results for every
+  CSP?}
     \verb{url}
     \verb http://dx.doi.org/10.1145/1374376.1374414
     \endverb

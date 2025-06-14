@@ -2380,20 +2380,54 @@
     \begin{proof}
         The following proof is a generalization of the proof of \cref{mc approx ratio}, in which we proved MC's approximation ratio. Let $S^* := \{x_1^*, \ldots, x_k^*\}$.
 
-        \claim{
+        \claim[Claim 1]{
             For any $i \in [k - 1]$ it holds that $f(S^*) \le f(S_i) + k(f(S_{i + 1}) - f(S_i)$.
         }{
-            Since $f$ is monotone increasing, we know that $f(S^*) \le f(S_i \cup S^*)$. Now, note that \todo{da finire}
-            % \begin{equation*}
-            %     \begin{split}
-            %         f(S^*) &\le f(S_i \cup S^*) \\
-            %                &= f \rbk{S_i \cup \bigcup_{i \in [k]}{x_i^*}} \\
-            %                &= TODO
-            %     \end{split}
-            % \end{equation*}
+            Since $f$ is monotone increasing, we know that $f(S^*) \le f(S_i \cup S^*)$. Through some algebraic manipulation, we get that
+            \begin{equation*}
+                \begin{split}
+                    f(S^*) &\le f(S_i \cup S^*) \\
+                           &= f \rbk{S_i \cup \bigcup_{i=1}^k{\{x_i^*\}}} \\
+                           &= f \rbk{S_i \cup \bigcup_{i=1}^k{\{x_i^*\}}} + \sum_{j = 0}{k -1}{\rbk{-f\rbk{S_i \cup \bigcup_{i = 0}^k{\{x_i?*\}}}} + f \rbk{S_i \cup \bigcup_{i = 0}^j{\{x_i^*\}}}} \\
+                           &= \sum_{j = 0}^k{\rbk{f \rbk{S_i \cup \bigcup_{i = 0}^j{\{x_i^*\}}}} - f \rbk{S_i \cup \bigcup_{i = 0}^{j- 1}{\{x_i^*\}}}} + f(S_i) \\
+                           &= \sum_{j = 0}^k{\Delta \rbk{x_j^* \mid S_i \cup \bigcup_{i = 0}^j {\{x_i^*\}}}} + f(S_i)
+                \end{split}
+            \end{equation*}
+            By TODO \todo{recupera teorema}, we know that $f$ is submodular if and only if it has diminishing returns, hence
+            \begin{equation*}
+                \begin{split}
+                    f(S^*) &\le f(S_i) + \sum_{j = 0}^k{\Delta_f \rbk{x_j^* \mid S_i \cup \bigcup_{i = 0}^j{\{x_i^*\}}}} \\
+                           &\le f(S_i) + \sum_{j = 0}^k{\Delta_f(x_j^* \mid S_i)}
+                \end{split}
+            \end{equation*}
+            Finally, by the greedy choice of the algorithm, we conclude that:
+            \begin{equation*}
+                \begin{split}
+                    f(S^*) &\le f(S_i) + \sum_{j = 0}^k{\Delta_f(x_j^* \mid S_i)} \\
+                           &\le f(S_i) + \sum_{j = 0}^k{\Delta_f(x_{i + 1} \mid S_i)} \\
+                           &= f(S_i) + k \cdot (f(S_i \cup \{x_i + 1\}) - f(S_i)) \\
+                           &= f(S_i) + k \cdot (f(S_{i + 1}) - f(S_i))
+                \end{split}
+            \end{equation*}
+            TODO \todo{recupera max cover prima di finire}
         }
 
-        TODO \todo{da finire}
+        \claim[Claim 2]{
+            For all $i \in [k]$ it holds that $\delta_i \ge (1 - \tfrac{1}{k})^i f(S^*)$.
+        }{
+            We proceed by induction on $i$. For the base case, $i = 0$ therefore we trivially have that $$\rbk{1 - \dfrac{1}{k}}^0 f(S^*) = f(S^*) = f(S^*) - f(S_0) = \delta_0$$ Now, assume the claim is true for any $m \le i$. By Claim 1, we know that
+            \begin{equation*}
+                \begin{split}
+                    \delta_{i + 1} &= f(S^*) - f(S_{i + 1}) \\
+                                   &\le k \cdot (f(S_{i + 1}) - f(S_i)) \\
+                                   &= k \cdot (f(S_{i + 1}) - f(S^*) + f(S^*) - f(S_i)) \\
+                                   &= k \cdot ( -\delta_{i + 1} + \delta_i)
+                \end{split}
+            \end{equation*}
+            which implies that $\delta_{i + 1} \le (1 - \tfrac{1}{k}) \delta_i$. Therefore, by induction we get that $$\delta_{i + 1} \le \rbk{1  - \dfrac{1}{k}} \delta_i \le \rbk{1 - \dfrac{1}{k}}^{i + 1} f(S^*)$$
+        }
+
+        Lastly, recalling that for all $x \in \R_{\ge 0}$ it holds that $(1 - \tfrac{1}{k}) \le e^{-1}$, by Claim 2 we conclude that $$f(S^*) - f(S_k) = \delta_k \le \rbk{1 - \dfrac{1}{k}}^k f(S^*) \le e^{-1}f(S^*)$$ which implies that $$f(S_k) \ge \rbk{1 - \dfrac{1}{e}} f(S^*)$$
     \end{proof}
 
     \section{Property variations}
@@ -2940,7 +2974,28 @@
         This concludes that the adversary can always send a set of vertices and edges such that the competitive ratio is at most $\tfrac{1}{2}$.
     \end{proof}
 
-    TODO \todo{buco}
+    This results determines an approximation ratio upper bound on \tit{every possible deterministic online algorithm}, concluding that a perfect solution for MBM is \tbf{impossible}. Knowing this, we shift our focus on finding a greedy solution that reaches such maximum approximation ratio. In this case, the best solution is the most straightforward: when a new user arrives, we match it if it can be matched, otherwise we leave it unmatched and proceed with the next round.
+
+    \begin{framedalgo}{The online maximal matching algorithm}
+        Given a graph $G$ fed in an online fashion, the algorithm returns a maximal mathing of $G$. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{onlineMaximalMatching}{$G$}
+                \State $M := \varnothing$
+                \While{there is a new user $x$}
+                    \State Read $\mathcal N(x)$
+                    \State $U(x) := \{v \in \mathcal N(x) \mid \nexists e \in M : v \in e\}$
+                    \If{$U(x) \neq \varnothing$}
+                        \State let $y$ be a random vertex in $U(x)$
+                        \STate $M = M \cup \{xy\}$
+                    \EndIf
+                \EndWhile
+                \State \tbf{return} $M$
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
 
     The previous theorem, together with the following proposition, imply that this online greedy algorithm is an optimal approximation for MBM.
 
