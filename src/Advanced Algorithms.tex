@@ -583,9 +583,11 @@
     \end{framedlem}
 
     \begin{proof}
-        Consider an optimal solution $\{x^*_u\}_{u \in V}$ to VC, and define $S^*$ as the set of vertices $v \in V$ such that $x^*_v = 1$. Note that any optimal solution is also a feasible solution, i.e. it satisfies the constraints of the IP.
+        Consider an optimal solution $\{x^*_u\}_{u \in V}$ to the IP for VC, and define $S^*$ as the set of vertices $v \in V$ such that $x^*_v = 1$. Note that any optimal solution is also a feasible solution, i.e. it satisfies the constraints of the IP.
 
-        Note that the first constraint of the IP forces that for each $\{u, v\} \in E$ the sum between $x^*_u + x^*_v$ is at least one, and the second constraint forces each variable $x_v^*$ to be either 0 or 1. Therefore, together these two constraints imply that for any edge $\{u, v\} \in E$ at least one between $x_u^*$ and $x_v^*$ is 1, and by definition of $S^*$ this means at least one of the endpoints of $\{u, v\}$ is inside $S^*$. We conclude that $S^*$ is indeed a vertex cover for $G$, and by its definition note that $\abs{S^*} = \sum_{u \in V}{x^*_u}$.
+        First, we provide an idea of the proof. The first constraint of the IP forces that for each $\{u, v\} \in E$ the sum between $x^*_u + x^*_v$ is at least one, and the second constraint forces each variable $x_v^*$ to be either 0 or 1. Therefore, together these two constraints imply that for any edge $\{u, v\} \in E$ at least one between $x_u^*$ and $x_v^*$ is 1, and by definition of $S^*$ this means at least one of the endpoints of $\{u, v\}$ is inside $S^*$. We conclude that $S^*$ is indeed a vertex cover for $G$, and by its definition note that $\abs{S^*} = \sum_{u \in V}{x^*_u}$.
+
+        This is generalized in the following claim.
 
         \claim{
             Given a vertex cover $S$ of a graph $G = (V, E)$, there exists a feasible solution $\{x_u\}_{u \in V}$ to the IP having value $\abs S$.
@@ -618,27 +620,29 @@
     \end{framedthm}
 
     \begin{proof}
-        Since $\{\overline x_u\}_{u \in V}$ is an optimal solution to the LP relaxation, it must satisfy the first constraint for which $\overline x_u + \overline x_v \ge 1$ for any $\{u, v\} \in E$. Moreover, for the second constraint we have that $\overline x_u \ge 0$ for all $u \in V$, therefore $$\forall \{u, v\} \in E \quad \max(\overline x_u, \overline x_v) \ge \dfrac{\overline x_u + \overline x_v}{2} \ge \dfrac{1}{2}$$ which means that at least one between $\overline x_u$ and $\overline x_v$ is at least $\frac{1}{2}$, implying that the edge $\{u, v\}$ will be covered by at least one of the two endpoints $u$ and $v$, by definition of $\overline S$. This proves that $\overline S$ is a vertex cover of $G$.
+        Since $\{\overline x_u\}_{u \in V}$ is an optimal solution to the LP relaxation, it must satisfy the first constraint for which $\overline x_u + \overline x_v \ge 1$ for any $\{u, v\} \in E$. Moreover, for the second constraint we have that $\overline x_u \ge 0$ for all $u \in V$, therefore $$\forall \{u, v\} \in E \quad \max(\overline x_u, \overline x_v) \ge \avg(\{\overline x_u, \overline x_v\}) = \dfrac{\overline x_u + \overline x_v}{2} \ge \dfrac{1}{2}$$ which means that at least one between $\overline x_u$ and $\overline x_v$ is at least $\frac{1}{2}$, implying that the edge $\{u, v\}$ will be covered by at least one of the two endpoints $u$ and $v$, by definition of $\overline S$. This proves that $\overline S$ is a vertex cover of $G$.
 
-        To prove that $\overline S$ is indeed a 2-approximation, we just need to show the following: given a minimum vertex cover $S^*$ of $G$, it holds that $\abs{\overline S} \le 2 \abs{S^*}$. By the claim in \cref{vc ip}, we know that $S^*$ there exists a feasible solution $\{x^*_u\}_{u \in V}$ for the IP, which must be optimal for the IP since $S^*$ is a minimum vertex cover for $G$. Therefore, we have that
+        To prove that $\overline S$ is indeed a 2-approximation, we just need to show the following: given a minimum vertex cover $S^*$ of $G$, it holds that $\abs{\overline S} \le 2 \abs{S^*}$. By the claim in \cref{vc ip}, we know that there exists a feasible solution $\{x^*_u\}_{u \in V}$ for the IP having value $\abs{S^*}$, which must be optimal for the IP since $S^*$ is a minimum vertex cover for $G$. Therefore, we have that
             \begin{equation*}
-                \begin{split}
-                    \abs{\overline S} &= \sum_{v \in \overline S}{1} \\
-                                      &\le \sum_{v \in \overline S}{2 \overline x_v} \quad \quad \rbk{v \in \overline S \implies \overline x_v \ge \tfrac{1}{2}}\\
-                                      &= 2 \sum_{v \in \overline S}{\overline x_v} \\
-                                      &\le 2 \sum_{v \in V}{\overline x_v} \quad \quad \rbk{\overline S \subseteq V \land \overline x_v \ge 0} \\
-                                      &\le 2 \sum_{v \in V}{x^*_v} \\
-                                      &= 2 \abs{S^*}
-                \end{split}
+                \begin{alignedat}{2}
+                    \abs{\overline S} &= \sum_{v \in \overline S}{1} && \\
+                                      &\le \sum_{v \in \overline S}{2 \overline x_v} && \quad \quad \rbk{v \in \overline S \implies \overline x_v \ge \tfrac{1}{2}}\\
+                                      &= 2 \sum_{v \in \overline S}{\overline x_v} && \\
+                                      &\le 2 \sum_{v \in V}{\overline x_v} && \quad \quad \rbk{\overline S \subseteq V \land \overline x_v \ge 0} \\
+                                      &\le 2 \sum_{v \in V}{x^*_v} && \\
+                                      &= 2 \abs{S^*} &&\\
+                \end{alignedat}
             \end{equation*}
             where the last inequality comes from the fact that the constraints of the LP are \tit{weaker} than the ones of the IP.
     \end{proof}
 
     However, note that this result should not come a surprise. In fact, consider a graph $G$, an optimal solution to the LP relaxation $\{\overline x_u\}_{u \in V}$ and $\overline S$ defined as previously shown; given an edge $\{u, v\} \in E(G)$, in the worst case we have that $$\overline x_u = \overline x_v = \dfrac{1}{2}$$ which still satisfies both constraints of the LP relaxation, since $\tfrac{1}{2} + \tfrac{1}{2} = 1 \ge 1$. This means that, in the worst case, both $u$ and $v$ end up inside $\overline S$, which gives an intuitive reason to why this LP relaxation indeed yields a 2-approximation solution.
 
-    \section{Integrality gap}
+    \section{Approximation through Linear Programming}
 
-    Consider a problem P, its equivalent IP, and the relative LP relaxation. Given an instance $I \in \mathrm P$ of the problem, we will denote with $\mathrm{IP^*_P}(I)$ and $\mathrm{LP^*_P}(I)$ the optimal values for the IP and the LP of the problem P on the instance $I$ --- we will omit P and $I$ the context is clear enough. Note that, in general, it holds that $\mathrm{LP^*} \le \mathrm{IP^*}$ since the constraints of the LP relaxation are \tit{weaker} than the ones of the IP.
+    \subsection{Integrality gap}
+
+    Consider a problem P, its equivalent IP, and the relative LP relaxation. Given an instance $I \in \mathrm P$ of the problem, we will denote with $\mathrm{IP^*_P}(I)$ and $\mathrm{LP^*_P}(I)$ the optimal values for the IP and the LP of the problem P on the instance $I$ --- we will omit P and $I$ if the context is clear enough. Note that, in general, for minimization problems it holds that $\mathrm{LP^*} \le \mathrm{IP^*}$ since the constraints of the LP relaxation are \tit{weaker} than the ones of the IP.
 
     For example, the inequalities discussed in the proof of \cref{vc ip} could be rewritten as follows
     \begin{equation*}
@@ -648,7 +652,7 @@
                               &\le 2 \sum_{v \in V}{x^*_v} = 2 \mathrm{IP^*} = 2 \abs{S^*}\\
         \end{split}
     \end{equation*}
-    and in particular $\abs{\overline S} \le 2 \mathrm{LP^*} \le 2 \mathrm{IP^*}$. Can we improve this approximation ratio of 2 through LP relaxation? In general, for any $\alpha$ possible approximation ratio, it must hold that $$\alpha \ge \dfrac{\mathrm{IP^*}}{\mathrm{LP^*}}$$ because otherwise $$\alpha < \mathrm{\dfrac{IP^*}{LP^*}} \implies \abs{\overline S} \le \alpha \mathrm{LP^*} < \mathrm{\dfrac{IP^*}{LP^*}} \cdot \mathrm{LP^*} = \mathrm{IP^*}$$ meaning that $\overline S$ would be a solution better than the optimal solution of the IP, which is impossible. We can generalize this concept as follows.
+    and in particular $\abs{\overline S} \le 2 \mathrm{LP^*} \le 2 \mathrm{IP^*}$. Can we improve this approximation ratio of 2 through LP relaxation? We observe that for any $\alpha$ possible approximation ratio it must hold that $$\alpha \ge \dfrac{\mathrm{IP^*}}{\mathrm{LP^*}}$$ because otherwise $$\alpha < \mathrm{\dfrac{IP^*}{LP^*}} \implies \abs{\overline S} \le \alpha \mathrm{LP^*} < \mathrm{\dfrac{IP^*}{LP^*}} \cdot \mathrm{LP^*} = \mathrm{IP^*}$$ meaning that $\overline S$ would be a solution better than the optimal solution of the IP, which is impossible --- be careful that it is impossible because $\overline S$ is a solution \underline{to the IP}, not the LP. We can generalize this concept as follows.
 
     \begin{frameddefn}{Integrality gap}
         Given a problem P and an instance $I \in \mathrm P$, the \tbf{integrality gap} between $\mathrm{IP^*_P}(I)$ and $\mathrm{LP^*_P}(I)$ is defined as follows $$\mathrm{IG_P}(I) = \dfrac{\mathrm{IP^*_P}(I)}{\mathrm{LP^*_P}(I)}$$ The integrality gap for the problem P is defined as follows $$\mathrm{IG_P} = \sup_{I \in \mathrm P}{\mathrm{IG_P}(I)} = \sup_{I \in \mathrm P}{\dfrac{\mathrm{IP^*_P}(I)}{\mathrm{LP^*_P}(I)}}$$
@@ -702,13 +706,22 @@
         \claim{
             Any minimum vertex cover of $K_n$ has exactly $n - 1$ vertices.
         }{
-            Consider a vertex cover $S = \{v_1\}$ for any vertex $v_1 \in V(K_n)$; since $K_n$ is a clique, by definition $\deg(v_1) = n - 1$, therefore $S$ is able to cover only $n - 1$ \tit{uncovered} edges of $K_n$. Now, consider another vertex $v_2 \in V(K_n)$, and add it to $S = \{v_1, v_2\}$; we observe that $\deg(v_2) = n - 1$, but $v_1 \sim v_2$ because $K_n$ is a clique, therefore $v_2$ will be able to cover only $n - 2$ \tit{uncovered} edges of $K_n$. By the same reasoning, each new vertex $v_i \in V(K_n)$ added to $S$ will be able to cover only $n - i$ \tit{uncovered} edges of $K_n$. However, note that $$\abs{E(K_n)} = \binom{n}{2} = \dfrac{n (n - 1)}{2}$$ therefore, to cover all the edges of $K_n$ we need $\abs S$ to satisfy the following inequality $$\sum_{i = 1}^{\abs S}{(n - i)} \ge \dfrac{n (n - 1)}{2} \iff n \abs S - \dfrac{\abs S (\abs S +1)}{2} \ge \dfrac{n (n - 1)}{2}$$ After some calculations, we derive the following inequality $$\abs{S}^2 + \abs S (1 - 2n) + n (n - 1) \le 0$$ which is satisfied for any value $n - 1 \le \abs S \le n$, therefore a vertex cover of cardinality $\abs S = n - 1$ suffices to cover all the edges of $K_n$.
+            Consider a $K_n$ with vertices $V(K_n) = \{v_1, \ldots, v_n\}$, and let $S = \{v_1, \ldots, v_{n - 1}\}$ be a set of its vertices. We observe that
+
+            \begin{itemize}
+                \item for each edge $\{v_i, v_j\} \in E(K_n)$ such that $i, j \in [n - 1]$, clearly $S$ covers the edge
+                \item for each edge $\{v_i, v_n\} \in E(K_n)$, we observe that $v_I \in S$, therefore $S$ still covers the edge
+            \end{itemize}
+
+            This concludes that $n - 1$ vertices are \tit{suffice} to cover $V(K_n)$.
+
+            Now, by way of contradiction suppose that there is a vertex cover $S'$ of $K_n$ such that $\abs{S'} \le n - 2$. This implies that there are two vertices $u, v \in V(K_n) - S'$. However, this implies that the edge $\{u, v\} \in E(K_n)$ is not covered --- and such always exists since $K_n$ is a complete graph $\lightning$. This proves that $n - 1$ vertices are \tit{needed}.
         }
 
         This claim shows that for any $n$ it holds that $\mathrm{IP^*}(K_n) = n - 1$, therefore we have that $$\mathrm{IG}(K_n) = \dfrac{\mathrm{IP^*}(K_n)}{\mathrm{LP^*}(K_n)} \ge \dfrac{n - 1}{\tfrac{n}{2}}$$ which means that $$\mathrm{IG_{VC}} = \sup_{I \in \mathrm{VC}}{\mathrm{IG_{VC}}(I)} \ge \lim_{n \to +\infty}{\dfrac{n - 1}{\tfrac{n}{2}}} = 2$$
     \end{proof}
 
-    \section{The Set Cover problem}
+    \subsection{The Set Cover problem}
 
     The next problem that we will study can be seen as a \tit{generalization} of the VC problem, which is the \href{https://en.wikipedia.org/wiki/Set_cover_problem}{Set Cover} problem, defined as follows.
 
@@ -731,7 +744,7 @@
         \caption{IP for SC.}
     \end{figure}
 
-    The first constraint of the IP states that, given an element $i$ in the universe set, at least one of the variables $x_j$, representing the sets $S_j$ which contain $i$, must be set to 1. In other words, we are guaranteeing that all the elements $i \in \mathcal U$ are covered by at least one set of $C$. Lastly, we want to minimize over the size of the sub-collection of $C$, hence the objective function.
+    The first constraint of the IP states that, given an element $i$ in the universe set, at least one of the variables $x_j$ --- representing the sets $S_j$ --- which contain $i$, must be set to 1. In other words, we are guaranteeing that all the elements $i \in \mathcal U$ are covered by at least one set of $C$. Lastly, we want to minimize over the size of the sub-collection of $C$, hence the objective function.
 
     The LP relaxation that we will consider is the same that we defined for VC. However, differently from VC, the \tit{rounding rule} that we applied to obtain an integral solution --- namely by defining $$S = \{v \in V \mid x_v \ge \tfrac{1}{2}\}$$ cannot be applied for this problem. For instance, say that some element $i \in \mathcal U$ is contained in 3 sets $S_1$, $S_2$ and $S_3$; hence, the second constraint forces the solution of the LP to satisfy $$x_1 + x_2 + x_3 \ge 1$$ Nevertheless, by setting $$x_1 = x_2 = x_3 = \dfrac{1}{3}$$ we would get a feasible solution for the LP relaxation, but then our rounding rule would return an empty set $S = \varnothing$, which is not a feasible solution for our instance of SC since $i$ would not be covered.
 
@@ -771,13 +784,13 @@
             The element $i$ is covered by $A$ in \tit{phase} $k$ with probability at least $1 - \frac{1}{e}$.
         }{
             \begin{equation*}
-                \begin{split}
-                    \Pr[i \ \mathrm{is \ not \ covered \ in \ \mathit{phase}} \ k] &= \prod_{\substack{j \in [m]: \\ i \in S_j}}{(1 - \overline x_j)} \quad \quad (\mathrm{the \ prob. \ of \ T}) \\
-                                                                                   &\le \prod_{\substack{j \in [m] : \\ i \in S_j}}{e^{-\overline x_j}} \quad \quad (1 - x \le e^{-x})  \\
-                                                                                   &= e^{\displaystyle - \sum\limits_{\substack{j \in [m]: \\ i \in S_j}}{\overline x_j}} \\
-                                                                                   &\le e^{-1} \quad \quad (\mathrm{second \ constraint \ of \ the \ LP}) \\
-                                                                                   &=\dfrac{1}{e}
-                \end{split}
+                \begin{alignedat}{2}
+                    \Pr[i \ \mathrm{is \ not \ covered \ in \ \mathit{phase}} \ k] &= \prod_{\substack{j \in [m]: \\ i \in S_j}}{(1 - \overline x_j)} && \quad \quad (\mathrm{the \ prob. \ of \ T}) \\
+                                                                                   &\le \prod_{\substack{j \in [m] : \\ i \in S_j}}{e^{-\overline x_j}} && \quad \quad (1 - x \le e^{-x})  \\
+                                                                                   &= e^{\displaystyle - \sum\limits_{\substack{j \in [m]: \\ i \in S_j}}{\overline x_j}} && \\
+                                                                                   &\le e^{-1} && \quad \quad (\mathrm{second \ constraint \ of \ the \ LP}) \\
+                                                                                   &=\dfrac{1}{e} && \\
+                \end{alignedat}
             \end{equation*}
         }
 
@@ -785,13 +798,13 @@
             The element $i$ is not covered by any set of $A$ with probability at most $\frac{1}{n^2}$.
         }{
             \begin{equation*}
-                \begin{split}
-                    \Pr[i \ \mathrm{is \ not \ covered \ by \ any \ set \ of} \ A] &= \prod_{k = 1}^{\ceil{2 \ln n}}{\Pr[i \ \mathrm{is \ not \ covered \ in \ \mathit{phase}} \ k]} \\
-                                                                                   &\le \prod_{k = 1}^{\ceil{2 \ln n}}{\dfrac{1}{e}} \quad \quad (\mathrm{by \ Claim \ 1}) \\
-                                                                                   &= e^{- \ceil {2 \ln n }} \\
-                                                                                   &\le e^{- 2 \ln n} \\
-                                                                                   &= \dfrac{1}{n^2}
-                \end{split}
+                \begin{alignedat}{2}
+                    \Pr[i \ \mathrm{is \ not \ covered \ by \ any \ set \ of} \ A] &= \prod_{k = 1}^{\ceil{2 \ln n}}{\Pr[i \ \mathrm{is \ not \ covered \ in \ \mathit{phase}} \ k]} && \\
+                                                                                   &\le \prod_{k = 1}^{\ceil{2 \ln n}}{\dfrac{1}{e}} && \quad \quad (\mathrm{by \ Claim \ 1}) \\
+                                                                                   &= e^{- \ceil {2 \ln n }} && \\
+                                                                                   &\le e^{- 2 \ln n} && \\
+                                                                                   &= \dfrac{1}{n^2} && \\
+                \end{alignedat}
             \end{equation*}
         }
 
@@ -799,15 +812,17 @@
             $A$ is a set cover with probability at least $1 - \frac{1}{n}$.
         }{
             \begin{equation*}
-                \begin{split}
-                    \Pr[A \ \mathrm{is \ not \ a \ set \ cover}] &= \Pr[\exists i \quad i \ \mathrm{is \ not \ covered \ by \ any \ set \ of} \ A] \\
-                                                                 &\le \sum_{i = 1}^n{\Pr[i \ \mathrm{is \ not \ covered \ by \ any \ set \ of} \ A]} \\
-                                                                 &\le \sum_{i = 1}^n{\dfrac{1}{n^2}} \quad \quad (\mathrm{by \ Claim \ 2}) \\
-                                                                 &= \dfrac{n}{n^2} \\
-                                                                 &= \dfrac{1}{n}
-                \end{split}
+                \begin{alignedat}{2}
+                    \Pr[A \ \mathrm{is \ not \ a \ set \ cover}] &= \Pr[\exists i \quad i \ \mathrm{is \ not \ covered \ by \ any \ set \ of} \ A] && \\
+                                                                 &\le \sum_{i = 1}^n{\Pr[i \ \mathrm{is \ not \ covered \ by \ any \ set \ of} \ A]} && \\
+                                                                 &\le \sum_{i = 1}^n{\dfrac{1}{n^2}} && \quad \quad (\mathrm{by \ Claim \ 2}) \\
+                                                                 &= \dfrac{n}{n^2} && \\
+                                                                 &= \dfrac{1}{n} && \\
+                \end{alignedat}
             \end{equation*}
         }
+
+        The statement follows directly from Claim 3.
     \end{proof}
 
     Next, we will show that this algorithm yields \tit{on average} a $\ceil{2 \ln n}$-approximation of SC.
@@ -820,9 +835,9 @@
         Fix a \tit{phase} $k$, and let $A_k$ be the collection of sets added to $A$ at \tit{phase} $k$; then it holds that $$\mathbb E \sbk{\abs{A_k}} = \sum_{j = 1}^m {1 \cdot \Pr[S_j \in A_k]} = \sum_{j = 1}^m{\overline x_j} = \mathrm{LP^*}$$ Moreover, since $\displaystyle A = \bigcup_{k \in \ceil{2 \ln n}}{A_k}$, we have that $$\mathbb E \sbk{\abs A} \le \mathbb E \sbk{\sum_{k \in \ceil{2 \ln n}}{\abs{A_k}}} = \sum_{k \in \ceil {2 \ln n}}{\mathbb E \sbk{\abs{A_k}}} = \sum_{k \in \ceil{2 \ln n}}{\mathrm{LP^*}} = \ceil{2 \ln n} \mathrm{LP^*} \le \ceil{2 \ln n} \mathrm{IP^*}$$
     \end{proof}
 
-    TODO \todo{missing something}
+    By the law of large numbers, we know that if for each pair $(\mathcal U, C)$ we repeatedly compute the previous algorithm we will, eventually, get an output $A'$ such that $\abs{A'} \le \ceil{2 \ln n} \mathrm{IP}^*$. This implies that such procedure yield an approximation ratio $\alpha \le \ceil{2 \ln n}$, implying that $$\ceil{2 \ln n } \ge \alpha \ge \mathrm{IG}_{\mathrm{SC}}$$ directly providing an upper bound for SC.
 
-    Additionally, note that the algorithm can be modified to get a better bound, by simply replacing $\ceil{2 \ln n}$ with $\ceil{(1 + \varepsilon) \ln n}$, for any $\varepsilon > 0$. In fact, with this modification we would get that $\mathbb E \sbk{\abs A} \le \ceil{(1 + \varepsilon) \ln n} \mathrm{LP^*}$, therefore \todo{missing something}
+    Additionally, we observe that the algorithm can be modified to get a better bound, by simply replacing $\ceil{2 \ln n}$ with $\ceil{(1 + \varepsilon) \ln n}$, for any $\varepsilon > 0$. In fact, with this modification we would get that $\mathbb E \sbk{\abs A} \le \ceil{(1 + \varepsilon) \ln n} \mathrm{LP^*}$, even though we would also have that $\Pr[\mbox{$\mathcal U$ covered by $A$}] = 1 - n^{- \varepsilon}$ which is worse for small values of $\varepsilon$ --- this probability can still be \tit{boosted} by repeatedly computing the output. Hence, we actually get that $$\mathrm{IG}_{\mathrm{SC}} \le \ceil{\ln n}$$
 
     With VC we were able to provide a tight bound on $\mathrm{IG_{VC}}$; for SC instead, even though the value of $\mathrm{IG_{SC}}$ is known \cite{ig_sc}, the proof is very complex and we will only show a lower bound.
 
@@ -854,9 +869,9 @@
         Finally, from these two claims, it follows that $$\mathrm{IG_{SC}}(\mathcal U_m, C_m) = \dfrac{\mathrm{IP^*}(\mathcal U_m, C_m)}{\mathrm{LP^*}(\mathcal U_m, C_m)} \ge \dfrac{\tfrac{1}{2} \log n - O(\log \log n)}{2} = \dfrac{1}{4} \log n - O(\log \log n)$$ which means that $$\mathrm{IG_{SC}} = \sup_{I \in \mathrm{SC}}{\mathrm{IG_{SC}}(I)} \ge \mathrm{IG_{SC}}(\mathcal U_m, C_m) \ge \dfrac{1}{4} \log n = \dfrac{1}{4 \ln 2} \ln n$$
     \end{proof}
 
-    \section{The Densest Subgraph problem}
+    \subsection{The Densest Subgraph problem}
     
-    Up to this point, we only discussed \NPclass-complete problems, and various techniquesused to obtain approximate solutions. The next problem that we are going to introduce, instead, can be solved in \tbf{polynomial} time, thanks to linear programming. First, consider the following definition.
+    Up to this point, we only discussed \NPclass-complete problems, and various techniques used to obtain approximate solutions. The next problem that we are going to introduce, instead, can be solved in \tbf{polynomial} time, thanks to linear programming. First, consider the following definition.
 
     \begin{frameddefn}{Graph density}
         Given a graph $G = (V, E)$ such that $V \neq \varnothing$, its \tbf{density} is defined as follows $$\rho(G) := \dfrac{\abs E}{\abs V}$$
@@ -920,7 +935,7 @@
 
     The densest subgraph is relevant because it actually \tit{maximizes} the average degree of its vertices. In fact, thanks to the handshaking lemma we have that $$\rho(G[S]) := \dfrac{\abs{E(G[S])}}{\abs S} = \dfrac{1}{2} \cdot \dfrac{2 \cdot \abs{E(G[S])}}{\abs s} = \dfrac{1}{2} \cdot \dfrac{\sum_{v \in S}{\deg (v)}}{\abs S} = \dfrac{1}{2} \avg_{v \in S}{\deg(v)}$$
 
-    The LP that we will present which solves this problem is the following. However, to show that this LP actually yields a solution for DS is not trivial, and it will be proven through the following theorems.
+    The LP that we will present for this problem is the following. However, to show that this LP actually yields a solution for DS is not trivial, and it will be proven through the following theorems.
 
     \begin{figure}[H]
         \centering
@@ -1050,7 +1065,7 @@
     \end{framedalgo}
 
     \idea{
-        The algorithm construct a series $S_0, \ldots, S_n$ of sets of vertices, such that $\abs{S_i} = n - i$, and at each iteration the $i$-th vertex that gets removed from $G[S_{i - 1}]$ is the one having minimum degree. At the end, the algorithm returns the set $S^*$ that maximizes the density of $G[S^*]$.
+        The algorithm constructs a series $S_0, \ldots, S_n$ of sets of vertices, such that $\abs{S_i} = n - i$, and at each iteration the $i$-th vertex that gets removed from $G[S_{i - 1}]$ is the one having minimum degree. At the end, the algorithm returns the set $S^*$ that maximizes the density of $G[S^*]$.
     }
 
     We observe that this algorithm does not return an optimal solution in general; in particular, problems can arise if there are vertices of equal degree. For instance, consider the following disconnected graph
@@ -1170,22 +1185,22 @@
 
     Given an orientation $\phi$ of $G$, and a vertex $v \in V(G)$ we will indicate with $\deg_\phi(v)$ the in-degree of $v$ w.r.t. $\phi$, i.e. $$\deg_\phi(v) := \abs{\{e \in E \mid \phi(e) = v\}}$$ For example, in the previous graph we have that $\deg_\phi(c) = 2$, $\deg_\phi(a) = 0$ and $\deg_\phi(b) = \deg_\phi(d) = 1$. By the same argument that proves the handshaking lemma, we observe that $$\sum_{v \in V(G)}{\deg_\phi(v)} = \abs E$$ Lastly, the maximum in-degree w.r.t. $\phi$ will be denoted as $$\Delta_\phi := \max_{v \in V} {\deg_\phi(v)}$$ We are now ready to prove the approximation ratio of Charikar's algorithm.
 
-    \begin{framedthm}[label={charikar approx}]{\textsc{Charikar}'s approximation ratio}
+    \begin{framedthm}[label={charikar approx}]{}
         Given a graph $G$, and an optimal solution $\rho(G[S^*])$ for DS on $G$, let $M := \textsc{Charikar}(G)$; then, it holds that $\tfrac{1}{2} \rho(G[S^*]) \le M$.
     \end{framedthm}
 
     \begin{proof}
         We are going to prove this approximation ratio through two claims.
 
-        \claim{
+        \claim[Claim 1]{
             Given an undirected graph $G$, and an optimal solution $\rho(G[S^*])$ for DS on $G$, for any orientation $\phi$ of $G$ it holds that $\rho(G[S^*]) \le \Delta_\phi$.
         }{
             By definition of $\phi$, each $uv \in E$ is going to be oriented towards either $u$ or $v$, therefore if $uv \in E(G[S^*])$ then $uv$ is going to be oriented towards a node of $S$. Hence, we have that \centeredeq{0.99}{$\displaystyle \abs{E(G[S^*])} \le \sum_{v \in V(G[S^*])}{\deg_\phi(v)} \le \sum_{v \in V(G[S^*])}{\Delta_\phi} = \abs {V[G(S^*)]} \cdot \Delta_\phi \iff \rho(G[S^*]) := \dfrac{\abs{E(G[S^*]})}{\abs{V(G[S^*])}} \le \Delta_\phi$}
         }
 
-        Consider Charikar's algorithm; before proving the other claim, we need to introduce an orientation $\phi_\mathrm{GR}$ --- where GR stands for \tit{greedy} --- of $G$ defined as follows: if $v_i$ is the $i$-th vertex --- removed from $G[S_{i - 1}]$ --- picked by the algorithm, orient any edge $\{u, v_i\} \in E(G)$ towards $v_i$, for any $u \in V(G)$. For instance, Charikar's algorithm applied on the graph shown in \cref{oriented graph} would set $v_1 := a$, therefore $\phi(ca) = a$, and so on. This implies that $$\forall i \in [n] \quad \deg_{G[S_{i - 1}]}(v_i) = \deg_{\phi_\mathrm{GR}}(v_i)$$
+        Consider Charikar's algorithm; before proving the second claim, we need to introduce an orientation $\phi_\mathrm{GR}$ --- where GR stands for \tit{greedy} --- of $G$ defined as follows: if $v_i$ is the $i$-th vertex --- removed from $G[S_{i - 1}]$ --- picked by the algorithm, orient any edge $\{u, v_i\} \in E(G)$ towards $v_i$, for any $u \in V(G)$. For instance, Charikar's algorithm applied on the graph shown in \cref{oriented graph} would set $v_1 := a$, therefore $\phi(ca) = a$, and so on. This implies that $$\forall i \in [n] \quad \deg_{G[S_{i - 1}]}(v_i) = \deg_{\phi_\mathrm{GR}}(v_i)$$
 
-        \claim{
+        \claim[Claim 2]{
             Given an undirected graph $G$, and $M := \textsc{Charikar}(G)$, it holds that $\Delta_{\phi_\mathrm{GR}} \le 2M$.
         }{
             Observe that for any $i \in [n]$ it holds that $$v_i \in \argmin_{v \in S_{i - 1}}{\deg_{G[S_{i - 1}]}(v)} \iff \deg_{G[S_{i - 1}]}(v_i) = \min_{v \in S_{i - 1}}{\deg_{G[S_{i - 1}]}(v)}$$ therefore, we have that 
@@ -1215,7 +1230,9 @@
         Lastly, putting the two claims together, we get that for any optimal solution $\rho(G[S^*])$ of a given undirected graph $G$, if $M := \textsc{Charikar}(G)$ then $$\rho(G[S^*]) \le \Delta_{\phi_\mathrm{GR}} \le 2M \iff \tfrac{1}{2} \rho(G[S^*]) \le M$$
     \end{proof}
 
-    In this proof, we defined $\phi_\mathrm{GR}$, which helped us determine the approximation ratio of the algorithm. But how did Charikar come up with such an orientation of the graph? To answer this question, we need to introduce the concept of the \tbf{duality} of linear programs.
+    \section{Approximation through duality}
+
+    In the last proof of the previous section, we defined $\phi_\mathrm{GR}$, which helped us determine the approximation ratio of the algorithm. But how did Charikar come up with such an orientation of the graph? To answer this question, we need to introduce the concept of the \tbf{duality} of linear programs.
 
     Consider the following \tit{maximization} generic linear program:
 
@@ -1285,12 +1302,12 @@
     \begin{proof}
         Given any two matrices $N \in \R^{m \times n}$, $M \in \R^{n \times l}$ it holds that $$(NM)^T = M^TN^T$$ therefore, we have that
         \begin{equation*}
-            \begin{split}
-                c^Tx &= x^Tc \\
-                     &\le x^TA^Ty \quad \quad (\mathrm{by \ feasibility \ of} \ y) \\
-                     &= (Ax)^Ty \quad \quad (\mathrm{by \ the \ previous \ observation}) \\
-                     &\le b^Ty \quad \quad \quad (\mathrm{by \ feasibility \ of} \ x)
-            \end{split}
+            \begin{alignedat}{2}
+                c^Tx &= x^Tc && \\
+                     &\le x^TA^Ty && \quad \quad (\mathrm{by \ feasibility \ of} \ y) \\
+                     &= (Ax)^Ty && \quad \quad (\mathrm{by \ the \ previous \ observation}) \\
+                     &\le b^Ty && \quad \quad \quad (\mathrm{by \ feasibility \ of} \ x)
+            \end{alignedat}
         \end{equation*}
     \end{proof}
 
@@ -1363,11 +1380,11 @@
         % \caption{Given the set of red vertices $S$, the green edges represent $\mathrm{cut}(S)$.}
     \end{figure}
 
-    In this graph, our improved version of Charikar would still need $n$ iterations to remove all the vertices --- in the figure, the node labeled with $i$ is the only node present in $A_i$ at the $i$-th iteration of the algorithm. Can we do better?
+    In this graph, our improved version of Charikar would still need $n$ iterations to remove all the vertices --- in the figure, the node labeled with the number $i$ is the only node present in $A_i$ at the $i$-th iteration of the algorithm. Can we do better?
 
     Consider the proof of \cref{charikar approx}; the second claim of the theorem uses the fact that the vertex $v_i$ has minimum degree in $G[S_{i - 1}]$. However, note that the only reason why we need this fact is to bound $$\deg_{G[S_{i - 1}]}(v_i) \le \avg_{v \in S_{i - 1}}{\deg_{G[S_{i - 1}]}(v_i)}$$ Hence, we may try to use the \tit{average degree} instead of the \tit{minimum degree}, in the definition of $A_i$.
 
-    Consider a path $P_n$; observe that $\textsc{CharikarImproved}(P_n)$ would require $\ceil{\tfrac{n}{2}}$ iteration to remove all the vertices from the initial graph, because it would remove at most (for the case when $n$ is odd) 2 vertices per iteration --- i.e. the endpoints. What happens if we replace the definition of $A_i$ as follows? $$A_i := \cbk{v \in S_i \mid \deg_{G[S_i]}(v) \le \avg_{u \in S_i}{\deg_{G[S_i]}(u)}}$$ In the case of $P_n$, \textsc{CharikarImproved} would still fail at processing the graph all at once, because the average degree is \tit{less than} 2. Nonetheless, this problem suggest the following approach.
+    Consider a path $P_n$; observe that $\textsc{CharikarImproved}(P_n)$ would require $\ceil{\tfrac{n}{2}}$ iteration to remove all the vertices from the initial graph, because it would remove at most (for the case when $n$ is odd) 2 vertices per iteration --- i.e. the endpoints. What happens if we replace the definition of $A_i$ as follows? $$A_i := \cbk{v \in S_i \mid \deg_{G[S_i]}(v) \le \avg_{u \in S_i}{\deg_{G[S_i]}(u)}}$$ In the case of $P_n$, \textsc{CharikarImproved} would still fail at processing the graph all at once, because the average degree is \tit{less than} 2. Nonetheless, this problem suggests the following approach.
 
     \begin{framedalgo}{Charikar's algorithm ($\varepsilon$ version)}
         Given an undirected graph $G = (V, E)$, the algorithm returns a $\tfrac{1}{2(1 + \varepsilon)}$-approximation solution of DS on $G$. \\
@@ -1392,10 +1409,10 @@
     \end{framedthm}
 
     \begin{proof}
-        Consider the optimal solution $S^*$; note that $S^* \neq \varnothing$ because $\rho(G[\varnothing])$ is not defined, and if $\abs{S^*} = 1$, then $\abs{E(G[S^*])} = 0 \implies \rho(G[S^*]) = 0$ meaning that \todo{non ho capito}. Hence, we may assume that $\abs{S^*} \ge 2$.
+        Consider the optimal solution $S^*$; note that $S^* \neq \varnothing$ because $\rho(G[\varnothing])$ is not defined, and if $\abs{S^*} = 1$, then $\abs{E(G[S^*])} = 0 \implies \rho(G[S^*]) = 0$ meaning that any solution is optimal. Hence, we may assume that $\abs{S^*} \ge 2$.
         
         \claim{
-            $\forall v \in S^* \quad \deg_{G[S^*]}(v) \ge \rho(G[S^*])$
+            $\forall v \in S^* \quad \deg_{G[S^*]}(v) \ge \rho(G[S^*])$.
         }{
             Fix a vertex $v \in S^*$. By optimality of $S$, we know that $\rho(G[S^*]) \ge \rho(G[S^* - \{v\}])$. Moreover, note that $$\rho(G[S^* - \{v\}]) = \dfrac{\abs{E(G[S^* - \{v\}])}}{\abs{S^* - \{v\}}} = \dfrac{\abs{E(G[S^*])} - \deg_{G[S^*]}(v)}{\abs{S^*} - 1}$$ Therefore, we have that $$\rho(G[S^*]) \ge \rho(G[S^* - \{v\}]) \iff \dfrac{\abs{E(G[S^*])}}{\abs{S^*}} \ge \dfrac{\abs{E(G[S^*])} - \deg_{G[S^*]}(v)}{\abs{S^*} - 1}$$ and the claim follows by solving the inequality.
         }
@@ -1418,13 +1435,13 @@
         Finally, let $i^*$ be the last iteration of the algorithm; since $\abs{S_0} = n$ and $i^*$ is reached when $\abs{S_{i^*}} = 1$, we conclude that $$\abs{S^*} < \dfrac{n}{(1 + \varepsilon)^{i^*}} \implies 1 < \dfrac{n}{(1 + \varepsilon)^{i^*}} \implies i^* \le \log_{1 + \varepsilon}{n}$$
     \end{proof}
 
-    \section{Semidefinite programming}
+    \section{Approximation through semidefinite programming}
 
-    In TODO \cref{maxcut} we mentioned that the best known approximation ratio for the Max-Cut problem is around 0.878. We are now ready to discuss this ratio.
+    In \cref{maxcut} we mentioned that the best known approximation ratio for the Max-Cut problem is around 0.878. We are now ready to discuss this ratio.
 
     First, let's look at the approaches that we used for the approximation we presented: we provided a $\tfrac{1}{2}$-approximation for Max-Cut that does not even look at the structure of the graph itself, and simply flips coins in order to decide if the corresponding vertex has to be added to the output.
 
-    Now, let us build a IP that models the Max-Cut problem: for each edge $\{i, j\}$ define a variable $y_{ij}$, and for each vertex define a variable $x_v$.
+    Now, let us build an IP that models the Max-Cut problem: for each edge $\{i, j\}$ define a variable $y_{ij}$, and for each vertex define a variable $x_v$.
 
     \begin{figure}[H]
         \centering
@@ -1445,7 +1462,7 @@
 
     Then, how good can this relaxation get? Since our algorithm is a $\tfrac{1}{2}$-approximation, we already know that $\mbox{IG}_\mathrm{MC} \le 2$. Moreover, it can be proven that for any $n \in \N$ the gap of $K_n$ is at least $2 - \varepsilon$ for $\varepsilon > 0$, concluding that $\mbox{IG}_{\mathrm{MC}} = 2$.
 
-    Despite many efforts, for a very long time researchers believed that no improvement over this result could be achieved. However, in a groundbreaking paper published in 1995 \textcite{goemans} proved everyone wrong, by completely changing the approach: instead of using an IP, they modeled the Max-Cut problem through a \tbf{Quadratic Program} (QP).
+    Despite many efforts, for a very long time researchers believed that no improvement over this result could be achieved. However, in a groundbreaking paper published in 1995 \textcite{goemans} proved everyone wrong, by completely changing the approach: instead of using an IP, they modeled the Max-Cut problem through a \tbf{Quadratic Program} (QP). The following is an example of a generic QP.
 
     \begin{figure}[H]
         \centering
@@ -1500,7 +1517,7 @@
         \caption{SPD for MC.}
     \end{figure}
 
-    Let $\overline x$ be a feasible solution to the QP. If we map each component $\overline x_i$ with the vector $v_i = [\overline x_i \ 0 \ \ldots \ 0]^T$, we see that $$\abk{v_i, v_j} = \sum_{k \in [n]}{v_{k}(i)v_k(j)} = \overline x_i \overline x_j$$ Moreover, we observe that  the constraint $\abk{v_i, v_i} = 1$ is always satisfied $$\abk{v_i, v_i} = \sum_{k \in [n]}{v_k(i)^2} = {\overline x_i}^2 = 2$$ This concludes that $$\mathrm{SDP}^*_\mathrm{MC} \ge \mathrm{QP}^*$$
+    Let $\overline x$ be a feasible solution to the QP. If we map each component $\overline x_i$ with the vector $v_i = [\overline x_i \ 0 \ \ldots \ 0]^T$, we see that $$\abk{v_i, v_j} = \sum_{k \in [n]}{v_{k}(i) \cdot v_k(j)} = \overline x_i \overline x_j$$ Moreover, we observe that  the constraint $\abk{v_i, v_i} = 1$ is always satisfied $$\abk{v_i, v_i} = \sum_{k \in [n]}{v_k(i)^2} = {\overline x_i}^2 = 2$$ This concludes that $$\mathrm{SDP}^*_\mathrm{MC} \ge \mathrm{QP}^*$$
 
     However, the algorithm proposed by the two authors is \tit{very} surprising.
 
@@ -1534,7 +1551,7 @@
         $\mathrm{IG}_{\mathrm{MC}}^{\mathrm{SDP}} = \alpha_{\mathrm{GW}}$
     \end{framedthm}
 
-    This concludes that Goemans and Williamson's algorithm is \tit{the best} rounding algorithm that can be achieved through SDPs. Moreover, researchers believe that this approximation is the best that can be achieved in general for MC. In particular, the main reasong behind such hypothesis is the \tbf{Unique Games Conjecture}, which will be discussed in the following section.
+    This concludes that Goemans and Williamson's algorithm is \tit{the best} rounding algorithm that can be achieved through SDPs. Moreover, researchers believe that this approximation is the best that can be achieved \tit{in general} for MC. In particular, the main reasong behind such hypothesis is the \tbf{Unique Games Conjecture}, which will be discussed in the following section.
 
     \section{The Unique Games Conjecture}
 
@@ -1546,7 +1563,7 @@
 
     In other words, an edge $ab \in E(G)$ of $G$ is sait to be \tit{satisfied} by $\phi$ if the color $\phi(a)$ gets permuted into the color $\phi(b)$ by the permutation $\pi_{ab}$.
 
-    \centeredimage[In this figure, (a) and (b) are two instances of the UCL problem with 2 colors; (b) is a solution to (a) that satisfies all the edges, while (d) is a solution to (c) with an unsatisfied edge.]{0.99}{../assets/ucl.png}
+    \centeredimage[In this figure, (a) and (b) are two instances of the UCL problem with 2 colors; (b) is a solution to (a) that satisfies all the edges, while (d) is a solution to (c) with an unsatisfied edge.]{0.8}{../assets/ucl.png}
 
     Note that UCL instances are \tit{strongly constrainted}, i.e. the color of a vertex uniquely defines the colors of its neighbors, and therefore its entire connected component. Thus, if the input instance admits a valid assignment, such assignment can be found \tit{efficiently} by iterating over all the possible colors of a single node. In particular, this implies that the problem of deciding if a given instance admits a satisfying assignment can be solved in polynomial time.
 
@@ -1587,78 +1604,17 @@
     As a direct corollary of Raghavendra's theorem, we get that the approximation ratios that we previously found for MC and VC are the best possible ones, if the UGC is true.
 
     \begin{framedcor}{}
-        If the UGC is true, then $\mathrm{IG}_{\mathrm{MC}}^{\mathrm{SDP}} = \alpha(\mathrm{MC})$ and $\mathrm{IG}_\mathrm{VC} = \alpha(\mathrm{VC})$.
+        If the UGC is true, then $\mathrm{IG}_{\mathrm{MC}}^{\mathrm{SDP}} = \alpha_\mathrm{MC}$ and $\mathrm{IG}_\mathrm{VC} = \alpha_\mathrm{VC}$.
     \end{framedcor}
-
-    \section{Exercises}
-    
-    \begin{framedprob}{}
-        Show that, for each $\varepsilon > 0$, there exists a graph $G$ such that \cref{charikar's algo} returns a subgraph of $G$ having density not larger than $\tfrac{1}{2} + \varepsilon$ times the optimal --- i.e. the approximation bound of $\tfrac{1}{2}$ is optimal.
-    \end{framedprob}
-
-    \solution{
-        TODO \todo{da fare}
-
-        \begin{figure}[H]
-            \centering
-            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
-
-                \node[circle, draw] (1) []{};
-                \node[circle, draw] (2) [below of = 1, yshift = 0.5cm]{};
-                \node[circle, draw] (3) [below of = 2, yshift = 0.5cm]{};
-                \node[circle, draw] (4) [below of = 3, yshift = 0.5cm]{};
-                \node[circle, draw] (5) [left of = 2]{};
-                \node[circle, draw] (6) [left of = 3]{};
-
-                \node[circle, draw] (7) [right of = 1, yshift = -0.625cm]{};
-                \node[circle, draw] (8) [right of = 7]{};
-                \node[circle, draw] (9) [right of = 4, yshift = 0.625cm]{};
-                \node[circle, draw] (10) [right of = 9]{};
-
-                \node[circle, draw] (11) [right of = 8]{};
-                \node[circle, draw] (12) [right of = 11]{};
-                \node[circle, draw] (13) [right of = 10]{};
-                \node[circle, draw] (14) [right of = 13]{};
-
-                % \path[every node/.style={font=\sffamily\small}]
-
-                \draw[-] (1) to (5);
-                \draw[-] (1) to (6);
-                \draw[-] (2) to (5);
-                \draw[-] (2) to (6);
-                \draw[-] (3) to (5);
-                \draw[-] (3) to (6);
-                \draw[-] (4) to (5);
-                \draw[-] (4) to (6);
-
-                \draw[-] (7) to (8);
-                \draw[-] (7) to (9);
-                \draw[-] (7) to (10);
-                \draw[-] (8) to (9);
-                \draw[-] (8) to (10);
-                \draw[-] (9) to (10);
-
-                \draw[-] (11) to (12);
-                \draw[-] (11) to (13);
-                \draw[-] (11) to (14);
-                \draw[-] (12) to (13);
-                \draw[-] (12) to (14);
-                \draw[-] (13) to (14);
-
-                ;
-            \end{tikzpicture}
-            \caption{An example of the graph $G$ with $t = 2$, consisting of a $K_{2,4}$ and two $K_4$'s.}
-        \end{figure}
-    }
 
     \chapter{Metric geometry}
 
     TODO \todo{missing introduction}
 
-    First, consider the following definition
+    First, consider the following definition.
 
     \begin{frameddefn}{Set spartity}
-        Given a graph $G = (V, E)$, and a set $\varnothing \subset S \subseteq V$, the \tbf{sparsity} of $S$ is defined as follows: $$\psi (G) := \dfrac{\abs{\mathrm{cut}(S)}}{\abs{S \times \overline S}} = \dfrac{\abs{\mathrm{cut}(S)}}{\abs S \cdot \abs{\overline S}}$$
+        Given a graph $G = (V, E)$, and a set $\varnothing \subset S \subseteq V$, the \tbf{sparsity} of $S$ is defined as follows: $$\psi (S) := \dfrac{\abs{\mathrm{cut}(S)}}{\abs{S \times \overline S}} = \dfrac{\abs{\mathrm{cut}(S)}}{\abs S \cdot \abs{\overline S}}$$
     \end{frameddefn}
 
     As for the case of \tit{graph density}, we require $S \neq \varnothing$, but we will omit this detail in the following sections. Moreover, note that by definition of \tit{cut}, we have that for any $S \subseteq V(G)$ it holds that $$0 \le \abs{\mathrm{cut}(S)} \le \abs {S \times \overline S} = \abs S \cdot \abs{\overline S}$$ since an edge $e$ is in $\mathrm{cut}(S)$ if and only if $\abs {S \cap e} = 1$, hence the cartesian product $S \times \overline S$ represents the edges that have exactly one endpoint in $S$. Therefore, we have that $0 \le \psi(S) \le 1$, and in particular
@@ -1674,7 +1630,7 @@
         The \tbf{Sparsest Cut} (SC) problem is defined as follows: given a graph $G = (V, E)$, determine the subset of vertices that minimizes its sparsity. In other words, the problems asks to finde a set $S^*$ in $$S^* \in \argmin_{S \subseteq V}{\psi(S)}$$
     \end{frameddefn}
 
-    In order to reason about SC, we are going to introduce the following type of graph, invented by \textcite{erdos} in 1959.
+    In order to reason about SC, we are going to introduce the following type of graphs, invented by \textcite{erdos} in 1959.
 
     \begin{frameddefn}{Erdős-Rényi random graph}
         Given two values $n \in \N$ and $\mu \in [0, 1]$, the \href{https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model}{Erdős-Rényi random graph} $G(n, \mu)$ is a graph that has a fixed vertex set $V(G) = [n]$, and a \tit{probabilistic} edge set $E(G)$ such that $$\forall e \in \binom{V(G)}{2} \quad \Pr[e \in E(G)] = \mu$$
@@ -1695,7 +1651,7 @@
 
         \begin{enumerate}
             \item \tit{non-negativity}: $\forall x, y \in S \quad d(x,y) \ge 0$
-            \item \tit{simmetry}: $\forall x, y \in S \quad d(x, y) = d(y, x)$
+            \item \tit{symmetry}: $\forall x, y \in S \quad d(x, y) = d(y, x)$
             \item \tit{self-distance}: $\forall x \in S \quad d(x, x) = 0$
             \item \tit{triangle inequality}: $\forall x, y, z \in S \quad d(x,y) \le d(x,z) + d(z, y)$
         \end{enumerate}
@@ -1718,7 +1674,7 @@
 
         \begin{itemize}
             \item \tit{non-negativity} is satisfied, because $$\forall x, y \in V(G) \quad d_T(x, y) = 0 \lor d_T(x, y) = 1 \implies d_T(x, y) \ge 0$$
-            \item \tit{simmetry} is satisfied, because $$\forall x, y \in V(G) \quad \abs{T \cap \{x, y\}} = \abs{T \cap \{y, x\}} \implies d_T(x, y) = d_T(y, x)$$
+            \item \tit{symmetry} is satisfied, because $$\forall x, y \in V(G) \quad \abs{T \cap \{x, y\}} = \abs{T \cap \{y, x\}} \implies d_T(x, y) = d_T(y, x)$$
             \item \tit{self-distance} is satisfied, because $$\forall x \in V(G) \quad \nexists \{x, x\} \in E(G) \implies d_T(x, x) =0$$
         \end{itemize}
         
@@ -1736,7 +1692,7 @@
         \end{itemize}
     \end{proof}
 
-    We observe that, by definition, for any $T$ it holds that $d_T(x, y) = d_{\overline T}(x, y)$. In fact, if $\{x, y\} \in \mathrm{cut}(T)$ then $\abs{T \cap \{x, y\}} = 1$, meaning that exactly one endpoint of $\{x, y\}$ lies in $T$, which must imply that the other endpont lies in $\overline T$. Vice versa, if $\{x, y\} \notin \mathrm{cut}(x, y)$, then either $x, y \in T$ --- and therefore $x, y \notin \overline T \implies \abs{\overline T \cap \{x, y\}} \neq 1$ --- or $x, y \notin T$ --- and therefore $x, y \in \overline T \implies \abs{\overline T \cap \{x, y\}} \neq 1$ as well.
+    We observe that, by definition, for any $T$ it holds that $d_T(x, y) = d_{\overline T}(x, y)$. In fact, if $\{x, y\} \in \mathrm{cut}(T)$ then $\abs{T \cap \{x, y\}} = 1$, meaning that exactly one endpoint of $\{x, y\}$ lies in $T$, which must imply that the other endpont lies in $\overline T$.
 
     But why are we discussing cut metrics in the first place? We are going to show that the concept of elementary cut metric is \tit{deeply} related to the concept of \tit{sparsity} previously introduced. First, consider the following definition.
 
@@ -1744,7 +1700,7 @@
         Given a graph $G$, and a subset $T \subseteq V(G)$, the \tbf{cut-ratio} induced by the elementary cut metric $d_T$ is defined as $$\phi(d_T) := \dfrac{\sum_{xy \in E(G)}{d_T(x, y)}}{\sum_{xy \in \binom{V(G)}{2}}{d_T(x, y)}}$$
     \end{frameddefn}
 
-    Through some algebraic manipulation, we see that the cut-ratio of $d_T$ is in fact the sparsity of $T$, as shown in the following proposition.
+    Unsurprisingly, the following proposition shows that the cut-ratio of $d_T$ is precisely the sparsity of $T$.
 
     \begin{framedprop}[label={sparse prop}]{}
         Given a graph $G$, and a subset $T \subseteq V(G)$, it holds that $\phi(d_T) = \psi(T)$.
@@ -3615,6 +3571,64 @@
         The claim concludes that $\abs{V^*} + 1$ colors clearly suffice to properly color $G$.
     }
 
+    \begin{framedprob}{}
+        Show that, for each $\varepsilon > 0$, there exists a graph $G$ such that \cref{charikar's algo} returns a subgraph of $G$ having density not larger than $\tfrac{1}{2} + \varepsilon$ times the optimal --- i.e. the approximation bound of $\tfrac{1}{2}$ is optimal.
+    \end{framedprob}
+
+    \solution{
+        TODO \todo{da fare}
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+                \node[circle, draw] (1) []{};
+                \node[circle, draw] (2) [below of = 1, yshift = 0.5cm]{};
+                \node[circle, draw] (3) [below of = 2, yshift = 0.5cm]{};
+                \node[circle, draw] (4) [below of = 3, yshift = 0.5cm]{};
+                \node[circle, draw] (5) [left of = 2]{};
+                \node[circle, draw] (6) [left of = 3]{};
+
+                \node[circle, draw] (7) [right of = 1, yshift = -0.625cm]{};
+                \node[circle, draw] (8) [right of = 7]{};
+                \node[circle, draw] (9) [right of = 4, yshift = 0.625cm]{};
+                \node[circle, draw] (10) [right of = 9]{};
+
+                \node[circle, draw] (11) [right of = 8]{};
+                \node[circle, draw] (12) [right of = 11]{};
+                \node[circle, draw] (13) [right of = 10]{};
+                \node[circle, draw] (14) [right of = 13]{};
+
+                % \path[every node/.style={font=\sffamily\small}]
+
+                \draw[-] (1) to (5);
+                \draw[-] (1) to (6);
+                \draw[-] (2) to (5);
+                \draw[-] (2) to (6);
+                \draw[-] (3) to (5);
+                \draw[-] (3) to (6);
+                \draw[-] (4) to (5);
+                \draw[-] (4) to (6);
+
+                \draw[-] (7) to (8);
+                \draw[-] (7) to (9);
+                \draw[-] (7) to (10);
+                \draw[-] (8) to (9);
+                \draw[-] (8) to (10);
+                \draw[-] (9) to (10);
+
+                \draw[-] (11) to (12);
+                \draw[-] (11) to (13);
+                \draw[-] (11) to (14);
+                \draw[-] (12) to (13);
+                \draw[-] (12) to (14);
+                \draw[-] (13) to (14);
+
+                ;
+            \end{tikzpicture}
+            \caption{An example of the graph $G$ with $t = 2$, consisting of a $K_{2,4}$ and two $K_4$'s.}
+        \end{figure}
+    }
     
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
