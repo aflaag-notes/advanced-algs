@@ -107,13 +107,13 @@
 
     \subsection{The Maximum Cut problem} \label{maxcut}
 
-    The first problem that will be discussed is the \href{https://en.wikipedia.org/wiki/Maximum_cut}{Maximum Cut} problem. The \tbf{Maximum Cut problem} --- in the unweighted case --- is a classic combinatorial optimization problem in the branch of \href{https://en.wikipedia.org/wiki/Graph_theory}{graph theory}, in which we seek to partition the vertices of an undirected graph into two disjoint subsets while maximizing the number of edges that have endpoints in both subsets. More formally, we will define a \tbf{cut} of a graph as follows.
+    The first problem that will be discussed is the \href{https://en.wikipedia.org/wiki/Maximum_cut}{Maximum Cut} problem. The \tbf{Maximum Cut problem} --- in the unweighted case --- is a classic combinatorial optimization problem in the branch of \href{https://en.wikipedia.org/wiki/Graph_theory}{graph theory}, in which we seek to partition the vertices of an undirected graph into two disjoint subsets, while maximizing the number of edges that have endpoints in both subsets. More formally, we will define a \tbf{cut} of a graph as follows.
 
     \begin{frameddefn}{Cut}
-        Given an undirected graph $G = (V, E)$, and two subsets $S, T \subseteq V$, the \tbf{cut} induced by $S$ and $T$ on $G$ is defined as follows $$\mathrm{cut}(S, T) = \{e \in E : \abs{S \cap e} = \abs{T \cap e} = 1\}$$ In the case in which $T = \overline S = V - S$ we will simply write $\mathrm{cut}(S) = \mathrm{cut}(S, \overline S)$.
+        Given an undirected graph $G = (V, E)$, and two disjoint subsets $S, T \subseteq V$, the \tbf{cut} induced by $S$ and $T$ on $G$ is defined as follows $$\mathrm{cut}(S, T) = \{e \in E : \abs{S \cap e} = \abs{T \cap e} = 1\}$$ In the case in which $T = \overline S = V - S$ we will simply write $\mathrm{cut}(S) = \mathrm{cut}(S, \overline S)$.
     \end{frameddefn}
 
-    Note that in the definition above we are defining the cut of a graph through the intersection between a set of vertices and edges in $E$; this is because, in the undirected case, we will consider the edges of a graph $G = (V, E)$ as sets of 2 elements $$E = \{\{u, v\} \mid u, v \in V\}$$ Therefore, given two sets of vertice $S$ and $T$, the cut induced by $S$ and $T$ is simply the set of edges that have only one endpoint in $S$ and the other one in $T$.
+    Note that in the definition above we are defining the cut of a graph through the intersection between a set of vertices and edges in $E$; this is because, in the undirected case, we will consider the edges of a graph $G = (V, E)$ as sets of 2 elements $$E = \{\{u, v\} \mid u, v \in V\}$$ Therefore, given two sets of vertices $S$ and $T$, the cut induced by $S$ and $T$ is simply the set of edges that have only one endpoint in $S$ and the other one in $T$.
 
     \begin{figure}[H]
         \centering
@@ -142,7 +142,7 @@
         The \tbf{Maximum Cut} (MC) problem is defined as follows: given an undirected graph $G = (V, E)$, determine the set $S \subseteq V$ that maximizes $\abs{\mathrm{cut}(S)}$.
     \end{frameddefn}
 
-    Although this problem is known to be \textsf{APX-hard} \cite{maxcut}, approximation algorithms and heuristic methods like greedy algorithms and local search are commonly used to find near-optimal solutions.
+    Although this problem is known to be \textsf{APX}-hard \cite{maxcut}, approximation algorithms and heuristic methods like \tit{greedy algorithms} and \tit{local search} are commonly used to find near-optimal solutions.
 
     For now, we present the following \tbf{randomized algorithm}, which provides a straightforward $\frac{1}{2}$-approximation for MC. This algorithm runs in polynomial time and achieves the approximation guarantee with high probability.
 
@@ -167,7 +167,7 @@
 
     Note that this algorithm is powerful, because \tit{it does not care about the structure of the graph in input}, since the output is completely determined by the coin flips performed in the \texttt{for} loop. Now we will prove that this algorithm provides a correct \tbf{expected $\frac{1}{2}$-approximation} of MC.
     
-    \begin{framedthm}[label={expected random cut}]{Expected approximation ratio of \textsc{RandomCut}}
+    \begin{framedthm}[label={expected random cut}]{}
         Let $G= (V, E)$ be a graph, and let $S^*$ be an optimal solution to MC on $G$. Then, given $S = \textsc{RandomCut}(G)$, it holds that $$\mathbb E [\abs{\mathrm{cut}(S)}] \ge \dfrac{1}{2} \abs{\mathrm{cut}(S^*)}$$
     \end{framedthm}
 
@@ -236,6 +236,8 @@
     \end{proof}
 
     Note that this result is \tit{very powerful}: for instance, if $\varepsilon = \delta = 0.1$, we get that $$\Pr[\abs{\mathrm{cut}(S)} > 0.45 \cdot \abs{\mathrm{cut}(S^*)}] \ge 0.9$$ and $t \approx 46$, meaning that we just need to run the \textsc{RandomCut} algorithm approximately 46 times in order to get a solution that is better than a $0.45$-approximation with $90\%$ probability.
+
+    In later sections we will present a 0.878-approximation of MC, based on a \tit{very} different approach.
 
     \section{Approximation through reduction}
 
@@ -414,7 +416,7 @@
     
     Thanks to this theorem, we can easily show that the algorithm that we just presented in order to find maximal matchings is a 2-approximation of VC. 
 
-    \begin{framedthm}{2-approximation of VC problem}
+    \begin{framedthm}{}
         Given a graph $G$, and $M = \textsc{MaximalMatching}(G)$, let $S := \bigcup_{e \in M}{e}$. Then $S$ is a 2-approximation of VC on $G$.
     \end{framedthm}
 
@@ -513,35 +515,6 @@
 
     \cost{
         It is easy to see that the cost directly depends on the number of recursive calls that the algorithm performs, which is $2^k$ in the worst case, and the cost of constructing $G[V - \{x\}]$, which we can assume to be $O\rbk{n^2}$. Hence, the algorithm has a total cost of $O \rbk{2^k \cdot n^2}$.
-    }
-
-    \section{Exercises}
-
-    \begin{framedprob}{}
-        Does there exist a polytime algorithm that, given a graph $G = (V, E)$, returns \texttt{True} if and only if the maximum cut of $G$ has size $\abs E$?
-    \end{framedprob}
-
-    \solution{
-        If $G$ is bipartite, clearly the maximum cut of $G$ has size $\abs E$ --- it suffices to consider the cut induced by one of the two independent sets of $G$.
-
-        Viceversa, suppose that $G$ is not bipartite; a well-known result in graph theory shows that $G$ is not bipartite if and only if $G$ contains an odd-length cycle. Hence, let $C$ be an odd-length cycle of $G$; it is easy to see that it is not possible to include all the edges of $C$ inside the same cut, no matter the set of vertices we choose --- in fact, even if we consider alternating vertices in our set $S$, since $\abs {V(C)}$ is odd we will end up with an edge $uv \in E(C)$ such that either $u, v \in S$ or $u, v \notin S$, meaning that $uv \notin \mathrm{cut}(S)$.
-
-        This proves that $G$ is bipartite if and only if the maximum cut of $G$ has size $\abs{E(G)}$, meaning that a simple DFS over $G$ suffices to provide a polytime algorithm that solves the problem.
-    }
-
-    \begin{framedprob}{}
-        Let $G = (V, E)$ be a graph having a vertex cover of size $k$. Show that the vertices of $G$ can be colored with $k + 1$ colors in such a way that, for each $uv \in E$, $u$ and $v$ have different colors.
-    \end{framedprob}
-
-    \solution{
-        Let $S$ be the vertex cover of $G$ of size $k$ and consider a coloring function $f$ such that:
-
-        \begin{itemize}
-            \item each vertex in $S$ is assigned a different color in $[k]$
-            \item any vertex in $V - S$ is assigned $k + 1$
-        \end{itemize}
-
-        By way of contradiction, suppose that there is an edge $uv \in E$ such that$f(u) = f(v)$; since the vertices in $S$ all have different colors, and all the vertices outside $S$ are assigned $k + 1$ --- which is not in $[k]$ --- it must be that $f(u) = f(v) = k + 1$. However, if this is the case, it means that $uv$ has both endpoints outside $S$, meaning that $S$ is not a vertex cover of $G$ $\lightning$.
     }
 
     \chapter{Mathematical Programming}
@@ -1447,7 +1420,7 @@
 
     \section{Semidefinite programming}
 
-    In TODO \todo{add section} we mentioned that the best known approximation ratio for the Max-Cut problem is around 0.878 \todo{i think we didn't, mention it}. We are now ready to discuss this ratio.
+    In TODO \cref{maxcut} we mentioned that the best known approximation ratio for the Max-Cut problem is around 0.878. We are now ready to discuss this ratio.
 
     First, let's look at the approaches that we used for the approximation we presented: we provided a $\tfrac{1}{2}$-approximation for Max-Cut that does not even look at the structure of the graph itself, and simply flips coins in order to decide if the corresponding vertex has to be added to the output.
 
@@ -2302,7 +2275,7 @@
         Given $n \in \N$, let $\func{f}{\powerset([n])}{\R}$; given $S \subseteq [n]$ and $x \in [n] - S$, the \tbf{return} of $x$ on $S$ for $f$ is defined as $$\Delta_f(x \mid S) = f(S \cup \{x\}) - f(S)$$ We say that $f$ has \tbf{diminishing returns} when it holds that $$\forall A \subseteq B \subseteq [n], x \in [n] - B \quad \Delta_f(x \mid A) \ge \Delta_f(x \mid B)$$
     \end{frameddefn}
 
-    \begin{framedthm}{}
+    \begin{framedthm}[label={submodular returns}]{}
         For any $n \in \N$, the function $\func{f}{\powerset([n])}{\R}$ is submodular if and only if it has diminishing returns.
     \end{framedthm}
 
@@ -2393,7 +2366,7 @@
                            &= \sum_{j = 0}^k{\Delta \rbk{x_j^* \mid S_i \cup \bigcup_{i = 0}^j {\{x_i^*\}}}} + f(S_i)
                 \end{split}
             \end{equation*}
-            By TODO \todo{recupera teorema}, we know that $f$ is submodular if and only if it has diminishing returns, hence
+            By \cref{submodular returns}, we know that $f$ is submodular if and only if it has diminishing returns, hence
             \begin{equation*}
                 \begin{split}
                     f(S^*) &\le f(S_i) + \sum_{j = 0}^k{\Delta_f \rbk{x_j^* \mid S_i \cup \bigcup_{i = 0}^j{\{x_i^*\}}}} \\
@@ -2989,7 +2962,7 @@
                     \State $U(x) := \{v \in \mathcal N(x) \mid \nexists e \in M : v \in e\}$
                     \If{$U(x) \neq \varnothing$}
                         \State let $y$ be a random vertex in $U(x)$
-                        \STate $M = M \cup \{xy\}$
+                        \State $M = M \cup \{xy\}$
                     \EndIf
                 \EndWhile
                 \State \tbf{return} $M$
@@ -3577,6 +3550,71 @@
             \end{split}
         \end{equation*}
     \end{proof}
+
+    \chapter{Solved Exercises}
+
+    \begin{framedprob}{}
+        Does there exist a polytime algorithm that, given a graph $G = (V, E)$, returns \texttt{True} if and only if the maximum cut of $G$ has size $\abs E$?
+    \end{framedprob}
+
+    \solution{
+        First, consider the following result.
+
+        \claim{
+            $G$ admits a cut of size $\abs{E(G)}$ if and only if $G$ is bipartite.
+        }{
+            Let $S$ be a set such that $\abs{\mathrm{cut}(S, \overline S)} = \abs{E(G)}$, and consider the two sets $(S, \overline S)$; then, by definition it holds that $$\mathrm{cut}(S, \overline S) = \{uv \mid u \in S \land v \in \overline S\}$$ which implies that $(S, \overline S)$ is a bipartition of $G$.
+
+            Vice versa, consider a bipartite graph $G$ having a bipartition $(A, B)$; then, we observe that $B = V(G) - A = \overline A$, therefore $$\abs{\mathrm{cut}(A, B)} = \abs{\mathrm{cut}(A, \overline A)} = \abs{E(G)}$$
+        }
+
+        Moreover, since $G$ is bipartite if and only if it is 2-colorable, we get that an algorithm which decides if $G$ can be 2-colored suffices to solve the problem. \\
+
+        \hrule
+        \begin{algorithmic}[1]
+            \Function{DFS-2-coloring}{$G$, $u$, \ttt{col}, $c$}
+                \If{$\ttt{col[}u\ttt{]} == c$}
+                    \State \tbf{return} \ttt{False}
+                \EndIf
+                \State $\ttt{col[}u\ttt{]} = c$
+                \For{$v \in \mathcal N(v)$}
+                    \If{$\textsc{DFS-2-coloring}(G, v, \ttt{col}, 1 - c)$}
+                        \State \tbf{return} \ttt{False}
+                    \EndIf
+                \EndFor
+                \State \tbf{return} \ttt{True}
+            \EndFunction
+            \Function{2-coloring}{$G$}
+                \State $\ttt{col} = \ttt{[}-1, \ldots, -1\ttt{]}$
+                \For{$u \in V(G)$}
+                    \If{$\ttt{col[}u\ttt{]} == -1$}
+                        \If{$\textsc{DFS-2-coloring}(G, u, \ttt{col}, 0)$}
+                            \State \tbf{return} \ttt{False}
+                        \EndIf
+                    \EndIf
+                \EndFor
+                \State \tbf{return} \ttt{True}
+            \EndFunction
+        \end{algorithmic}
+        \hrule
+    }
+
+    \begin{framedprob}{}
+        Let $G = (V, E)$ be a graph having a vertex cover of size $k$. Show that the vertices of $G$ can be colored with $k + 1$ colors in such a way that, for each $uv \in E$, $u$ and $v$ have different colors.
+    \end{framedprob}
+
+    \solution{
+        Consider the following coloring $c$ of $G$: assign a different color to each vertex of $V^*$, and assign an additional color to all the vertices inside $V(G) - V^*$.
+
+        \claim{
+            $c$ is a proper coloring of $G$.
+        }{
+            Suppose that $c$ is not proper, i.e. there exists two \tit{adjacent} vertices $x, y \in V(G)$ such that $c(x) = c(y)$. By definition of $c$ clearly $x$ and $y$ cannot be both inside $V^*$ otherwise they would have been assigned different colors; moreover, it cannot happen that one of them is inside $V^*$ and the other is not, because the vertices in $V(G) - V^*$ are assigned a color different from all the colors used for $V^*$. Hence, it must be that $x, y \in V(G) - V^*$, but since $x \sim y$ this implies that the edge $xy$ is not covered by $V^*$ $\lightning$.
+        }
+
+        The claim concludes that $\abs{V^*} + 1$ colors clearly suffice to properly color $G$.
+    }
+
     
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
