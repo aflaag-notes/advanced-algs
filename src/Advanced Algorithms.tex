@@ -1404,7 +1404,7 @@
         \end{algorithmic}
     \end{framedalgo}
 
-    \begin{framedthm}{$\textsc{Charikar}_\varepsilon$'s approximation ratio}
+    \begin{framedthm}{}
         Given a graph $G$, and $S := \textsc{Charikar}_\varepsilon$(G), let $S^*$ be an optimal solution to DS on $G$. Then, for all $\varepsilon > 0$ it holds that $\abs S \ge \tfrac{1}{2(1 + \varepsilon)} \abs{S^*}$. Moreover, the algorithm runs in at most $O(\log_{1 + \varepsilon}(n))$ iterations.
     \end{framedthm}
 
@@ -1521,7 +1521,7 @@
 
     However, the algorithm proposed by the two authors is \tit{very} surprising.
 
-    \begin{framedalgo}{GW approximation for Max-Cut}
+    \begin{framedalgo}[label={gw algo}]{GW approximation for Max-Cut}
         Given a graph $G$, the algorithm returns a cut of $G$. \\
         \hrule
 
@@ -1901,7 +1901,7 @@
     
     Thanks to \cref{metric cor} and \cref{bourgain}, we obtain the following result.
 
-    \begin{framedthm}{\textsc{LeightonRao}'s approximation ratio}
+    \begin{framedthm}{}
         Given a graph $G$, and an optimal solution $S^*$ to SC on $G$, let $S := \textsc{LeightonRao}(G)$. Then, it holds that $$\psi(S) \le O(\log n) \cdot \psi(S^*)$$
     \end{framedthm}
     
@@ -2022,7 +2022,7 @@
         \end{algorithmic}
     \end{framedalgo}
 
-    \begin{framedthm}[label={mc approx ratio}]{\textsc{ApproxMaxCover}'s approximation ratio}
+    \begin{framedthm}[label={mc approx ratio}]{}
         Given an instance $(U, C, k)$ of MC, and an optimal solution $S^*$ to MC on $(\mathcal U, C, k)$, let $S := \textsc{ApproxMaxCover}(\mathcal U, C, k)$. Then, it holds that $$\abs{\bigcup_{S_j \in S}{S_j}} \ge \rbk{1 - \dfrac{1}{e}}\abs{\bigcup_{S_j \in S^*}{S_j}}$$
     \end{framedthm}
 
@@ -2072,7 +2072,7 @@
 
     \section{Submodular functions}
 
-    We are now ready to introduce \tbf{submodular functions}, which play a central role in \tit{submodular optimization} that we introduced at the beginnig of the chapter.
+    We are now ready to discuss \tbf{submodular functions}, which play a central role in \tit{submodular optimization} that we introduced at the beginning of the chapter.
 
     \begin{frameddefn}{Modular functions}
         Given $n \in \N$, let $\func{f}{\powerset([n])}{\R}$ be a function; given two sets $S, T \subseteq [n]$, we say that $f$ is
@@ -2089,7 +2089,7 @@
     The main property of modular functions is the property to \curlyquotes{know the full description of the function} through at most $n + 1$ values. For example, if $f$ is modular, then the value of $f(\{1, 2, 3\})$ can be computed through $f(\varnothing)$, $f(\{1\})$, $f(\{2\})$ and $f(\{3\})$ as follows $$f(\{1, 2, 3\}) = f(\{1, 2\}) + f(\{3\})- f(\varnothing) = (f(\{1\}) + f(\{2\}) - f(\varnothing)) + f(\{3\}) - f(\varnothing)$$
 
     \begin{framedprop}{}
-        For any $n \in \N$, the function $\func{f}{\powerset([n])}{\R}$ is modular if and only if there exist $x, w_1, \ldots, w_n$ such that for all $S \subseteq [n]$ it holds that $f(S) = z + \sum_{i \in S}{w_i}$.
+        For any $n \in \N$, the function $\func{f}{\powerset([n])}{\R}$ is modular if and only if there exist $z, w_1, \ldots, w_n$ such that for all $S \subseteq [n]$ it holds that $f(S) = z + \sum_{i \in S}{w_i}$.
     \end{framedprop}
 
     \begin{proof}
@@ -2134,9 +2134,7 @@
         Proved in \cref{submod ex}.
     }
 
-    \subsection{TODO}
-
-    Why did we present the Max Cover problem at the beginning of the chapter? MC is a \tbf{submodular optimization} problem, i.e. the problem can be described in terms of a submodular function.
+    Why did we present the Max Cover problem at the beginning of the chapter? MC is a \tbf{submodular optimization} problem, i.e. the problem can be described in terms of the following function, which we will prove is actually \tit{submodular}.
 
     \begin{frameddefn}{Covering function}
         Given $t \in \N$, let $\mathcal U = [t]$ be the universe set, and let $C = \{A_1, \ldots, A_n\}$ be a collection of subsets $A_i \subseteq \mathcal U$; the \tbf{covering function} $\func{f}{\powerset([n])}{\R}$ is defined as follows: $$\forall S \subseteq [n] \quad f(S) := \abs{\bigcup_{j \in S}{A_j}}$$
@@ -2195,7 +2193,7 @@
         \end{algorithmic}
     \end{framedalgo}
 
-    \begin{framedthm}{\textsc{NWFapprox}'s approximation ratio}
+    \begin{framedthm}{}
         Given an NN-MI submodular function $\func{f}{\powerset(X)}{\R}$, a value $k \in \N$, and an optimal set $\displaystyle S^* \in \argmax_{S \in \binom{X}{k}}{f(S)}$, let $S := \textsc{NWFapprox}(f, k)$. Then, it holds that $$f(S) \ge \rbk{1 - \dfrac{1}{e}}f(S^*)$$
     \end{framedthm}
 
@@ -2210,7 +2208,7 @@
                 \begin{split}
                     f(S^*) &\le f(S_i \cup S^*) \\
                            &= f \rbk{S_i \cup \bigcup_{i=1}^k{\{x_i^*\}}} \\
-                           &= f \rbk{S_i \cup \bigcup_{i=1}^k{\{x_i^*\}}} + \sum_{j = 0}{k -1}{\rbk{-f\rbk{S_i \cup \bigcup_{i = 0}^k{\{x_i?*\}}}} + f \rbk{S_i \cup \bigcup_{i = 0}^j{\{x_i^*\}}}} \\
+                           &= f \rbk{S_i \cup \bigcup_{i=1}^k{\{x_i^*\}}} + \sum_{j = 0}{k -1}{\rbk{-f\rbk{S_i \cup \bigcup_{i = 0}^k{\{x_i^*\}}}} + f \rbk{S_i \cup \bigcup_{i = 0}^j{\{x_i^*\}}}} \\
                            &= \sum_{j = 0}^k{\rbk{f \rbk{S_i \cup \bigcup_{i = 0}^j{\{x_i^*\}}}} - f \rbk{S_i \cup \bigcup_{i = 0}^{j- 1}{\{x_i^*\}}}} + f(S_i) \\
                            &= \sum_{j = 0}^k{\Delta \rbk{x_j^* \mid S_i \cup \bigcup_{i = 0}^j {\{x_i^*\}}}} + f(S_i)
                 \end{split}
@@ -2231,8 +2229,9 @@
                            &= f(S_i) + k \cdot (f(S_{i + 1}) - f(S_i))
                 \end{split}
             \end{equation*}
-            TODO \todo{recupera max cover prima di finire}
         }
+
+        Now, for each $i \in [k]$ let $\delta_i = f(S^*) - f(S_i)$.
 
         \claim[Claim 2]{
             For all $i \in [k]$ it holds that $\delta_i \ge (1 - \tfrac{1}{k})^i f(S^*)$.
@@ -2257,7 +2256,7 @@
     What happens when we \tit{drop} some of the properties of NN-MI submodular functions? For instance, consider the following function.
 
     \begin{frameddefn}{Cut function}
-        Given a graph $G$, the \tbf{cut function} $c$ is a function defined as follows $$\funcmap{c}{\mathcal([n])}{\R}{S}{\abs{\mathrm{cut}(S)}}$$
+        Given a graph $G$ such that $V(G) = [n]$, the \tbf{cut function} $c$ is a function defined as follows $$\funcmap{c}{\powerset([n])}{\R}{S}{\abs{\mathrm{cut}(S)}}$$
     \end{frameddefn}
 
     We observe that this function is trivially non-negative and symmetric, but not monotone increasing: given two nodes $x, y \in V(K_3)$, clearly $\{x\} \subseteq \{x, y\}$ but $c(\{x\}) \ge c(\{x, y\})$. Nonetheless, we can still prove that is is submodular, as described below.
@@ -2278,41 +2277,36 @@
         meaning that $$c(S) + c(T) = c(S \cup T) + c(S \cap T) + 2 \abs{\mathrm{cut}(A_S, A_T)} \ge c(S \cup T) + c(S \cap T)$$ implying that $c$ is indeed submodular.
     \end{proof}
 
-    \textcite{fmv} proved that the $\tfrac{1}{2}$-approximation that we discussed in \cref{max cut alg} can be generalized to \tit{any} function that satisfies the same properties of the cut function.
+    \textcite{fmv} proved that the $\tfrac{1}{2}$-approximation that we discussed in \cref{max cut alg} can be generalized to \tit{any} function that satisfies the same properties of the cut function. Moreover, even though the Max Cut problem has a better approximation ratio given by \cref{gw algo}, for generic functions this bound is actually tight.
 
     \begin{framedlem}{}
         Given $n \in \N$, if $\func{g}{\powerset([n])}{\R}$ is submodular, it holds that $$\forall S \subseteq [n] \quad \avg_{T \subseteq S}{g(T)} \ge \dfrac{g(\varnothing) + g(S)}{2}$$
     \end{framedlem}
 
-    \proofstrind{
-        We proceed by strong induction on $\abs S$.
-    }{
-        If $\abs S = 0$, then $S = \varnothing$, therefore $$g(\varnothing) = \avg_{T \subseteq \varnothing}{g(T)} \ge \dfrac{g(\varnothing) + g(\varnothing)}{2} = g(\varnothing)$$
-    }{
-        Assume that the statement holds for $\abs S \le i$.
-    }{
-        We prove the statement for $\abs S = i + 1$. Fix $x \in S$, and let $S' := S - \{x\}$ --- in particular $\abs{S'} = i$. Hence, we get that
+    \begin{proof}
+        We proceed by strong induction on $\abs S$. For the base case, if $\abs S = 0$ then $S = \varnothing$, therefore $$g(\varnothing) = \avg_{T \subseteq \varnothing}{g(T)} \ge \dfrac{g(\varnothing) + g(\varnothing)}{2} = g(\varnothing)$$ Now, assume that the statement holds for $\abs S \le i$, and consider $\abs S = i + 1$. Fix $x \in S$, and let $S' := S - \{x\}$ --- in particular $\abs{S'} = i$. Hence, we get that
+
         \begin{equation*}
-            \begin{split}
-                \sum_{T \subseteq S}{g(T)} &= \sum_{T' \subseteq S'}{g(T')} + \sum_{T' \subseteq S'}{g(T' \cup \{x\})} \\
-                                           &= \sum_{T' \subseteq S'}{g(T')} + \sum_{T' \subseteq S'}{g(T' \cup \{x\})} + \sum_{T' \subseteq S'}{g(T')} - \sum_{T' \subseteq S'}{g(T')} \\
-                                           &= 2\sum_{T' \subseteq S'}{g(T')} + \sum_{T' \subseteq S'}{(g(T' \cup \{x\}) - g(T'))} \\
-                                           &= 2\sum_{T' \subseteq S'}{g(T')} + \sum_{\substack{T \subseteq S : \\ x \in T}}{(g(T) - g(T \cap S'))} \\
-                                           &\ge 2\sum_{T' \subseteq S'}{g(T')} + \sum_{\substack{T \subseteq S : \\ x \in T}}{(g(T \cup S') - g(S'))} \quad \quad (\mathrm{by \ submodularity \ of} \ g) \\
-                                           &= 2\sum_{T' \subseteq S'}{g(T')} + \sum_{\substack{T \subseteq S : \\ x \in T}}{(g(S) - g(S'))} \quad \quad (x \in T \implies T \cup S' = S) \\
-                                           &= 2\sum_{T' \subseteq S'}{g(T')} + 2^i(g(S) - g(S')) \quad \quad (\abs{\{T \subseteq S \mid x \in T\}} = 2^i) \\
-            \end{split}
+            \begin{alignedat}{2}
+                \sum_{T \subseteq S}{g(T)} &= \sum_{T' \subseteq S'}{g(T')} + \sum_{T' \subseteq S'}{g(T' \cup \{x\})} && \\
+                                           &= \sum_{T' \subseteq S'}{g(T')} + \sum_{T' \subseteq S'}{g(T' \cup \{x\})} + \sum_{T' \subseteq S'}{g(T')} - \sum_{T' \subseteq S'}{g(T')} && \\
+                                           &= 2\sum_{T' \subseteq S'}{g(T')} + \sum_{T' \subseteq S'}{(g(T' \cup \{x\}) - g(T'))} && \\
+                                           &= 2\sum_{T' \subseteq S'}{g(T')} + \sum_{\substack{T \subseteq S : \\ x \in T}}{(g(T) - g(T \cap S'))} && \\
+                                           &\ge 2\sum_{T' \subseteq S'}{g(T')} + \sum_{\substack{T \subseteq S : \\ x \in T}}{(g(T \cup S') - g(S'))} && \quad \quad (\mathrm{by \ submodularity \ of} \ g) \\
+                                           &= 2\sum_{T' \subseteq S'}{g(T')} + \sum_{\substack{T \subseteq S : \\ x \in T}}{(g(S) - g(S'))} && \quad \quad (x \in T \implies T \cup S' = S) \\
+                                           &= 2\sum_{T' \subseteq S'}{g(T')} + 2^i(g(S) - g(S')) && \quad \quad \rbk{\abs{\{T \subseteq S \mid x \in T\}} = 2^i} \\
+            \end{alignedat}
         \end{equation*}
         Now, multiplying both sides of the inequality by $2^{- \abs S}$, we get that $$\avg_{T \subseteq S}{g(T)} = 2^{- \abs S}\sum_{T \subseteq S}{g(T)} \ge 2 ^{1 - \abs S}\sum_{T' \subseteq S'}{g(T')} + 2^{i - \abs S}(g(S) - g(S'))$$ and recalling that $\abs S = i + 1$, we have that
         \begin{equation*}
-            \begin{split}
-                \avg_{T \subseteq S}{g(T)} &\ge 2^{- i}\sum_{T' \subseteq S'}{g(T')} + 2^{-1}(g(S) - g(S')) \\
-                                           &= \avg_{T' \subseteq S'}{g(T')} + \dfrac{g(S) - g(S')}{2} \\
-                                           &\ge \dfrac{g(\varnothing) + g(S')}{2} + \dfrac{g(S) - g(S')}{2} \quad \quad (\mathrm{by \ the \ strong \ inductive \ hypothesis}) \\
+            \begin{alignedat}{2}
+                \avg_{T \subseteq S}{g(T)} &\ge 2^{- i}\sum_{T' \subseteq S'}{g(T')} + 2^{-1}(g(S) - g(S')) && \\
+                                           &= \avg_{T' \subseteq S'}{g(T')} + \dfrac{g(S) - g(S')}{2} && \\
+                                           &\ge \dfrac{g(\varnothing) + g(S')}{2} + \dfrac{g(S) - g(S')}{2} && \quad \quad (\mathrm{by \ the \ strong \ inductive \ hypothesis}) \\
                                            &= \dfrac{g(\varnothing) + g(S)}{2}
-            \end{split}
+            \end{alignedat}
         \end{equation*}
-    }
+    \end{proof}
 
     \begin{framedlem}{}
         Given $n \in \N$, if $\func{g}{\powerset([n])}{\R}$ is submodular, it holds that $$\forall S_1, S_2 \subseteq [n] \quad \avg_{T_1 \subseteq S_1}{\avg_{T_2 \subseteq S_2}{g(T_1 \cup T_2)}} \ge \dfrac{g(\varnothing) + g(S_1) + g(S_2) + g(S_1 \cup S_2)}{4}$$
@@ -2337,15 +2331,15 @@
 
         Since $h_X$ is submodular, by the previous lemma observe that $$\forall S \subseteq [n] \quad \avg_{T \subseteq S}{h_X(T)} \ge \dfrac{h_X(\varnothing) + h_X(S)}{2} = \dfrac{g(X) + g(X \cup S)}{2}$$ Therefore, for any $S_1, S_2 \subseteq [n]$, we have that
         \begin{equation*}
-            \begin{split}
-                \avg_{T_1 \subseteq S_1}{\avg_{T_2 \subseteq S_2}{g(T_1 \cup T_2)}} &= \avg_{T_1 \subseteq S_1}{\avg_{T_2 \subseteq S_2}{h_{T_1}(T_2)}} \\
-                                                                                    &\ge \avg_{T_1 \subseteq S_1}{\dfrac{g(T_1) + g(T_1 \cup S_2)}{2}} \quad \quad (\mathrm{by \ the \ previous \ observation})\\
-                                                                                    &= \dfrac{1}{2}\rbk{\avg_{T_1 \subseteq S_1}{g(T_1)} + \avg_{T_1 \subseteq S_1}{g(T_1 \cup S_2)}} \\
-                                                                                    &= \dfrac{1}{2} \rbk{\avg_{T_1 \subseteq S_1}{g(T_1)} + \avg_{T_1 \subseteq S_1}{h_{S_2}(T_1)}} \\
-                                                                                    &\ge \dfrac{1}{2} \rbk{\dfrac{g(\varnothing) + g(S_1)}{2} + \avg_{T_1 \subseteq S_1}{g_{S_2}(T_1)}} \quad \quad (\mathrm{by \ the \ previous \ lemma}) \\
-                                                                                    &\ge \dfrac{1}{2} \rbk{\dfrac{g(\varnothing) + g(S_1)}{2} + \dfrac{g(S_2) + g(S_2 \cup S_1)}{2}} \quad (\mathrm{by \ the \ previous \ obs.}) \\
-                                                                                    &= \dfrac{g(\varnothing) + g(S_1) + g(S_2) + g(S_1 \cup S_2)}{4}
-            \end{split}
+            \begin{alignedat}{2}
+                \avg_{T_1 \subseteq S_1}{\avg_{T_2 \subseteq S_2}{g(T_1 \cup T_2)}} &= \avg_{T_1 \subseteq S_1}{\avg_{T_2 \subseteq S_2}{h_{T_1}(T_2)}} && \\
+                                                                                    &\ge \avg_{T_1 \subseteq S_1}{\dfrac{g(T_1) + g(T_1 \cup S_2)}{2}} && \quad \quad (\mathrm{by \ the \ previous \ obs.})\\
+                                                                                    &= \dfrac{1}{2}\rbk{\avg_{T_1 \subseteq S_1}{g(T_1)} + \avg_{T_1 \subseteq S_1}{g(T_1 \cup S_2)}} && \\
+                                                                                    &= \dfrac{1}{2} \rbk{\avg_{T_1 \subseteq S_1}{g(T_1)} + \avg_{T_1 \subseteq S_1}{h_{S_2}(T_1)}} && \\
+                                                                                    &\ge \dfrac{1}{2} \rbk{\dfrac{g(\varnothing) + g(S_1)}{2} + \avg_{T_1 \subseteq S_1}{g_{S_2}(T_1)}} && \quad \quad (\mathrm{by \ the \ previous \ lemma}) \\
+                                                                                    &\ge \dfrac{1}{2} \rbk{\dfrac{g(\varnothing) + g(S_1)}{2} + \dfrac{g(S_2) + g(S_2 \cup S_1)}{2}} && \quad \quad (\mathrm{by \ the \ previous \ obs.}) \\
+                                                                                    &= \dfrac{g(\varnothing) + g(S_1) + g(S_2) + g(S_1 \cup S_2)}{4} && \\
+            \end{alignedat}
         \end{equation*}
     \end{proof}
 
@@ -2368,17 +2362,16 @@
         \end{equation*}
         Lastly, observe that
         \begin{equation*}
-            \begin{split}
-                \Exp[f(R)] &\ge \dfrac{f(\varnothing) + f(S^*) + f([n] - S^*) + f([n])}{4} \\
-                           &\ge \dfrac{f(S^*) + f([n] - S^*)}{4} \quad \quad (\mbox{by non-negativity of} \ f) \\
-                           &= \dfrac{2 f(S^*)}{4} \quad \quad (\mathrm{by \ symmetry \ of} \ f) \\
-                           &= \dfrac{1}{2}f(S^*)
-            \end{split}
+            \begin{alignedat}{2}
+                \Exp[f(R)] &\ge \dfrac{f(\varnothing) + f(S^*) + f([n] - S^*) + f([n])}{4} && \\
+                           &\ge \dfrac{f(S^*) + f([n] - S^*)}{4} && \quad \quad (\mbox{by non-negativity of} \ f) \\
+                           &= \dfrac{2 f(S^*)}{4} && \quad \quad (\mathrm{by \ symmetry \ of} \ f) \\
+                           &= \dfrac{1}{2}f(S^*) && \\
+            \end{alignedat}
         \end{equation*}
     \end{proof}
 
-
-    We observe this proof can be also modified for functions that are non-negative, submodular but \tit{not} symmetric.
+    We observe this proof can be also modified for functions that are non-negative, submodular but \tit{not} symmetric, as shown below.
 
     \begin{framedthm}{}
         Given $n \in \N$, let $\func{f}{\powerset([n])}{\R}$ be a submodular and non-negative function. Given $\displaystyle S^* \in \argmax_{S \subseteq [n]}{f(S)}$, if $R$ is chosen from $[n]$ UAR, it holds that $$\Exp \sbk{f(R)} \ge \dfrac{1}{2}f(S^*)$$
@@ -2391,100 +2384,16 @@
     In conclusion, we showed that
     
     \begin{itemize}
-        \item NN-MI submodular function have a $\rbk{1 - \tfrac{1}{e}}$-approximation
+        \item NN-MI submodular functions have a $\rbk{1 - \tfrac{1}{e}}$-approximation
         \item NN-S submodular functions have a $\tfrac{1}{2}$-approximation
-        \item NN sumbodular function have a $\tfrac{1}{4}$-approximation
+        \item NN submodular function have a $\tfrac{1}{4}$-approximation
     \end{itemize}
 
     Submodularity provides a standard approximation bound to many \NPclass-hard \tit{maximization} problems. Furthermore, these same results can be obtained through \tit{supermodularity} for many \NPclass-hard \tit{minimization} problems.
 
-    \section{Exercises}
-
-    \begin{framedprob}[label={submod ex}]{}
-        Prove that, for any $n \in \N$, if the function $\func{f}{\mathcal P([n])}{\R}$ has diminishing returns, it is sumbodular.
-    \end{framedprob}
-
-    \solution{
-        First, we are going to prove a \tit{stronger} version of the diminishing return property, by extending it to \tit{subsets} of elements --- instead of single elements. The notation is a natural extension of the one we used so far.
-
-        \claim{
-            $\forall A \subseteq B \subseteq [n], C \subseteq [n] - B \quad \Delta_f(C \mid A) \ge \Delta_f(C \mid B)$.
-        }{
-            Fix three sets $A, B, C \subseteq [n]$ such that $A \subseteq B \subseteq [n]$ and $C \subseteq [n] - B$. Moreover, let $C := \{c_1, \ldots, c_k\}$, and for each $i \in [k]$ let $C_i := \{c_1, \ldots, c_i\}$. We proceed by induction on $i$.
-
-            For the base case, we have that $C_1 = \{c_1\}$, hence by the diminishing return property we have that $$\Delta_f(C_1 \mid A) = \Delta_f(c_1 \mid A) \ge \Delta_f(c_1 \mid B) = \Delta_f(C_1 \mid B)$$ Now, assume inductively that the property holds for $C_{i - 1}$; then, we get that
-
-            \begin{equation*}
-                \begin{split}
-                    \Delta_f(C_i \mid A) &= f(C_i \cup A) - f(A) \\
-                                         &= f(\{c_1, \ldots, c_i\} \cup A) - f(A) \\
-                                         &= f(\{c_1, \ldots, c_{i - 1}\} \cup \{c_i\} \cup A) - f(A) \\
-                                         &= f(C_{i - 1} \cup \{c_i\} \cup A) - f(A) \\
-                                         &= f(C_{i - 1} \cup \{c_i\} \cup A) - f(A) + f(C_{i - 1} \cup A) - f(C_{i - 1} \cup A) \\
-                                         &= \Delta_f(C_{i - 1} \mid A) + \Delta_f(c_i \mid C_{i - 1} \cup A)
-                \end{split}
-            \end{equation*}
-            Now, by applying induction on the first term, and the diminishing return property on the second term, we get that
-            \begin{equation*}
-                \begin{split}
-                    \Delta_f(C_i \mid A) &= \Delta_f(C_{i - 1} \mid A) + \Delta_f(c_i \mid C_{i - 1} \cup A) \\
-                                         &\ge \Delta_f(C_{i - 1} \mid B) + \Delta_f(c_i \mid C_{i - 1} \cup B) \\
-                                         &= f(C_{i - 1} \cup B) - f(B) + f(\{c_i\} \cup C_{i - 1} \cup B) - f(C_{i - 1} \cup B) \\
-                                         &= f(C_i \cup B) - f(B) \\
-                                         &= \Delta_f(C_i \mid B)
-                \end{split}
-            \end{equation*}
-        }
-
-        Now, fix two sets $S, T \subseteq [n]$; note that it always holds that $(S \cap T) \subseteq T \subseteq [n]$ and $(S - T) \subseteq [n] - T$ for any choice of $S$ and $T$. Hence, we can obtain the following algebraic manipulation
-        \begin{equation*}
-            \begin{split}
-                     & \Delta_f(S - T \mid S \cap T) \ge \Delta_f(S - T \mid T) \\
-                \iff & \Delta_f(S - (S \cap T) \mid S \cap T) \ge \Delta_f(S - ((S \cap T) \cup T) \mid (S \cap T) \cup T) \\
-                \iff & f((S \cap T) \cup S) - f(S \cap T) \ge f((S \cap T) \cup S \cup T) - f((S \cap T) \cup T) \\
-                \iff & f((S \cap T) \cup S) + f((S \cap T) \cup T) \ge f((S \cap T) \cup S \cup T) + f(S \cap T) \\
-                \iff & f(S) + f(T) \ge f(S \cup T) + f(S \cap T)
-            \end{split}
-        \end{equation*}
-        which proves that $f$ is indeed submodular.
-    }
-
-    \begin{framedprob}{}
-        Given $n \in \N$, suppose that the function $\func{f}{\mathcal P([n])}{\R}$ satisfies the following property: $$\forall \{i, j\} \in \binom{[n]}{2}, S \subseteq [n] - \{i, j\} \quad f(S \cup \{i\}) + f(S \cup \{j\}) \ge f(S \cup \{i, j \}) + f(S)$$ Prove that $f$ has the diminishing returns property.
-    \end{framedprob}
-
-    \solution{
-        Fix two sets $A \subseteq B \subseteq [n]$, and an element $x \in [n] - B$. Let $B - A = \{b_1, \ldots, b_m\}$ and for each $k \in [m]$ let $B_k := \{b_1, \ldots, b_k\}$. We claim the following.
-
-        \claim{
-            For any $k \in [m]$ it holds that $\Delta_f(x \mid A) \ge \Delta_f(x \mid A \cup B_k)$.
-        }{
-            We proceed by induction on $k$; consider $b_1 \in B - A$ --- and in particular $b_1 \neq x$; then clearly $A \subseteq [n] - \{x , b_1\}$ which means that we can use the property in the hypothesis as follows
-            \begin{equation*}
-                \begin{split}
-                         & f(A \cup \{x\}) + f(A \cup \{b_1\}) \ge f(A \cup \{x, b_1\}) + f(A) \\
-                    \iff & f(A \cup \{x\}) - f(A) \ge f(A \cup \{b_1\} \cup \{x\}) - f(A \cup \{b_1\}) \\
-                    \iff & \Delta_f(x \mid A) \ge \Delta_f(x \mid A \cup \{b_1\}) = \Delta_f(x \mid A \cup B_1)
-                \end{split}
-            \end{equation*}
-            Now, assume inductively that for $1 < k - 1 \le m$ it holds that $\Delta_f(x \mid A) \ge \Delta_f(x \mid B_{k - 1})$, and consider an element $b_k \in B - (A \cup B_{k - 1})$ --- and in particular $b_k \neq x$. Then, clearly $A \cup B_{k - 1} \subseteq [n] - \{x, b_k\}$ which means that we can use the property in the hypothesis as follows
-            \begin{equation*}
-                \begin{split}
-                         & f(A \cup B_{k - 1} \cup \{x\}) + f(A \cup B_{k - 1} \cup \{b_k\}) \ge f(A \cup B_{k - 1} \cup \{x, b_k\}) + f(A \cup B_{k - 1}) \\
-                    \iff & f(A \cup B_{k - 1} \cup \{x\}) + f(A \cup B_k) \ge f(A \cup B_k \cup \{x\}) + f(A \cup B_{k - 1}) \\
-                    \iff & f(A \cup B_{k - 1} \cup \{x\}) - f(A \cup B_{k - 1}) \ge f(A \cup B_k \cup \{x\}) - f(A \cup B_k) \\
-                    \iff & \Delta_f(x \mid A \cup B_{k - 1}) \ge \Delta_f(x \mid A \cup B_k)
-                \end{split}
-            \end{equation*}
-            and by inductive hypothesis we get that $$\Delta_f(x \mid A) \ge \Delta_f(x \mid A \cup B_{k - 1}) \ge \Delta_f(x \mid A \cup B_k)$$
-        }
-
-        In particular, by the claim we have that for $k = m$ it holds that $$\Delta_f(x \mid A) \ge \Delta_f(x \mid A \cup B_m) = \Delta_f(x \mid A \cup B_{\abs{B - A}}) = \Delta_f(x \mid A \cup (B - A)) = \Delta_f(x \mid B)$$ which proves that $f$ has the diminishing returns property.
-    }
-
     \chapter{Online algorithms}
 
-    Up to this point, we have explored the \tbf{Maximal Matching} problem primarily through its connections to other computational problems. In this section, however, we shift our focus to \tit{matchings} in \tbf{bipartite graphs} --- i.e. the Maximal Bipartite Matching (MBM) problem. These matchings are particularly significant due to their applicability in modeling a wide range of real-world scenarios. A classic example is the \tbf{task assignment problem}, where the goal is to allocate tasks to employees optimally. This can be framed as a \tit{maximum matching} problem in a bipartite graph: one partition represents the \tit{tasks}, the other the \tit{employees}, and edges connect each employee to the tasks they are qualified to perform.
+    In previous chapters, we discussed the \tbf{Maximal Matching} problem primarily through its connections to other computational problems. In this section, however, we shift our focus to \tit{matchings} in \tbf{bipartite graphs} --- i.e. the Maximal Bipartite Matching (MBM) problem. These matchings are particularly significant due to their applicability in modeling a wide range of real-world scenarios. A classic example is the \tbf{task assignment problem}, where the goal is to allocate tasks to employees optimally. This can be framed as a \tit{maximum matching} problem in a bipartite graph: one partition represents the \tit{tasks}, the other the \tit{employees}, and edges connect each employee to the tasks they are qualified to perform.
 
     \begin{figure}[H]
         \centering
@@ -2544,7 +2453,7 @@
         % \caption{A matching on a bipartite graph.}
     \end{figure}
 
-    However, this matching is now \tit{maximal}, but not \tit{maximum}. In fact, the following is a matching of the same bipartite graph but that has larger cardinality than the previous one.
+    However, this matching is now \tit{maximal}, but not \tit{maximum}. In fact, the following is a matching of the same bipartite graph but that has larger cardinality than the previous one:
 
     \begin{figure}[H]
         \centering
@@ -2574,11 +2483,11 @@
         \caption{A matching on a bipartite graph.}
     \end{figure}
 
-    However, let us take a closer look to what differentiates our two matching: we see that to obtain one from the other we can simply \tit{swap} all the edges of our matching. Moreover, we see that all the edges of the maximal matching actually form a \tit{path}, whose edges alternate between being outside and inside the matching. Furthermore, both the first and the last edge of this path are outside the matching, which must imply that the number of edges \tit{outside} the matching is one more than the number of inside edges.
+    However, let us take a closer look to what differentiates our two matchings: we see that to obtain one from the other we can simply \tit{swap} all the edges of our matching. Moreover, we see that all the edges of the maximal matching actually form a \tit{path}, whose edges alternate between being outside and inside the matching. Furthermore, both the first and the last edge of this path are outside the matching, which must imply that the number of edges \tit{outside} the matching is one more than the number of inside edges.
 
     In general, given a matching $M$ in a graph $G$, we say that a vertex $v \in V(G)$ is \tbf{free} w.r.t. $M$ if there are no edges $e \in M$ such that $e \cap v \neq \varnothing$. An edge $xy \in E(G)$ is said to be \tit{disjoint} from $M$ if both $x$ and $y$ are free w.r.t. $M$.
 
-    Now, we can formalize the concept that we introduced on this smalle example through the following definitions.
+    Now, we can formalize the concept that we introduced on this small example through the following definitions.
 
     \begin{frameddefn}{Alternating path}
         Given a graph $G$, and a matching $M$ on $G$, an \tbf{$M$-alternating path} is a path of $G$ that starts at a free node w.r.t. $M$, and is composed of edges that alternate between $M$ and $E(G) - M$.
@@ -2692,7 +2601,7 @@
         \end{algorithmic}
     \end{framedalgo}
 
-    In this algorithm, augmenting paths can be identified using either DFS or BFS, resulting in a runtime of $O(mn)$. However, more efficient variants have been developed to reduce this complexity by optimizing the way augmenting paths are found --- most notably, the \href{https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm}{Hopcroft–Karp algorithm} \cite{hopcroft}. Given a bipartite graph $G$ bipartitioned through $(A, B)$, the key idea is to perform a BFS starting simultaneously from all unmatched vertices in $A$, continuing until at least one free vertex in $B$ is reached; this produces a BFS forest. Then, a DFS is executed over such forest, beginning from the unmatched nodes in $B$, to discover augmenting paths. Each such path allows for alternating the matching along its edges, thereby increasing the overall matching size. The algorithm repeats this process until no more augmenting paths can be found. This approach improves the runtime to $O(m \sqrt n)$, a significant efficiency gain over the basic method.
+    In this algorithm, augmenting paths can be identified using either a DFS or a BFS, resulting in a runtime of $O(mn)$. However, more efficient variants have been developed to reduce this complexity by optimizing the way augmenting paths are found --- most notably, the \href{https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm}{Hopcroft–Karp algorithm} \cite{hopcroft}. Given a bipartite graph $G$ bipartitioned through $(A, B)$, the key idea is to perform a BFS starting simultaneously from all unmatched vertices in $A$, continuing until at least one free vertex in $B$ is reached; this produces a BFS forest. Then, a DFS is executed over such forest, beginning from the unmatched nodes in $B$, to discover augmenting paths. Each such path allows for alternating the matching along its edges, thereby increasing the overall matching size. The algorithm repeats this process until no more augmenting paths can be found. This approach improves the runtime to $O(m \sqrt n)$, a significant efficiency gain over the basic method.
 
     \section{The online approach}
 
@@ -2705,20 +2614,20 @@
         \item the set of available users and ads changes continuously, so earlier matches might no longer be optimal
     \end{itemize}
 
-    Online algorithms address both of these issues effectively. Still, because they must make decisions without knowing future inputs, they sometimes produce results that are \tit{not optimal in hindsight}. For instance, suppose that our online algorithm currently knows tha following association graph --- in which the \tit{red} nodes indicate the \tbf{ads} and the \tit{blue} ones indicate the \tbf{users}
+    Online algorithms address both of these issues effectively. Still, because they must make decisions without knowing future inputs, they sometimes produce results that are \tit{not optimal in hindsight}. For instance, suppose that our online algorithm currently knows the following association graph --- in which the \tit{red} nodes indicate the \tbf{ads} and the \tit{blue} ones indicate the \tbf{users}
 
     \begin{figure}[H]
         \centering
-        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
 
             \node[circle, draw, fill=Carmine] (1) []{$A$};
-            \node[circle, draw, fill=BlueLagoon] (2) [below of = 1]{$B$};
-            \node[circle, draw, fill=Carmine] (3) [right of = 1]{1};
+            \node[circle, draw, fill=Carmine] (2) [below of = 1]{$B$};
+            \node[circle, draw, fill=BlueLagoon] (3) [right of = 1]{1};
 
             % \path[every node/.style={font=\sffamily\small}]
 
-            \draw[-] (1) to (2);
-            \draw[-] (3) to (2);
+            \draw[-] (1) to (3);
+            \draw[-] (2) to (3);
 
             ;
         \end{tikzpicture}
@@ -2729,16 +2638,16 @@
 
     \begin{figure}[H]
         \centering
-        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
 
             \node[circle, draw, fill=Carmine] (1) []{$A$};
-            \node[circle, draw, fill=BlueLagoon] (2) [below of = 1]{$B$};
-            \node[circle, draw, fill=Carmine] (3) [right of = 1]{1};
+            \node[circle, draw, fill=Carmine] (2) [below of = 1]{$B$};
+            \node[circle, draw, fill=BlueLagoon] (3) [right of = 1]{1};
 
             % \path[every node/.style={font=\sffamily\small}]
 
-            \draw[-] (1) [green] to (2);
-            \draw[-] (3) to (2);
+            \draw[-] (1) [green] to (3);
+            \draw[-] (2) to (3);
 
             ;
         \end{tikzpicture}
@@ -2749,17 +2658,17 @@
 
     \begin{figure}[H]
         \centering
-        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.5cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
 
             \node[circle, draw, fill=Carmine] (1) []{$A$};
-            \node[circle, draw, fill=BlueLagoon] (2) [below of = 1]{$B$};
-            \node[circle, draw, fill=Carmine] (3) [right of = 1]{1};
+            \node[circle, draw, fill=Carmine] (2) [below of = 1]{$B$};
+            \node[circle, draw, fill=BlueLagoon] (3) [right of = 1]{1};
             \node[circle, draw, fill=BlueLagoon] (4) [below of = 3]{2};
 
             % \path[every node/.style={font=\sffamily\small}]
 
-            \draw[-] (1) [green] to (2);
-            \draw[-] (3) to (2);
+            \draw[-] (1) [green] to (3);
+            \draw[-] (2) to (3);
             \draw[-] (1) to (4);
 
             ;
@@ -2767,7 +2676,28 @@
         % \caption{Given the set of red vertices $S$, the green edges represent $\mathrm{cut}(S)$.}
     \end{figure}
 
-    However, in hindsight we see that this is \tit{not} the optimal solution: in fact, if our algorithm had matched user 1 to ad $B$, we could've been able to match both users.
+    However, in hindsight we see that this is \tit{not} the optimal solution: in fact, if our algorithm had matched user 1 to ad $B$, we could've been able to match both users, as shown below
+
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[-,>=stealth,shorten >=1pt,auto,node distance=1.75cm, thick,main node/.style={scale=0.9,circle,draw,font=\sffamily\normalsize}]
+
+            \node[circle, draw, fill=Carmine] (1) []{$A$};
+            \node[circle, draw, fill=Carmine] (2) [below of = 1]{$B$};
+            \node[circle, draw, fill=BlueLagoon] (3) [right of = 1]{1};
+            \node[circle, draw, fill=BlueLagoon] (4) [below of = 3]{2};
+
+            % \path[every node/.style={font=\sffamily\small}]
+
+            \draw[-] (1) to (3);
+            \draw[-] (2) [green] to (3);
+            \draw[-] (1) [green] to (4);
+
+            ;
+        \end{tikzpicture}
+        \caption{The optimal configuration, \tit{in hindsight}.}
+    \end{figure}
+
 
     This tendency toward non-optimal solutions is a \tit{defining feature} of online algorithms and is often \tit{unavoidable}. As a result, online algorithms are typically evaluated through \tbf{competitive analysis}, which measures the performance of an online algorithm relative to an optimal offline algorithm. The offline algorithm has the advantage of seeing the entire sequence of requests beforehand, while the online algorithm must respond to an \tit{unpredictable sequence}, making decisions without knowledge of future inputs. Unlike traditional worst-case analysis --- which evaluates an algorithm's behavior only on particularly difficult inputs --- competitive analysis demands strong performance across both easy and hard inputs, where difficulty is determined based on how well the optimal offline algorithm performs.
 
@@ -2788,15 +2718,15 @@
             \item Leave $x$ unmatched. On the next round, the adversary sends a new vertex $y$ and an edge $\{a, y\}$. Now our algorithm has two options.
 
                 \begin{itemize}
-                    \item Match $y$ with $a$; this solution is suboptimal, because an offline algorithm would have matched both $x$ and $y$. Hence, in this case the competitive ratio is again $\tfrac{1}{2}$
-                    \item Leave $y$ unmatched; this solution is suboptimal, because an offline algorithm would have matched both $x$ and $y$. Hence, in this case the competitive ratio is 0
+                    \item Match $y$ with $a$; this solution is suboptimal, because an offline algorithm would have matched both $x$ and $y$. Hence, the competitive ratio is again $\tfrac{1}{2}$
+                    \item Leave $y$ unmatched; this solution is suboptimal, because an offline algorithm would have matched both $x$ and $y$. Hence, the competitive ratio is 0
                 \end{itemize}
         \end{enumerate}
 
         This concludes that the adversary can always send a set of vertices and edges such that the competitive ratio is at most $\tfrac{1}{2}$.
     \end{proof}
 
-    This results determines an approximation ratio upper bound on \tit{every possible deterministic online algorithm}, concluding that a perfect solution for MBM is \tbf{impossible}. Knowing this, we shift our focus on finding a greedy solution that reaches such maximum approximation ratio. In this case, the best solution is the most straightforward: when a new user arrives, we match it if it can be matched, otherwise we leave it unmatched and proceed with the next round.
+    This result determines an approximation ratio upper bound on \tit{every possible deterministic online algorithm}, concluding that a perfect solution for MBM is \tbf{impossible}. Knowing this, we shift our focus on finding a greedy solution that reaches such maximum approximation ratio. In this case, the best solution is the most straightforward: when a new user arrives, we match it if it can be matched, otherwise we leave it unmatched and proceed with the next round.
 
     \begin{framedalgo}{The online maximal matching algorithm}
         Given a graph $G$ fed in an online fashion, the algorithm returns a maximal mathing of $G$. \\
@@ -2810,7 +2740,7 @@
                     \State Read $\mathcal N(x)$
                     \State $U(x) := \{v \in \mathcal N(x) \mid \nexists e \in M : v \in e\}$
                     \If{$U(x) \neq \varnothing$}
-                        \State let $y$ be a random vertex in $U(x)$
+                        \State Choose $y \in U(x)$
                         \State $M = M \cup \{xy\}$
                     \EndIf
                 \EndWhile
@@ -2835,12 +2765,10 @@
             \item each edge $e \in M^*$ must be incident to at least one node of $S$, since otherwise $M \cup \{e\}$ would be matching that extends $M$, contradicting the fact that it was maximal
         \end{itemize}
 
-        Now, consider a function $\func{f}{M^*}{S}$ such that $f(e) \in S \cap e$: the first observation implies that $f$ is well-defined, while the second observation implies that $f$ is \tit{injective}. In particular, this concludes that $$\abs{M^*} \le \abs S = 2 \abs M \iff \abs M \ge \dfrac{1}{2} \abs{M^*}$$
+        Now, consider a function $\func{f}{M^*}{S}$ such that $f(e) \in S \cap e$: the first observation implies that $f$ is \tit{well-defined}, while the second observation implies that $f$ is \tit{injective}. In particular, this concludes that $$\abs{M^*} \le \abs S = 2 \abs M \iff \abs M \ge \dfrac{1}{2} \abs{M^*}$$
     \end{proof}
 
-    \section{TODO}
-
-    In the previous section we discussed how \tit{deterministic} online algorithms must contend with an all-knowing adversary when compared to their offline counterparts. To overcome some of these limitations, \tbf{randomness} can be introduced into the algorithm's behavior. In randomized online algorithms, the nature of the adversary varies depending on how much information they possess. A commonly studied scenario involves a randomized adversary, where the input sequence is generated according to a \tit{random distribution}. However, even in this setting we can still prove the following result.
+    To overcome some of the limitations of \tit{deterministic} online algorithms that we presented, \tbf{randomness} can be introduced into the algorithm's behavior. In randomized online algorithms, the nature of the adversary varies depending on how much information they possess. A commonly studied scenario involves a randomized adversary, where the input sequence is generated according to a \tit{random distribution}. However, even in this setting we can still prove the following result.
     
     \begin{framedthm}{}
         There is no randomized online algorithm for MBM that can expectedly match more than $\tfrac{3}{4}$ of the edges of an optimal solution for graphs chosen from a random distribution.
@@ -2947,13 +2875,13 @@
         \end{algorithmic}
     \end{framedalgo}
 
-    This algorithms is identical to the naïve approach except for a very important detail: instead of choosing the $i$-th expert UAR, this approach uses a \tbf{majority voting system}. In fact, since $z_t$ is the majority of the predictions in $y_t$, and the values of the outputs are either 0 or 1, at each mistake now \tit{at least half} of the experts must be wrong, thus discarded. Hence, we get the following proposition.
+    This algorithm is identical to the naïve approach except for a very important detail: instead of choosing the $i$-th expert UAR, this approach uses a \tbf{majority voting system}. In fact, since $z_t$ is the majority of the predictions in $y_t$, and the values of the outputs are either 0 or 1, at each mistake now \tit{at least half} of the experts must be wrong, thus at least half of the experts are discarded at each error. Hence, we get the following proposition.
 
     \begin{framedprop}{}
         Given a set of trained experts $M$, in which at least one of them is perfect, the procedure $\textsc{halvingExpertModel}(M)$ makes at most $\floor{\log n}$ mistakes.
     \end{framedprop}
 
-    Both of these algorithms rely on the guarantee that \tit{at least one} perfect model is present in the input, but what there is no such model? In this case, the algorithm will clearly discard all the experts eventually. Consider the following procedure.
+    Both of these algorithms rely on the guarantee that \tit{at least one} perfect model is present in the input, but what if there is no such model? In this case, the algorithm will clearly discard all the experts eventually. Hence, consider the following procedure.
 
     \begin{framedalgo}{The Iterative Halving Expert model}
         Given a set $M$ of trained experts, the algorithm yields predictions over time $T$. \\
@@ -2984,7 +2912,7 @@
         Given a set of trained experts $M$, the number $m$ of mistakes made by the procedure $\textsc{iterativeHalvingExpertModel}(M, T)$ is such that $$m \le (m^* + 1)(\floor{\log n} + 1)$$ where $m^*$ is the number of mistakes of the best expert after $T$ rounds.
     \end{framedthm}
     
-    \begin{proof}{Proof sketch.}
+    \begin{proof}[Proof sketch.]
         We can split the algorithm into \tit{phases}, and each phase begins whenever $S$ is set to $[\abs M]$. Clearly, since there may be no perfect trained experts in the input, each expert could make at least one mistake during each phase. Moreover, in each phase the algorithm will make at most $\floor{\log n} + 1$ mistakes, because of the majority rule. Hence, given that there are at most $m^* + 1$ phases, the bound follows.
     \end{proof}
 
@@ -3150,11 +3078,11 @@
 
     This limitation is addressed by the \tbf{forecaster model}, which outputs probabilities rather than fixed predictions. For instance, consider a model predicting whether it will rain tomorrow. An expert model would use something like the weighted majority algorithm to output either a 0 (no rain) or a 1 (rain). In contrast, a forecaster model would return a probability distribution such as $(\mu , 1 - \mu)$, where $\mu$ is the predicted probability of a sunny day.
 
-    In expert models, individual predictors adjust their weights after incorrect predictions --- effectively incurring a penalty. For forecaster models, however, such \tbf{payoff scheme} must be adapted. If the forecaster outputs $(0.5, 0.5)$ and it rains, should that be considered wrong?
+    In expert models, individual predictors adjust their weights after incorrect predictions --- effectively incurring  a penalty. For forecaster models, however, such \tbf{payoff scheme} must be adapted. If the forecaster outputs $(0.5, 0.5)$ and it rains, should that be considered wrong?
 
-    A possible payoff scheme works as follows: if the forecaster assigns a probability $x \in [0,1]$ to an event occurring, it earns $x$ points if the event happens, and loses $1 - x$ points if it doesn't. This is meant to encourage the forecaster to report $x = \mu$ as the prediction, where $\mu$ is what he believes the probability of the even really is. In particular, the \tbf{expected gain} $g_\mu(x)$ under this scheme, assuming the forecaster believes the event has probability $\mu$ and it claims $x$ as the probability of the event, is given by $$g_\mu(x) = \Exp_\mu \sbk{P_x} = x \mu + (1 -x )(1 - \mu)$$ However we observe that $$\dfrac{d}{dx}g_\mu(x) = \mu + (1 - \mu)(-1) = 2\mu - 1$$ which means that the minimum value of the gain is reached on $x = 1$ if $\mu < \tfrac{1}{2}$, and at $x = 0$ otherwise --- recall that $\mu \in [0, 1]$. This means that such payoff scheme actually incentivizes the model to \tit{lie}, i.e. to claim that either $x = 1$ or $x = 0$ without values in between!
+    A possible payoff scheme works as follows: if the forecaster assigns a probability $x \in [0,1]$ to an event occurring, it earns $x$ points if the event happens, and loses $1 - x$ points if it doesn't. This is meant to encourage the forecaster to report $x = \mu$ as the prediction, where $\mu$ is what he believes the probability of the event really is. In particular, the \tbf{expected gain} $g_\mu(x)$ under this scheme, assuming the forecaster believes the event has probability $\mu$ and it claims $x$ as the probability of the event, is given by $$g_\mu(x) = \Exp_\mu \sbk{P_x} = x \mu + (1 -x )(1 - \mu)$$ However we observe that $$\dfrac{d}{dx}g_\mu(x) = \mu + (1 - \mu)(-1) = 2\mu - 1$$ which means that the minimum value of the gain is reached on $x = 1$ if $\mu < \tfrac{1}{2}$, and at $x = 0$ otherwise --- recall that $\mu \in [0, 1]$. This means that such payoff scheme actually incentivizes the model to \tit{lie}, i.e. to claim that either $x = 1$ or $x = 0$ without values in between!
 
-    To fix this problem, we need a payoff schemes based on \tbf{scoring rules}. They act as a generalization of the payoff scheme, where the gain and the payoff do not have to be sum to 1. In other wrods, if the forecaster guesses $x \in [0, 1]$ as the probability of the even, then it gains $f_1(x)$ points if the event really happens, otherwise it loses $f_0(x)$ points --- in the pvrious scheme, $f_1(x) = x$ and $f_0(x) = 1- x$. Hence, the expected gain now becomes $$g_\mu(x) = \Exp_\mu[P_x] = f_1(x) \mu + f_0(x)(1 - \mu)$$ An optimal scoring rule would be one that makes the model converge to $x = \mu$.
+    To fix this problem, we need a payoff scheme based on \tbf{scoring rules}. Scoring rules act as a generalization of the payoff scheme, where the gain and the payoff do not have to add up to 1. In other wrods, if the forecaster guesses $x \in [0, 1]$ as the probability of the event, then it gains $f_1(x)$ points if the event really happens, otherwise it loses $f_0(x)$ points --- in the pvrious scheme, $f_1(x) = x$ and $f_0(x) = 1- x$. Hence, the expected gain now becomes $$g_\mu(x) = \Exp_\mu[P_x] = f_1(x) \mu + f_0(x)(1 - \mu)$$ An optimal scoring rule would be one that makes the model converge to $x = \mu$.
 
     \begin{frameddefn}{Scoring rule}
         Given two functions $\func{f_0, f_1}{X}{[0, 1]}$, we say that the pair $(f_0, f_1)$ is a \tbf{scoring rule} if for all $\mu \in [0, 1]$ it holds that $$\argmax_{x \in [0, 1]}{g_\mu(x)} = \argmax_{x \in [0, 1]} {(f_1(x) \mu + f_0(x)(1 - \mu))}= \mu$$
@@ -3216,7 +3144,7 @@
         This implies that $g_\mu(x)$ is strictly increasing for $x < \mu$ and strictly decreasing for $x > \mu$. Hence, it must be that the \tit{unique maximum} is reached when $x = \mu$.
     \end{proof}
 
-    What if we have more than 2 possible outcomes, such as a set $\{0, 1, \ldots, k - 1\}$ of $k$ possible categories having distributions $$\overline \mu = [\mu_0, \mu_1, \ldots, \mu_{k - 1}]$$? In this case, we can use the following scoring rule, which is a \tit{generalization} of the Binary Logarithmic Scoring Rule.
+    What if we have more than 2 possible outcomes, such as a set $\{0, 1, \ldots, k - 1\}$ of $k$ possible categories having distributions $\overline \mu = [\mu_0, \mu_1, \ldots, \mu_{k - 1}]$? In this case, we can use the following scoring rule, which is a \tit{generalization} of the Binary Logarithmic Scoring Rule.
 
     \begin{frameddefn}{Cross-Entropy Scoring Rule}
         Given a vector of distributions $\overline \mu = [\mu_0, \mu_1, \ldots, \mu_{k - 1}]$, the \tbf{Cross-Entropy Scoring Rule} is defined as follows $$\forall i \in [k] \quad f_i(x) = (x_0, \ldots, x_{k - 1}) = \ln(x_i)$$
@@ -3257,8 +3185,8 @@
 
     \begin{itemize}
         \item we observe the first $t$ candidates, without hiring any of them
-        \item then, we keep observing the following candidates, hiring the first candidate that is better than all of the first $t$ cnadidates
-        \item if no such candidate is found, we stick with the last candidate seen
+        \item then, we keep observing the following candidates, hiring the first candidate that is better than all of the first $t$ applicants
+        \item if no such candidate is found, we stick with the last applicant seen
     \end{itemize}
 
     What is the \tit{probability of success} of this procedure?
@@ -3308,7 +3236,7 @@
         which clearly goes to $\tfrac{1}{e}$ as $n$ grows to $+ \infty$.
     \end{proof}
 
-    Now, we are going to consider a variant, known as the \tbf{Prophet Inequalities Problem}. Suppose that each candidate $c_i$ has a \curlyquotes{score} sampled independently from a known random variable $X_i \ge 0$. The setup is the identical: we still get to see the candidates in order and we stil have to select onlyh one of them in an \tit{online fashion}. Additionally, we get to see the distributions of the scores \tit{a priori}.
+    Now, we are going to consider a variant, known as the \tbf{Prophet Inequalities problem}. Suppose that each candidate $c_i$ has a \curlyquotes{score} sampled independently from a known random variable $X_i \ge 0$. The setup is identical: we still get to see the candidates in order and we stil have to select only one of them in an \tit{online fashion}. Additionally, we get to see the distributions of the scores \tit{a priori}.
 
     As an example, suppose that we have two candidates $c_1$ and $c_2$ with score variables $X_1$ and $X_2$ defined as follows $$\Pr[X_1 = 0] = \Pr[X_1 = 1] = \Pr \sbk{X_2 = \tfrac{1}{3}} = \Pr \sbk {X_2 = \tfrac{4}{3}} = \tfrac{1}{2}$$ Consider the following algorithm: if $X_1 = 0$ then we accept $X_2$, otherwise we accept $X_1$. Let $A$ be the output of this algorithm; what is the expected value of $A$?
     \begin{equation*}
@@ -3322,13 +3250,13 @@
     \centeredeq{1}{$
     % \begin{equation*}
         \begin{split}
-            \Exp[\max(X_1, X_2)] &= \Pr \sbk{X_2 = \dfrac{4}{3}} + \Pr \sbk{X_2 = \dfrac{1}{3}} \cdot \Pr[X_1 = 1] \cdot 1 + \Pr \sbk{X_2 = \dfrac{1}{3}} \cdot \Pr[X_1 = 0] \cdot \dfrac{1}{3} \\
+            \Exp[\max(X_1, X_2)] &= \Pr \sbk{X_2 = \dfrac{4}{3}} \cdot \dfrac{4}{3} + \Pr \sbk{X_2 = \dfrac{1}{3}} \cdot \Pr[X_1 = 1] \cdot 1 + \Pr \sbk{X_2 = \dfrac{1}{3}} \cdot \Pr[X_1 = 0] \cdot \dfrac{1}{3} \\
                                  &= \dfrac{1}{2} \cdot \dfrac{4}{3} + \dfrac{1}{2} \cdot \dfrac{1}{2} \cdot 1 + \dfrac{1}{2} \cdot \dfrac{1}{2} \cdot \dfrac{1}{3} \\
                                  &= 1
         \end{split}
     % \end{equation*}
     $}
-    Therefore, we get that $$\Exp[A] \ge \dfrac{11}{12} \Exp[\max(X_1, X_2)]$$ Can we always be competitive over $n$ candidate? The following theorem shows that no onlie algorithm can give an approximation better than $\tfrac{1}{2}$.
+    Therefore, we get that $$\Exp[A] \ge \dfrac{11}{12} \Exp[\max(X_1, X_2)]$$ Can we always be competitive over $n$ candidates? The following theorem shows that no online algorithm can give an approximation better than $\tfrac{1}{2}$.
 
     \begin{framedthm}{}
         There is no randomized online algorithm for the Prophet Inequalities problem that can expectedly return the best candidate with score greater than $\tfrac{1}{2}$ times the score of the optimal candidate --- for scores chosen from a random distribution.
@@ -3631,6 +3559,88 @@
                         \end{equation*}
                 \end{enumerate}
         \end{itemize}
+    }
+
+    \begin{framedprob}[label={submod ex}]{}
+        Prove that, for any $n \in \N$, if the function $\func{f}{\mathcal P([n])}{\R}$ has diminishing returns, it is submodular.
+    \end{framedprob}
+
+    \solution{
+        First, we are going to prove a \tit{stronger} version of the diminishing return property, by extending it to \tit{subsets} of elements --- instead of single elements. The notation is a natural extension of the one we used so far.
+
+        \claim{
+            $\forall A \subseteq B \subseteq [n], C \subseteq [n] - B \quad \Delta_f(C \mid A) \ge \Delta_f(C \mid B)$.
+        }{
+            Fix three sets $A, B, C \subseteq [n]$ such that $A \subseteq B \subseteq [n]$ and $C \subseteq [n] - B$. Moreover, let $C := \{c_1, \ldots, c_k\}$, and for each $i \in [k]$ let $C_i := \{c_1, \ldots, c_i\}$. We proceed by induction on $i$.
+
+            For the base case, we have that $C_1 = \{c_1\}$, hence by the diminishing return property we have that $$\Delta_f(C_1 \mid A) = \Delta_f(c_1 \mid A) \ge \Delta_f(c_1 \mid B) = \Delta_f(C_1 \mid B)$$ Now, assume inductively that the property holds for $C_{i - 1}$; then, we get that
+
+            \begin{equation*}
+                \begin{split}
+                    \Delta_f(C_i \mid A) &= f(C_i \cup A) - f(A) \\
+                                         &= f(\{c_1, \ldots, c_i\} \cup A) - f(A) \\
+                                         &= f(\{c_1, \ldots, c_{i - 1}\} \cup \{c_i\} \cup A) - f(A) \\
+                                         &= f(C_{i - 1} \cup \{c_i\} \cup A) - f(A) \\
+                                         &= f(C_{i - 1} \cup \{c_i\} \cup A) - f(A) + f(C_{i - 1} \cup A) - f(C_{i - 1} \cup A) \\
+                                         &= \Delta_f(C_{i - 1} \mid A) + \Delta_f(c_i \mid C_{i - 1} \cup A)
+                \end{split}
+            \end{equation*}
+            Now, by applying induction on the first term, and the diminishing return property on the second term, we get that
+            \begin{equation*}
+                \begin{split}
+                    \Delta_f(C_i \mid A) &= \Delta_f(C_{i - 1} \mid A) + \Delta_f(c_i \mid C_{i - 1} \cup A) \\
+                                         &\ge \Delta_f(C_{i - 1} \mid B) + \Delta_f(c_i \mid C_{i - 1} \cup B) \\
+                                         &= f(C_{i - 1} \cup B) - f(B) + f(\{c_i\} \cup C_{i - 1} \cup B) - f(C_{i - 1} \cup B) \\
+                                         &= f(C_i \cup B) - f(B) \\
+                                         &= \Delta_f(C_i \mid B)
+                \end{split}
+            \end{equation*}
+        }
+
+        Now, fix two sets $S, T \subseteq [n]$; note that it always holds that $(S \cap T) \subseteq T \subseteq [n]$ and $(S - T) \subseteq [n] - T$ for any choice of $S$ and $T$. Hence, we can obtain the following algebraic manipulation
+        \begin{equation*}
+            \begin{split}
+                     & \Delta_f(S - T \mid S \cap T) \ge \Delta_f(S - T \mid T) \\
+                \iff & \Delta_f(S - (S \cap T) \mid S \cap T) \ge \Delta_f(S - ((S \cap T) \cup T) \mid (S \cap T) \cup T) \\
+                \iff & f((S \cap T) \cup S) - f(S \cap T) \ge f((S \cap T) \cup S \cup T) - f((S \cap T) \cup T) \\
+                \iff & f((S \cap T) \cup S) + f((S \cap T) \cup T) \ge f((S \cap T) \cup S \cup T) + f(S \cap T) \\
+                \iff & f(S) + f(T) \ge f(S \cup T) + f(S \cap T)
+            \end{split}
+        \end{equation*}
+        which proves that $f$ is indeed submodular.
+    }
+
+    \begin{framedprob}{}
+        Given $n \in \N$, suppose that the function $\func{f}{\mathcal P([n])}{\R}$ satisfies the following property: $$\forall \{i, j\} \in \binom{[n]}{2}, S \subseteq [n] - \{i, j\} \quad f(S \cup \{i\}) + f(S \cup \{j\}) \ge f(S \cup \{i, j \}) + f(S)$$ Prove that $f$ has the diminishing returns property.
+    \end{framedprob}
+
+    \solution{
+        Fix two sets $A \subseteq B \subseteq [n]$, and an element $x \in [n] - B$. Let $B - A = \{b_1, \ldots, b_m\}$ and for each $k \in [m]$ let $B_k := \{b_1, \ldots, b_k\}$. We claim the following.
+
+        \claim{
+            For any $k \in [m]$ it holds that $\Delta_f(x \mid A) \ge \Delta_f(x \mid A \cup B_k)$.
+        }{
+            We proceed by induction on $k$; consider $b_1 \in B - A$ --- and in particular $b_1 \neq x$; then clearly $A \subseteq [n] - \{x , b_1\}$ which means that we can use the property in the hypothesis as follows
+            \begin{equation*}
+                \begin{split}
+                         & f(A \cup \{x\}) + f(A \cup \{b_1\}) \ge f(A \cup \{x, b_1\}) + f(A) \\
+                    \iff & f(A \cup \{x\}) - f(A) \ge f(A \cup \{b_1\} \cup \{x\}) - f(A \cup \{b_1\}) \\
+                    \iff & \Delta_f(x \mid A) \ge \Delta_f(x \mid A \cup \{b_1\}) = \Delta_f(x \mid A \cup B_1)
+                \end{split}
+            \end{equation*}
+            Now, assume inductively that for $1 < k - 1 \le m$ it holds that $\Delta_f(x \mid A) \ge \Delta_f(x \mid B_{k - 1})$, and consider an element $b_k \in B - (A \cup B_{k - 1})$ --- and in particular $b_k \neq x$. Then, clearly $A \cup B_{k - 1} \subseteq [n] - \{x, b_k\}$ which means that we can use the property in the hypothesis as follows
+            \begin{equation*}
+                \begin{split}
+                         & f(A \cup B_{k - 1} \cup \{x\}) + f(A \cup B_{k - 1} \cup \{b_k\}) \ge f(A \cup B_{k - 1} \cup \{x, b_k\}) + f(A \cup B_{k - 1}) \\
+                    \iff & f(A \cup B_{k - 1} \cup \{x\}) + f(A \cup B_k) \ge f(A \cup B_k \cup \{x\}) + f(A \cup B_{k - 1}) \\
+                    \iff & f(A \cup B_{k - 1} \cup \{x\}) - f(A \cup B_{k - 1}) \ge f(A \cup B_k \cup \{x\}) - f(A \cup B_k) \\
+                    \iff & \Delta_f(x \mid A \cup B_{k - 1}) \ge \Delta_f(x \mid A \cup B_k)
+                \end{split}
+            \end{equation*}
+            and by inductive hypothesis we get that $$\Delta_f(x \mid A) \ge \Delta_f(x \mid A \cup B_{k - 1}) \ge \Delta_f(x \mid A \cup B_k)$$
+        }
+
+        In particular, by the claim we have that for $k = m$ it holds that $$\Delta_f(x \mid A) \ge \Delta_f(x \mid A \cup B_m) = \Delta_f(x \mid A \cup B_{\abs{B - A}}) = \Delta_f(x \mid A \cup (B - A)) = \Delta_f(x \mid B)$$ which proves that $f$ has the diminishing returns property.
     }
     
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
