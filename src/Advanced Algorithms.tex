@@ -1763,7 +1763,7 @@
     In particular, we are interested in the $\ell_1$ metric. In fact, consider the following definition.
 
     \begin{frameddefn}{Isometrical embedding}
-        Consider two metrics $\func{d_1}{A \times A}{B}$ and $\func{d_2}{X \times X}{Y}$; we say that $d_1$ is \tbf{isometricaly embedded} into $d_2$ if there is a function $\func{f}{A}{X}$ such that $$d_1(x, y) = d_2(f(x), f(y))$$
+        Consider two metrics $\func{d_1}{A \times A}{B}$ and $\func{d_2}{X \times X}{Y}$; we say that $d_1$ is \tbf{isometrically embedded} into $d_2$ if there is a function $\func{f}{A}{X}$ such that $$d_1(x, y) = d_2(f(x), f(y))$$
     \end{frameddefn}
 
     \begin{framedlem}{}
@@ -1832,7 +1832,7 @@
         \[\begin{array}{ccl}
             \qquad\qquad\quad
             & \max \; \dfrac{\sum_{ij \in E(G)}{d_{ij}}}{\sum_{ij \in \binom{V(G)}{2}}{d_{ij}}} \\\\
-            & \sum\limits_{S \subseteq V(G)}{\lambda_Sd_S(i, j)}  = d_ij & \forall ij \in \binom{V(G)}{2} \\
+            & \sum\limits_{S \subseteq V(G)}{\lambda_Sd_S(i, j)}  = d_{ij} & \forall ij \in \binom{V(G)}{2} \\
             & \lambda \in \R^{2^n} \\
             & d \in \R^{\abs{\binom{n}{2}}} \\
         \end{array}\]
@@ -1841,14 +1841,14 @@
 
     In this \tit{non}-linear program, the variables $d_{ij}$ and $\lambda_S$ --- as their names suggest --- represent the cut values for the optimal cut metric $d^*$ described by the optimal solution, which corresponds to $\phi(d^*)$. Note that the values $d_S(i,j)$ are elementary cut metrics, hence they act as nothing more than a constant coefficient, while we optimize over the values $\lambda_S$ defining the \tit{actual} coefficients of the cut.
 
-    Additionally, the main constraint of the program optimizes over cut metrics, which we proved to be \curlyquotes{isometrically equivalent} to $\ell_1$ metrics in the previous lemmas. Therefore, this program can be viewed as optimizing both over cut metrics and $\ell_1$ metrics. However, the objective function is clearly \tit{non}-linear, hence the program is \tit{non}-linear as well. To fix this, we can normalize the denominator of the objective function since it is shared among all feasible solutions, obtaining the following LP.
+    Additionally, the main constraint of the program optimizes over cut metrics, which we proved to be \curlyquotes{isometrically equivalent} to $\ell_1$ metrics in the previous lemmas. Therefore, this program can be viewed as optimizing both over cut metrics and $\ell_1$ metrics. However, the objective function is clearly \tit{non}-linear, hence the program is \tit{non}-linear as well. To fix this, we can normalize the denominator of the objective function since it is shared among all feasible solutions, obtaining the following LP
 
     \begin{figure}[H]
         \centering
         \[\begin{array}{ccl}
             \qquad\qquad\quad
             & \max \; \displaystyle \sum_{ij \in E(G)}{d_{ij}} \\\\
-            & \sum\limits_{S \subseteq V(G)}{\lambda_Sd_S(i, j)}  = d_ij & \forall ij \in \binom{V(G)}{2} \\
+            & \sum\limits_{S \subseteq V(G)}{\lambda_Sd_S(i, j)}  = d_{ij} & \forall ij \in \binom{V(G)}{2} \\
             & \sum\limits_{ij \in \binom{V(G)}{2}}{d_ij} = 1 \\
             & \lambda \in \R^{2^n} \\
             & d \in \R^{\abs{\binom{n}{2}}} \\
@@ -1856,7 +1856,7 @@
         \caption{LP for SC.}
     \end{figure}
 
-    By construction, the solution to this LP corresponds to the optimal cut metric $d^*$, and the optimal solution to SC is given by the minimal elementary cut describing $d^*$; therefore, this LP could be used to get an exact solution to SC. However, we cannot employ this LP because it requires an \tit{exponential} number of variables. To solve this issue, consdier the following definition.
+    By construction, the solution to this LP corresponds to the optimal cut metric $d^*$, and the optimal solution to SC is given by the minimal elementary cut describing $d^*$; therefore, this LP could be used to get an \tit{exact} solution to SC. However, we cannot employ this LP because it requires an \tit{exponential} number of variables. To solve this issue, consider the following definition.
 
     \begin{frameddefn}{Metric distortion}
         Given two metrics $d_1$ and $d_2$ over the same vector space $V$, we say that $d_2$ has a \tbf{distortion} from $d_1$ of at most $\alpha \beta$ if $$\forall x, y \in V \quad \dfrac{d_1(x, y)}{\alpha} \le d_2(x, y) \le \beta d_1(x, y)$$
@@ -1929,7 +1929,7 @@
                            &= \abk{x,x} - 2 \abk{x,y} + \abk{y,y}
         \end{split}
     \end{equation*}
-    Note that $\ell_2^2$ does not always respect the \tit{triangle inequality}. For instance, in $\R$ we have that $\ell_2^2(-1, 0) = \ell_2(0, 1) = 1$, but $\ell_2^2(-1, 1) = 4 > 1$. Hence, the triangle inequality is forced by second constraint of the SDP itself, in fact: $$\ell_2^2(x, z) + \ell_2^2(z, y) \le \ell_2^2(x, y) \implies$$ $$(\abk{x_i, x_i} - 2\abk{x_i, x_j} + \abk{x_j, x_j}) + (\abk{x_j, x_j} - 2\abk{x_j , x_k} + \abk{x_k, x_k}) \ge \abk{x_i, x_i} - 2 \abk{x_i, x_k} + \abk{x_k, x_k}$$ $$\implies -2 \abk{x_i, x_j} + 2\abk{x_j , x_j} - 2 \abk{x_j , x_k } \ge -2 \abk{x_i , x_k}$$ $$\abk{x_i, x_j} - \abk{x_j , x_j} + \abk{x_j , x_k} \le \abk{x_i, x_k}$$
+    Note that $\ell_2^2$ does not always respect the \tit{triangle inequality}. For instance, in $\R$ we have that $\ell_2^2(-1, 0) = \ell_2(0, 1) = 1$, but $\ell_2^2(-1, 1) = 4 > 1$. In fact, the triangle inequality is forced by the second constraint of the SDP itself, in fact: $$\ell_2^2(x, z) + \ell_2^2(z, y) \le \ell_2^2(x, y) \implies$$ $$(\abk{x_i, x_i} - 2\abk{x_i, x_j} + \abk{x_j, x_j}) + (\abk{x_j, x_j} - 2\abk{x_j , x_k} + \abk{x_k, x_k}) \ge \abk{x_i, x_i} - 2 \abk{x_i, x_k} + \abk{x_k, x_k}$$ $$\implies -2 \abk{x_i, x_j} + 2\abk{x_j , x_j} - 2 \abk{x_j , x_k } \ge -2 \abk{x_i , x_k}$$ $$\abk{x_i, x_j} - \abk{x_j , x_j} + \abk{x_j , x_k} \le \abk{x_i, x_k}$$
 
     \begin{framedprop}{}
         Any $\ell_2^2$ metric on $n$ points can be isometrically embedded in time $n^O(1)$ into an $\ell_1$ metric on $\R^d$ with distortion factor $O(\sqrt{\log n})$.
@@ -1939,7 +1939,7 @@
         Omitted.
     \end{proof}
 
-    This $O(\sqrt{\log n})$ is the current best known approximation for SC. Moreover, SC cannot be expressed in temrs of CSP --- recall that the above SDP is a \tit{relaxation} for the minimal $\ell_2^2$ problem. Furthermore, even if this approximation ratio is believed to be the best possible one, the UGC only implies that there are no constant factor approximations for SC, meaning that the non-constant ratio could be proved to be lower.
+    This $O(\sqrt{\log n})$ is the current best known approximation for SC. Moreover, SC cannot be expressed in terms of CSP --- recall that the above SDP is a \tit{relaxation} for the minimal $\ell_2^2$ problem. Furthermore, even if this approximation ratio is believed to be the best possible one, the UGC only implies that there are no constant factor approximations for SC, meaning that the non-constant ratio could be proved to be lower.
 
     \subsection{Shortest path metric}
 
@@ -1953,7 +1953,7 @@
 
     It can be easily proven that this is indeed a metric --- we will omit the proof.
 
-    We are going to show that the shortest path metric cannot be embedded into $\ell_2$ over $\R^d$ without distortion. In particular, we will show the case for the cycle graph $C_4$. Consider the embedding $\func{f}{V(C_4)}{\R^2}$ such that $$f(1) = \rbk{-\dfrac{1}{2}; \dfrac{1}{2}} \quad f(2) = \rbk{\dfrac{1}{2}; \dfrac{1}{2}} \quad f(3) =\rbk{\dfrac{1}{2}; -\dfrac{1}{2}} \quad f(4) = \rbk{-\dfrac{1}{2}; -\dfrac{1}{2}}$$ It is easy to see that this embedding is isometrical from $d_{C_4}$ to $\ell_1$, since all distances are preserved. However, for the $\ell_2$ metrc the diagonals are \tit{not} isometric, in fact $$2 = d_{C_4}(1, 3) \neq \ell_2(f(1), f(3)) = \ell_2 \rbk{\rbk{-\dfrac{1}{2}; \dfrac{1}{2}},\rbk{\dfrac{1}{2}; -\dfrac{1}{2}}} = \sqrt 2$$ In particular, this embedding induces a distortion factor of at most $\sqrt 2$. Furthermore, thanks to the following lemma we prove that this distortion factor is actually the \tit{best} that we can achieve.
+    We are going to show that the shortest path metric cannot be embedded into $\ell_2$ over $\R^d$ without distortion. In particular, we will show the case for the cycle graph $C_4$. Consider the embedding $\func{f}{V(C_4)}{\R^2}$ such that $$f(1) = \rbk{-\dfrac{1}{2}; \dfrac{1}{2}} \quad f(2) = \rbk{\dfrac{1}{2}; \dfrac{1}{2}} \quad f(3) =\rbk{\dfrac{1}{2}; -\dfrac{1}{2}} \quad f(4) = \rbk{-\dfrac{1}{2}; -\dfrac{1}{2}}$$ It is easy to see that this embedding is isometrical from $d_{C_4}$ to $\ell_1$, since all distances are preserved. However, for the $\ell_2$ metric the diagonals are \tit{not} isometric, in fact $$2 = d_{C_4}(1, 3) \neq \ell_2(f(1), f(3)) = \ell_2 \rbk{\rbk{-\dfrac{1}{2}; \dfrac{1}{2}},\rbk{\dfrac{1}{2}; -\dfrac{1}{2}}} = \sqrt 2$$ In particular, this embedding induces a distortion factor of at most $\sqrt 2$. Furthermore, thanks to the following lemma we prove that this distortion factor is actually the \tit{best} that we can achieve.
 
     \begin{framedlem}{Shortest Diagonal lemma}
         For any $y_1, y_2, y_3, y_4 \in \R^4$ it holds that $$\ell_2^2(y_1, y_3) + \ell_2^2(y_2, y_4) \le \ell_2^2(y_1, y_2) + \ell_2^2(y_2, y_3) + \ell_2^2(y_3, y_4) + \ell_2^2(y_4, y_1)$$
@@ -1991,116 +1991,6 @@
 
     \section{Exercises}
     
-    \begin{framedprob}{}
-        Let $d$ be a cut metric. Prove that $d$ satisfies the triangle inequality.
-    \end{framedprob}
-
-    \solution{
-        Let $d$ be defined over $T_1, \ldots, T_k$ and $\lambda_1, \ldots, \lambda_k >0$, i.e. $$d(x, y) := \sum_{i \in [k]}{\lambda_id_{T_i}(x, y)}$$ Fix $x$, $y$ and $z$; we observe that $$d(x, y) + d(y, z) = \sum_{i \in [k]}{\lambda_id_{T_i}(x, y)} + \sum_{i \in [k]}{\lambda_id_{T_i}(y, z)} = \sum_{i \in [k]}{\lambda_i \rbk {d_{T_i}(x, y) + d_{T_i}(y, z)}}$$ and since $d_{T_1}, \ldots, d_{T_k}$ are elementary cut metrics, they must satisfy the triangle inequality, therefore $$\sum_{i \in [k]}{\lambda_i \rbk {d_{T_i}(x, y) + d_{T_i}(y, z)}} \ge \sum_{i \in [k]}{\lambda_i d_{T_i}(x, z)} = d(x, z)$$ which proves that $d$ indeed satisfies the triangle inequality.
-    }
-
-    \begin{framedprob}{}
-        Let $G = (V, E)$ be the graph with node set $V = [2n]$ for $n \in \N$, and edge set $$E = \{\{i, i + 1\} \mid 1 \le i \le 2n - 1\} \cup \{\{2n, 1\}\}$$ meaning that $G$ is a cycle on $2n$ nodes. Let $d_G$ be the shortest path metric on $G$. Prove that $d_G$ can be embedded isometrically into $\ell_1$.
-    \end{framedprob}
-
-    \solution{
-        First, we observe that the shortest path metric on a $2n$-long cycle graph is defined as follows: $$\forall j, k \in [2n] \quad d_G(j, k) = \soe{ll}{\abs{k - j} & \abs{k - j} \le n \\ 2n - \abs{k - j} & \abs{k - j} > n}$$ Moreover, we observe that $\ell_1$ defined on two binary vectors $x, y \in \{0, 1\}^h$ is equivalent to their \href{https://en.wikipedia.org/wiki/Hamming_distance}{Hamming distance}, i.e. $$\ell_1(x, y) = d_H(x, y) = \abs{\{i : x_i \neq y_i\}}$$ and in particular $$\forall j, k \in [2n] \quad \ell_1(f(j), f(k)) = d_H(f(j), f(k))$$
-
-        Now, consider the function $\func{f}{V(C_{2n})}{\R^n}$ defined as follows: $$\forall i \in [2n] \quad f(i) = \soe{ll}{0^{n - i + 1}1^{i - 1} & i \le n \\ 1^{2n - i + 1}0^{i - 1 - n} & i > n}$$ where the notation $0^a1^b$ stands for the vector $(\underbrace{0, \ldots, 0}_{a \ \mathrm{values}}, \underbrace{1, \ldots, 1}_{b \ \mathrm{values}}) \in \R^{a + b}$. At first, this definition of $f$ may seem counterintuitive, but if we consider each possible $f(i)$ the following nice pattern of \curlyquotes{sliding window} emerges:
-
-    \begin{center}
-        \begin{tabular}{c|c}
-            \hline
-            $i$ & $f(i)$ \\
-            \hline\hline
-            1 & 0000 \\
-            \hline
-            2 & 0001 \\ 
-            \hline
-            3 & 0011 \\
-            \hline
-            4 & 0111 \\
-            \hline
-            5 & 1111 \\
-            \hline
-            6 & 1110 \\
-            \hline
-            7 & 1100 \\
-            \hline
-            8 & 1000 \\
-            \hline
-        \end{tabular}
-    \end{center}
-
-        Finally, fix $j, k \in [2n]$, and without loss of generality suppose that $j < k$ -- in particular, this implies that $\abs{k - j} = k - j$. We have some cases to handle.
-
-        \begin{itemize}
-            \item $j, k \le n$; therefore, we have that
-                \begin{itemize}
-                    \item $j, k \le n \implies k - j \le n \implies d_G(j, k) = k - j$
-                    \item $j < k \implies n - j + 1 > n - k + 1 \land j - 1 < k - 1$
-                \end{itemize}
-                and thus, to evaluate the Hamming distance between $f(j)$ and $f(k)$ we need to consider the \curlyquotes{middle} section in which the two binary vectors may differ
-                \begin{equation*}
-                    \begin{split}
-                        \ell_1(f(j), f(k)) &= d_H(0^{n - j + 1}1^{j - 1}, 0^{n - k + 1}1^{k - 1}) \\
-                                           &= [n - (j - 1)] - [(n - k + 1) + 1] + 1 \\
-                                           &= [n - j + 1] - [n - k + 2] + 1 \\
-                                           &= k - j \\
-                                           &= d_G(j, k)
-                    \end{split}
-                \end{equation*}
-
-            \item $j, k > n$; therefore, we have that
-                \begin{itemize}
-                    \item $j, k > n \implies k - j < n \implies d_G(j, k) = k - j$
-                    \item $j < k \implies 2n - j + 1 > 2n - k + 1 \land j - 1 - n < k - 1 - n$
-                \end{itemize}
-                hence again, we just need to consider the \curlyquotes{middle} section in this case too
-                \begin{equation*}
-                    \begin{split}
-                        \ell_1(f(j), f(k)) &= d_H(1^{2n - j + 1}0^{j - 1- n}, 1^{2n - k + 1}, 0^{k - 1- n}) \\
-                                           &= [n - (k - 1- n)] - [(2n - j + 1) + 1] + 1 \\
-                                           &= [n - k + 1 + n] - [2n - j + 2] + 1 \\
-                                           &= k - j \\
-                                           &= d_G(j, k)
-                    \end{split}
-                \end{equation*}
-
-            \item $j \le n$ and $k < n$. We have two subcases
-                \begin{enumerate}
-                    \item $k - j \le n$; therefore, we have that
-                        \begin{itemize}
-                            \item $k - j \le n \implies d_G(j, k) = k - j$
-                            \item $k - j \le n \implies n - j + 1 \le 2n - k + 1 \land j - 1 \ge k - n - 1$
-                        \end{itemize}
-                        and thus, in this case to evaluate the Hamming distance between $f(j)$ and $f(k)$ we need to consider the sections in which the two vectors can be 0 --- since they can only coincide when they are both 1
-                        \begin{equation*}
-                            \begin{split}
-                                \ell_1(f(j), f(k)) &= d_H(0^{n - j + 1}1^{j - 1}, 1^{2n - k + 1}0^{k - 1- n}) \\
-                                                   &= (n - j + 1) + (k - 1 - n) \\
-                                                   &= k - j \\
-                                                   &= d_G(j, k)
-                            \end{split}
-                        \end{equation*}
-                    \item $k - j > n$; therefore, we have that
-                        \begin{itemize}
-                            \item $k - j > n \implies d_G(j, k) = 2n - k + j$
-                            \item $k - j > n \implies n - j + 1 > 2n - k + 1 \land j - 1 < k - n - 1$
-                        \end{itemize}
-                        and thus, in this case to evaluate the Hamming distance between $f(j)$ and $f(k)$ instead we need to consider the sections in which the two vectors can be 1 --- since they can only coincide when they are both 0
-                        \begin{equation*}
-                            \begin{split}
-                                \ell_1(f(j), f(k)) &= d_H(0^{n - j + 1}1^{j - 1}, 1^{2n - k + 1}0^{k - 1- n}) \\
-                                                   &= (j - 1) + (2n - k + 1) \\
-                                                   &= 2n - j + k \\
-                                                   &= d_G(j, k)
-                            \end{split}
-                        \end{equation*}
-                \end{enumerate}
-        \end{itemize}
-    }
-
     \chapter{Submodular optimization}
 
     \tbf{Submodular optimization} plays a central role in \href{https://en.wikipedia.org/wiki/Discrete_optimization}{discrete optimization}, particularly in algorithmic settings where efficiency and approximation guarantees are critical. Submodular functions model a \tit{diminishing returns} property that arises naturally in many computational problems, such as influence maximization, data summarization, and sensor placement. But before introducing submodular optimization in detail, we will discuss the following problem.
@@ -2109,7 +1999,7 @@
         The \tbf{Max Cover} (MC) problem is defined as follows: given a \tit{universe} (or \tit{ground}) set $\mathcal U = [n]$, a collection of sets $C = \{S_1, \ldots, S_m \}$ such that $S_i \subseteq \mathcal U$, and an integer $k \ge 1$, determine the sub-collection $S \subseteq C$ such that $\abs S = k$ that maximizes $\abs{\bigcup_{S_j \in S}{S_j}}$.
     \end{frameddefn}
 
-    In other words, we are asked to determine the sub-collection of the given $C$ of $k$ sets that covers as many elements of $\mathcal U$ as possible. For instance, given $\mathcal U = [7]$, $S_1 = \{1, 2\}$, $S_2 = \{2, 3\}$, $S_3 = \{3, 4, 5\}$, $S_4 = \{5, 6, 7\}$, an optimal solution would be $S = \{S_1, S_3\}$ because $\abs{S_1 \cup S_3} = \abs{\{1, 2, 3, 4, 5\}} = 5$.
+    In other words, we are asked to determine the sub-collection of the given $C$ of $k$ sets that covers as many elements of $\mathcal U$ as possible. For instance, given $\mathcal U = [7]$, $S_1 = \{1, 2\}$, $S_2 = \{2, 3\}$, $S_3 = \{3, 4, 5\}$, $S_4 = \{5, 6, 7\}$, and $k = 2$, an optimal solution would be $S = \{S_1, S_3\}$ because $\abs{S_1 \cup S_3} = \abs{\{1, 2, 3, 4, 5\}} = 5$.
 
     The approximation of MC is \tit{solved}, meaning that the best known approximation ratio of $1 - \tfrac{1}{e}$ has been proven to be tight under \NPclass-hardness. Such approximation ratio can be achieved through the following greedy algorithm.
 
@@ -2133,7 +2023,7 @@
     \end{framedalgo}
 
     \begin{framedthm}[label={mc approx ratio}]{\textsc{ApproxMaxCover}'s approximation ratio}
-        Given an instance $(U, C, k)$ of MC, and an optimal solution $S^*$ to MC on $(\mathcal U, C, k)$, let $S := \textsc{ApproxMaxCover}(\mathcal U, C, k)$. Then, it holds that $$\abs{\bigcup_{S_j \in S}} \ge \rbk{1 - \dfrac{1}{e}}\abs{\bigcup_{S_j \in S^*}{S_j}}$$
+        Given an instance $(U, C, k)$ of MC, and an optimal solution $S^*$ to MC on $(\mathcal U, C, k)$, let $S := \textsc{ApproxMaxCover}(\mathcal U, C, k)$. Then, it holds that $$\abs{\bigcup_{S_j \in S}{S_j}} \ge \rbk{1 - \dfrac{1}{e}}\abs{\bigcup_{S_j \in S^*}{S_j}}$$
     \end{framedthm}
 
     \begin{proof}
@@ -2149,32 +2039,35 @@
 
         Therefore, to prove the approximation ratio of the statement it suffices to show that $t_k \ge \rbk{1 - \tfrac{1}{e}} \mu_0$.
 
-        \claim{
+        \claim[Claim 1]{
             $\forall i \in [k] \quad \abs{S_i - T_{i - 1}} \ge \dfrac{\mu_{i - 1}}{k}$
         }{
-            Since $S^*$ is an optimal solution that covers $\abs{X^*}$ elements of $\mathcal U$, there must be at least one set $S_j^* \in S^*$ that covers at least \todo{i'm missing something here} % $\tfrac{\mu_{i - 1}}{k} = \tfrac{}{}$
+            Since $S^*$ is an optimal solution that covers $\abs{X^*}$ elements of $\mathcal U$, there must be at least one set $S_j^* \in S^*$ such that $$\abs{S_j^* - T_{i - 1}} \ge \dfrac{\abs{X^*} - \abs{T_{i - 1}}}{k} = \dfrac{\mu_{i - 1}}{k}$$ since otherwise it would be impossible for $S^*$ to cover all of $X^* - T_{i - 1}$.
+
+            Hence, the set $S_i$ selected at the $i$-th iteration is at least \tit{as large as} $S_j^*$, since it is the one maximizing the number of \curlyquotes{new} elements added: $$\abs{S_i - T_{i - 1}} \ge \abs{S^*_j - T_{i - 1}} \ge \dfrac{\mu_{i - 1}}{k}$$
         }
 
-        \claim{
+        \claim[Claim 2]{
             $\forall i \in [0, k] \quad \mu_i \le \rbk{1 - \dfrac{1}{k}}^i\abs{X^*}$
         }{
-            We will prove the claim by induction on $i$. In particular, if $i = 0$, we have that $$\mu_0 = \abs{X^*} \rbk{1 - \dfrac{1}{k}}^0 \abs{X^*} = 1 \cdot \abs{X^*}$$ hence the base case trivially holds. Then, assuming the inductive hypothesis, we can prove the inductive step as follows \todo{non capisco (TODO dentro allo split)}
+            We will prove the claim by induction on $i$. In particular, if $i = 0$, we have that $$\mu_0 = \abs{X^*} \rbk{1 - \dfrac{1}{k}}^0 \abs{X^*} = 1 \cdot \abs{X^*}$$ hence the base case trivially holds. Then, assuming the inductive hypothesis, we can prove the inductive step as follows
             \begin{equation*}
-                \begin{split}
-                    \mu_{i + 1} &= \abs{X^*} - t_{i + 1} \\
-                                &= \abs{X^*} - \abs{T_{i + 1}} \\
-                                % &= \abs{X^*} - \abs{\bigcup_{j = 1}^{i + 1}{S_j}} \\
-                                &= \abs{X^*} - TODO \\
-                                &= \abs{X^*} - \abs{T_i} - \abs{S_{i + 1} - T_i} \\
-                                &\le \mu_i - \dfrac{\mu_i}{k} \quad \quad (\mathrm{for \ the \ previous \ claim}) \\
-                                &= \rbk{1 - \dfrac{1}{k}}\mu_i \\
-                                &\le \rbk{1 - \dfrac{1}{k}} \rbk{1 - \dfrac{1}{k}}^i \abs{X^*} \quad \quad (\mathrm{by \ inductive \ hypothesis \ on} \ \mu_i) \\
-                                &= \rbk{1 - \dfrac{1}{k}}^{i + 1}\abs{X^*}
-                \end{split}
+                \begin{alignedat}{2}
+                    \mu_{i + 1} &= \abs{X^*} - t_{i + 1} && \\
+                                &= \abs{X^*} - \abs{T_{i + 1}} && \\
+                                &= \abs{X^*} - \abs{\bigcup_{j \in [i + 1]}{S_i}} && \\
+                                &= \abs{X^*} - \rbk{\abs{\bigcup_{j \in [i]}{S_i}} + \abs{S_{i + 1} - \bigcup_{j \in [i]}{S_i}}} && \\
+                                &= \abs{X^*} - (\abs{T_i} + \abs{S_{i + 1} - T_i}) && \\
+                                &= \abs{X^*} - \abs{T_i} - \abs{S_{i + 1} - T_i} && \\
+                                &\le \mu_i - \dfrac{\mu_i}{k} && \quad \quad (\mbox{by Claim 1}) \\
+                                &= \rbk{1 - \dfrac{1}{k}}\mu_i && \\
+                                &\le \rbk{1 - \dfrac{1}{k}} \rbk{1 - \dfrac{1}{k}}^i \abs{X^*} && \quad \quad (\mathrm{by \ inductive \ hypothesis \ on} \ \mu_i) \\
+                                &= \rbk{1 - \dfrac{1}{k}}^{i + 1}\abs{X^*} && \\
+                \end{alignedat}
             \end{equation*}
         }
 
-        Thanks to this claim, recalling that for any $k \ge 1$ it holds that $\rbk{1 - \tfrac{1}{k}}^k \le e^{-1}$, we get $$\mu_k \le \rbk{1 - \dfrac{1}{k}}^k \abs{X^*} \le \dfrac{1}{e} \abs{X^*}$$ Lastly, since $\mu_k = \abs{X^*} - \abs{T_k}$, we get that $$\abs{X^*} - \abs{T_k} = \mu_k \le \dfrac{1}{e} \abs{X^*} \iff \abs{T_k} \ge \rbk{1 - \dfrac{1}{e}} \abs{X^*} \iff t_k \ge \rbk{1 - \dfrac{1}{e}} \mu_0$$
+        By Claim 2, recalling that for any $k \ge 1$ it holds that $\rbk{1 - \tfrac{1}{k}}^k \le e^{-1}$, we get $$\mu_k \le \rbk{1 - \dfrac{1}{k}}^k \abs{X^*} \le \dfrac{1}{e} \abs{X^*}$$ Lastly, since $\mu_k = \abs{X^*} - \abs{T_k}$, we get that $$\abs{X^*} - \abs{T_k} = \mu_k \le \dfrac{1}{e} \abs{X^*} \iff \abs{T_k} \ge \rbk{1 - \dfrac{1}{e}} \abs{X^*} \iff t_k \ge \rbk{1 - \dfrac{1}{e}} \mu_0$$
     \end{proof}
 
     \section{Submodular functions}
@@ -3628,6 +3521,116 @@
             \end{tikzpicture}
             \caption{An example of the graph $G$ with $t = 2$, consisting of a $K_{2,4}$ and two $K_4$'s.}
         \end{figure}
+    }
+
+    \begin{framedprob}{}
+        Let $d$ be a cut metric. Prove that $d$ satisfies the triangle inequality.
+    \end{framedprob}
+
+    \solution{
+        Let $d$ be defined over $T_1, \ldots, T_k$ and $\lambda_1, \ldots, \lambda_k >0$, i.e. $$d(x, y) := \sum_{i \in [k]}{\lambda_id_{T_i}(x, y)}$$ Fix $x$, $y$ and $z$; we observe that $$d(x, y) + d(y, z) = \sum_{i \in [k]}{\lambda_id_{T_i}(x, y)} + \sum_{i \in [k]}{\lambda_id_{T_i}(y, z)} = \sum_{i \in [k]}{\lambda_i \rbk {d_{T_i}(x, y) + d_{T_i}(y, z)}}$$ and since $d_{T_1}, \ldots, d_{T_k}$ are elementary cut metrics, they must satisfy the triangle inequality, therefore $$\sum_{i \in [k]}{\lambda_i \rbk {d_{T_i}(x, y) + d_{T_i}(y, z)}} \ge \sum_{i \in [k]}{\lambda_i d_{T_i}(x, z)} = d(x, z)$$ which proves that $d$ indeed satisfies the triangle inequality.
+    }
+
+    \begin{framedprob}{}
+        Let $G = (V, E)$ be the graph with node set $V = [2n]$ for $n \in \N$, and edge set $$E = \{\{i, i + 1\} \mid 1 \le i \le 2n - 1\} \cup \{\{2n, 1\}\}$$ meaning that $G$ is a cycle on $2n$ nodes. Let $d_G$ be the shortest path metric on $G$. Prove that $d_G$ can be embedded isometrically into $\ell_1$.
+    \end{framedprob}
+
+    \solution{
+        First, we observe that the shortest path metric on a $2n$-long cycle graph is defined as follows: $$\forall j, k \in [2n] \quad d_G(j, k) = \soe{ll}{\abs{k - j} & \abs{k - j} \le n \\ 2n - \abs{k - j} & \abs{k - j} > n}$$ Moreover, we observe that $\ell_1$ defined on two binary vectors $x, y \in \{0, 1\}^h$ is equivalent to their \href{https://en.wikipedia.org/wiki/Hamming_distance}{Hamming distance}, i.e. $$\ell_1(x, y) = d_H(x, y) = \abs{\{i : x_i \neq y_i\}}$$ and in particular $$\forall j, k \in [2n] \quad \ell_1(f(j), f(k)) = d_H(f(j), f(k))$$
+
+        Now, consider the function $\func{f}{V(C_{2n})}{\R^n}$ defined as follows: $$\forall i \in [2n] \quad f(i) = \soe{ll}{0^{n - i + 1}1^{i - 1} & i \le n \\ 1^{2n - i + 1}0^{i - 1 - n} & i > n}$$ where the notation $0^a1^b$ stands for the vector $(\underbrace{0, \ldots, 0}_{a \ \mathrm{values}}, \underbrace{1, \ldots, 1}_{b \ \mathrm{values}}) \in \R^{a + b}$. At first, this definition of $f$ may seem counterintuitive, but if we consider each possible $f(i)$ the following nice pattern of \curlyquotes{sliding window} emerges:
+
+    \begin{center}
+        \begin{tabular}{c|c}
+            \hline
+            $i$ & $f(i)$ \\
+            \hline\hline
+            1 & 0000 \\
+            \hline
+            2 & 0001 \\ 
+            \hline
+            3 & 0011 \\
+            \hline
+            4 & 0111 \\
+            \hline
+            5 & 1111 \\
+            \hline
+            6 & 1110 \\
+            \hline
+            7 & 1100 \\
+            \hline
+            8 & 1000 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+        Finally, fix $j, k \in [2n]$, and without loss of generality suppose that $j < k$ -- in particular, this implies that $\abs{k - j} = k - j$. We have some cases to handle.
+
+        \begin{itemize}
+            \item $j, k \le n$; therefore, we have that
+                \begin{itemize}
+                    \item $j, k \le n \implies k - j \le n \implies d_G(j, k) = k - j$
+                    \item $j < k \implies n - j + 1 > n - k + 1 \land j - 1 < k - 1$
+                \end{itemize}
+                and thus, to evaluate the Hamming distance between $f(j)$ and $f(k)$ we need to consider the \curlyquotes{middle} section in which the two binary vectors may differ
+                \begin{equation*}
+                    \begin{split}
+                        \ell_1(f(j), f(k)) &= d_H(0^{n - j + 1}1^{j - 1}, 0^{n - k + 1}1^{k - 1}) \\
+                                           &= [n - (j - 1)] - [(n - k + 1) + 1] + 1 \\
+                                           &= [n - j + 1] - [n - k + 2] + 1 \\
+                                           &= k - j \\
+                                           &= d_G(j, k)
+                    \end{split}
+                \end{equation*}
+
+            \item $j, k > n$; therefore, we have that
+                \begin{itemize}
+                    \item $j, k > n \implies k - j < n \implies d_G(j, k) = k - j$
+                    \item $j < k \implies 2n - j + 1 > 2n - k + 1 \land j - 1 - n < k - 1 - n$
+                \end{itemize}
+                hence again, we just need to consider the \curlyquotes{middle} section in this case too
+                \begin{equation*}
+                    \begin{split}
+                        \ell_1(f(j), f(k)) &= d_H(1^{2n - j + 1}0^{j - 1- n}, 1^{2n - k + 1}, 0^{k - 1- n}) \\
+                                           &= [n - (k - 1- n)] - [(2n - j + 1) + 1] + 1 \\
+                                           &= [n - k + 1 + n] - [2n - j + 2] + 1 \\
+                                           &= k - j \\
+                                           &= d_G(j, k)
+                    \end{split}
+                \end{equation*}
+
+            \item $j \le n$ and $k < n$. We have two subcases
+                \begin{enumerate}
+                    \item $k - j \le n$; therefore, we have that
+                        \begin{itemize}
+                            \item $k - j \le n \implies d_G(j, k) = k - j$
+                            \item $k - j \le n \implies n - j + 1 \le 2n - k + 1 \land j - 1 \ge k - n - 1$
+                        \end{itemize}
+                        and thus, in this case to evaluate the Hamming distance between $f(j)$ and $f(k)$ we need to consider the sections in which the two vectors can be 0 --- since they can only coincide when they are both 1
+                        \begin{equation*}
+                            \begin{split}
+                                \ell_1(f(j), f(k)) &= d_H(0^{n - j + 1}1^{j - 1}, 1^{2n - k + 1}0^{k - 1- n}) \\
+                                                   &= (n - j + 1) + (k - 1 - n) \\
+                                                   &= k - j \\
+                                                   &= d_G(j, k)
+                            \end{split}
+                        \end{equation*}
+                    \item $k - j > n$; therefore, we have that
+                        \begin{itemize}
+                            \item $k - j > n \implies d_G(j, k) = 2n - k + j$
+                            \item $k - j > n \implies n - j + 1 > 2n - k + 1 \land j - 1 < k - n - 1$
+                        \end{itemize}
+                        and thus, in this case to evaluate the Hamming distance between $f(j)$ and $f(k)$ instead we need to consider the sections in which the two vectors can be 1 --- since they can only coincide when they are both 0
+                        \begin{equation*}
+                            \begin{split}
+                                \ell_1(f(j), f(k)) &= d_H(0^{n - j + 1}1^{j - 1}, 1^{2n - k + 1}0^{k - 1- n}) \\
+                                                   &= (j - 1) + (2n - k + 1) \\
+                                                   &= 2n - j + k \\
+                                                   &= d_G(j, k)
+                            \end{split}
+                        \end{equation*}
+                \end{enumerate}
+        \end{itemize}
     }
     
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
