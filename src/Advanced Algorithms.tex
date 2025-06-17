@@ -2603,6 +2603,29 @@
 
     In this algorithm, augmenting paths can be identified using either a DFS or a BFS, resulting in a runtime of $O(mn)$. However, more efficient variants have been developed to reduce this complexity by optimizing the way augmenting paths are found --- most notably, the \href{https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm}{Hopcroft–Karp algorithm} \cite{hopcroft}. Given a bipartite graph $G$ bipartitioned through $(A, B)$, the key idea is to perform a BFS starting simultaneously from all unmatched vertices in $A$, continuing until at least one free vertex in $B$ is reached; this produces a BFS forest. Then, a DFS is executed over such forest, beginning from the unmatched nodes in $B$, to discover augmenting paths. Each such path allows for alternating the matching along its edges, thereby increasing the overall matching size. The algorithm repeats this process until no more augmenting paths can be found. This approach improves the runtime to $O(m \sqrt n)$, a significant efficiency gain over the basic method.
 
+    Before ending this section, we are going to discuss the IP for MBM: given a bipartite graph $G = (V, E)$ bipartitioned through $(A, B)$, add a variable $x_{ij}$ for each edge $ij \in E$, and consider the following IP
+
+    \begin{figure}[H]
+        \centering
+        \[\begin{array}{ccl}
+            \qquad\qquad\quad
+            & \max \; \displaystyle \sum_{ij \in E} {x_{ij}} \\\\
+            & \sum\limits_{j \in \mathcal N (i)}{x_{ij}} \le 1 & \forall i \in A \\
+            & \sum\limits_{i \in \mathcal N (j)}{x_{ij}} \le 1 & \forall j \in B \\
+            & x_{ij} \in \{0,1\} & \forall ij \in E
+        \end{array}\]
+        \caption{IP for MBM.}
+    \end{figure}
+
+    We observe that this IP indeed models MBM, since
+    
+    \begin{itemize}
+        \item for each vertex $i \in A$, the first constraint forces the solution to choose at most one edge incident to $i$
+        \item for each vertex $j \in B$, the second constraint forces the solution to choose at most one edge incident to $j$
+    \end{itemize}
+
+    TODO \todo{da finire}
+
     \section{The online approach}
 
     An \tbf{online algorithm} processes its input \tit{piece-by-piece} in a sequential manner, without having access to the entire input from the outset. In contrast, a traditional offline algorithm receives \tit{all the input at once} and must then compute a solution. Online algorithms are valuable because they enable solving problems without requiring full knowledge of the data beforehand. The importance of online algorithms has grown significantly with the rise of the Internet and the explosion of big data, where handling massive datasets has made memory management challenging, even for the most advanced supercomputers.
@@ -2784,7 +2807,7 @@
 
     With a similar argument, it can be shown that the bound discussed in the previous section can be improved to $1 - \tfrac{1}{e}$.
 
-    The standard algorithm for the MBM is known as the \tbf{Ranking Algorithm}, originally developed by \textcite{kvv}. The output yielded by this algorithm is guaranteed to be an expected $\rbk{1 - \tfrac{1}{e}}$-approximation, which is tight considering the bound above.
+    The standard algorithm for the Online Bipartite Matching problem is known as the \tbf{Ranking Algorithm}, originally developed by \textcite{kvv}. The output yielded by this algorithm is guaranteed to be an expected $\rbk{1 - \tfrac{1}{e}}$-approximation, which is tight considering the bound above.
 
     Over the years, the algorithm has been revised and simplified, while keeping the same approximation ratio. The modern version of this algorithm is known as the \tbf{Market Process Algorithm}, developed by \textcite{eden} --- the name comes from its economics-based interpretation.
 
@@ -2796,27 +2819,65 @@
 
         \quad
         \begin{algorithmic}[1]
-            \Function{Inizialization}{}
+            \Function{MarketProcess}{$G$}
                 \For{$j \in A$}
                     \State Sample $w_j$ from $[0,1]$ independently and UAR
                     \State $p_j := e^{w_j - 1}$ \Comment{the price of the ad $j$}
                 \EndFor
-            \EndFunction
-            \Function{MarketProcess}{$G$}
-                \State \textsc{Inizialization}()
                 \State $M := \varnothing$
                     \For{$i \in U$}
                         \State $A' := \{j \in A \mid \nexists i' \in U : \{i', j \} \in M\}$ \Comment{set of unmatched ads}
                         \For{$j \in A'$}
                             \State $v_i(j) := \1[j \in \mathcal N(i)]$ \Comment{the value of ad $j$ for user $i$}
+                            \State $u_i(j) := v_i(j) - p_j$ \Comment{the utility of ad $j$ for user $i$}
                         \EndFor
+                        \State $u_i(\bot) := 0$ \Comment{the utility of \curlyquotes{not being matched} for user $i$}
+                        \If{$A' \cap \mathcal N(i) \neq \varnothing$} \Comment{otherwise $i$ remains unmatched}
+                            \State Choose $\displaystyle j^* \in \argmax_{j \in A' \cup \{\bot\}}{u_i(j)}$ \Comment{$j^*$ maximizes the utility for user $i$}
+                            \State $M = M \cup \{\{i, j^*\}\}$
+                        \EndIf
                     \EndFor
                 \State \textbf{return} $M$
             \EndFunction
         \end{algorithmic}
     \end{framedalgo}
 
-    TODO \todo{huge hole}
+    We observe that, on each iteration, for all $j \in A'$ it holds that $u_i(j) \ge 0$ if and only if $j \in \mathcal N (i)$ --- since $v_i(j)$ can only be either 0 or 1 and $$w_j \in [0,1] \implies \tfrac{1}{e} \le p_j := e^{w_j - 1} \le 1$$
+
+    Now, before proving the approximation ratio of the algorithm, we are going to introduce some notation:
+
+    \begin{itemize}
+        \item given a matching $M$, we write $M(i) = j$ to express that user $i$ is matched to ad $j$ through $M$, and $M(i) = \bot$ to express that user $i$ is not matched
+        \item for each ad $j \in A$, let $\mbox{rev}_j$ be the \tit{revenue} for ad $j$, where $$\mbox{rev}_j := \soe{ll}{p_j & \mbox{$j $ is matched} \\ 0 & \mbox{otherwise}}$$
+        \item for each user $i \in U$, let $\mbox{util}_i$ be the \tit{utility} for user $i$, where $$\forall j \in A \quad \mbox{util}_i := \soe{ll}{1 - p_j & M(i) = j \\ 0 & M(i) = \bot}$$
+    \end{itemize}
+
+    Moreover, we observe that by the bounds on $p_j$ it holds that $0 \le \mbox{rev}_j, \mbox{util}_i \le 1$.
+ 
+    \begin{framedlem}{}
+        Given a bipartite graph $G$ with bipartition $(A, U)$, let $w = [w_1 \ w_2 \ \ldots \ ]$ be the vector of the values sampled by running $\textsc{MarketProcess}(G)$; then, for each $ij \in E(G)$ it holds that $$\Exp_w[\mbox{util}_i + \mbox{rev}_j] \ge 1 - \dfrac{1}{e}$$
+    \end{framedlem}
+
+    \begin{proof}
+        Omitted.
+    \end{proof}
+
+    \begin{framedthm}{}
+        Given a bipartite graph $G$ with bipartition $(A, U)$, let $M^*$ be an optimal solution to the Online Bipartite Matching problem on $G$; then, given $M = \textsc{MarketProcess}(G)$, it holds that $$\abs M \ge \rbk{1 - \dfrac{1}{e}} \abs{M^*}$$
+    \end{framedthm}
+
+    \begin{proof}
+        Let $w = [w_1 \ w_2 \ \ldots \ ]$ be the vector of the values sampled by running the algorithm on input $G$, i.e. $\textsc{MarketProcess}(G)$. Given the output $M$, it holds that $$\sum_{i \in U}{\mbox{util}_i} + \sum_{j \in A}{\mbox{rev}_j} = \sum_{ij \in M}{(1 - p_j) + p_j } = \sum_{ij \in M}{1} = \abs M$$ which implies that
+        \begin{equation*}
+            \begin{alignedat}{2}
+                \Exp_w \sbk{\abs M} &= \Exp_w \sbk{\sum_{i \in U}{\mbox{util}_i} + \sum_{j \in A}{\mbox{rev}_j}} && \\
+                                    &\ge \Exp_w \sbk{\sum_{ij \in M^*}{\mbox{util}_i + \mbox{rev}_j}} && \\
+                                    &= \sum_{ij \in M^*}{\Exp_w[\mbox{util}_i + \mbox{rev}_j]} && \quad \quad (0 \le \mbox{rev}_j, \mbox{util}_i \le 1) \\
+                                    &\ge \sum_{ij \in M^*}{\rbk{1 - \dfrac{1}{e}}} && \quad \quad (\mbox{previous lemma}) \\
+                                    &= \rbk{1 - \dfrac{1}{e}} \abs {M^*} && \\
+            \end{alignedat}
+        \end{equation*}
+    \end{proof}
 
     \section{The Expert model}
 
@@ -3580,7 +3641,6 @@
             Fix three sets $A, B, C \subseteq [n]$ such that $A \subseteq B \subseteq [n]$ and $C \subseteq [n] - B$. Moreover, let $C := \{c_1, \ldots, c_k\}$, and for each $i \in [k]$ let $C_i := \{c_1, \ldots, c_i\}$. We proceed by induction on $i$.
 
             For the base case, we have that $C_1 = \{c_1\}$, hence by the diminishing return property we have that $$\Delta_f(C_1 \mid A) = \Delta_f(c_1 \mid A) \ge \Delta_f(c_1 \mid B) = \Delta_f(C_1 \mid B)$$ Now, assume inductively that the property holds for $C_{i - 1}$; then, we get that
-
             \begin{equation*}
                 \begin{split}
                     \Delta_f(C_i \mid A) &= f(C_i \cup A) - f(A) \\
@@ -3603,7 +3663,7 @@
             \end{equation*}
         }
 
-        Now, fix two sets $S, T \subseteq [n]$; note that it always holds that $(S \cap T) \subseteq T \subseteq [n]$ and $(S - T) \subseteq [n] - T$ for any choice of $S$ and $T$. Hence, we can obtain the following algebraic manipulation
+        Now, fix two sets $S, T \subseteq [n]$; note that it always holds that $(S \cap T) \subseteq T \subseteq [n]$ and $(S - T) \subseteq [n] - T$ for any choice of $S$ and $T$. Finally, through some algebraic manipulation, we get that
         \begin{equation*}
             \begin{split}
                      & \Delta_f(S - T \mid S \cap T) \ge \Delta_f(S - T \mid T) \\
@@ -3648,6 +3708,23 @@
 
         In particular, by the claim we have that for $k = m$ it holds that $$\Delta_f(x \mid A) \ge \Delta_f(x \mid A \cup B_m) = \Delta_f(x \mid A \cup B_{\abs{B - A}}) = \Delta_f(x \mid A \cup (B - A)) = \Delta_f(x \mid B)$$ which proves that $f$ has the diminishing returns property.
     }
+
+    \begin{framedprob}{}
+        Let $\func{f}{\powerset ([n])}{\R}$ be a modular function such that $f(\varnothing) = 0$.
+
+        \begin{enumerate}
+            \item Prove that the full description of $f$ (i.e. the value of $f(S)$ for any $S \subseteq [n]$) can be learned by querying the function $f$ on $O(n)$ sets.
+            \item let $G$ be a graph with $V(G) = [n]$ and $E(G) \subseteq \binom{V(G)}{2}$. Suppose that our algorithm is able to query $f$ only on the edges of $G$, i.e. we can query $f(\{i, j\})$ if and only if $\{i, j\} \in E(G)$. Can the algorithm learn the full description of $f$ if $G$ is a complete graph? What if $G$ is a tree? Give a general condition for the learnability of $f$.
+        \end{enumerate}
+    \end{framedprob}
+
+    \solution{
+        TODO \todo{da fare}
+    }
+
+    \begin{framedprob}{}
+        Prove that
+    \end{framedprob}
     
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
