@@ -2782,7 +2782,13 @@
 
     \subsection{The Market Process algorithm}
 
-    TODO \todo{buco}
+    With a similar argument, it can be shown that the bound discussed in the previous section can be improved to $1 - \tfrac{1}{e}$.
+
+    The standard algorithm for the MBM is known as the \tbf{Ranking Algorithm}, originally developed by \textcite{kvv}. The output yielded by this algorithm is guaranteed to be an expected $\rbk{1 - \tfrac{1}{e}}$-approximation, which is tight considering the bound above.
+
+    Over the years, the algorithm has been revised and simplified, while keeping the same approximation ratio. The modern version of this algorithm is known as the \tbf{Market Process Algorithm}, developed by \textcite{eden} --- the name comes from its economics-based interpretation.
+
+    We will refer to the bipartitions of the graph as the pair $(A, U)$, where $A$ is a set of advertisements and $U$ is a set of users.
 
     \begin{framedalgo}{The Market Process algorithm}
         Given a bipartite graph $G$ with bipartition $(A, U)$, the algorithm returns a matching on $G$. \\

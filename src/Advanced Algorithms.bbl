@@ -227,6 +227,58 @@
     \field{year}{2000}
   \endentry
 
+  \entry{eden}{inbook}{}{}
+    \name{author}{4}{}{%
+      {{hash=EA}{%
+         family={Eden},
+         familyi={E\bibinitperiod},
+         given={Alon},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=FM}{%
+         family={Feldman},
+         familyi={F\bibinitperiod},
+         given={Michal},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=FA}{%
+         family={Fiat},
+         familyi={F\bibinitperiod},
+         given={Amos},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=SK}{%
+         family={Segal},
+         familyi={S\bibinitperiod},
+         given={Kineret},
+         giveni={K\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{2}{%
+      {Society for Industrial}%
+      {Applied Mathematics}%
+    }
+    \strng{namehash}{EAFMFA+1}
+    \strng{fullhash}{EAFMFASK1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{EFF+21}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{booktitle}{Symposium on Simplicity in Algorithms (SOSA)}
+    \verb{doi}
+    \verb 10.1137/1.9781611976496.12
+    \endverb
+    \field{isbn}{9781611976496}
+    \field{pages}{107–110}
+    \field{title}{An Economics-Based Analysis of RANKING for Online Bipartite Matching}
+    \verb{url}
+    \verb http://dx.doi.org/10.1137/1.9781611976496.12
+    \endverb
+    \field{month}{01}
+    \field{year}{2021}
+  \endentry
+
   \entry{erdos}{article}{}{}
     \name{author}{2}{}{%
       {{hash=EP}{%
@@ -459,6 +511,50 @@
     \endverb
     \field{month}{05}
     \field{year}{2002}
+  \endentry
+
+  \entry{kvv}{inproceedings}{}{}
+    \name{author}{3}{}{%
+      {{hash=KRM}{%
+         family={Karp},
+         familyi={K\bibinitperiod},
+         given={R.\bibnamedelima M.},
+         giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=VUV}{%
+         family={Vazirani},
+         familyi={V\bibinitperiod},
+         given={U.\bibnamedelima V.},
+         giveni={U\bibinitperiod\bibinitdelim V\bibinitperiod},
+      }}%
+      {{hash=VVV}{%
+         family={Vazirani},
+         familyi={V\bibinitperiod},
+         given={V.\bibnamedelima V.},
+         giveni={V\bibinitperiod\bibinitdelim V\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {ACM Press}%
+    }
+    \strng{namehash}{KRMVUVVVV1}
+    \strng{fullhash}{KRMVUVVVV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{KVV90}
+    \field{sortinit}{K}
+    \field{sortinithash}{K}
+    \field{booktitle}{Proceedings of the twenty-second annual ACM symposium on Theory of computing - STOC ’90}
+    \verb{doi}
+    \verb 10.1145/100216.100262
+    \endverb
+    \field{pages}{352–358}
+    \field{series}{STOC ’90}
+    \field{title}{An optimal algorithm for on-line bipartite matching}
+    \verb{url}
+    \verb http://dx.doi.org/10.1145/100216.100262
+    \endverb
+    \field{year}{1990}
   \endentry
 
   \entry{ig_sc}{article}{}{}
