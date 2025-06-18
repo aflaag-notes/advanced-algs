@@ -3498,7 +3498,7 @@
     \end{framedprob}
 
     \solution{
-        TODO \todo{da fare}
+        Let $G_t$ be a graph constructed from a $K_{t, 2^t}$ and $2^t$ cliques $K_{t + 2}$.
 
         \begin{figure}[H]
             \centering
@@ -3521,6 +3521,16 @@
                 \node[circle, draw] (13) [right of = 10]{};
                 \node[circle, draw] (14) [right of = 13]{};
 
+                \node[circle, draw] (15) [right of = 12]{};
+                \node[circle, draw] (16) [right of = 15]{};
+                \node[circle, draw] (17) [right of = 14]{};
+                \node[circle, draw] (18) [right of = 17]{};
+
+                \node[circle, draw] (19) [right of = 16]{};
+                \node[circle, draw] (20) [right of = 19]{};
+                \node[circle, draw] (21) [right of = 18]{};
+                \node[circle, draw] (22) [right of = 21]{};
+
                 % \path[every node/.style={font=\sffamily\small}]
 
                 \draw[-] (1) to (5);
@@ -3532,24 +3542,69 @@
                 \draw[-] (4) to (5);
                 \draw[-] (4) to (6);
 
-                % \draw[-] (7) to (8);
+                \draw[-] (7) to (8);
                 \draw[-] (7) to (9);
-                % \draw[-] (7) to (10);
-                % \draw[-] (8) to (9);
+                \draw[-] (7) to (10);
+                \draw[-] (8) to (9);
                 \draw[-] (8) to (10);
-                % \draw[-] (9) to (10);
+                \draw[-] (9) to (10);
 
-                % \draw[-] (11) to (12);
+                \draw[-] (11) to (12);
                 \draw[-] (11) to (13);
-                % \draw[-] (11) to (14);
-                % \draw[-] (12) to (13);
+                \draw[-] (11) to (14);
+                \draw[-] (12) to (13);
                 \draw[-] (12) to (14);
-                % \draw[-] (13) to (14);
+                \draw[-] (13) to (14);
+
+                \draw[-] (15) to (16);
+                \draw[-] (15) to (17);
+                \draw[-] (15) to (18);
+                \draw[-] (16) to (17);
+                \draw[-] (16) to (18);
+                \draw[-] (17) to (18);
+
+                \draw[-] (19) to (20);
+                \draw[-] (19) to (21);
+                \draw[-] (19) to (22);
+                \draw[-] (20) to (21);
+                \draw[-] (20) to (22);
+                \draw[-] (21) to (22);
 
                 ;
             \end{tikzpicture}
-            \caption{An example of the graph $G$ with $t = 2$, consisting of a $K_{2,4}$ and four $K_2$'s.}
+            \caption{An example of the graph $G_2$, consisting of a $K_{2,4}$ and four $K_4$'s.}
         \end{figure}
+
+        % We observe that $$\lim_{t \to + \infty}{\rho(K_{t, 2^t})} = \lim_{t \to \infty}{\dfrac{t \cdot 2^t}{t + 2^t}} = \lim_{t \to + \infty}{t}$$
+
+        How does the algorithm compute when fed with $G_t$ as input? Since the degree of all the vertices of the cliques is exactly $t + 1$, and the complete bipartite graph $K_{t, 2^t}$ has vertices having degree $t$ --- namely, in its biggest partition --- the algorithm will compute as follows:
+
+        \begin{itemize}
+            \item initially, the algorithm will remove all the vertices of the biggest partition of $K_{t, 2^t}$ one by one, since they all have degree $t$, until only the $K_{t + 2}$-cliques remain
+            \item then, the algorithm will proceed to remove all the vertices of the cliques, removing one $K_{t + 2}$-clique at a time, until no vertices remain
+        \end{itemize}
+
+        This implies that the possible graphs that the algorithm sees are the following:
+
+        \begin{itemize}
+            \item $G_t$, i.e. the graph in input
+            \item for each iteration $i$ let $X_i$ be the set of vertices of the biggest partition of the complete bipartite graph that have been removed; then, we have the graph $G_t - X_i$, i.e. the remaining complete bipartite graph along with the $2^t$ $K_{t + 2}$-cliques
+            % \item $(G_t - K_{t, 2^t}) \cup K_{t,t}$, i.e. the algorithm reached the point in which the two partitions of the complete bipartite graph have the same size --- we observe that from now on, the algorithm will always see a $K_{s, s}$ or a $K_{s, s-1}$ with $s < t$, which does not increase the density of the total graph, so we may ignore all of these cases
+            \item $G - K_{t, 2^t}$, i.e. the $2^t$ $K_{t + 2}$-cliques --- we observe that from now on, the algorithm will always see a $K_s$ along with some amount of $K_{t + 2}$-cliques with $s \le t + 2$, which does not increase the density of the total graph, so we may ignore all of these cases
+        \end{itemize}
+
+        This concludes that we need to check the following densities in order to establish which result the algorithm returns:
+
+        \begin{itemize}
+            \item $\rho(G_t)=\dfrac{t \cdot 2^t + 2^t \cdot \binom{t + 2}{2}}{t + 2^t + 2^t \cdot (t + 2)} \stackrel{+ \infty}{\longrightarrow} \dfrac{t}{2}$
+            \item $\rho(G_t - X_i) = \dfrac{t \cdot 2^t + 2 ^ t \cdot \binom{t+ 2}{2} - t \cdot i}{ t + 2^t + 2^t \cdot (t + 2) - i} \stackrel{+ \infty}{\longrightarrow} \dfrac{t}{2}$ --- we observe that this can be proven through the \href{https://en.wikipedia.org/wiki/Squeeze_theorem}{Squeeze theorem}, in fact \centeredeq{0.9}{$\displaystyle \dfrac{t}{2} = \lim_{t \to + \infty}{\dfrac{2^{t - 1}(t + 2)(t + 1)}{2^t(t + 3)}} = \lim_{t \to +\infty}{\rho(G_t - X_{2^t})} \le \lim_{t \to +\infty}{\rho(G - X_i)} \le \lim_{t \to + \infty}{\rho(G_t)} = \dfrac{t}{2}$}
+            % \item $\rho((G_t - K_{t, 2^t}) \cup K_{t,t}) = \dfrac{t \cdot t + 2^t \cdot \binom{t + 2}{2}}{t + t + 2^t \cdot (t + 2)} \stackrel{+ \infty}{\longrightarrow} \dfrac{t}{2}$
+            \item $\rho(G_t - K_{t, 2^t}) = \dfrac{2^t \cdot \binom{t + 2}{2}}{2^t \cdot (t + 2)} = \dfrac{t + 1}{2} \stackrel{+ \infty}{\longrightarrow} \dfrac{t}{2}$
+        \end{itemize}
+
+        This implies that for any set $S = \textsc{Charikar}(G_t)$ that the algorithm may yield, it holds that $$\lim_{t \to + \infty}{\rho(G_t[S])} = \dfrac{t}{2}$$
+
+        However, it turns out that the densest subgraph of $G_t$ is actually $K_{t, 2^t}$, in fact $$\rho(K_{t, 2^t}) = \dfrac{t \cdot 2^t}{t + 2^t} \stackrel{+\infty}{\longrightarrow} t$$ and the algorithm \tit{does not encounter $K_{t, 2^t}$} as we previously mentioned. Hence, we have that $$\lim_{t \to + \infty}{\dfrac{\rho(G_t[S])}{\rho(K_{t, 2^t})}} = \dfrac{\tfrac{t}{2}}{t} = \dfrac{1}{2}$$ or, in other words, it holds that $$\forall \varepsilon > 0 \quad \exists t \in \N \quad \rho(G_t[S]) < (\tfrac{1}{2} + \varepsilon) \rho(K_{t, 2^t}) \implies \mathrm{ALG_{DS}}(G_t) < (\tfrac{1}{2} + \varepsilon) \cdot \mathrm{OPT_{DS}}(G_t)$$
     }
 
     \begin{framedprob}{}
@@ -3752,6 +3807,10 @@
         \end{enumerate}
     \end{framedprob}
     
+    \begin{proof}
+        TODO \todo{da fare}
+    \end{proof}
+
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
 \end{document}
