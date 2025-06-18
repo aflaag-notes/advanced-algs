@@ -3482,15 +3482,15 @@
     \end{framedprob}
 
     \solution{
-        Consider the following coloring $c$ of $G$: assign a different color to each vertex of $V^*$, and assign an additional color to all the vertices inside $V(G) - V^*$.
+        Let $V$ be a vertex cover of size $k$, and consider the following coloring $c$ of $G$: assign a different color to each vertex of $V$, and assign an additional color to all the vertices inside $V(G) - V$.
 
         \claim{
             $c$ is a proper coloring of $G$.
         }{
-            Suppose that $c$ is not proper, i.e. there exists two \tit{adjacent} vertices $x, y \in V(G)$ such that $c(x) = c(y)$. By definition of $c$ clearly $x$ and $y$ cannot be both inside $V^*$ otherwise they would have been assigned different colors; moreover, it cannot happen that one of them is inside $V^*$ and the other is not, because the vertices in $V(G) - V^*$ are assigned a color different from all the colors used for $V^*$. Hence, it must be that $x, y \in V(G) - V^*$, but since $x \sim y$ this implies that the edge $xy$ is not covered by $V^*$ $\lightning$.
+            Suppose that $c$ is not proper, i.e. there exists two \tit{adjacent} vertices $x, y \in V(G)$ such that $c(x) = c(y)$. By definition of $c$ clearly $x$ and $y$ cannot be both inside $V$ otherwise they would have been assigned different colors; moreover, it cannot happen that one of them is inside $V$ and the other is not, because the vertices in $V(G) - V$ are assigned a color different from all the colors used for $V$. Hence, it must be that $x, y \in V(G) - V$, but since $x \sim y$ this implies that the edge $xy$ is not covered by the vertex cover $V$ $\lightning$.
         }
 
-        The claim concludes that $\abs{V^*} + 1$ colors clearly suffice to properly color $G$.
+        The claim concludes that $\abs{V} + 1 = k + 1$ colors clearly suffice to properly color $G$.
     }
 
     \begin{framedprob}{}
@@ -3532,23 +3532,23 @@
                 \draw[-] (4) to (5);
                 \draw[-] (4) to (6);
 
-                \draw[-] (7) to (8);
+                % \draw[-] (7) to (8);
                 \draw[-] (7) to (9);
-                \draw[-] (7) to (10);
-                \draw[-] (8) to (9);
+                % \draw[-] (7) to (10);
+                % \draw[-] (8) to (9);
                 \draw[-] (8) to (10);
-                \draw[-] (9) to (10);
+                % \draw[-] (9) to (10);
 
-                \draw[-] (11) to (12);
+                % \draw[-] (11) to (12);
                 \draw[-] (11) to (13);
-                \draw[-] (11) to (14);
-                \draw[-] (12) to (13);
+                % \draw[-] (11) to (14);
+                % \draw[-] (12) to (13);
                 \draw[-] (12) to (14);
-                \draw[-] (13) to (14);
+                % \draw[-] (13) to (14);
 
                 ;
             \end{tikzpicture}
-            \caption{An example of the graph $G$ with $t = 2$, consisting of a $K_{2,4}$ and two $K_4$'s.}
+            \caption{An example of the graph $G$ with $t = 2$, consisting of a $K_{2,4}$ and four $K_2$'s.}
         \end{figure}
     }
 
