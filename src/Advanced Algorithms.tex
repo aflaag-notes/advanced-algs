@@ -3807,9 +3807,22 @@
         \end{enumerate}
     \end{framedprob}
     
-    \begin{proof}
-        TODO \todo{da fare}
-    \end{proof}
+    \solution{
+        \hspace{0.7cm}
+
+        \begin{enumerate}
+            \item A function $\func{f}{\powerset([n])}{\R}$ is said to be \tit{learnable} if and only if for any input $S \subseteq [n]$ it holds that the value of $f(S)$ can be known. We claim the following.
+
+                \claim{
+                    A modular function $f$ is learnable if and only if $f(\varnothing), f(1), \ldots, f(n)$ are known.
+                }{
+                    The direct implication trivially follows from the definition of learnability, so we only need to show the converse implication. We proceed by induction on the length of the input $\abs S = k$.
+
+                    When $\abs S = 1$, we already know the values of $f(S)$ by hypothesis, so the base case trivially holds. Now, assume that the statement holds for $k - 1$ items, and consider a set $S$ of $k$ items. Then, by modularity of $f$, we know that $$f(S) = f(\{x_1, \ldots, x_k\}) = f(\{x_1, \ldots, x_{k - 1}\}) + f(\{x_k\})- f(\varnothing)$$ Hence, we observe that $f(\{x_1, \ldots, x_{k - 1}\})$ can be learned by inductive hypothesis, and since both $f(\{x_k\})$ and $f(\varnothing)$ are known by hypothesis, the claim holds.
+                }
+            \item TODO \todo{da scrivere}
+        \end{enumerate}
+    }
 
     \begin{framedprob}{}
         Consider the LP relaxation for Set Cover. Suppose that each element in the instance is part of at most $t$ sets. Give a rounding algorithm to the LP that returns a Set Cover solution whose cost is not larger than $t$ times the optimal cost.
@@ -3834,9 +3847,9 @@
             implying that the solution $\{x_j\}_{j \in [m]}$ would violate the constraint of the LP, i.e. such solution would not be feasible $\lightning$.
         }
 
-        Then, consider an optimal solution $\{\overline x_j\}_{j \in [m]}$ to the LP relaxation of SC over such instance, and consider the following set $$\abs{\overline S} = \rbk{S_j \in C \mid \overline x_j \ge \tfrac{1}{t}}$$ The previous claim immediately proves that $\overline S$ is a feasible solution to SC: in fact, by the claim it holds that for each element $i \in [n]$ there exists a set $S_j$ that contains $i$ such that $x_j \ge \tfrac{1}{t}$, i.e. $i$ will be covered by at least one set.
+        Then, consider an optimal solution $\{\overline x_j\}_{j \in [m]}$ to the LP relaxation of SC over such instance, and consider the following set $$\abs{\overline S} = \cbk{S_j \in C \mid \overline x_j \ge \tfrac{1}{t}}$$ The previous claim immediately proves that $\overline S$ is a feasible solution to SC: in fact, by the claim it holds that for each element $i \in [n]$ there exists a set $S_j$ that contains $i$ such that $x_j \ge \tfrac{1}{t}$, i.e. $i$ will be covered by at least one set.
 
-        Finally, to prove that this is a $t$-approximation of SC, consider an optimal solution $\{x^*_j\}_{j \in [m]}$ to the IP for SC, and construct $$S^* = \rbk{S_j \in C \mid x_j^* = 1}$$ Then, we get that
+        Finally, to prove that this is a $t$-approximation of SC, consider an optimal solution $\{x^*_j\}_{j \in [m]}$ to the IP for SC, and construct $$S^* = \cbk{S_j \in C \mid x_j^* = 1}$$ Then, we get that
         \begin{equation*}
             \begin{alignedat}{2}
                 \abs{\overline S} &= \sum_{S_j \in \overline S}{1} && \\
