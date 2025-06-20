@@ -626,7 +626,7 @@
             \begin{equation*}
                 \begin{alignedat}{2}
                     \abs{\overline S} &= \sum_{v \in \overline S}{1} && \\
-                                      &\le \sum_{v \in \overline S}{2 \overline x_v} && \quad \quad \rbk{v \in \overline S \implies \overline x_v \ge \tfrac{1}{2}}\\
+                                      &\le \sum_{v \in \overline S}{2 \overline x_v} && \quad \quad \rbk{v \in \overline S \implies \overline x_v \ge \tfrac{1}{2} \iff 2 \overline x_v \ge 1}\\
                                       &= 2 \sum_{v \in \overline S}{\overline x_v} && \\
                                       &\le 2 \sum_{v \in V}{\overline x_v} && \quad \quad \rbk{\overline S \subseteq V \land \overline x_v \ge 0} \\
                                       &\le 2 \sum_{v \in V}{x^*_v} && \\
@@ -3810,6 +3810,45 @@
     \begin{proof}
         TODO \todo{da fare}
     \end{proof}
+
+    \begin{framedprob}{}
+        Consider the LP relaxation for Set Cover. Suppose that each element in the instance is part of at most $t$ sets. Give a rounding algorithm to the LP that returns a Set Cover solution whose cost is not larger than $t$ times the optimal cost.
+    \end{framedprob}
+
+    \solution{
+        Consider an instance $(\mathcal U, C)$ of set cover such that each element $i \in \mathcal U$ is in at most $t$ sets. We observe the following.
+
+        \claim{
+            For any feasible solution $\{x_j\}_{j \in [m]}$ of the LP relaxation, and for any $i \in [n]$, if $i \in S_{j_1}, \ldots, S_{j_k}$ then there exists $j \in \{j_1, \ldots, j_k\}$ such that $x_j \ge \tfrac{1}{t}$.
+        }{
+            By way of contradiction, suppose that for any $j \in \{j_1, \ldots, j_k\}$ it holds that $x_j < \tfrac{1}{t}$. However, since $k \le t$ by the hypothesis on the instance of SC we chose, it holds that
+            \begin{equation*}
+                \begin{split}
+                    \sum_{\substack{j \in[m] : \\ i \in S_j}}{x_j} &= \sum_{h = 1}^k{x_{j_h}} \\
+                                                                   &= x_{j_1} + \ldots + x_{j_k} \\
+                                                                   &< k \cdot \dfrac{1}{t} \\
+                                                                   &\le t \cdot \dfrac{1}{t} \\
+                                                                   &= 1
+                \end{split}
+            \end{equation*}
+            implying that the solution $\{x_j\}_{j \in [m]}$ would violate the constraint of the LP, i.e. such solution would not be feasible $\lightning$.
+        }
+
+        Then, consider an optimal solution $\{\overline x_j\}_{j \in [m]}$ to the LP relaxation of SC over such instance, and consider the following set $$\abs{\overline S} = \rbk{S_j \in C \mid \overline x_j \ge \tfrac{1}{t}}$$ The previous claim immediately proves that $\overline S$ is a feasible solution to SC: in fact, by the claim it holds that for each element $i \in [n]$ there exists a set $S_j$ that contains $i$ such that $x_j \ge \tfrac{1}{t}$, i.e. $i$ will be covered by at least one set.
+
+        Finally, to prove that this is a $t$-approximation of SC, consider an optimal solution $\{x^*_j\}_{j \in [m]}$ to the IP for SC, and construct $$S^* = \rbk{S_j \in C \mid x_j^* = 1}$$ Then, we get that
+        \begin{equation*}
+            \begin{alignedat}{2}
+                \abs{\overline S} &= \sum_{S_j \in \overline S}{1} && \\
+                                  &\le \sum_{S_j \in \overline S}{t \overline x_j} && \quad \quad (S_j \in \overline S \implies \overline x_j \ge \tfrac{1}{t} \iff t \overline x_j \ge 1) \\
+                                  &= t \sum_{S_j \in \overline S}{t \overline x_j} && \\
+                                  &\le t \sum_{S_j \in C}{\overline x_j} && \quad \quad (\overline S \subseteq C \land \overline x_j \ge 0) \\
+                                  &\le t \sum_{S_j \in C}{x^*_j} \\
+                                  &= t \abs{S^*}
+            \end{alignedat}
+        \end{equation*}
+        where the last inequality comes from the fact that the constraints of the LP are \tit{weaker} than the ones of the IP.
+    }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
 
