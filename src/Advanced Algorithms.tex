@@ -1551,7 +1551,7 @@
         \caption{SPD for MC.}
     \end{figure}
 
-    Let $\overline x$ be a feasible solution to the QP. If we map each component $\overline x_i$ with the vector $v_i = [\overline x_i \ 0 \ \ldots \ 0]^T$, we see that $$\abk{v_i, v_j} = \sum_{k \in [n]}{v_{k}(i) \cdot v_k(j)} = \overline x_i \overline x_j$$ Moreover, we observe that  the constraint $\abk{v_i, v_i} = 1$ is always satisfied $$\abk{v_i, v_i} = \sum_{k \in [n]}{v_k(i)^2} = {\overline x_i}^2 = 2$$ This concludes that $$\mathrm{SDP}^*_\mathrm{MC} \ge \mathrm{QP}^*$$
+    Let $\overline x$ be a feasible solution to the QP. If we map each component $\overline x_i$ with the vector $v_i = [\overline x_i \ 0 \ \cdots \ 0]^T$, we see that $$\abk{v_i, v_j} = \sum_{k \in [n]}{v_{k}(i) \cdot v_k(j)} = \overline x_i \overline x_j$$ Moreover, we observe that  the constraint $\abk{v_i, v_i} = 1$ is always satisfied $$\abk{v_i, v_i} = \sum_{k \in [n]}{v_k(i)^2} = {\overline x_i}^2 = 2$$ This concludes that $$\mathrm{SDP}^*_\mathrm{MC} \ge \mathrm{QP}^*$$
 
     However, the algorithm proposed by the two authors is \tit{very} surprising.
 
@@ -2951,7 +2951,7 @@
     We observe that, in the \curlyquotes{worst} case at each iteration only the $i$-th expert has made a mistake, meaning that this procedure will make at most $\abs M - 1$ mistakes.
 
     \begin{framedprop}{}
-        Given a set of trained experts $M$, in which at least one of them is perfect, the procedure $\textsc{naïveExpertModel}(M)$ makes at most $\abs M - 1$ mistakes.
+        Given a set of $n$ trained experts $M$, in which at least one of them is perfect, the procedure $\textsc{naïveExpertModel}(M)$ makes at most $\abs M - 1$ mistakes.
     \end{framedprop}
 
     More complex expert systems make use of a \tit{large} number of experts, therefore this naïve procedure requires too many iterations to \curlyquotes{reach} the perfect experts. The following approach provides a faster alternative.
@@ -2979,7 +2979,7 @@
     This algorithm is identical to the naïve approach except for a very important detail: instead of choosing the $i$-th expert UAR, this approach uses a \tbf{majority voting system}. In fact, since $z_t$ is the majority of the predictions in $y_t$, and the values of the outputs are either 0 or 1, at each mistake now \tit{at least half} of the experts must be wrong, thus at least half of the experts are discarded at each error. Hence, we get the following proposition.
 
     \begin{framedprop}{}
-        Given a set of trained experts $M$, in which at least one of them is perfect, the procedure $\textsc{halvingExpertModel}(M)$ makes at most $\floor{\log n}$ mistakes.
+        Given a set of $n$ trained experts $M$, in which at least one of them is perfect, the procedure $\textsc{halvingExpertModel}(M)$ makes at most $\floor{\log n}$ mistakes.
     \end{framedprop}
 
     Both of these algorithms rely on the guarantee that \tit{at least one} perfect model is present in the input, but what if there is no such model? In this case, the algorithm will clearly discard all the experts eventually. Hence, consider the following procedure.
@@ -3010,7 +3010,7 @@
     This procedure is identical to the previous one, but now if $S$ becomes empty we fill it again in order to repeat the process until time $T$. How many mistakes this algorithm makes at most?
 
     \begin{framedthm}{}
-        Given a set of trained experts $M$, the number $m$ of mistakes made by the procedure $\textsc{iterativeHalvingExpertModel}(M, T)$ is such that $$m \le (m^* + 1)(\floor{\log n} + 1)$$ where $m^*$ is the number of mistakes of the best expert after $T$ rounds.
+        Given a set of $n$ trained experts $M$, the number $m$ of mistakes made by the procedure $\textsc{iterativeHalvingExpertModel}(M, T)$ is such that $$m \le (m^* + 1)(\floor{\log n} + 1)$$ where $m^*$ is the number of mistakes of the best expert after $T$ rounds.
     \end{framedthm}
     
     \begin{proof}[Proof sketch.]
@@ -3054,7 +3054,7 @@
     This procedure is a refined version of the halving model, in which we consider a \tbf{weighted majority} instead of a simple majority rule. This allows to \tit{tweak the weights} of the experts --- in this case, halving their weight if they were wrong --- instead of removing them entirely.
 
     \begin{framedthm}{}
-        Given a set of trained experts $M$, the number $m$ of mistakes made by the procedure $\textsc{weightedMajorityExpertModel}(M, T)$ is such that $$m \le 2.41 \cdot (m^* + \log n)$$ where $m^*$ is the number of mistakes of the best expert after $T$ rounds.
+        Given a set of $n$ trained experts $M$, the number $m$ of mistakes made by the procedure $\textsc{weightedMajorityExpertModel}(M, T)$ is such that $$m \le 2.41 \cdot (m^* + \log n)$$ where $m^*$ is the number of mistakes of the best expert after $T$ rounds.
     \end{framedthm}
 
     \begin{proof}
@@ -3068,9 +3068,9 @@
         but we can actually find a tighter bound.
 
         \claim{
-            On each round $t \in [T]$, if $z_t \neq x_t$ then $\tfrac{3}{4}W^{(t)} \ge W^{(t  + 1)}$.
+            On each round $t \in [T]$, if $z_t \neq x_t$ then $W^{(t + 1)} \le \tfrac{3}{4} W^{(t)}$.
         }{
-            Let $I^{(t)}$ be the total weight of the wrong experts at the beginning of round $t$, i.e. $$I^{(t)} := \sum_{\substack{i \in [n]} : \\ y_{i, t} \neq x_t}{w_i^{(t)}}$$ If $z_t \neq x_t$ the weight of at least half of the experts will get halved, hence $I^{(t)} \ge \tfrac{1}{2}W^{(t)}$. Thus, we have that $$W^{(t + 1)} = \dfrac{I^{(t)}}{2} + (W^{(t)} - I^{(t)}) = W^{(t)} - \dfrac{I^{(t)}}{2} \le W^{(t)}- \dfrac{W^{(t)}}{4} = \dfrac{3}{4}W^{(t)}$$
+            Let $I^{(t)}$ be the total weight of the wrong experts at the beginning of round $t$, i.e. $$I^{(t)} := \sum_{\substack{i \in [n]} : \\ y_{i, t} \neq x_t}{w_i^{(t)}}$$ If $z_t \neq x_t$ then at least half of the total weight was placed on experts who made a mistake, hence $I^{(t)} \ge \tfrac{1}{2}W^{(t)}$. Thus, we have that $$W^{(t + 1)} = \dfrac{I^{(t)}}{2} + (W^{(t)} - I^{(t)}) = W^{(t)} - \dfrac{I^{(t)}}{2} \le W^{(t)}- \dfrac{W^{(t)}}{4} = \dfrac{3}{4}W^{(t)}$$
         }
 
         Through the claim, we inductively get that $$W^{(T)} \le \rbk{\dfrac{3}{4}}^m W^{(0)} = \rbk{\dfrac{3}{4}}^m n$$ Now, if $i^*$ is one of the \curlyquotes{best} experts --- i.e. one of those who made $m^*$ mistakes --- it holds that $W^{(T)} \ge w_{i^*}^{(T)}$. Since the $i^*$-th expert made $m^*$ mistakes, its original weight got halved $m^*$ times, therefore $w_{i^*}^{(T)} = 2^{-m^*}$.
@@ -3122,7 +3122,7 @@
     \end{framedalgo}
 
     \begin{framedthm}{}
-        Given a set of trained experts $M$, the number $m$ of mistakes made by the procedure $\textsc{randWeightedMajorityExpertModel}(M, T)$ is such that $$\mathbb E [m] \le (1 + \varepsilon) m^* + \dfrac{1}{\varepsilon}\ln n$$ for each $0 < \varepsilon < \tfrac{1}{2}$ where $m^*$ is the number of mistakes of the best expert after $T$ rounds.
+        Given a set of $n$ trained experts $M$, the number $m$ of mistakes made by the procedure $\textsc{randWeightedMajorityExpertModel}(M, T)$ is such that $$\mathbb E [m] \le (1 + \varepsilon) m^* + \dfrac{1}{\varepsilon}\ln n$$ for each $0 < \varepsilon < \tfrac{1}{2}$ where $m^*$ is the number of mistakes of the best expert after $T$ rounds.
     \end{framedthm}
 
     \begin{proof}
@@ -3822,7 +3822,7 @@
                 }
             \item We observe that in the previous exercise we did not use the fact that $f(\varnothing) = 0$, but we are going to leverage this property now. Consider a modular function $f$ that can be queried as described in the statement; through the claim of the previous exercise we proved that $f$ is learnable if and only if $f(\varnothing), f(1), \ldots, f(n)$ are learnable. Thus, since $f(\varnothing)$ is given, we need to determine a general condition which allows us to find the values for $f(1), \ldots, f(n)$ given only $f(\{i, j\})$ for each $\{i, j\} \in E(G)$.
 
-                First, by modularity of $f$, we observe that $$\forall \{i, j\} \in E(G) \quad f(\{i,j \}) = f(\{i\}) + f(\{j\}) - f(\varnothing)  f(\{i\}) + f(\{j\})$$ since $f(\varnothing) = 0$. This condition is sufficient to construct a \tit{system of equations}. For instance, consider the graph $K_3$ with the vertices labeled $V(K_3) = \{1, 2, 3\}$: then, we construct the following: $$\soe{ll}{f(\{1\}) + f(\{2\}) = f(\{1, 2\}) \\ f(\{2\}) + f(\{3\}) = f(\{2, 3\}) \\ f(\{1\}) + f(\{3\}) = f(\{1, 3\})}$$ We observe that this system can be rewritten through matrices as follows $$\smat{1 & 1 & 0 \\ 0 & 1 & 1 \\ 1 & 0 & 1} \cdot \smat{f(\{1\}) \\ f(\{2\})  \\ f(\{3\})} = \smat{f(\{1, 2\}) \\ f(\{2, 3\}) \\ f(\{1, 3\})}$$ Can we generalize this concept? Fix an ordering $e_1, \ldots, e_m$ of $E(G)$, and for each subgraph $H \subseteq G$ let $A^H \in \R^{m \times n}$ be a coefficient matrix such that its $k$-th row is defined as follows $$A^H_k(i) = \soe{ll}{1 & i \in e_k \\ 0 & \mbox{otherwise}}$$ Similarly, let $b \in \R^m$ be a vector defined as $b = \sbk{f(e_1) \ \ldots \ f(e_k)}^T$, and finally let $x = \sbk{x_1 \ \ldots \ x_n}^T$ for each $x_i = f(\{i\})$. It is clear that we can learn $f$ if and only if the system $A^Gx = b$ has a unique solution.
+                First, by modularity of $f$, we observe that $$\forall \{i, j\} \in E(G) \quad f(\{i,j \}) = f(\{i\}) + f(\{j\}) - f(\varnothing)  f(\{i\}) + f(\{j\})$$ since $f(\varnothing) = 0$. This condition is sufficient to construct a \tit{system of equations}. For instance, consider the graph $K_3$ with the vertices labeled $V(K_3) = \{1, 2, 3\}$: then, we construct the following: $$\soe{ll}{f(\{1\}) + f(\{2\}) = f(\{1, 2\}) \\ f(\{2\}) + f(\{3\}) = f(\{2, 3\}) \\ f(\{1\}) + f(\{3\}) = f(\{1, 3\})}$$ We observe that this system can be rewritten through matrices as follows $$\smat{1 & 1 & 0 \\ 0 & 1 & 1 \\ 1 & 0 & 1} \cdot \smat{f(\{1\}) \\ f(\{2\})  \\ f(\{3\})} = \smat{f(\{1, 2\}) \\ f(\{2, 3\}) \\ f(\{1, 3\})}$$ Can we generalize this concept? Fix an ordering $e_1, \ldots, e_m$ of $E(G)$, and for each subgraph $H \subseteq G$ let $A^H \in \R^{m \times n}$ be a coefficient matrix such that its $k$-th row is defined as follows $$A^H_k(i) = \soe{ll}{1 & i \in e_k \\ 0 & \mbox{otherwise}}$$ Similarly, let $b \in \R^m$ be a vector defined as $b = \sbk{f(e_1) \ \cdots \ f(e_k)}^T$, and finally let $x = \sbk{x_1 \ \cdots \ x_n}^T$ for each $x_i = f(\{i\})$. It is clear that we can learn $f$ if and only if the system $A^Gx = b$ has a unique solution.
 
                 \claim{
                     For each component $H_i$ of $G$, it holds that $A^{H_i}x = b$ has at least one solution if and only if $H_i$ has at least one cycle.
@@ -3880,7 +3880,7 @@
     }
 
     \begin{framedprob}{}
-        Consider the following algorithmic problem. A delivery company has access to a set $F$ of possible stocking facilities, and to a set of consumers $C$. Each consumer has to be served by one facility, and the company gains $G[c][f] \texteuro$ if it serves consumer $c \in C$ with facility $f \in F$.
+        Consider the following algorithmic problem. A delivery company has access to a set $F$ of possible stocking facilities, and to a set of consumers $C$. Each consumer has to be served by one facility, and the company gains $G[c][f]€$ if it serves consumer $c \in C$ with facility $f \in F$.
 
         If the company rents the set of facilities $S \subseteq F$, then the company will serve the generic client $c \in C$ with a facility $f \in S$ that maximizes $G[c][f]$. In particular, if the company rents the facilities of $S$, then its gain is $\sum_{c \in C}{\max_{f \in S}{G[c][f]}}$.
 
@@ -3908,8 +3908,8 @@
                 \item If $S \cap T = \varnothing$, let $M_S := g_c(S)$ and $M_T := g_c(T)$; we observe that clearly $g_c(S \cup T) = \max{\{M_S, M_T\}}$, therefore it holds that
                     \begin{equation*}
                         \begin{split}
-                            g_c(S) + g_c(T) &= \max_{f \in S}{G[c][f]} + \max_{f \in T}{G[c][f]} \\
-                                            &\ge \max_{f \in S \cup T}{G[c][f]} + 0 \\
+                            g_c(S) + g_c(T) &= M_S + M_T \\
+                                            &\ge \max\{M_S, M_T\} + 0 \\
                                             &= g_c(S \cup T) + f(\varnothing) \\
                                             &= g_c(S \cup T) + f(S \cap T)
                         \end{split}
@@ -3938,7 +3938,30 @@
                 \item If $S - T, T - S \neq \varnothing$, let $M_S := g_c(S)$, $M_T := g_c(T)$ and $M_{S \cap T} = g_c(S \cap T)$; we have three cases.
 
                     \begin{itemize}
-                        \item TODO \todo{da fare}
+                        \item If $M_S = M_T = M_{S \cap T}$ then $g_c(S \cup T) = M_S = M_T = M_{S \cap T}$ therefore
+                            \begin{equation*}
+                                \begin{split}
+                                    g_c(S) + g_c(T) &= M_S + M_T \\
+                                                    &= M_{S \cap T} + M_{S \cap T} \\
+                                                    &= g_c(S \cup T) + g_c(S \cap T)
+                                \end{split}
+                            \end{equation*}
+                        \item If $M_S = M_{S \cap T} \neq M_T$ --- the case in which $M_T = M_{S \cap T} \neq M_S$ is analogous --- then $M_T > M_S$ otherwise $M_S$ would have been maximum for $T$ as well. Therefore, it holds that $g_c(S \cup T) = M_T = g_c(T)$, hence
+                            \begin{equation*}
+                                \begin{split}
+                                    g_c(S) + g_c(T) &= M_S + M_T \\
+                                                    &= M_{S \cap T} + g_c(S \cup T) \\
+                                                    &= g_c(S \cap T) + g_c(S \cup T)
+                                \end{split}
+                            \end{equation*}
+                        \item If $M_S$, $M_T$ and $M_{S \cap T}$ are all distinct, then $M_S, M_T > M_{S \cap T}$ otherwise $M_{S \cap T}$ would violate the maximality of $M_S$ and $M_T$ for $S$ and $T$ respectively. Therefore, it holds that $g_c(S \cup T) = \max\{M_S, M_T\} > M_{S \cap T}$, hence
+                            \begin{equation*}
+                                \begin{split}
+                                    g_c(S) + g_c(T) &= M_S + M_T \\
+                                                    &\ge \max \{M_S, M_T\} + M_{S \cap T} \\
+                                                    &= g_c(S \cup T) + g_c(S \cap T)
+                                \end{split}
+                            \end{equation*}
                     \end{itemize}
             \end{itemize}
         }
