@@ -2176,7 +2176,7 @@
 
     For example, given $t = 4$ and $A_1 = \{1, 2, 4\}$, $A_2 = \{2, 3\}$, $A_3 = \{1, 4\}$ --- hence $n = 3$ and $C = \{A_1, A_2, A_3\}$ --- we have that $$f(\{1, 3\}) = \abs{\bigcup_{j \in \{1, 3\}}{A_j}} = \abs{A_1 \cup A_3} = \abs{\{1, 2, 4\}} = 3$$ and so on. In other words, the set $S$ is used to \tit{index} the sets $A_j \in C$.
 
-    \begin{framedprop}{}
+    \begin{framedprop}[label={covering proof}]{}
         The covering function is non-negative, monotone increasing and submodular.
     \end{framedprop}
 
@@ -2200,8 +2200,8 @@
         \begin{equation*}
             \begin{split}
                 f(S) + f(T) &= \sum_{i \in [t]}{f_i(S)} + \sum_{i \in [t]}{f_i(T)} \\
-                            &= \sum_{i \in [t]}{f_i(S) + f_i(T)} \\
-                            &\ge \sum_{i \in [t]}{f_i(S \cup T) + f_i(S \cap T)} \\
+                            &= \sum_{i \in [t]}{\rbk{f_i(S) + f_i(T)}} \\
+                            &\ge \sum_{i \in [t]}{\rbk{f_i(S \cup T) + f_i(S \cap T)}} \\
                             &= \sum_{i \in [t]}{f_i(S \cup T)} + \sum_{i \in [t]}{f_i(S \cap T)} \\
                             &= f(S \cup T) + f(S \cap T)
             \end{split}
@@ -2210,7 +2210,7 @@
 
     Since MC is \NPclass-hard, this proposition implies that the problem of maximizing non-negative, monotone increasing, and submodular functions over $k$ elements is \NPclass-hard as well. In fact, the $\rbk{1 - \tfrac{1}{e}}$-approximation for MC that we previously discussed is a specific instance of a more general algorithm, first presented by \textcite{nwf}, that aims at maximizing a Non-Negative and Monotone Increasing (NN-MI) submodular function.
 
-    \begin{framedalgo}{NWF approximation}
+    \begin{framedalgo}[label={nwf approx}]{NWF approximation}
         Given an NN-MI submodular function $\func{f}{\powerset(X)}{\R}$, and a value $k \in \N$, the algorithm returns a subset $S \subseteq X$. \\
         \hrule
 
@@ -2227,7 +2227,7 @@
         \end{algorithmic}
     \end{framedalgo}
 
-    \begin{framedthm}{}
+    \begin{framedthm}[label={nwf approx proof}]{}
         Given an NN-MI submodular function $\func{f}{\powerset(X)}{\R}$, a value $k \in \N$, and an optimal set $\displaystyle S^* \in \argmax_{S \in \binom{X}{k}}{f(S)}$, let $S := \textsc{NWFapprox}(f, k)$. Then, it holds that $$f(S) \ge \rbk{1 - \dfrac{1}{e}}f(S^*)$$
     \end{framedthm}
 
@@ -3441,7 +3441,7 @@
         \claim{
             $G$ admits a cut of size $\abs{E(G)}$ if and only if $G$ is bipartite.
         }{
-            Let $S$ be a set such that $\abs{\mathrm{cut}(S, \overline S)} = \abs{E(G)}$, and consider the two sets $(S, \overline S)$; then, by definition it holds that $$\mathrm{cut}(S, \overline S) = \{uv \mid u \in S \land v \in \overline S\}$$ which implies that $(S, \overline S)$ is a bipartition of $G$.
+            Let $S$ be a set such that $\abs{\mathrm{cut}(S, \overline S)} = \abs{E(G)}$, and consider the two sets $(S, \overline S)$; then, by definition it holds that $$\mathrm{cut}(S, \overline S) = \cbk{uv \mid u \in S \land v \in \overline S}$$ which implies that $(S, \overline S)$ is a bipartition of $G$.
 
             Vice versa, consider a bipartite graph $G$ having a bipartition $(A, B)$; then, we observe that $B = V(G) - A = \overline A$, therefore $$\abs{\mathrm{cut}(A, B)} = \abs{\mathrm{cut}(A, \overline A)} = \abs{E(G)}$$
         }
@@ -3843,6 +3843,8 @@
     \end{framedprob}
 
     \solution{
+        We observe that this exercise is very similar to the proof of \cref{lp 2-approx vc}.
+
         Consider an instance $(\mathcal U, C)$ of set cover such that each element $i \in \mathcal U$ is in at most $t$ sets. We observe the following.
 
         \claim{
@@ -3875,6 +3877,84 @@
             \end{alignedat}
         \end{equation*}
         where the last inequality comes from the fact that the constraints of the LP are \tit{weaker} than the ones of the IP.
+    }
+
+    \begin{framedprob}{}
+        Consider the following algorithmic problem. A delivery company has access to a set $F$ of possible stocking facilities, and to a set of consumers $C$. Each consumer has to be served by one facility, and the company gains $G[c][f] \texteuro$ if it serves consumer $c \in C$ with facility $f \in F$.
+
+        If the company rents the set of facilities $S \subseteq F$, then the company will serve the generic client $c \in C$ with a facility $f \in S$ that maximizes $G[c][f]$. In particular, if the company rents the facilities of $S$, then its gain is $\sum_{c \in C}{\max_{f \in S}{G[c][f]}}$.
+
+        Suppose that the company can rent at most $m$ facilites. Give an algorithm for approximately maximizing the gain of the company.
+    \end{framedprob}
+
+    \solution{
+        We observe that this exercise is very similar to the proof of \cref{covering proof}.
+
+        Let $g(S) = \sum_{c \in C}{\max_{f \in S}{G[c][f]}}$ be the gain of $S$, and for each customer $c \in C$ construct the following subfunction $$\forall c \in C \quad g_c(S) = \soe{ll}{\max_{f \in S}{G[c][f]} & S \neq \varnothing \\ 0 & \mbox{otherwise}}$$ This directly implies that $$g(S) = \sum_{c \in C}{g_c(S)}$$
+        
+        \claim{
+            For all $c \in C$, the subfunction $g_c$ is non-negative, monotone increasing and submodular.
+        }{
+            First, fix a customer $c \in C$, and consider the subfunction $g_c$.
+
+            Since the values inside the matrix $G$ are \texteuro's, $g_c$ is trivially non-negative.
+
+            Now, fix two sets $S, T \subseteq F$ of facilities such that $S \subseteq T$: clearly, since $S$ is contained inside $T$, and $G$ is non-negative, it holds that $$\max_{f \in S}{G[c][f]} \le \max_{f \in T}{G[c][f]}$$ This proves that $g_c$ is monotone increasing.
+
+            Lastly, fix two sets $S, T \subseteq F$ of facilities; to prove that $g_c$ is also submodular, we have three cases to handle.
+
+            \begin{itemize}
+                % \item If $S \cap T = \varnothing$, then clearly $$\max_{f \in S \cup T}{G[c][f]} = \max  \rbk{\{\max_{f \in S}{G[c][f]}, \max_{f \in T}{G[c][f]}\}}$$ therefore it holds that
+                \item If $S \cap T = \varnothing$, let $M_S := g_c(S)$ and $M_T := g_c(T)$; we observe that clearly $g_c(S \cup T) = \max{\{M_S, M_T\}}$, therefore it holds that
+                    \begin{equation*}
+                        \begin{split}
+                            g_c(S) + g_c(T) &= \max_{f \in S}{G[c][f]} + \max_{f \in T}{G[c][f]} \\
+                                            &\ge \max_{f \in S \cup T}{G[c][f]} + 0 \\
+                                            &= g_c(S \cup T) + f(\varnothing) \\
+                                            &= g_c(S \cup T) + f(S \cap T)
+                        \end{split}
+                    \end{equation*}
+                \item If $S \subseteq T$, let $M_S := g_c(S)$ and $M_T := g_c(T)$; we have two cases.
+
+                    \begin{itemize}
+                        \item If $M_S = M_T$, then $g_c(S \cup T) = M_S = M_T$, therefore
+                            \begin{equation*}
+                                \begin{split}
+                                    g_c(S) + g_c(T) &= M_S + M_T \\
+                                                    &= M_S + M_S \\
+                                                    &= g_c(S \cup T) + g_c(S) \\
+                                                    &= g_c(S \cup T) + g_c(S \cap T)
+                                \end{split}
+                            \end{equation*}
+                        \item If $M_S \neq M_T$, then $M_T = g_c(M - T)$ --- otherwise $M_T$ would violate the maximality of $M_S$ --- which in turn implies that $M_T > M_S$ --- otherwise $M_S$ would have been a maximum for $T$ as well. Therefore, it holds that $g_c(S \cup T) = M_T = g_c(T)$, hence
+                            \begin{equation*}
+                                \begin{split}
+                                    g_c(S) + g_c(T) &= M_S + M_T \\
+                                                    &= g_c(S) + g_c(T) \\
+                                                    &= g_c(S \cap T) + g_c(S \cup T)
+                                \end{split}
+                            \end{equation*}
+                    \end{itemize}
+                \item If $S - T, T - S \neq \varnothing$, let $M_S := g_c(S)$, $M_T := g_c(T)$ and $M_{S \cap T} = g_c(S \cap T)$; we have three cases.
+
+                    \begin{itemize}
+                        \item TODO \todo{da fare}
+                    \end{itemize}
+            \end{itemize}
+        }
+
+        By the claim, it trivially follows that $g$ is both non-negative and monotone increasing. Finally, fix two sets $S, T \subseteq F$ of facilities; show that it is also submodular, we can leverage the submodularity of $g_c$ for each $c \in C$ as follows:
+        \begin{equation*}
+            \begin{split}
+                g(S) + g(T) &= \sum_{c \in C}{g_c(S)} + \sum_{c \in C}{g_c(T)} \\
+                            &= \sum_{c \in C}{\rbk{g_c(S) + g_c(T)}} \\
+                            &\ge \sum_{c \in C}{\rbk{g_c(S \cup T) + g_c(S \cap T)}} \\
+                            &= \sum_{c \in C}{g_c(S \cup)} + \sum_{c \in C}{g_c(S \cap T)} \\
+                            &= g(S \cup T) + g(S \cap T)
+            \end{split}
+        \end{equation*}
+
+        Therefore, since the gain of $S$ is non-negative, monotone increasing and submodular, for any $m$ maximum number of facilities that the company can rent we can employ \cref{nwf approx} to return a set of $m$ facilities with an approximation ratio of $1 - \tfrac{1}{e}$ by \cref{nwf approx proof}.
     }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
