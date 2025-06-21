@@ -3880,7 +3880,7 @@
     }
 
     \begin{framedprob}{}
-        Consider the following algorithmic problem. A delivery company has access to a set $F$ of possible stocking facilities, and to a set of consumers $C$. Each consumer has to be served by one facility, and the company gains $G[c][f]€$ if it serves consumer $c \in C$ with facility $f \in F$.
+        Consider the following algorithmic problem. A delivery company has access to a set $F$ of possible stocking facilities, and to a set of consumers $C$. Each consumer has to be served by one facility, and the company gains $G[c][f]$\euro \ if it serves consumer $c \in C$ with facility $f \in F$.
 
         If the company rents the set of facilities $S \subseteq F$, then the company will serve the generic client $c \in C$ with a facility $f \in S$ that maximizes $G[c][f]$. In particular, if the company rents the facilities of $S$, then its gain is $\sum_{c \in C}{\max_{f \in S}{G[c][f]}}$.
 
@@ -3897,7 +3897,7 @@
         }{
             First, fix a customer $c \in C$, and consider the subfunction $g_c$.
 
-            Since the values inside the matrix $G$ are \texteuro's, $g_c$ is trivially non-negative.
+            Since the values inside the matrix $G$ are \euro's, $g_c$ is trivially non-negative.
 
             Now, fix two sets $S, T \subseteq F$ of facilities such that $S \subseteq T$: clearly, since $S$ is contained inside $T$, and $G$ is non-negative, it holds that $$\max_{f \in S}{G[c][f]} \le \max_{f \in T}{G[c][f]}$$ This proves that $g_c$ is monotone increasing.
 
