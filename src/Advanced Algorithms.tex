@@ -4017,6 +4017,8 @@
         Consider the algorithm above: this is the $f$-Generalized Weighted Majority Expert model, which is a generalized version of \cref{wmem}. In fact, if $f(w_i) = 2^{-w_i}$ then the two algorithms are identical, and it guarantees a number of mistakes not larger than $O(m^* + \log n)$ where $m^*$ is the number of mistakes of the best expert, and $n$ is the number of experts --- as we proved in \cref{wmem proof}.
 
         Prove that, if $f(w_i) = \tfrac{w_i}{w_i + 1}$, then the number of mistakes of the $f$-Generalized Weighted Majority algorithm is $\Omega(n)$ even in cases where $m^* = 0$.
+
+        Moreover, prove that if $f(w_i) = (w_i + 1)^{- \alpha}$ for a generic constant $\alpha > 0$, then there are instances with $m^* =0$ where the $f$-Generalized Weighted Majority algorithm makes a number of mistakes polynomial in $n$.
     \end{framedprob}
 
     \solution{
@@ -4043,6 +4045,8 @@
         \end{itemize}
 
         implying that when $t < n - 2$ it holds that $$A_t = \sum_{\substack{i \in [n] : \\ y_{i, t} = 1}}{w_i^{(t)}} = 1 = (n - 1) \cdot \dfrac{1}{n - 1} < (n - 1) \cdot \dfrac{1}{t + 1} = \sum_{\substack{i \in [n] : \\ y_{i, t} = 0}}{w_i^{(t)}} = B_t$$ which means that for the first $n - 2$ iterations (we start at $t = 0$) the algorithm is \tit{forced to be wrong}. This implies that $m \ge n - 2$, and by choosing for instance $c = \tfrac{1}{2}$ and $n_0 = 4$ we get that $$\forall n \ge n_0 \quad m \ge c \cdot n \implies m = \Omega(n)$$
+
+        Lastly, if we assume that $f(w_i) = (w_i + 1)^{-\alpha}$ for some $\alpha > 0$ we observe that the weights now change as follows $$1 \stackrel{f}{\longrightarrow} \dfrac{1}{2^\alpha} \stackrel{f}{\longrightarrow} \dfrac{1}{3^\alpha} \stackrel{f}{\longrightarrow} \ldots$$ which implies that $w_i = \rbk{h_k}^\alpha = \tfrac{1}{k^\alpha}$. Therefore, we can employ the same adversary argument to find a lower bound on $m$, but this time to determine the number of iterations in which our algorithm is forced to be wrong we need $t$ to be such that $$1 < \dfrac{n - 1}{(1 + t)^\alpha} \iff (1 + t)^\alpha < n - 1 \implies t < (n - 1)^{\tfrac{1}{\alpha}} - 1$$ and since we start at $t = 0$, this implies that $$m \ge (n - 1)^{\tfrac{1}{\alpha}} - 1 \implies m = \Omega \rbk{n^{1/\alpha}}$$
     }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
