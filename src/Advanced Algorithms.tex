@@ -2219,7 +2219,7 @@
             \Function{NWFapprox}{$f$, $k$}
                 \State $S_0 := \varnothing$
                 \For{$i \in [k]$}
-                    \State $\displaystyle x_i \in \argmax_{x \in X - S_i}{f(S_i \cup \{x\})}$ \Comment{or, equivalently, maximize $\Delta_f(x_{i + 1} \mid S_i)$}
+                    \State $\displaystyle x_i \in \argmax_{x \in X - S_i}{f(S_i \cup \{x\})}$
                     \State $S_i := S_{i - 1} \cup \{x_i\}$
                 \EndFor
                 \State \tbf{return} $S_k$
