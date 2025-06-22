@@ -2929,13 +2929,13 @@
     The easiest way to use the prediction vector $y_t$ is to randomly choose which of the experts' prediction will be the final one. If there is at least one \tbf{perfect expert} --- an expert whose predictions are always correct --- we can use a naïve alogritm in order to discard the non-perfect experts until only the perfect ones remain.
 
     \begin{framedalgo}{The Naïve Expert model}
-        Given a set $M$ of trained experts, in which at least one of them is perfect, the algorithm yields predictions over time $T$. \\
+        Given a set $M$ of $n$ trained experts, in which at least one of them is perfect, the algorithm yields predictions over time $T$. \\
         \hrule
 
         \quad
         \begin{algorithmic}[1]
             \Function{naïveExpertModel}{$M$, $T$}
-                \State $S := [\abs M]$
+                \State $S := [n]$
                 \For{$t \in [T]$}
                     \State Read $y_t = [y_{1, t} \ \cdots \ y_{n, t}]$
                     \State Choose $i \in S$ UAR
@@ -2948,22 +2948,22 @@
         \end{algorithmic}
     \end{framedalgo}
 
-    We observe that, in the \curlyquotes{worst} case at each iteration only the $i$-th expert has made a mistake, meaning that this procedure will make at most $\abs M - 1$ mistakes.
+    We observe that, in the \curlyquotes{worst} case at each iteration only the $i$-th expert has made a mistake, meaning that this procedure will make at most $n - 1$ mistakes.
 
     \begin{framedprop}{}
-        Given a set of $n$ trained experts $M$, in which at least one of them is perfect, the procedure $\textsc{naïveExpertModel}(M)$ makes at most $\abs M - 1$ mistakes.
+        Given a set of $n$ trained experts $M$, in which at least one of them is perfect, the procedure $\textsc{naïveExpertModel}(M)$ makes at most $n - 1$ mistakes.
     \end{framedprop}
 
     More complex expert systems make use of a \tit{large} number of experts, therefore this naïve procedure requires too many iterations to \curlyquotes{reach} the perfect experts. The following approach provides a faster alternative.
 
     \begin{framedalgo}{The Halving Expert model}
-        Given a set $M$ of trained experts, in which at least one of them is perfect, the algorithm yields predictions over time $T$. \\
+        Given a set $M$ of $n$ trained experts, in which at least one of them is perfect, the algorithm yields predictions over time $T$. \\
         \hrule
 
         \quad
         \begin{algorithmic}[1]
             \Function{halvingExpertModel}{$M$, $T$}
-                \State $S := [\abs M]$
+                \State $S := [n]$
                 \For{$t \in [T]$}
                     \State Read $y_t = [y_{1, t} \ \cdots \ y_{n, t}]$
                     \State Let $z_t$ be the majority of the predictions in $y_t$
@@ -2985,13 +2985,13 @@
     Both of these algorithms rely on the guarantee that \tit{at least one} perfect model is present in the input, but what if there is no such model? In this case, the algorithm will clearly discard all the experts eventually. Hence, consider the following procedure.
 
     \begin{framedalgo}{The Iterative Halving Expert model}
-        Given a set $M$ of trained experts, the algorithm yields predictions over time $T$. \\
+        Given a set $M$ of $n$ trained experts, the algorithm yields predictions over time $T$. \\
         \hrule
 
         \quad
         \begin{algorithmic}[1]
             \Function{iterativeHalvingExpertModel}{$M$, $T$}
-                \State $S := [\abs M]$
+                \State $S := [n]$
                 \For{$t \in [T]$}
                     \State Read $y_t = [y_{1, t} \ \cdots \ y_{n, t}]$
                     \State Let $z_t$ be the majority of the predictions in $y_t$
@@ -2999,7 +2999,7 @@
                     \If{$x_t \neq z_t$}
                         \State $S = S - \{j \mid y_{j, t} \neq x_t\}$
                         \If{$S = \varnothing$} \Comment{if $S$ became empty, repeat the process}
-                            \State $S = [\abs M]$
+                            \State $S = [n]$
                         \EndIf
                     \EndIf
                 \EndFor
@@ -3014,19 +3014,19 @@
     \end{framedthm}
     
     \begin{proof}[Proof sketch.]
-        We can split the algorithm into \tit{phases}, and each phase begins whenever $S$ is set to $[\abs M]$. Clearly, since there may be no perfect trained experts in the input, each expert could make at least one mistake during each phase. Moreover, in each phase the algorithm will make at most $\floor{\log n} + 1$ mistakes, because of the majority rule. Hence, given that there are at most $m^* + 1$ phases, the bound follows.
+        We can split the algorithm into \tit{phases}, and each phase begins whenever $S$ is set to $[n]$. Clearly, since there may be no perfect trained experts in the input, each expert could make at least one mistake during each phase. Moreover, in each phase the algorithm will make at most $\floor{\log n} + 1$ mistakes, because of the majority rule. Hence, given that there are at most $m^* + 1$ phases, the bound follows.
     \end{proof}
 
     Can we improve this idea? Consider the following procedure.
 
-    \begin{framedalgo}{The Weighted Majority Expert model}
-        Given a set $M$ of trained experts, the algorithm yields predictions over time $T$. \\
+    \begin{framedalgo}[label={wmem}]{The Weighted Majority Expert model}
+        Given a set $M$ of $n$ trained experts, the algorithm yields predictions over time $T$. \\
         \hrule
 
         \quad
         \begin{algorithmic}[1]
             \Function{weightedMajorityExpertModel}{$M$, $T$}
-                \For{$i \in [\abs M]$}
+                \For{$i \in [n]$}
                     \State $w_i := 1$
                 \EndFor
                 \For{$t \in [T]$}
@@ -3040,7 +3040,7 @@
                     \EndIf
                     \State Read the outcome $x_t \in \{0, 1\}$
                     \If{$x_t \neq z_t$}
-                        \For{$i \in [\abs M]$}
+                        \For{$i \in [n]$}
                             \If{$y_{i, t} \neq x_t$}
                                 \State $w_i = \tfrac{w_i}{2}$
                             \EndIf
@@ -3053,12 +3053,12 @@
     
     This procedure is a refined version of the halving model, in which we consider a \tbf{weighted majority} instead of a simple majority rule. This allows to \tit{tweak the weights} of the experts --- in this case, halving their weight if they were wrong --- instead of removing them entirely.
 
-    \begin{framedthm}{}
+    \begin{framedthm}[label={wmem proof}]{}
         Given a set of $n$ trained experts $M$, the number $m$ of mistakes made by the procedure $\textsc{weightedMajorityExpertModel}(M, T)$ is such that $$m \le 2.41 \cdot (m^* + \log n)$$ where $m^*$ is the number of mistakes of the best expert after $T$ rounds.
     \end{framedthm}
 
     \begin{proof}
-        Let $w^{(t)}_i$ be the weight of the $i$-th expert at the end of round $t$, after the update step, and for each $t \in [T]$ let $W^{(t)} = \sum_{i = 1}^{n}{w_i^{(t)}}$ be the sum of all the weights of the experts. We observe that
+        Let $w^{(t)}_i$ be the weight of the $i$-th expert at the beginning of round $t$, before the update step, and for each $t \in [T]$ let $W^{(t)} = \sum_{i = 1}^{n}{w_i^{(t)}}$ be the sum of all the weights of the experts. We observe that
         
         \begin{itemize}
             \item $w_i^{(0)} = 1$ for all $i \in [n]$ by definition, hence $W^{(0)} = n$
@@ -3095,13 +3095,13 @@
     Nonetheless, this bound can be improved through \tit{randomization}, as presented in the following algorithm.
 
     \begin{framedalgo}{The Random Weighted Majority Expert model}
-        Given a set $M$ of trained experts, the algorithm yields predictions over time $T$. \\
+        Given a set $M$ of $n$ trained experts, the algorithm yields predictions over time $T$. \\
         \hrule
 
         \quad
         \begin{algorithmic}[1]
             \Function{randWeightedMajorityExpertModel}{$M$, $T$}
-                \For{$i \in [\abs M]$}
+                \For{$i \in [n]$}
                     \State $w_i := 1$
                 \EndFor
                 \For{$t \in [T]$}
@@ -3110,7 +3110,7 @@
                     \State Sample $i$ form $P_t$
                     \State Read the outcome $x_t \in \{0, 1\}$
                     \If{$x_t \neq z_t$}
-                        \For{$i \in [\abs M]$}
+                        \For{$i \in [n]$}
                             \If{$y_{i, t} \neq x_t$}
                                 \State $w_i = (1 - \varepsilon) w_i$
                             \EndIf
@@ -3126,7 +3126,7 @@
     \end{framedthm}
 
     \begin{proof}
-        Let $w_i^{(t)}$ be the weight of the $i$-th expert at the end of round $t$, after the update step, and for each $t \in [T]$ let
+        Let $w_i^{(t)}$ be the weight of the $i$-th expert at the beginning of round $t$, before the update step, and for each $t \in [T]$ let
 
         \begin{itemize}
             \item $W^{(t)} = \sum_{i = 1}^n{w_i^{(t)}}$ be the sum of all the weights of the experts
@@ -3972,12 +3972,77 @@
                 g(S) + g(T) &= \sum_{c \in C}{g_c(S)} + \sum_{c \in C}{g_c(T)} \\
                             &= \sum_{c \in C}{\rbk{g_c(S) + g_c(T)}} \\
                             &\ge \sum_{c \in C}{\rbk{g_c(S \cup T) + g_c(S \cap T)}} \\
-                            &= \sum_{c \in C}{g_c(S \cup)} + \sum_{c \in C}{g_c(S \cap T)} \\
+                            &= \sum_{c \in C}{g_c(S \cup T)} + \sum_{c \in C}{g_c(S \cap T)} \\
                             &= g(S \cup T) + g(S \cap T)
             \end{split}
         \end{equation*}
 
         Therefore, since the gain of $S$ is non-negative, monotone increasing and submodular, for any $m$ maximum number of facilities that the company can rent we can employ \cref{nwf approx} to return a set of $m$ facilities with an approximation ratio of $1 - \tfrac{1}{e}$ by \cref{nwf approx proof}.
+    }
+
+    \begin{framedalgo}{The $f$-Generalized W.M. Expert model}
+        Given a set $M$ of $n$ trained experts, the algorithm yields predictions over time $T$. \\
+        \hrule
+
+        \quad
+        \begin{algorithmic}[1]
+            \Function{weightedMajorityExpertModel}{$M$, $T$, $f$}
+                \For{$i \in [n]$}
+                    \State $w_i := 0$
+                \EndFor
+                \For{$t \in [T]$}
+                    \State Read $y_t = [y_{1, t} \ \cdots \ y_{n, t}]$
+                    \State $A_t := \sum\limits_{\substack{i \in [n] : \\ y_{i , t} = 1}}{f(w_i)}$
+                    \State $B_t := \sum\limits_{\substack{i \in [n] : \\ y_{i , t} = 0}}{f(w_i)}$
+                    \If{$A_t \ge B_t$}
+                        \State $z_t := 1$
+                    \Else
+                        \State $z_t := 0$
+                    \EndIf
+                    \State Read the outcome $x_t \in \{0, 1\}$
+                    \If{$x_t \neq z_t$}
+                        \For{$i \in [n]$}
+                            \If{$y_{i, t} \neq x_t$}
+                                % \State $w_i = \tfrac{w_i}{2}$
+                                \State $w_i = w_i + 1$
+                            \EndIf
+                        \EndFor
+                    \EndIf
+                \EndFor
+            \EndFunction
+        \end{algorithmic}
+    \end{framedalgo}
+
+    \begin{framedprob}{}
+        Consider the algorithm above: this is the $f$-Generalized Weighted Majority Expert model, which is a generalized version of \cref{wmem}. In fact, if $f(w_i) = 2^{-w_i}$ then the two algorithms are identical, and it guarantees a number of mistakes not larger than $O(m^* + \log n)$ where $m^*$ is the number of mistakes of the best expert, and $n$ is the number of experts --- as we proved in \cref{wmem proof}.
+
+        Prove that, if $f(w_i) = \tfrac{w_i}{w_i + 1}$, then the number of mistakes of the $f$-Generalized Weighted Majority algorithm is $\Omega(n)$ even in cases where $m^* = 0$.
+    \end{framedprob}
+
+    \solution{
+        The first approach that we may try is the one used in the proof of \cref{wmem proof} itself. In fact, in that version of the algorithm we were able to prove that $W^{(t + 1)} \le \tfrac{3}{4} W^{(t)}$, however the value $\tfrac{3}{4}$ directly derives from the \tit{updating rule} of the weights. In particular, since the weights of each wrong expert is \tit{halved}, it holds that $$W^{(t + 1)} = \dfrac{I^{(t)}}{2} + (W^{(t)} - I^{(t)})$$ since the \tit{total} weight of the wrong experts is halved as well, and the second term of the sum is the remaining total weight --- i.e. the sum of the weights of the experts who were \tit{right}.
+
+        Can we employ a similar approach in this second setting? First, we need to understand how to get $w^{(t + 1)}_i$ given $w^{(t)}_i$ if the $i$-th expert was wrong --- which is not explicit in the $f$-Generalized version. We observe that $f (w_i^{(t)}) = \tfrac{1}{k}$ and $f (w_i^{(t + 1)}) = \tfrac{1}{k + 1}$ --- for $k \ge 1$, implying that $$k = \dfrac{1}{f (w_i^{(t)})} \implies f (w_i^{(t + 1)}) = \dfrac{1}{k + 1} = \dfrac{1}{\tfrac{1}{f (w_i^{(t)})} + 1} = \dfrac{f (w_i^{(t))}}{1 + f (w_i^{(t)})}$$ which means that we can rewrite the $f$-Generalized version by setting all the weights $w_i^{(0)} := 1$ at the beginning, and then use the following \tit{updating rule} $$w_i := \dfrac{w_i}{1 + w_i}$$ From now on, we will use this version of the $f$-Generalized variant of the algorithm, in order to reason more clearly w.r.t. the updating rule we are using.
+
+        In particular, this updating rule implies that the equation for $W^{(t + 1)}$ does not hold anymore, for two reasons:
+
+        \begin{itemize}
+            \item we are not \tit{halving} the wrong weights anymore, but we are decreasing $I^{(t)}$ by an amount that directly depends on the weights themselves
+            \item even assuming that $$W^{(t + 1)} = \varepsilon I^{(t)} + (W^{(t)} - I^{(t)})$$ for some amount $\varepsilon > 0$ would not be correct, because the amount directly depends on the weights, therefore $\varepsilon$ \tit{changes over time} and cannot be assumed to be a constant value
+        \end{itemize}
+
+        In conclusion, this suggests that a different approach is needed in order to prove that $m = \Omega(n)$, even for $m^* = 0$.
+
+        In fact, an \tit{adversarial argument} suffices to prove such lower bound on $m$, and the answer lies in how the updating rule operates. In particular, starting from $w_i = 1$, we get that each time the $i$-th expert is wrong $w_i$ is transformed as follows: $$1 \stackrel{f}{\longrightarrow} \dfrac{1}{2} \stackrel{f}{\longrightarrow} \dfrac{1}{3} \stackrel{f}{\longrightarrow} \ldots$$ which is precisely the harmonic sequence. In other words, after $k$ mistakes of the $i$-th expert, it holds that $w_i = h_k = \tfrac{1}{k}$, where $h_k$ is the $k$-th member of the harmonic sequence.
+
+        Hence, consider a set of $n$ experts such that $m^* = 0$ --- i.e. the best expert makes no mistakes, which means that there is at least one perfect expert. Let the first expert be the perfect one, and all the other $n - 1$ experts be such that they always answer 0. Then, suppose that the correct answer is \tit{always 1}. Thus, we have that
+
+        \begin{itemize}
+            \item the perfect expert is always correct, hence $w_1^{(t)} = 1$ for any $t \in [0, T]$
+            \item all the other experts are wrong \tit{at each iteration}, hence $w_i^{(t)} = \tfrac{1}{t + 1}$ for each $i = [2, n]$ and for each $t \in [0, T]$
+        \end{itemize}
+
+        implying that when $t < n - 2$ it holds that $$A_t = \sum_{\substack{i \in [n] : \\ y_{i, t} = 1}}{w_i^{(t)}} = 1 = (n - 1) \cdot \dfrac{1}{n - 1} < (n - 1) \cdot \dfrac{1}{t + 1} = \sum_{\substack{i \in [n] : \\ y_{i, t} = 0}}{w_i^{(t)}} = B_t$$ which means that for the first $n - 2$ iterations (we start at $t = 0$) the algorithm is \tit{forced to be wrong}. This implies that $m \ge n - 2$, and by choosing for instance $c = \tfrac{1}{2}$ and $n_0 = 4$ we get that $$\forall n \ge n_0 \quad m \ge c \cdot n \implies m = \Omega(n)$$
     }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
