@@ -3604,7 +3604,7 @@
 
         This implies that for any set $S = \textsc{Charikar}(G_t)$ that the algorithm may yield, it holds that $$\lim_{t \to + \infty}{\rho(G_t[S])} = \dfrac{t}{2}$$
 
-        However, it turns out that the densest subgraph of $G_t$ is actually $K_{t, 2^t}$, in fact $$\rho(K_{t, 2^t}) = \dfrac{t \cdot 2^t}{t + 2^t} \stackrel{+\infty}{\longrightarrow} t$$ and the algorithm \tit{does not encounter $K_{t, 2^t}$} as we previously mentioned. Hence, we have that $$\lim_{t \to + \infty}{\dfrac{\rho(G_t[S])}{\rho(K_{t, 2^t})}} = \dfrac{\tfrac{t}{2}}{t} = \dfrac{1}{2}$$ or, in other words, it holds that $$\forall \varepsilon > 0 \quad \exists t \in \N \quad \rho(G_t[S]) < (\tfrac{1}{2} + \varepsilon) \rho(K_{t, 2^t}) \implies \mathrm{ALG_{DS}}(G_t) < (\tfrac{1}{2} + \varepsilon) \cdot \mathrm{OPT_{DS}}(G_t)$$
+        However, it turns out that the densest subgraph of $G_t$ is actually $K_{t, 2^t}$, in fact $$\rho(K_{t, 2^t}) = \dfrac{t \cdot 2^t}{t + 2^t} \stackrel{+\infty}{\longrightarrow} t$$ and the algorithm \tit{never encounters $K_{t, 2^t}$}. Hence, we have that $$\lim_{t \to + \infty}{\dfrac{\rho(G_t[S])}{\rho(K_{t, 2^t})}} = \dfrac{\tfrac{t}{2}}{t} = \dfrac{1}{2}$$ or, in other words, it holds that $$\forall \varepsilon > 0 \quad \exists t \in \N \quad \rho(G_t[S]) < (\tfrac{1}{2} + \varepsilon) \rho(K_{t, 2^t}) \implies \mathrm{ALG_{DS}}(G_t) < (\tfrac{1}{2} + \varepsilon) \cdot \mathrm{OPT_{DS}}(G_t)$$
     }
 
     \begin{framedprob}{}
@@ -3827,7 +3827,7 @@
                 \claim{
                     For each component $H_i$ of $G$, it holds that $A^{H_i}x = b$ has at least one solution if and only if $H_i$ has at least one cycle.
                 }{
-                    We know that $A^{H_i}x = b$ has aat least one solution if and only if if has at least as many linearly independent rows as linearly independent columnds, which is equal to $\abs{V(H_i)}$ by construction of $A^{H_i}$. Moreover, each non-empty row of $A^{H_i}$ is already linearly independent from the other ones by construction.
+                    We know that $A^{H_i}x = b$ has at least one solution if and only if if has at least as many linearly independent rows as linearly independent columns, which is equal to $\abs{V(H_i)}$ by construction of $A^{H_i}$. Moreover, each non-empty row of $A^{H_i}$ is already linearly independent from the other ones by construction.
 
                     Therefore, we have that $A^{H_i}x = b$ has at least one solution if and only if it has at least $\abs{V(H_i)}$, which can happen if and only if it has at least $\abs{V(H_i)}$ by construction, which implies that $H_i$ has at least one cycle.
                 }
@@ -3870,7 +3870,7 @@
             \begin{alignedat}{2}
                 \abs{\overline S} &= \sum_{S_j \in \overline S}{1} && \\
                                   &\le \sum_{S_j \in \overline S}{t \overline x_j} && \quad \quad (S_j \in \overline S \implies \overline x_j \ge \tfrac{1}{t} \iff t \overline x_j \ge 1) \\
-                                  &= t \sum_{S_j \in \overline S}{t \overline x_j} && \\
+                                  &= t \sum_{S_j \in \overline S}{ \overline x_j} && \\
                                   &\le t \sum_{S_j \in C}{\overline x_j} && \quad \quad (\overline S \subseteq C \land \overline x_j \ge 0) \\
                                   &\le t \sum_{S_j \in C}{x^*_j} \\
                                   &= t \abs{S^*}
