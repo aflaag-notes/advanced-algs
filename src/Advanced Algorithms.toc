@@ -24,7 +24,6 @@
 \contentsline {section}{\numberline {3.2}Metric relaxations and distortions}{55}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Metric relaxations}{55}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Shortest path metric}{59}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Exercises}{60}{section.3.3}%
 \contentsline {chapter}{\numberline {4}Submodular optimization}{61}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Submodular functions}{64}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Property variations}{70}{section.4.2}%

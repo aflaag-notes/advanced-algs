@@ -402,7 +402,7 @@
 
     Another major reason on why we focus on matchings is the following theorem.
 
-    \begin{framedthm}{Matchings bound vertex covers}
+    \begin{framedthm}{}
         Given an undirected graph $G = (V, E)$, a matching $A \subseteq E$ of $G$, and a vertex cover $S \subseteq V$ of $G$, we have that $\abs S \ge \abs A$.
     \end{framedthm}
 
@@ -426,7 +426,7 @@
     
     This 2-approximation algorithm is conjectured to be optimal, but it has not been proven yet. In fact, VC is conjectured to be \NPclass-hard to $(2 - \varepsilon)$-approximate, for any $\varepsilon > 0$.
 
-    Interestingly, the decisional version of VC is \href{https://en.wikipedia.org/wiki/Parameterized_complexity#FPT}{Fixed Parameter Tractable}. This characterization comes from the nature of the problem: for each edge $e = \{u, v\}$ of a given undirected graph $G = (V, E)$, either $u$ or $v$ has to be in the vertex cover, therefore it possible to approach VC by trying all possible choices of set of vertices $S \subseteq V$, and backtrack if necessary. The following algorithm employs this idea.
+    Interestingly, the decisional version of VC is \href{https://en.wikipedia.org/wiki/Parameterized_complexity#FPT}{Fixed Parameter Tractable}. This characterization comes from the nature of the problem: for each edge $e = \{u, v\}$ of a given undirected graph $G = (V, E)$, either $u$ or $v$ has to be in the vertex cover, therefore it is possible to approach VC by trying all possible choices of set of vertices $S \subseteq V$, and backtrack if necessary. The following algorithm employs this idea.
 
     \begin{framedalgo}{Decisional VC}
         Given an undirected graph $G = (V, E)$, and an integer $k$, the algorithm returns \texttt{True} if and only if $G$ admits a vertex cover of size $k$. \\
@@ -598,7 +598,7 @@
         By way of contradiction, suppose that $S^*$ is not a minimum vertex cover. Hence, there must be another vertex cover $S'$ such that $\abs{S'} < \abs{S^*}$. By the previous claim, this implies that there exists a feasible solution $\{x'_u\}_{u \in V}$ for the IP that has value $\abs{S'}$, but then $$\sum_{u \in V}{x'_u} = \abs{S'} < \abs{S^*} = \sum_{u \in V}{x^*_u}$$ which contradicts the optimality of the solution of $\{x^*_u\}_{u \in V}$ for the IP.
     \end{proof}
 
-    In particular, this lemma implies that VC can be reduced to Integer programming, indeed solving IPs is actually \NPclass-hard \cite{karp}, differently from LPs. This result shows that IPs cannot be used \tit{directly} to obtain perfect solutions, but they are still very useful thanks to \tbf{relaxation}.
+    In particular, this lemma implies that VC can be reduced to Integer Programming, indeed solving IPs is actually \NPclass-hard \cite{karp}, differently from LPs. This result shows that IPs cannot be used \tit{directly} to obtain perfect solutions, but they are still very useful thanks to \tbf{relaxation}.
 
     To \tit{relax} an IP, we simply replace the constraint $x \in \{0, 1\}^n$ with $0 \le x \le 1$, transforming the IP into an LP.
 
@@ -646,12 +646,12 @@
 
     \begin{itemize}
         \item if P is a \tbf{minimization} problem, we say that $A$ yields an $\alpha$-approximation of $P$ if $$\mathrm{ALG} \le \alpha \cdot \mathrm{OPT}$$ in which $\alpha \in \R_{\ge 1}$
-        \item if P is a \tbf{maximization} problem, we say that $A$ yields an $\alpha$-approximation of $P$ if $$\mathrm{ALG} \ge \dfrac{\mathrm{OPT}}{\alpha}$$ 
+        \item if P is a \tbf{maximization} problem, we say that $A$ yields an $\alpha$-approximation of $P$ if $$\mathrm{ALG} \ge \dfrac{\mathrm{OPT}}{\alpha}$$ in which $\alpha \in (0, 1]$
     \end{itemize}
 
-    xuch that, in both cases, it holds that in which $\alpha \in \R_{\ge 1}$. This convention is typically employed for approximation algorithms using LP relaxation.
+    This convention is typically employed for approximation algorithms using LP relaxation.
 
-    Consider a problem P, its equivalent IP, and the relative LP relaxation. Given an instance $I \in \mathrm P$ of the problem, we will denote with $\mathrm{IP^*_P}(I)$ and $\mathrm{LP^*_P}(I)$ the optimal values for the IP and the LP of the problem P on the instance $I$ --- we will omit P and $I$ if the context is clear enough. Note that, in general, for minimization problems it holds that $\mathrm{LP^*} \le \mathrm{IP^*}$ since the constraints of the LP relaxation are \tit{weaker} than the ones of the IP.
+    Consider a problem P, its equivalent IP, and the relative LP relaxation. Given an instance $I \in \mathrm P$ of the problem, we will denote with $\mathrm{IP^*_P}(I)$ and $\mathrm{LP^*_P}(I)$ the optimal values for the IP and the LP of the problem P on the instance $I$ --- we will omit P and $I$ if the context is clear enough. Note that, in general, for minimization problems it holds that $\mathrm{LP^*} \le \mathrm{IP^*}$ since the constraints of the LP relaxation are \tit{weaker} than the ones of the IP --- and the converse holds for maximization problems.
 
     \begin{framedprop}[label={ig bounds}]{}
         If P is a problem, then
@@ -670,7 +670,7 @@
                               &\le 2 \sum_{v \in V}{x^*_v} = 2 \mathrm{IP^*} = 2 \abs{S^*}\\
         \end{split}
     \end{equation*}
-    and in particular $\abs{\overline S} \le 2 \mathrm{LP^*} \le 2 \mathrm{IP^*}$. Can we improve this approximation ratio of 2 through LP relaxation? We observe that for any $\alpha$ possible approximation ratio it must hold that $$\alpha \ge \dfrac{\mathrm{IP^*}}{\mathrm{LP^*}}$$ because otherwise $$\alpha < \mathrm{\dfrac{IP^*}{LP^*}} \implies \abs{\overline S} \le \alpha \mathrm{LP^*} < \mathrm{\dfrac{IP^*}{LP^*}} \cdot \mathrm{LP^*} = \mathrm{IP^*}$$ meaning that $\overline S$ would be a solution better than the optimal solution of the IP, which is impossible --- be careful that it is impossible because $\overline S$ is a solution \underline{to the IP}, not the LP. We can generalize this concept as follows.
+    and in particular $\abs{\overline S} \le 2 \mathrm{LP^*} \le 2 \mathrm{IP^*}$. Can we improve this approximation ratio of 2 through LP relaxation? We observe that for any possible approximation ratio $\alpha$ it must hold that $$\alpha \ge \dfrac{\mathrm{IP^*}}{\mathrm{LP^*}}$$ because otherwise $$\alpha < \mathrm{\dfrac{IP^*}{LP^*}} \implies \abs{\overline S} \le \alpha \mathrm{LP^*} < \mathrm{\dfrac{IP^*}{LP^*}} \cdot \mathrm{LP^*} = \mathrm{IP^*}$$ meaning that $\overline S$ would be a solution better than the optimal solution of the IP, which is impossible --- be careful that it is impossible because $\overline S$ is a solution \underline{to the IP}, not the LP. We can generalize this concept as follows.
 
     \begin{frameddefn}{Integrality gap}
         Given a \tbf{minimization} problem P and an instance $I \in \mathrm P$, the \tbf{integrality gap} between $\mathrm{IP^*_P}(I)$ and $\mathrm{LP^*_P}(I)$ is defined as follows $$\mathrm{IG_P}(I) = \dfrac{\mathrm{IP^*_P}(I)}{\mathrm{LP^*_P}(I)}$$ The integrality gap for the problem P is defined as follows $$\mathrm{IG_P} = \sup_{I \in \mathrm P}{\mathrm{IG_P}(I)} = \sup_{I \in \mathrm P}{\dfrac{\mathrm{IP^*_P}(I)}{\mathrm{LP^*_P}(I)}}$$
@@ -689,7 +689,7 @@
     In fact, through the previous argument, we can derive the following property that \tit{must} hold for any approximation ratio.
 
     \begin{framedprop}{Limits of LP relaxation}
-        Given a problem P for which there is an $\alpha$-approximation algorithm which uses LP relaxation, and consider an optimal \tit{rounded} solution $\mbox{ALG}_{\mathrm{P}}$. Then, it holds that:
+        Given a problem P for which there is an $\alpha$-approximation algorithm which uses LP relaxation, consider an optimal \tit{rounded} solution $\mbox{ALG}_{\mathrm{P}}$. Then, it holds that:
 
         \begin{itemize}
             \item if P is a \tbf{minimization problem} and $\mbox{ALG}_{\mathrm P} \le \alpha \mbox{LP}^*$, then $\alpha \ge \mathrm{IG_P}$
@@ -724,7 +724,7 @@
         \caption{The graph $K_3$.}
     \end{figure}
 
-    it is easy to see that $$\mathrm{IP^*}(K_3) = 1 + 1 = 2$$ because 1 single node is not sufficient to cover all 3 edges in $E(K_3)$. However, since the values in the solution of the LP can be \tit{real-valued}, the value of an optimal solution for the LP relaxation is actually achieved by setting $$\overline x_u = \overline x_v = \overline x_w = \dfrac{1}{2} \implies \mathrm{LP}^*(K_3) = 3 \cdot \dfrac{1}{2} = \dfrac{3}{2}$$ therefore, by definition of IG we have that $$\exists I \in \mathrm P \quad \mathrm{IG_{VC}}(I) := \dfrac{\mathrm{IP^*_{VC}}(K_3)}{\mathrm{LP^*_{VC}}(K_3)} = \dfrac{2}{\tfrac{3}{2}} = \dfrac{4}{3} \implies \mathrm{IG_{VC}} := \sup_{I \in \mathrm P}{\dfrac{\mathrm{IP^*_{VC}}(I)}{\mathrm{LP^*_{VC}}(I)}} \ge \dfrac{4}{3}$$ 
+    It is easy to see that $$\mathrm{IP^*}(K_3) = 1 + 1 + 0 = 2$$ because 1 single node is not sufficient to cover all 3 edges in $E(K_3)$, but 2 clearly suffice. However, since the values in the solution of the LP can be \tit{real-valued}, the value of an optimal solution for the LP relaxation is actually achieved by setting $$\overline x_u = \overline x_v = \overline x_w = \dfrac{1}{2} \implies \mathrm{LP}^*(K_3) = 3 \cdot \dfrac{1}{2} = \dfrac{3}{2}$$ therefore, by definition of IG we have that $$\exists I \in \mathrm P \quad \mathrm{IG_{VC}}(I) := \dfrac{\mathrm{IP^*_{VC}}(K_3)}{\mathrm{LP^*_{VC}}(K_3)} = \dfrac{2}{\tfrac{3}{2}} = \dfrac{4}{3} \implies \mathrm{IG_{VC}} := \sup_{I \in \mathrm P}{\dfrac{\mathrm{IP^*_{VC}}(I)}{\mathrm{LP^*_{VC}}(I)}} \ge \dfrac{4}{3}$$ 
 
     Moreover, \cref{lp 2-approx vc} shows that we already know an algorithm that employs LP relaxation which yields a 2-approximation of VC; therefore, this lower bound on $\mathrm{IG_{VC}}$ --- together with the previous proposition --- implies that any possible approximation ratio $\alpha$ on VC must satisfy $$2 \ge \alpha \ge \mathrm{IG_{VC}} \ge \dfrac{4}{3}$$ The following theorem proves that we can actually bound $\mathrm{IG_{VC}}$ tightly.
 
@@ -744,12 +744,12 @@
 
             \begin{itemize}
                 \item for each edge $\{v_i, v_j\} \in E(K_n)$ such that $i, j \in [n - 1]$, clearly $S$ covers the edge
-                \item for each edge $\{v_i, v_n\} \in E(K_n)$, we observe that $v_I \in S$, therefore $S$ still covers the edge
+                \item for each edge $\{v_i, v_n\} \in E(K_n)$, we observe that $v_i \in S$, therefore $S$ still covers the edge
             \end{itemize}
 
-            This concludes that $n - 1$ vertices are \tit{suffice} to cover $V(K_n)$.
+            This concludes that $n - 1$ vertices are \tit{sufficient} to cover $V(K_n)$.
 
-            Now, by way of contradiction suppose that there is a vertex cover $S'$ of $K_n$ such that $\abs{S'} \le n - 2$. This implies that there are two vertices $u, v \in V(K_n) - S'$. However, this implies that the edge $\{u, v\} \in E(K_n)$ is not covered --- and such always exists since $K_n$ is a complete graph $\lightning$. This proves that $n - 1$ vertices are \tit{needed}.
+            Now, by way of contradiction suppose that there is a vertex cover $S'$ of $K_n$ such that $\abs{S'} \le n - 2$. This implies that there are two vertices $u, v \in V(K_n) - S'$. However, this means that the edge $\{u, v\} \in E(K_n)$ is not covered --- and such edge always exists since $K_n$ is a complete graph. This proves that $n - 1$ vertices are \tit{needed}.
         }
 
         This claim shows that for any $n$ it holds that $\mathrm{IP^*}(K_n) = n - 1$, therefore we have that $$\mathrm{IG}(K_n) = \dfrac{\mathrm{IP^*}(K_n)}{\mathrm{LP^*}(K_n)} \ge \dfrac{n - 1}{\tfrac{n}{2}}$$ which means that $$\mathrm{IG_{VC}} = \sup_{I \in \mathrm{VC}}{\mathrm{IG_{VC}}(I)} \ge \lim_{n \to +\infty}{\dfrac{n - 1}{\tfrac{n}{2}}} = 2$$
@@ -782,7 +782,7 @@
 
     The LP relaxation that we will consider is the same that we defined for VC. However, differently from VC, the \tit{rounding rule} that we applied to obtain an integral solution --- namely by defining $$S = \{v \in V \mid x_v \ge \tfrac{1}{2}\}$$ cannot be applied for this problem. For instance, say that some element $i \in \mathcal U$ is contained in 3 sets $S_1$, $S_2$ and $S_3$; hence, the second constraint forces the solution of the LP to satisfy $$x_1 + x_2 + x_3 \ge 1$$ Nevertheless, by setting $$x_1 = x_2 = x_3 = \dfrac{1}{3}$$ we would get a feasible solution for the LP relaxation, but then our rounding rule would return an empty set $S = \varnothing$, which is not a feasible solution for our instance of SC since $i$ would not be covered.
 
-    To fix this issue, we are going to present a \tbf{randomized rounding algorithm}, which surprisingly seem to be the \tit{best} approach to perform rounding on LP relaxation solutions that we have at our disposal.
+    To fix this issue, we are going to present a \tbf{randomized rounding algorithm}, which surprisingly seems to be the \tit{best} approach that we have at our disposal to perform rounding on LP relaxation solutions of this problem.
 
     \begin{framedalgo}{Randomized rounding for SC}
         Given an instance $(\mathcal U, C)$ of SC, the algorithm returns a set cover $A$ for $\mathcal U$. \\
@@ -792,7 +792,7 @@
         \begin{algorithmic}[1]
             \Function{RandomizedRoundingSC}{$\mathcal U$, $C$}
                 \State $A := \varnothing$
-                \State $\{\overline x_j\}_{j \in [m]} := \mathrm{LP_{SC}}(\mathcal U, C)$ \Comment{an optimal soluion on the LP relaxation}
+                \State $\{\overline x_j\}_{j \in [m]} := \mathrm{LP_{SC}}(\mathcal U, C)$ \Comment{an optimal solution on the LP relaxation}
                 \For{$k \in \sbk{\ceil{2 \ln n}}$}
                     \For{$j \in [m]$}
                         \State Let $c_{k, j}$ be the outcome of the flip of an ind. coin with H prob. set to $\overline x_j$
@@ -801,6 +801,7 @@
                         \EndIf
                     \EndFor
                 \EndFor
+                \State \tbf{return} $A$
             \EndFunction
         \end{algorithmic}
     \end{framedalgo}
@@ -869,7 +870,7 @@
         Fix a \tit{phase} $k$, and let $A_k$ be the collection of sets added to $A$ at \tit{phase} $k$; then it holds that $$\mathbb E \sbk{\abs{A_k}} = \sum_{j = 1}^m {1 \cdot \Pr[S_j \in A_k]} = \sum_{j = 1}^m{\overline x_j} = \mathrm{LP^*}$$ Moreover, since $\displaystyle A = \bigcup_{k \in \ceil{2 \ln n}}{A_k}$, we have that $$\mathbb E \sbk{\abs A} \le \mathbb E \sbk{\sum_{k \in \ceil{2 \ln n}}{\abs{A_k}}} = \sum_{k \in \ceil {2 \ln n}}{\mathbb E \sbk{\abs{A_k}}} = \sum_{k \in \ceil{2 \ln n}}{\mathrm{LP^*}} = \ceil{2 \ln n} \mathrm{LP^*} \le \ceil{2 \ln n} \mathrm{IP^*}$$
     \end{proof}
 
-    By the law of large numbers, we know that if for each pair $(\mathcal U, C)$ we repeatedly compute the previous algorithm we will, eventually, get an output $A'$ such that $\abs{A'} \le \ceil{2 \ln n} \mathrm{IP}^*$. This implies that such procedure yield an approximation ratio $\alpha \le \ceil{2 \ln n}$, implying that $$\ceil{2 \ln n } \ge \alpha \ge \mathrm{IG}_{\mathrm{SC}}$$ directly providing an upper bound for SC.
+    By the law of large numbers, we know that if for each pair $(\mathcal U, C)$ we repeatedly compute the previous algorithm we will, eventually, get an output $A'$ such that $\abs{A'} \le \ceil{2 \ln n} \mathrm{IP}^*$. This implies that such procedure yields an approximation ratio $\alpha \le \ceil{2 \ln n}$, implying that $$\ceil{2 \ln n } \ge \alpha \ge \mathrm{IG}_{\mathrm{SC}}$$ directly providing an upper bound for SC.
 
     Additionally, we observe that the algorithm can be modified to get a better bound, by simply replacing $\ceil{2 \ln n}$ with $\ceil{(1 + \varepsilon) \ln n}$, for any $\varepsilon > 0$. In fact, with this modification we would get that $\mathbb E \sbk{\abs A} \le \ceil{(1 + \varepsilon) \ln n} \mathrm{LP^*}$, even though we would also have that $\Pr[\mbox{$\mathcal U$ covered by $A$}] = 1 - n^{- \varepsilon}$ which is worse for small values of $\varepsilon$ --- this probability can still be \tit{boosted} by repeatedly computing the output. Hence, we actually get that $$\mathrm{IG}_{\mathrm{SC}} \le \ceil{\ln n}$$
 
@@ -969,7 +970,7 @@
 
     The densest subgraph is relevant because it actually \tit{maximizes} the average degree of its vertices. In fact, thanks to the handshaking lemma we have that $$\rho(G[S]) := \dfrac{\abs{E(G[S])}}{\abs S} = \dfrac{1}{2} \cdot \dfrac{2 \cdot \abs{E(G[S])}}{\abs s} = \dfrac{1}{2} \cdot \dfrac{\sum_{v \in S}{\deg (v)}}{\abs S} = \dfrac{1}{2} \avg_{v \in S}{\deg(v)}$$
 
-    The LP that we will present for this problem is the following. However, to show that this LP actually yields a solution for DS is not trivial, and it will be proven through the following theorems.
+    The LP that we will present for this problem is the following. However, to show that this LP actually yields a solution for DS is not trivial, and it will be proven throughout the rest of the chapter.
 
     \begin{figure}[H]
         \centering
@@ -1268,7 +1269,7 @@
 
     In the last proof of the previous section, we defined $\phi_\mathrm{GR}$, which helped us determine the approximation ratio of the algorithm. But how did Charikar come up with such an orientation of the graph? To answer this question, we need to introduce the concept of the \tbf{duality} of linear programs.
 
-    Consider the following \tit{maximization} generic linear program:
+    Consider the following generic linear program for a \tit{maximization} problem:
 
     \begin{figure}[H]
         \centering
@@ -1492,7 +1493,7 @@
 
     We observe that the constraints on $y_{ij}$ ensure that $y_{ij} = 1$ if and only if $x_i \neq x_j$. Moreover, we don't need to force $y_{ij} = 1$ when $i$ is in the set and $j$ is not (or vice versa) because the \tit{maximization} will enforce this in the solution automatically.
 
-    Now, let us consider the LP relaxation of this IP: the optimal solution of such relaxation will always set every single vertex variable $x_v$ to $\tfrac{1}{2}$, and every edge variable $y_{ij}$ to 1. In other words, the optimal solution to the LP relaxation gives \tit{no information}. Indeed, this is exactly the reason why the $\tfrac{1}{2}$-approximation we presented can just flip coints for every vertex without even looking at the structure of the input.
+    Now, let us consider the LP relaxation of this IP: the optimal solution of such relaxation will always set every single vertex variable $x_v$ to $\tfrac{1}{2}$, and every edge variable $y_{ij}$ to 1. In other words, the optimal solution to the LP relaxation gives \tit{no information}. Indeed, this is exactly the reason why the $\tfrac{1}{2}$-approximation we presented can just flip coins for every vertex without even looking at the structure of the input.
 
     Then, how good can this relaxation get? Since our algorithm is a $\tfrac{1}{2}$-approximation, we already know that $\mbox{IG}_\mathrm{MC} \le 2$. Moreover, it can be proven that for any $n \in \N$ the gap of $K_n$ is at least $2 - \varepsilon$ for $\varepsilon > 0$, concluding that $\mbox{IG}_{\mathrm{MC}} = 2$.
 
@@ -1651,7 +1652,7 @@
         Given a graph $G = (V, E)$, and a set $\varnothing \subset S \subseteq V$, the \tbf{sparsity} of $S$ is defined as follows: $$\psi (S) := \dfrac{\abs{\mathrm{cut}(S)}}{\abs{S \times \overline S}} = \dfrac{\abs{\mathrm{cut}(S)}}{\abs S \cdot \abs{\overline S}}$$
     \end{frameddefn}
 
-    As for the case of \tit{graph density}, we require $S \neq \varnothing$, but we will omit this detail in the following sections. Moreover, note that by definition of \tit{cut}, we have that for any $S \subseteq V(G)$ it holds that $$0 \le \abs{\mathrm{cut}(S)} \le \abs {S \times \overline S} = \abs S \cdot \abs{\overline S}$$ since an edge $e$ is in $\mathrm{cut}(S)$ if and only if $\abs {S \cap e} = 1$, hence the cartesian product $S \times \overline S$ represents the edges that have exactly one endpoint in $S$. Therefore, we have that $0 \le \psi(S) \le 1$, and in particular
+    As for the case of \tit{graph density}, we require $S \neq \varnothing$, but we will omit this detail in the following sections. Moreover, note that by definition of \tit{cut}, we have that for any $S \subseteq V(G)$ it holds that $$0 \le \abs{\mathrm{cut}(S)} \le \abs {S \times \overline S} = \abs S \cdot \abs{\overline S}$$ since an edge $e$ is in $\mathrm{cut}(S)$ if and only if $\abs {S \cap e} = 1$, hence the cartesian product $S \times \overline S$ represents the \tit{possible} edges that have exactly one endpoint in $S$. Therefore, we have that $0 \le \psi(S) \le 1$, and in particular
 
     \begin{itemize}
         \item $\psi(S) = 0 \implies \abs{\mathrm{cut}(S)} = 0$ which happens if $S$ is \tit{disconnected} from $\overline S$
@@ -2023,8 +2024,6 @@
         implying that $2m_{\ell_2}^2 \le 4M_{\ell_2}^2 \iff m_{\ell_2} \le \sqrt 2 M_{\ell_2}$. Now, note that the maximum edge length $M_{C_4}$ w.r.t. $d_{C_4}$ is 1, and the minimum diagonal length $m_{C_4}$ w.r.t. $d_{C_4}$ is 2, which means that $m_{C_4} = 2 M_{C_4}$. Therefore, the embedding must have applied a distortion factor of at least $\sqrt 2$.
     \end{proof}
 
-    \section{Exercises}
-    
     \chapter{Submodular optimization}
 
     \tbf{Submodular optimization} plays a central role in \href{https://en.wikipedia.org/wiki/Discrete_optimization}{discrete optimization}, particularly in algorithmic settings where efficiency and approximation guarantees are critical. Submodular functions model a \tit{diminishing returns} property that arises naturally in many computational problems, such as influence maximization, data summarization, and sensor placement. But before introducing submodular optimization in detail, we will discuss the following problem.
@@ -2134,7 +2133,7 @@
                      &= f(\{2, \ldots, k\}) + f(\{1\}) - f(\varnothing) \\
                      &= (f(\{3, \ldots, k\}) + f(\{2\}) - f(\varnothing)) + f(\{1\}) - f(\varnothing) \\
                      &= f(\{k\}) + \sum_{i \in S - \{k\}}{(f(\{i\}) - f(\varnothing))} \\
-                     &= f(\varnothing) + \sum_{i \in S}{f(\{i\}) - f(\varnothing)} \\
+                     &= f(\varnothing) + \sum_{i \in S}{(f(\{i\}) - f(\varnothing))} \\
                      &= z + \sum_{i \in S}{w_i}
             \end{split}
         \end{equation*}
@@ -2408,7 +2407,7 @@
     We observe this proof can be also modified for functions that are non-negative, submodular but \tit{not} symmetric, as shown below.
 
     \begin{framedthm}{}
-        Given $n \in \N$, let $\func{f}{\powerset([n])}{\R}$ be a submodular and non-negative function. Given $\displaystyle S^* \in \argmax_{S \subseteq [n]}{f(S)}$, if $R$ is chosen from $[n]$ UAR, it holds that $$\Exp \sbk{f(R)} \ge \dfrac{1}{2}f(S^*)$$
+        Given $n \in \N$, let $\func{f}{\powerset([n])}{\R}$ be a submodular and non-negative function. Given $\displaystyle S^* \in \argmax_{S \subseteq [n]}{f(S)}$, if $R$ is chosen from $[n]$ UAR, it holds that $$\Exp \sbk{f(R)} \ge \dfrac{1}{4}f(S^*)$$
     \end{framedthm}
 
     \begin{proof}
@@ -2926,7 +2925,7 @@
         \item after reading the real outcome $x_t$, we lose a point if $z_t \neq x_t$, otherwise we gain one
     \end{enumerate}
 
-    The easiest way to use the prediction vector $y_t$ is to randomly choose which of the experts' prediction will be the final one. If there is at least one \tbf{perfect expert} --- an expert whose predictions are always correct --- we can use a naïve alogritm in order to discard the non-perfect experts until only the perfect ones remain.
+    The easiest way to use the prediction vector $y_t$ is to randomly choose which of the experts' prediction will be the final one. If there is at least one \tbf{perfect expert} --- an expert whose predictions are always correct --- we can use a naïve algorithm in order to discard the non-perfect experts until only the perfect ones remain.
 
     \begin{framedalgo}{The Naïve Expert model}
         Given a set $M$ of $n$ trained experts, in which at least one of them is perfect, the algorithm yields predictions over time $T$. \\
@@ -3081,7 +3080,7 @@
     Even if it is not known whether this bound is \tit{tight}, the following result can be proven.
 
     \begin{framedthm}{}
-        Given a set trained experts $M$, for every deterministic algorithm based on the expert model the total number of mistakes $m$ is such that $m \ge \log n$ and $m \ge 2{m^*}$, where $m^*$ is the number of mistakced of the best expert after $T$ rounds.
+        Given a set trained experts $M$, for every deterministic algorithm based on the expert model the total number of mistakes $m$ is such that $m \ge \log n$ and $m \ge 2{m^*}$, where $m^*$ is the number of mistakes of the best expert after $T$ rounds.
     \end{framedthm}
 
     \begin{proof}
@@ -3183,13 +3182,13 @@
 
     A possible payoff scheme works as follows: if the forecaster assigns a probability $x \in [0,1]$ to an event occurring, it earns $x$ points if the event happens, and loses $1 - x$ points if it doesn't. This is meant to encourage the forecaster to report $x = \mu$ as the prediction, where $\mu$ is what he believes the probability of the event really is. In particular, the \tbf{expected gain} $g_\mu(x)$ under this scheme, assuming the forecaster believes the event has probability $\mu$ and it claims $x$ as the probability of the event, is given by $$g_\mu(x) = \Exp_\mu \sbk{P_x} = x \mu + (1 -x )(1 - \mu)$$ However we observe that $$\dfrac{d}{dx}g_\mu(x) = \mu + (1 - \mu)(-1) = 2\mu - 1$$ which means that the minimum value of the gain is reached on $x = 1$ if $\mu < \tfrac{1}{2}$, and at $x = 0$ otherwise --- recall that $\mu \in [0, 1]$. This means that such payoff scheme actually incentivizes the model to \tit{lie}, i.e. to claim that either $x = 1$ or $x = 0$ without values in between!
 
-    To fix this problem, we need a payoff scheme based on \tbf{scoring rules}. Scoring rules act as a generalization of the payoff scheme, where the gain and the payoff do not have to add up to 1. In other wrods, if the forecaster guesses $x \in [0, 1]$ as the probability of the event, then it gains $f_1(x)$ points if the event really happens, otherwise it loses $f_0(x)$ points --- in the pvrious scheme, $f_1(x) = x$ and $f_0(x) = 1- x$. Hence, the expected gain now becomes $$g_\mu(x) = \Exp_\mu[P_x] = f_1(x) \mu + f_0(x)(1 - \mu)$$ An optimal scoring rule would be one that makes the model converge to $x = \mu$.
+    To fix this problem, we need a payoff scheme based on \tbf{scoring rules}. Scoring rules act as a generalization of the payoff scheme, where the gain and the payoff do not have to add up to 1. In other words, if the forecaster guesses $x \in [0, 1]$ as the probability of the event, then it gains $f_1(x)$ points if the event really happens, otherwise it loses $f_0(x)$ points --- in the previous scheme, $f_1(x) = x$ and $f_0(x) = 1- x$. Hence, the expected gain now becomes $$g_\mu(x) = \Exp_\mu[P_x] = f_1(x) \mu + f_0(x)(1 - \mu)$$ An optimal scoring rule would be one that makes the model converge to $x = \mu$.
 
     \begin{frameddefn}{Scoring rule}
         Given two functions $\func{f_0, f_1}{X}{[0, 1]}$, we say that the pair $(f_0, f_1)$ is a \tbf{scoring rule} if for all $\mu \in [0, 1]$ it holds that $$\argmax_{x \in [0, 1]}{g_\mu(x)} = \argmax_{x \in [0, 1]} {(f_1(x) \mu + f_0(x)(1 - \mu))}= \mu$$
     \end{frameddefn}
 
-    We observe that this definition implies that there is \tit{only one} maximizing $x$ value, i.e.. $\mu$ itself.
+    We observe that this definition implies that there is \tit{only one} maximizing $x$ value, i.e. $\mu$ itself.
 
     Good scoring rules are \tit{hard} to find, and vary depending on the context. However, even finding simple scoring rules is hard. The following is a commonly used scoring rule.
 
@@ -3263,7 +3262,7 @@
 
     \section{Selection processes}
 
-    Suppose that we have a sequence of items and we wish to select the best one in an \tit{online manner}. In the literature, this is known as the \tbf{Secretary Problem}, where we have to select the bast applicant out of a sequence of $n$ applicants, and the candidates are shown UAR in an \tit{online manner}. At any point in time, we can order the applicant we saw w.r.t. their ability. When wee see a candidate we immediately have to decide whether to hire them or not.
+    Suppose that we have a sequence of items and we wish to select the best one in an \tit{online manner}. In the literature, this is known as the \tbf{Secretary Problem}, where we have to select the best applicant out of a sequence of $n$ applicants, and the candidates are shown UAR in an \tit{online manner}. At any point in time, we can order the applicant we saw w.r.t. their ability. When wee see a candidate we immediately have to decide whether to hire them or not.
 
     Suppose that we have three candidates $c_1$, $c_2$ and $c_3$ whose ability follows the ordering $c_2 > c_1 > c_3$. We observe that there are 3! possible arrival ordering for the three candidates. We propose the following three algorithms:
 
@@ -3580,7 +3579,7 @@
         How does the algorithm compute when fed with $G_t$ as input? Since the degree of all the vertices of the cliques is exactly $t + 1$, and the complete bipartite graph $K_{t, 2^t}$ has vertices having degree $t$ --- namely, in its biggest partition --- the algorithm will compute as follows:
 
         \begin{itemize}
-            \item initially, the algorithm will remove all the vertices of the biggest partition of $K_{t, 2^t}$ one by one, since they all have degree $t$, until only the $K_{t + 2}$-cliques remain
+            \item initially, the algorithm will remove all the vertices of the biggest partition of $K_{t, 2^t}$ one by one, since they all have degree $t$, and then the whole bipartite graph will be removed such that only the $K_{t + 2}$-cliques remain
             \item then, the algorithm will proceed to remove all the vertices of the cliques, removing one $K_{t + 2}$-clique at a time, until no vertices remain
         \end{itemize}
 
@@ -3620,7 +3619,7 @@
     \end{framedprob}
 
     \solution{
-        First, we observe that the shortest path metric on a $2n$-long cycle graph is defined as follows: $$\forall j, k \in [2n] \quad d_G(j, k) = \soe{ll}{\abs{k - j} & \abs{k - j} \le n \\ 2n - \abs{k - j} & \abs{k - j} > n}$$ Moreover, we observe that $\ell_1$ defined on two binary vectors $x, y \in \{0, 1\}^h$ is equivalent to their \href{https://en.wikipedia.org/wiki/Hamming_distance}{Hamming distance}, i.e. $$\ell_1(x, y) = d_H(x, y) = \abs{\{i : x_i \neq y_i\}}$$ and in particular $$\forall j, k \in [2n] \quad \ell_1(f(j), f(k)) = d_H(f(j), f(k))$$
+        First, we observe that the shortest path metric on a $2n$-long cycle graph is defined as follows: $$\forall j, k \in [2n] \quad d_G(j, k) = \soe{ll}{\abs{k - j} & \abs{k - j} \le n \\ 2n - \abs{k - j} & \abs{k - j} > n}$$ Moreover, we observe that $\ell_1$ defined on two binary vectors $x, y \in \{0, 1\}^h$ is equivalent to their \href{https://en.wikipedia.org/wiki/Hamming_distance}{Hamming distance}, i.e. $$\ell_1(x, y) = d_H(x, y) = \abs{\{i : x_i \neq y_i\}}$$ and in particular for any $f$ it holds that $$\forall j, k \in [2n] \quad \ell_1(f(j), f(k)) = d_H(f(j), f(k))$$
 
         Now, consider the function $\func{f}{V(C_{2n})}{\R^n}$ defined as follows: $$\forall i \in [2n] \quad f(i) = \soe{ll}{0^{n - i + 1}1^{i - 1} & i \le n \\ 1^{2n - i + 1}0^{i - 1 - n} & i > n}$$ where the notation $0^a1^b$ stands for the vector $(\underbrace{0, \ldots, 0}_{a \ \mathrm{values}}, \underbrace{1, \ldots, 1}_{b \ \mathrm{values}}) \in \R^{a + b}$. At first, this definition of $f$ may seem counterintuitive, but if we consider each possible $f(i)$ the following nice pattern of \curlyquotes{sliding window} emerges:
 
