@@ -3842,7 +3842,16 @@
 
                     We know that $A^{H_i}x = b$ has unique solution if and only if the rank of the matrix is equal to the number of unknowns, which is going to be $\abs{V(H_i)}$. By the rank-nullity theorem, we know that $$\mathrm{rank}(A^{H_i}) + \dim(\ker \mathscr L_{A^{H_i}}) = \abs{V(H_i)}$$ where $\mathscr L_{A^{H_i}}$ is the function that describes the \tit{left application} of $A^{H_i}$. Hence, to prove that $\mathrm{rank}(A^{H_i}) = \abs{V(H_i)}$ it suffices to show that $\dim(\ker \mathscr L_{A^{H_i}}) = 0$.
 
-                    Assume that $H_i$ is not bipartite, i.e. it contains an odd-length cycle, and by way of contradiction suppose that there exists $\bar x = [f(e_1) \ \cdots \ f(e_k)]^T \in \ker \mathscr L_{A^{H_i}}$ such that $\bar x \neq 0$. By definition, since $\bar x$ is in the kernel of $\mathscr L_{A^{H_i}}$, it holds that $A^{H_i} \bar x = 0$, and by construction of $A^{H_i}$ this happens if and only if for each edge $\{i, j\} \in E(H_i)$ it holds that $f(\{i\}) + f(\{j\}) = 0 \iff f(\{i\}) = - f(\{j\})$
+                    Assume that $H_i$ is not bipartite, and by way of contradiction suppose that there exists $\bar x = [f(e_1) \ \cdots \ f(e_k)]^T \in \ker \mathscr L_{A^{H_i}}$ such that $\bar x \neq 0$. By definition, since $\bar x$ is in the kernel of $\mathscr L_{A^{H_i}}$, it holds that $A^{H_i} \bar x = 0$, and by construction of $A^{H_i}$ this happens if and only if for each edge $\{i, j\} \in E(H_i)$ it holds that $$f(\{i\}) + f(\{j\}) = 0 \iff f(\{i\}) = - f(\{j\})$$ This means that the values assigned to adjacent vertices \tit{are always the same but opposite in sign}: in other words, the vertices of $V(H_i)$ can be 2-colored such that
+
+                    \begin{itemize}
+                        \item one color class has color $a$
+                        \item the other one has color $-a$
+                    \end{itemize}
+
+                    and since a graph is 2-colorable if and only if it is bipartite, this contradicts the assumption for which $H_i$ was not bipartite. This implies that all the $x \in \ker \mathscr L_{A^{H_i}}$ are such that $x = 0$, i.e. the kernel has dimension 0.
+
+                    Vice versa, assume that $H_i$ is biparite through a bipartition $(A, B)$; we define the following function $$\forall i \in [n] \quad f(\{i\}) = \soe{ll}{1 & i \in A \\ -1 & B}$$ Fix an edge $\{i, j\} \in E(H_i)$, and without loss of generality suppose that $i \in A$ and $j \in B$; then, it holds that $$f(\{i\}) + f(\{j\}) = 1 + (- 1) = 0$$ which means that the vector $\bar x = [f(e_1) \ \cdots \ f(e_k)]^T$ is clearly inside the kernel of $\mathscr L_{A^{H_i}}$
 
 
 
