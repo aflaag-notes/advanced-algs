@@ -645,11 +645,11 @@
     In this section, we are going to use a different definition for the approximation ratio $\alpha$: in particular, given a problem P
 
     \begin{itemize}
-        \item if P is a \tbf{minimization} problem, we say that $A$ yields an $\alpha$-approximation of $P$ if $$\mathrm{ALG} \le \alpha \cdot \mathrm{OPT}$$ in which $\alpha \in \R_{\ge 1}$
-        \item if P is a \tbf{maximization} problem, we say that $A$ yields an $\alpha$-approximation of $P$ if $$\mathrm{ALG} \ge \dfrac{\mathrm{OPT}}{\alpha}$$ in which $\alpha \in (0, 1]$
+        \item if P is a \tbf{minimization} problem, we say that $A$ yields an $\alpha$-approximation of $P$ if $$\mathrm{ALG} \le \alpha \cdot \mathrm{OPT}$$
+        \item if P is a \tbf{maximization} problem, we say that $A$ yields an $\alpha$-approximation of $P$ if $$\mathrm{ALG} \ge \dfrac{\mathrm{OPT}}{\alpha}$$
     \end{itemize}
 
-    This convention is typically employed for approximation algorithms using LP relaxation.
+    such that in both cases we have that $\alpha \in \R_{\ge 1}$. This convention is typically employed for approximation algorithms using LP relaxation.
 
     Consider a problem P, its equivalent IP, and the relative LP relaxation. Given an instance $I \in \mathrm P$ of the problem, we will denote with $\mathrm{IP^*_P}(I)$ and $\mathrm{LP^*_P}(I)$ the optimal values for the IP and the LP of the problem P on the instance $I$ --- we will omit P and $I$ if the context is clear enough. Note that, in general, for minimization problems it holds that $\mathrm{LP^*} \le \mathrm{IP^*}$ since the constraints of the LP relaxation are \tit{weaker} than the ones of the IP --- and the converse holds for maximization problems.
 
@@ -4026,7 +4026,7 @@
     \begin{framedprob}{}
         Consider the algorithm above: this is the $f$-Generalized Weighted Majority Expert model, which is a generalized version of \cref{wmem}. In fact, if $f(w_i) = 2^{-w_i}$ then the two algorithms are identical, and it guarantees a number of mistakes not larger than $O(m^* + \log n)$ where $m^*$ is the number of mistakes of the best expert, and $n$ is the number of experts --- as we proved in \cref{wmem proof}.
 
-        Prove that, if $f(w_i) = \tfrac{w_i}{w_i + 1}$, then the number of mistakes of the $f$-Generalized Weighted Majority algorithm is $\Omega(n)$ even in cases where $m^* = 0$.
+        Prove that, if $f(w_i) = \tfrac{1}{w_i + 1}$, then the number of mistakes of the $f$-Generalized Weighted Majority algorithm is $\Omega(n)$ even in cases where $m^* = 0$.
 
         Moreover, prove that if $f(w_i) = (w_i + 1)^{- \alpha}$ for a generic constant $\alpha > 0$, then there are instances with $m^* =0$ where the $f$-Generalized Weighted Majority algorithm makes a number of mistakes polynomial in $n$.
     \end{framedprob}
