@@ -94,13 +94,15 @@
 
     \chapter{Approximation algorithms}
 
-    TODO \todo{missing introduction}
+    Many important computational problems in computer science are \NPclass-complete, meaning that unless \Pclass = \NPclass, no polynomial-time algorithm can solve all instances of these problems exactly. Given the \tbf{intractability} of exact solutions, especially as problem sizes grow, \tit{approximation algorithms} provide a practical alternative. These algorithms aim to efficiently produce solutions that are \curlyquotes{good enough} --- often within a provable bound of the optimal solution.
 
-    Lastly, \underline{\tit{unless specified}} we will adopt the following convention in these notes, when talking about \tbf{approximation algorithm}. Given a problem P for which there is an optimal solution OPT, and an algorithm that solves P which outputs a solution ALG to P
+    In these notes we will explore the design and analysis of approximation algorithms for various \NPclass-complete problems. We will study a variety of approximation techniques including greedy strategies, randomization, linear programming relaxations, primal-dual methods and metric embeddings. Through these techniques, we will develop algorithms for classic problems such as Max Cut, Vertex Cover, Set Cover, and analyze their approximation guarantees.
+
+    Lastly, \underline{\tit{unless specified}} in these notes, when talking about \tbf{approximation algorithms}, we will adopt the following convention: given a problem P for which there is an optimal solution OPT, and an algorithm that solves P which outputs a solution ALG to P
 
     \begin{itemize}
         \item if P is a \tbf{minimization} problem, we say that $A$ yields an $\alpha$-approximation of P if $$\mathrm{ALG} \le \alpha \cdot \mathrm{OPT}$$ in which $\alpha \in \R_{> 1}$
-        \item if $P$ is a \tbf{maximization} problem, we say that $A$ yields an $\alpha$-approximation of P if $$\mathrm{ALG} \ge \alpha \cdot \mathrm{OPT}$$ in which $\alpha \in (0, 1]$
+        \item if P is a \tbf{maximization} problem, we say that $A$ yields an $\alpha$-approximation of P if $$\mathrm{ALG} \ge \alpha \cdot \mathrm{OPT}$$ in which $\alpha \in (0, 1]$
     \end{itemize}
 
     \section{Approximation through randomness}
@@ -1644,9 +1646,7 @@
 
     \chapter{Metric geometry}
 
-    TODO \todo{missing introduction}
-
-    First, consider the following definition.
+    First of all, consider the following computational problem.
 
     \begin{frameddefn}{Set spartity}
         Given a graph $G = (V, E)$, and a set $\varnothing \subset S \subseteq V$, the \tbf{sparsity} of $S$ is defined as follows: $$\psi (S) := \dfrac{\abs{\mathrm{cut}(S)}}{\abs{S \times \overline S}} = \dfrac{\abs{\mathrm{cut}(S)}}{\abs S \cdot \abs{\overline S}}$$
@@ -1665,7 +1665,7 @@
         The \tbf{Sparsest Cut} (SC) problem is defined as follows: given a graph $G = (V, E)$, determine the subset of vertices that minimizes its sparsity. In other words, the problems asks to finde a set $S^*$ in $$S^* \in \argmin_{S \subseteq V}{\psi(S)}$$
     \end{frameddefn}
 
-    In order to reason about SC, we are going to introduce the following type of graphs, invented by \textcite{erdos} in 1959.
+    A good tool of reasoning for SC is the following type of graphs, introduced by \textcite{erdos} in 1959.
 
     \begin{frameddefn}{Erdős-Rényi random graph}
         Given two values $n \in \N$ and $\mu \in [0, 1]$, the \href{https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model}{Erdős-Rényi random graph} $G(n, \mu)$ is a graph that has a fixed vertex set $V(G) = [n]$, and a \tit{probabilistic} edge set $E(G)$ such that $$\forall e \in \binom{V(G)}{2} \quad \Pr[e \in E(G)] = \mu$$
@@ -1673,7 +1673,7 @@
 
     By definition, this model represents an \tit{evenly sparse graph}, because for each $S \subseteq V(G)$ it holds that $$ \mathbb E[\psi(S)] = \dfrac{\mathbb E\sbk{\abs{\mathrm{cut}(S)}}}{\abs S \cdot \abs{\overline S}} = \dfrac{\sum_{ij \in S \times \overline S}{\Pr \sbk{ij \in \mathrm{cut}(S)}}}{\abs S \cdot  \abs{\overline S}}= \dfrac{\mu \cdot \abs S \cdot \abs{\overline S}}{\abs S \cdot \abs{\overline S}} = \mu$$
 
-    The Maximum Cut problem --- which we discussed in \cref{maxcut} --- can be reduced to SC, implying that the latter is \NPclass-hard as well. Nevertheless, the problem can be approximated through the \tbf{Leighton-Rao algorithm} \cite{leightonrao}, which relies on LP relaxation and a series of reduction steps. In particular, its integrality gap is bounded using \tit{geometric arguments}, therefore in the following sections we will focus on \tbf{metric geometry} in order to establish this result.
+    But why are we introducing the Sparsest Cut problem in the first place? The Max Cut problem --- discussed in \cref{maxcut} --- can be reduced to SC, implying that the latter is \NPclass-hard as well. However, the problem can be approximated through the \tbf{Leighton-Rao algorithm} \cite{leightonrao}, which relies on LP relaxation and a series of reduction steps. In particular, its integrality gap is bounded using \tit{geometric arguments}, therefore in this chapter we will focus on \tbf{metric geometry} in order to establish this result.
 
     \section{Metrics}
 
@@ -2657,7 +2657,6 @@
     %     \item for each vertex $j \in B$, the second constraint forces the solution to choose at most one edge incident to $j$
     % \end{itemize}
     %
-    % TODO \todo{da finire}
 
     \section{The online approach}
 
@@ -2833,7 +2832,7 @@
     \begin{proof}
         Let $G_1$ be a graph such that $E(G_1) = \{\{a, x\}, \{b, x\}, \{b, y\}\}$, and let $G_2$ be the graph such that $E(G_2) = \{\{a, x\}, \{b, x\}, \{a, y\}\}$. Now, consider a distribution that assigns probability $\tfrac{1}{2}$ to both $G_1$ and $G_2$, and probability 0 to all the other possible graphs.
 
-        On the first round, the adversary sends the edges $\{a, x\}$ and $\{b, x\}$; then, our algorithm will match $x$ to either $a$ or $b$ \todo{what if x unmatched?}, and clearly it will learn nothing about the vertex $y$ whose edges will be sent by the adversary on the next round --- namely, they can send either $\{b, y\}$ or $\{a, y\}$. Through a similar argument used to prove \cref{mbm det}, we see that the probability of $y$ being impossible to match on the next round is $\tfrac{1}{2}$. This implies that $$\Exp[\mbox{number of matched edges}] = TODO$$ TODO \todo{prev eq} However, an offline deterministic algorithm (which is a also randomized algorithm that makes no random choices) can always retun an optimal solution with 2 amtched edges, therefore the expected ratio is $$\dfrac{\tfrac{3}{2}}{2} = \dfrac{3}{4}$$
+        On the first round, the adversary sends the edges $\{a, x\}$ and $\{b, x\}$; then, our algorithm will match $x$ to either $a$ or $b$, and clearly it will learn nothing about the vertex $y$ whose edges will be sent by the adversary on the next round --- namely, they can send either $\{b, y\}$ or $\{a, y\}$. Through a similar argument used to prove \cref{mbm det}, we see that the probability of $y$ being impossible to match on the next round is $\tfrac{1}{2}$. This implies that $$\Exp[\mbox{number of matched edges}] = 1 \cdot \dfrac{1}{2} + 2 \cdot \dfrac{1}{2} = \dfrac{3}{2}$$ However, an offline deterministic algorithm (which is a also randomized algorithm that makes no random choices) can always retun an optimal solution with 2 matched edges, therefore the expected ratio is $$\dfrac{\tfrac{3}{2}}{2} = \dfrac{3}{4}$$
     \end{proof}
 
     \subsection{The Market Process algorithm}
@@ -3454,8 +3453,8 @@
                     \State \tbf{return} \ttt{False}
                 \EndIf
                 \State $\ttt{col[}u\ttt{]} = c$
-                \For{$v \in \mathcal N(v)$}
-                    \If{$\textsc{DFS-2-coloring}(G, v, \ttt{col}, 1 - c)$}
+                \For{$v \in \mathcal N(u)$}
+                    \If{$\textsc{DFS-2-coloring}(G, v, \ttt{col}, 1 - c)$ == \ttt{False}}
                         \State \tbf{return} \ttt{False}
                     \EndIf
                 \EndFor
@@ -3465,7 +3464,7 @@
                 \State $\ttt{col} = \ttt{[}-1, \ldots, -1\ttt{]}$
                 \For{$u \in V(G)$}
                     \If{$\ttt{col[}u\ttt{]} == -1$}
-                        \If{$\textsc{DFS-2-coloring}(G, u, \ttt{col}, 0)$}
+                        \If{$\textsc{DFS-2-coloring}(G, u, \ttt{col}, 0)$ == \ttt{False}}
                             \State \tbf{return} \ttt{False}
                         \EndIf
                     \EndIf
@@ -3990,7 +3989,7 @@
         Therefore, since the gain of $S$ is non-negative, monotone increasing and submodular, for any $m$ maximum number of facilities that the company can rent we can employ \cref{nwf approx} to return a set of $m$ facilities with an approximation ratio of $1 - \tfrac{1}{e}$ by \cref{nwf approx proof}.
     }
 
-    \begin{framedalgo}{The $f$-Generalized W.M. Expert model}
+    \begin{framedalgo}[breakable]{The $f$-Generalized W.M. Expert model}
         Given a set $M$ of $n$ trained experts, the algorithm yields predictions over time $T$. \\
         \hrule
 
@@ -4057,6 +4056,50 @@
         implying that when $t < n - 2$ it holds that $$A_t = \sum_{\substack{i \in [n] : \\ y_{i, t} = 1}}{w_i^{(t)}} = 1 = (n - 1) \cdot \dfrac{1}{n - 1} < (n - 1) \cdot \dfrac{1}{t + 1} = \sum_{\substack{i \in [n] : \\ y_{i, t} = 0}}{w_i^{(t)}} = B_t$$ which means that for the first $n - 2$ iterations (we start at $t = 0$) the algorithm is \tit{forced to be wrong}. This implies that $m \ge n - 2$, and by choosing for instance $c = \tfrac{1}{2}$ and $n_0 = 4$ we get that $$\forall n \ge n_0 \quad m \ge c \cdot n \implies m = \Omega(n)$$
 
         Lastly, if we assume that $f(w_i) = (w_i + 1)^{-\alpha}$ for some $\alpha > 0$ we observe that the weights now change as follows $$1 \stackrel{f}{\longrightarrow} \dfrac{1}{2^\alpha} \stackrel{f}{\longrightarrow} \dfrac{1}{3^\alpha} \stackrel{f}{\longrightarrow} \ldots$$ which implies that $w_i = \rbk{h_k}^\alpha = \tfrac{1}{k^\alpha}$. Therefore, we can employ the same adversary argument to find a lower bound on $m$, but this time to determine the number of iterations in which our algorithm is forced to be wrong we need $t$ to be such that $$1 < \dfrac{n - 1}{(1 + t)^\alpha} \iff (1 + t)^\alpha < n - 1 \implies t < (n - 1)^{\tfrac{1}{\alpha}} - 1$$ and since we start at $t = 0$, this implies that $$m \ge (n - 1)^{\tfrac{1}{\alpha}} - 1 \implies m = \Omega \rbk{n^{1/\alpha}}$$
+    }
+
+    \begin{framedprob}{}
+        Consider an urn containing $n$ balls, the $i$-th ball of which labelled by the integer $i$. You can sample the urn as follows: you draw a UAR ball, look at its label, and then put the ball back into the urn. Give an upper bound on the number of samples needed to see each of the $n$ labels at least once, with probability at least $\tfrac{9}{10}$.
+    \end{framedprob}
+
+    \solution{
+        We can rewrite the problem thorugh the following algorithm:
+
+        \begin{algorithmic}[1]
+            \Function{BallExtraction}{$T$}
+                \State $A := \varnothing$
+                \For{$t \in [T]$}
+                    \State Sample $x_t \in [n]$ UAR
+                    \State $A = A \cup \{x_t\}$
+                \EndFor
+                \State \tbf{return} $A$
+            \EndFunction
+        \end{algorithmic}
+
+        Given this procedure, the problem asks to find a bound for the number of iterations $T$ such that $A := \textsc{BallExtraction}(T)$ is such that $$\Pr \sbk{\abs A = n} \ge \dfrac{9}{10}$$ We observe that
+        \begin{equation*}
+            \begin{alignedat}{2}
+                \Pr \sbk{\abs A = n} &= 1 - \Pr \sbk{\abs A < n} && \\
+                                     &= 1 - \Pr \sbk{\exists i \in [n] \quad i \notin A} && \\
+                                     &\ge 1 - \sum_{i = 1}^n{\Pr[i \notin A]} && \quad \quad (\mbox{by the union bound}) \\
+                                     &= 1 - \sum_{i = 1}^n{\Pr[\forall t \in [T] \quad x_t \neq i]} && \\
+                                     &= 1 - \sum_{i = 1}^n{\prod_{t = 1}^T{\Pr[x_t \neq i]}} && \\
+                                     &= 1 - \sum_{i = 1}^n{\prod_{t = 1}^T{\rbk{\dfrac{n- 1}{n}}}} && \\
+                                     &= 1 - \sum_{i = 1}^n{\rbk{\dfrac{n - 1}{n}}^T} && \\
+                                     &= 1 - n \rbk{\dfrac{n - 1}{n}}^T && \\
+            \end{alignedat}
+        \end{equation*}
+        Now, we observe that
+        \begin{equation*}
+            \begin{split}
+                     & 1 - n \rbk{\dfrac{n - 1}{n}}^T \ge \dfrac{9}{10} \\
+                \iff & n \rbk{\dfrac{n - 1}{n}}^T \le 1 - \dfrac{9}{10} = \dfrac{1}{10} \\
+                \iff & \rbk{\dfrac{n - 1}{n}}^T \le \dfrac{1}{10n} \\
+            \end{split}
+        \end{equation*}
+        Moreover, assuming that $n > 1$ we can simplify even more as follows $$T \ge \log_{\tfrac{n - 1}{n}}{\dfrac{1}{10n}} = \dfrac{\ln \rbk{\tfrac{1}{10n}}}{\ln \rbk{\tfrac{n - 1}{n}}} = \dfrac{\ln \rbk{\tfrac{1}{10n}}}{\ln \rbk{1 - \tfrac{1}{n}}}$$ and by using the fact that for all $n > 1$ it holds that $-\dfrac{1}{n} \ge \ln \rbk{1 - \dfrac{1}{n}}$ we get that $$T \ge \dfrac{\ln \rbk{\tfrac{1}{10n}}}{\ln \rbk{1 - \tfrac{1}{n}}} \ge -n \cdot \ln \rbk{\dfrac{1}{10n}} = n \ln(10n)$$ Finally, this implies that $$T \ge n \ln (10n) \implies \Pr \sbk{\abs A = n} \ge 1 - n \rbk{\dfrac{n - 1}{n}}^T \ge \dfrac{9}{10}$$
+
+        We observe that this is an \tit{upper bound} in the probabilistic sense: this bound on $T$ tells that with probability at least $\tfrac{9}{10}$ the number of extractions required to see all $n$ balls is at most $T = n \ln (10n)$. In other words, this is an upper bound on the number of extractions with 90\% confidence.
     }
 
     \printbibliography % UNCOMMENT FOR BIBLIOGRAPHY
